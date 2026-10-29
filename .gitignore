@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Design source files (not needed in production)
+design/
+
+# Dev/doc files
+tasks/
+PLAN.md
+PROGRESS.md
+DraftDex-Pokemon-V2-ULTIMATE-1.html
+
+# Tests (not needed in production)
+engine/tests/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
