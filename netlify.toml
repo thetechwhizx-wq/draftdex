@@ -1,0 +1,23 @@
+# Netlify Configuration for DraftDex
+# Since this is a pure static site (no build step), we just serve from root.
+
+[build]
+  publish = "."
+  command = "echo 'No build needed — pure static site'"
+
+# SPA: redirect all routes to index.html so hash routing works
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache static assets
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache"
