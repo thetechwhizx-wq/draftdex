@@ -56,13 +56,6 @@ export function renderHomeScreen({ savedMatch, errorNotice, onNewMatch, onResume
           </div>
         ` : ''}
 
-        ${hasSaved ? `
-          <button id="btn-clear-data" class="w-full h-10 bg-surface-container-low active:bg-error-container/30 transition-colors rounded-lg flex items-center justify-center gap-space-sm group" type="button">
-            <span class="material-symbols-outlined text-outline group-active:text-error text-[18px]">delete_sweep</span>
-            <span class="font-label-caps text-label-caps text-outline group-active:text-error uppercase tracking-wider">Clear Saved Data</span>
-          </button>
-        ` : ''}
-
         <div class="w-full bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm shadow-md">
           <label class="font-label-caps text-label-caps text-outline uppercase tracking-wider" for="room-code-input">Join Room</label>
           <div class="relative flex items-center w-full bg-surface-container-lowest rounded-lg h-14 px-space-sm">
@@ -73,6 +66,11 @@ export function renderHomeScreen({ savedMatch, errorNotice, onNewMatch, onResume
           </div>
         </div>
       </div>
+
+      <button id="btn-clear-data" type="button" class="mt-space-lg self-center min-h-[44px] px-space-md flex items-center gap-space-xs text-outline active:text-error transition-colors">
+        <span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+        <span class="font-label-caps text-label-caps uppercase tracking-wider">Reset saved data</span>
+      </button>
     </div>
   `;
 }
