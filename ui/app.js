@@ -489,7 +489,7 @@ export class DraftDexApp {
   persistState() {
     if (!this.matchState) return;
     const currentRoute = this.router.getCurrentRoute();
-    const rawHash = currentRoute ? currentRoute.path : this.getRouteForMatchState(this.matchState);
+    const rawHash = currentRoute ? currentRoute.raw : this.getRouteForMatchState(this.matchState);
     saveMatch(this.matchState, rawHash);
   }
 
@@ -521,15 +521,7 @@ export class DraftDexApp {
     }
 
     const btnClear = this.root.querySelector('#btn-clear-data');
-    if (btnClear) {
-      btnClear.addEventListener('click', () => {
-        clearSavedMatch();
-        clearSession();
-        this.matchState = null;
-        this.errorNotice = null;
-        this.renderHome();
-      });
-    }
+    if (btnClear) btnClear.addEventListener('click', () => this.handleClearData());
 
     const inputRoom = this.root.querySelector('#room-code-input');
     const btnJoin = this.root.querySelector('#btn-join-room');
@@ -552,6 +544,30 @@ export class DraftDexApp {
         }
       });
     }
+  }
+
+  /**
+   * Wipe every saved DraftDex value (match, session, guest token) and return to a clean Home.
+   */
+  handleClearData() {
+    if (typeof window !== 'undefined' && !window.confirm('Delete the saved match and session on this device? This cannot be undone.')) return;
+
+    this.clearAuctionTimer();
+    if (this.botActionTimeout) { clearTimeout(this.botActionTimeout); this.botActionTimeout = null; }
+    if (this.p2pSession) { try { this.p2pSession.close(); } catch (_) {} this.p2pSession = null; }
+
+    try {
+      const ls = window.localStorage;
+      Object.keys(ls).filter(k => k.startsWith('draftdex')).forEach(k => ls.removeItem(k));
+    } catch (_) {}
+
+    this.matchState = null;
+    this.isHost = true;
+    this.userPlayerId = 'human';
+    this.errorNotice = null;
+    this.guestToken = getOrCreateGuestToken();
+    this.router.navigate('#/home');
+    this.renderHome();
   }
 
   handleJoinRoom(code) {
@@ -671,51 +687,50 @@ export class DraftDexApp {
   }
 
   handleCreateMatch(recommended) {
-    try {
-      const roomCode = 'POKE' + Math.floor(10 + Math.random() * 90);
-      const seed = 'match-seed-' + Date.now();
+    // 6 random characters (no 0/O/1/I to avoid mix-ups): ~887 million combinations,
+    // so two hosts on the public PeerJS network almost never collide.
+    const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let roomCode = '';
+    for (let i = 0; i < 6; i++) roomCode += ROOM_CHARS[Math.floor(Math.random() * ROOM_CHARS.length)];
+    const seed = 'match-seed-' + Date.now();
 
-      const { pool } = buildDraftPool({
-        generations: this.setupConfig.famousMix ? null : this.setupConfig.selectedGens,
-        famousMix: this.setupConfig.famousMix,
+    const { pool } = buildDraftPool({
+      generations: this.setupConfig.famousMix ? null : this.setupConfig.selectedGens,
+      famousMix: this.setupConfig.famousMix,
+      teamSize: recommended.teamSize,
+      seed
+    });
+
+    this.isHost = true;
+    this.userPlayerId = 'human';
+
+    saveSession({
+      room: roomCode,
+      isHost: true,
+      playerId: 'human',
+      guestToken: this.guestToken
+    });
+
+    this.matchState = createAuctionMatch({
+      room: roomCode,
+      seed,
+      settings: {
+        budget: recommended.budget,
         teamSize: recommended.teamSize,
-        seed
-      });
+        startBid: recommended.startBid,
+        openTimer: recommended.openTimer,
+        bidTimer: recommended.bidTimer
+      },
+      players: [
+        { id: 'human', name: 'You (Host)', isHost: true, guestToken: this.guestToken, connected: true },
+        { id: 'bot', name: 'DexBot', isHost: false, isBot: true, connected: true }
+      ],
+      pool
+    });
 
-      this.isHost = true;
-      this.userPlayerId = 'human';
-
-      saveSession({
-        room: roomCode,
-        isHost: true,
-        playerId: 'human',
-        guestToken: this.guestToken
-      });
-
-      this.matchState = createAuctionMatch({
-        room: roomCode,
-        seed,
-        settings: {
-          budget: recommended.budget,
-          teamSize: recommended.teamSize,
-          startBid: recommended.startBid,
-          openTimer: recommended.openTimer,
-          bidTimer: recommended.bidTimer
-        },
-        players: [
-          { id: 'human', name: 'You (Host)', isHost: true, guestToken: this.guestToken, connected: true },
-          { id: 'bot', name: 'DexBot', isHost: false, isBot: true, connected: true }
-        ],
-        pool
-      });
-
-      this.initHostSession(roomCode);
-      this.persistState();
-      this.router.navigate(`#/lobby/${roomCode}`);
-    } catch (err) {
-      console.error('[DraftDex] handleCreateMatch error:', err);
-      alert('Error creating match: ' + err.message);
-    }
+    this.initHostSession(roomCode);
+    this.persistState();
+    this.router.navigate(`#/lobby/${roomCode}`);
   }
 
   // ==========================================

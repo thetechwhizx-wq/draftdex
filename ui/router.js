@@ -23,25 +23,27 @@ export class Router {
   }
 
   /**
-   * Get current parsed route info.
-   */
-  getCurrentRoute() {
-    return this.parseHash();
-  }
-
-  /**
    * Parse hash string into route and params.
    * e.g. '#/auction/POKE01' -> { name: 'auction', param: 'POKE01' }
    */
   parseHash(hash = (typeof window !== 'undefined' ? window.location.hash : '')) {
     const clean = hash.replace(/^#\/?/, '').trim();
     if (!clean || clean === 'home') {
-      return { screen: 'home', param: null, path: '#/home' };
+      return { screen: 'home', param: null, params: { room: null }, path: '#/home' };
     }
     const parts = clean.split('/');
     const screen = parts[0] || 'home';
     const param = parts[1] || null;
-    return { screen, param, path: `#/${clean}` };
+    return { screen, param, params: { room: param }, path: `#/${clean}` };
+  }
+
+  /**
+   * Current route info: { screen, param, path, raw }.
+   * `raw` is the full hash (e.g. '#/auction/POKE01') used for saving and restoring.
+   */
+  getCurrentRoute() {
+    const info = this.parseHash();
+    return { ...info, raw: info.path };
   }
 
   /**
