@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "type-fighting": "#FF8000", "status-urgent": "#EF4444", "type-poison": "#8F41CB", "on-surface-variant": "#cec6ac", "type-bug": "#91A119", "inverse-primary": "#6d5e00", "surface-dim": "#0d1320", "surface-highlight": "#1E2D4A", "secondary-container": "#00eefc", "type-water": "#2980EF", "surface-bright": "#333948", "type-grass": "#3FA129", "surface-container-high": "#242a38", "on-primary-container": "#726300", "surface-variant": "#2f3543", "tertiary-fixed": "#ffdad7", "primary-fixed": "#ffe24c", "error-container": "#93000a", "type-steel": "#60A1B8", "on-secondary": "#00363a", "type-dragon": "#5060E1", "type-ghost": "#704170", "tertiary": "#fffcff", "surface-raised": "#111A2E", "inverse-on-surface": "#2a303f", "type-ice": "#3DCEF3", "on-error": "#690005", "primary-fixed-dim": "#e3c60c", "on-primary": "#393000", "surface-card": "#162238", "tertiary-container": "#ffd7d4", "on-secondary-container": "#00686f", "type-psychic": "#EF4179", "on-secondary-fixed-variant": "#004f54", "on-secondary-fixed": "#002022", "type-ground": "#915121", "status-live-green": "#10B981", "on-background": "#dde2f5", "type-flying": "#81B9EF", "border-subtle": "#223555", "surface-tint": "#e3c60c", "primary": "#fffcff", "on-tertiary-container": "#c02028", "on-tertiary-fixed": "#410004", "type-fire": "#E62829", "on-tertiary": "#68000a", "on-primary-fixed-variant": "#524600", "type-fairy": "#EF70EF", "on-primary-fixed": "#211b00", "type-normal": "#9FA19F", "secondary-fixed": "#7df4ff", "surface-base": "#0B111E", "primary-container": "#ffe033", "inverse-surface": "#dde2f5", "tertiary-fixed-dim": "#ffb3ad", "brand-accent-amber": "#FFD000", "outline": "#979179", "background": "#0d1320", "on-tertiary-fixed-variant": "#930013", "on-surface": "#dde2f5", "type-rock": "#AFA981", "outline-variant": "#4c4733", "surface-container-lowest": "#080e1b", "surface-container-highest": "#2f3543", "error": "#ffb4ab", "border-strong": "#354E7A", "surface": "#0d1320", "secondary-fixed-dim": "#00dbe9", "surface-container-low": "#161b29", "type-dark": "#50413F", "on-error-container": "#ffdad6", "surface-container": "#1a1f2d", "type-electric": "#FAC000", "secondary": "#d3fbff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter-desktop": "1.5rem", "margin": "1rem", "gutter-tablet": "1.25rem", "margin-tablet": "1.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "gutter": "1rem", "space-lg": "1.5rem", "margin-desktop": "2.5rem", "space-2xl": "3rem", "space-md": "1rem", "space-xl": "2rem" }, fontFamily: { "body-md": ["Geist"], "headline-sm": ["Space Grotesk"], "label-numeric-stat": ["Space Grotesk"], "body-sm": ["Geist"], "display-hero-mobile": ["Space Grotesk"], "display-hero": ["Space Grotesk"], "body-lg": ["Geist"], "label-meta": ["Geist"], "headline-xl-mobile": ["Space Grotesk"], "headline-xl": ["Space Grotesk"], "label-badge": ["Geist"], "headline-md": ["Space Grotesk"], "headline-lg": ["Space Grotesk"] }, fontSize: { "body-md": ["15px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "400" }], "headline-sm": ["16px", { lineHeight: "24px", letterSpacing: "0.01em", fontWeight: "600" }], "label-numeric-stat": ["18px", { lineHeight: "22px", letterSpacing: "0.05em", fontWeight: "700" }], "body-sm": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "400" }], "display-hero-mobile": ["36px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "display-hero": ["56px", { lineHeight: "60px", letterSpacing: "-0.03em", fontWeight: "700" }], "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "400" }], "label-meta": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }], "headline-xl-mobile": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-xl": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-badge": ["11px", { lineHeight: "14px", letterSpacing: "0.08em", fontWeight: "700" }], "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "0em", fontWeight: "600" }], "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "0.01em", fontWeight: "600" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-base text-on-surface font-body-md text-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-base/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-16 px-space-md flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Go Back" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-card text-on-surface hover:text-primary-container active:scale-95 transition-transform" onclick="history.back()"><span class="material-symbols-outlined text-[20px]">arrow_back</span></button><div class="flex flex-col"><span class="font-label-meta text-label-meta uppercase tracking-widest text-primary-container">ARENA PRE-DRAFT</span><h1 class="font-headline-sm text-headline-sm uppercase tracking-tight text-on-surface leading-tight truncate max-w-[200px]">Guest Lobby</h1></div></div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface-base"><div class="flex flex-col w-full pb-safe">
+<div class="p-space-md flex flex-col gap-space-md">
+<!-- Room Code & Host Status HUD -->
+<div class="bg-surface-raised rounded-xl p-space-md shadow-md flex flex-col gap-space-sm relative overflow-hidden">
+<div class="absolute -right-6 -top-6 w-24 h-24 bg-primary-container/5 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase tracking-wider">Lobby Passkey</span>
+</div>
+<!-- Host Badge -->
+<div class="flex items-center gap-space-xs bg-surface-card px-2.5 py-1 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-[14px]">shield_person</span>
+<span class="font-headline-sm text-headline-sm text-primary-container">Host: RED</span>
+</div>
+</div>
+<!-- Room Code with tactile copy trigger -->
+<button class="flex items-center justify-between bg-surface-base px-space-md py-3 rounded-lg text-left active:scale-[0.99] transition-transform shadow-inner" id="copy-btn" onclick="navigator.clipboard.writeText('X7P-4Q9'); const t=document.getElementById('copy-toast'); t.classList.remove('opacity-0'); setTimeout(()=&gt;t.classList.add('opacity-0'), 1500);">
+<div class="flex items-baseline gap-space-sm">
+<span class="font-headline-xl-mobile text-headline-xl-mobile tracking-wider text-primary select-all">X7P-4Q9</span>
+<span class="font-label-meta text-label-meta text-status-live-green opacity-0 transition-opacity" id="copy-toast">COPIED</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</div>
+</button>
+<!-- Settings Summary Chips -->
+<div class="flex flex-wrap gap-space-xs pt-1">
+<div class="bg-surface-card px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[13px]">timer</span>
+<span class="font-label-badge text-label-badge text-on-surface">Standard 35m</span>
+</div>
+<div class="bg-surface-card px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-type-electric text-[13px]">20mp</span>
+<span class="font-label-badge text-label-badge text-on-surface">10 PKMN</span>
+</div>
+<div class="bg-surface-card px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-status-live-green text-[13px]">payments</span>
+<span class="font-label-badge text-label-badge text-on-surface">$200 Cap</span>
+</div>
+<div class="bg-surface-card px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-status-urgent text-[13px]">alarm</span>
+<span class="font-label-badge text-label-badge text-on-surface">15s Timer</span>
+</div>
+</div>
+</div>
+<!-- Players Terminal List -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant">Connected Challengers</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">4 / 8</span>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Player 1: RED (Host) -->
+<div class="bg-surface-card rounded-lg p-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-11 h-11 rounded-lg bg-surface-raised flex items-center justify-center overflow-hidden shrink-0 shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Competitive Pokémon battle trainer sprite icon showing Red in a sharp crimson battle cap with dark void cockpit neon highlights, pixel perfect digital arcade aesthetic, ultra detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjU945VE8rBjOG3hDmJOFelLLgMi7k3_dgaYRE15MnNqRcLPpnNT_WgL8YVvCUJ9cjGBhYpiEUCVGcjvMdde8jAD8xMxUzGb_QH2Z3GiHHJ5bW9IRc5-28Eu-7v5a3Th5DayyftaHuMmKQcC2oJ0F0GndNg7LOjKTOTXdOY6dBJli4ViAsf--D744dmIqIEYG2jRBygmcRbcJyOTouMviSyqhZO4dMiPWJM-0qafN8"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">RED</span>
+<span class="bg-primary-container/20 text-primary-container px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Host</span>
+</div>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Synchronized</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-meta text-label-meta text-status-live-green font-semibold">READY</span>
+<span class="w-2.5 h-2.5 rounded-full bg-status-live-green shadow-[0_0_8px_rgba(16,185,129,0.7)]"></span>
+</div>
+</div>
+<!-- Player 2: BLUE -->
+<div class="bg-surface-card rounded-lg p-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-11 h-11 rounded-lg bg-surface-raised flex items-center justify-center overflow-hidden shrink-0 shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Competitive Pokémon league trainer avatar showing Blue with spiky hair and cyan tactical battle visor, high contrast digital game card render against dark navy space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUlGaG6BcVGRNSG7mI2gr0zS3VLybNgguRyg7PFYHEPqCuIPa_hDCsU0O3gvOQEZM0ZBNCRnksG7uKw8f73SvZaoWb8PLb7JYy4eoxDvsGVnwjB-ZN8-TbmbhaaobJQ8c7HkRmO-ahj8kgfoNf0lMg-OG4NuEFXDAFvRXOajSY8ieWEqkTeYXGNqebuZ1CtHfYg_-K_yKSdTE3G71V2tXVnjY_C_t9LawAzdhKXQBy"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">BLUE</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Calibrating</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-meta text-label-meta text-type-fighting font-semibold">SYNC</span>
+<span class="w-2.5 h-2.5 rounded-full bg-type-fighting shadow-[0_0_8px_rgba(255,128,0,0.7)] animate-pulse"></span>
+</div>
+</div>
+<!-- Player 3: CYNTHIA -->
+<div class="bg-surface-card rounded-lg p-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-11 h-11 rounded-lg bg-surface-raised flex items-center justify-center overflow-hidden shrink-0 shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Championship Pokémon trainer Cynthia profile portrait in dark sleek coat with yellow hair clips, illuminated by sharp tactical neon interface glow, futuristic battle terminal style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg_wCdqG3fhLvGezahGHhVjLmPT1fKK1QAnRrm5vhZSObTcNfF6sWzTgJYowYnrjh-499sLNwLJvVdZRbfxFTRla-CwnUzX8AkbSSBsRNL4VUBU1rgXJh_mZlC5Bu__jL9xnaptut-qcNMcNV14R_Q07etnhKZElBqSXb987v-QItLkdtbfqaH0ecsIcJVrsCsvj8qFOCOkbwTWlWrAr8UyzMHXk23gsxfEpAlsbmV"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">CYNTHIA</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Synchronized</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-meta text-label-meta text-status-live-green font-semibold">READY</span>
+<span class="w-2.5 h-2.5 rounded-full bg-status-live-green shadow-[0_0_8px_rgba(16,185,129,0.7)]"></span>
+</div>
+</div>
+<!-- Player 4: YOU (Current Guest) -->
+<div class="bg-surface-card rounded-lg p-space-sm flex items-center justify-between shadow-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-11 h-11 rounded-lg bg-surface-raised flex items-center justify-center overflow-hidden shrink-0 shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Futuristic cyber trainer guest avatar with glowing cybernetic visor and high-collar dark flight jacket, neon electric yellow trims, crisp digital HUD portrait." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkh3LI0EQ0Oa3xS1kIKFuaD3on8MuoyewoOEe5wVj5D4WdsD1sGeJH60GuA6xxsrxmtGXzsy63m8R-hf2XBiVVZ_SOhs_wAKoN43ZSzMiOE4BvOInXcuztTuLWLwr5kerYWeCQ5nfM3H_7uQk2TxFD9hN555fB8Wi0rN4JlXZ5zHDocTPIoUQkERV3iJV5ggW9YZmOrYs-3LnAckp98EF-qK_2_3ip7ull8ZToZ7yd"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">ASH_K</span>
+<span class="bg-secondary-container/20 text-secondary-container px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">YOU</span>
+</div>
+<span class="font-label-meta text-label-meta text-on-surface-variant" id="player-status-label">Awaiting Ready Toggle</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-label-meta text-label-meta text-on-surface-variant font-semibold" id="player-status-text">NOT READY</span>
+<span class="w-2.5 h-2.5 rounded-full bg-on-surface-variant" id="player-status-dot"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Triggers (Ready & Leave) -->
+<div class="flex flex-col gap-space-sm pt-2">
+<!-- Prominent Ready Toggle Button -->
+<button class="w-full h-12 rounded-lg bg-surface-card text-on-surface font-headline-sm text-headline-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98]" id="ready-toggle-btn" onclick="toggleReadyState()">
+<span class="material-symbols-outlined text-[20px]" id="ready-icon">radio_button_unchecked</span>
+<span id="ready-text">I AM READY</span>
+</button>
+<!-- Leave Button -->
+<button class="w-full h-11 rounded-lg bg-surface-raised text-status-urgent font-headline-sm text-headline-sm uppercase tracking-wider flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-sm" onclick="window.history.back()">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span>Leave</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  let isReady = false;
+  function toggleReadyState() {
+    isReady = !isReady;
+    const btn = document.getElementById('ready-toggle-btn');
+    const text = document.getElementById('ready-text');
+    const icon = document.getElementById('ready-icon');
+    const statusText = document.getElementById('player-status-text');
+    const statusDot = document.getElementById('player-status-dot');
+    const statusLabel = document.getElementById('player-status-label');
+
+    if (isReady) {
+      btn.className = "w-full h-12 rounded-lg bg-primary-container text-surface-base font-headline-sm text-headline-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_16px_rgba(255,224,51,0.35)] transition-all active:scale-[0.98]";
+      text.textContent = "READY ✓";
+      icon.textContent = "check_circle";
+      statusText.textContent = "READY";
+      statusText.className = "font-label-meta text-label-meta text-status-live-green font-semibold";
+      statusDot.className = "w-2.5 h-2.5 rounded-full bg-status-live-green shadow-[0_0_8px_rgba(16,185,129,0.7)]";
+      statusLabel.textContent = "Synchronized";
+    } else {
+      btn.className = "w-full h-12 rounded-lg bg-surface-card text-on-surface font-headline-sm text-headline-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.98]";
+      text.textContent = "I AM READY";
+      icon.textContent = "radio_button_unchecked";
+      statusText.textContent = "NOT READY";
+      statusText.className = "font-label-meta text-label-meta text-on-surface-variant font-semibold";
+      statusDot.className = "w-2.5 h-2.5 rounded-full bg-on-surface-variant";
+      statusLabel.textContent = "Awaiting Ready Toggle";
+    }
+  }
+</script></main></body></html>

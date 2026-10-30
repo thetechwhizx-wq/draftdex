@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>Pokémon Draft Arena // War-Room OS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin:0; padding:0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-card": "#161b29",
+            "background": "#080e1b",
+            "surface": "#0d1320",
+            "surface-dim": "#080e1b",
+            "surface-base": "#080e1b",
+            "surface-raised": "#0d1320",
+            "surface-highlight": "#162238",
+            "surface-container": "#161b29",
+            "surface-container-low": "#111726",
+            "surface-container-high": "#1c2539",
+            "border-subtle": "#1e2c45",
+            "border-strong": "#2a3d60",
+            "primary": "#fffcff",
+            "on-surface": "#dde2f5",
+            "on-surface-variant": "#8e9bb5",
+            "primary-container": "#ffe033",
+            "on-primary-container": "#211b00",
+            "brand-accent-amber": "#ffe033",
+            "secondary": "#7df4ff",
+            "secondary-container": "#00eefc",
+            "status-live-green": "#10b981",
+            "status-urgent": "#ef4444",
+            "type-dragon": "#5060e1",
+            "type-ground": "#915121",
+            "type-fairy": "#ef70ef",
+            "type-fighting": "#ff8000",
+            "type-electric": "#fac000",
+            "type-water": "#2980ef",
+            "type-fire": "#e62829",
+            "type-grass": "#3fa129"
+          },
+          fontFamily: {
+            headline: ["Space Grotesk", "sans-serif"],
+            body: ["Geist", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background font-body text-on-surface antialiased selection:bg-brand-accent-amber selection:text-black">
+<!-- TOP NAVIGATION BAR -->
+<header class="fixed top-0 left-0 right-0 h-16 bg-surface/95 border-b border-border-subtle backdrop-blur-md z-50 flex items-center justify-between px-5">
+<div class="flex items-center gap-6">
+<!-- Brand & OS version -->
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded bg-brand-accent-amber flex items-center justify-center shadow-[0_0_15px_rgba(255,224,51,0.35)]">
+<span class="material-symbols-outlined text-black font-bold text-[22px]">deployed_code</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-white text-base tracking-tight">DRAFT ARENA</span>
+<span class="px-1.5 py-0.5 rounded bg-brand-accent-amber/15 border border-brand-accent-amber/40 text-brand-accent-amber font-headline font-semibold text-[10px] tracking-wider uppercase">WAR-ROOM OS V4.2</span>
+</div>
+<span class="text-[11px] text-on-surface-variant font-mono">NODE // US-EAST-04A</span>
+</div>
+</div>
+<div class="h-6 w-px bg-border-subtle hidden md:block"></div>
+<!-- Breadcrumbs & Active Room Pin -->
+<div class="hidden md:flex items-center gap-2 text-xs">
+<span class="text-on-surface-variant font-medium">Arena Root</span>
+<span class="text-border-strong font-mono">/</span>
+<span class="text-white font-medium">Cockpit Hub</span>
+<div class="ml-2 flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container border border-border-strong font-mono text-secondary">
+<span class="material-symbols-outlined text-[14px]">pin</span>
+<span class="font-bold tracking-wider">PKMN-8842-X</span>
+<button class="hover:text-white transition-colors ml-0.5" title="Copy Pin"><span class="material-symbols-outlined text-[13px]">content_copy</span></button>
+</div>
+</div>
+</div>
+<!-- Right Telemetry Strip & User Avatar -->
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-3 text-xs font-mono">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container border border-border-subtle text-status-live-green">
+<span class="w-2 h-2 rounded-full bg-status-live-green animate-pulse"></span>
+<span class="font-semibold uppercase tracking-wider">DRAFT SYNC ACTIVE</span>
+</div>
+<div class="px-2.5 py-1 rounded bg-brand-accent-amber/10 border border-brand-accent-amber/30 text-brand-accent-amber font-semibold uppercase">
+          PHASE // AUCTION 6V6
+        </div>
+</div>
+<div class="h-6 w-px bg-border-subtle hidden lg:block"></div>
+<!-- Commander Profile -->
+<div class="flex items-center gap-2.5 pl-2">
+<div class="flex flex-col items-end leading-tight hidden sm:flex">
+<span class="text-xs font-headline font-bold text-white uppercase">COMMANDER RED</span>
+<span class="text-[10px] text-brand-accent-amber font-mono font-medium">TIER 1 HOST</span>
+</div>
+<div class="w-9 h-9 rounded bg-surface-highlight border border-border-strong flex items-center justify-center text-white relative">
+<span class="material-symbols-outlined text-[20px]">military_tech</span>
+<span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-status-live-green border-2 border-surface rounded-full"></span>
+</div>
+</div>
+</div>
+</header>
+<!-- PERSISTENT LEFT SIDEBAR -->
+<aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface border-r border-border-subtle z-40 flex flex-col justify-between">
+<div class="p-3.5 flex flex-col gap-5">
+<!-- Tactical Section Label -->
+<div class="flex items-center justify-between px-2 pt-1 text-[11px] font-mono uppercase tracking-widest text-on-surface-variant">
+<span>TACTICAL NAVIGATION</span>
+<span class="text-status-live-green flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-status-live-green"></span>LIVE</span>
+</div>
+<!-- Navigation links -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center justify-between px-3 py-2.5 rounded bg-brand-accent-amber text-black font-headline font-bold text-sm tracking-wide shadow-[0_0_12px_rgba(255,224,51,0.25)]" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[19px]">dashboard</span>
+<span>Arena Hub</span>
+</div>
+<span class="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-black/15">ACTIVE</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[19px]">tune</span>
+<span>Draft Setup</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[19px]">smart_toy</span>
+<span>Bot Draft Terminal</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[19px]">desktop_windows</span>
+<span>Host Command Lobby</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[19px]">group</span>
+<span>Guest Bidding Lobby</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-sm font-medium" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[19px]">gavel</span>
+<span>Auction Room</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-brand-accent-amber"></span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[19px]">hourglass_pause</span>
+<span>Set Break</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded text-on-surface-variant hover:text-white hover:bg-surface-container transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[19px]">query_stats</span>
+<span>Scout Report</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Telemetry & Commander Deck -->
+<div class="p-3.5 border-t border-border-subtle bg-surface-container-low flex flex-col gap-3">
+<!-- Latency Bar -->
+<div class="px-3 py-2 rounded bg-surface border border-border-subtle flex items-center justify-between font-mono text-xs">
+<span class="text-on-surface-variant">SERVER LATENCY</span>
+<span class="text-status-live-green font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">signal_cellular_alt</span> 18ms
+        </span>
+</div>
+<!-- Commander Footprint -->
+<div class="flex items-center gap-2.5 px-2 py-1 text-xs">
+<div class="w-7 h-7 rounded bg-brand-accent-amber/20 border border-brand-accent-amber/40 flex items-center justify-center text-brand-accent-amber">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+</div>
+<div class="flex flex-col leading-tight">
+<span class="text-white font-headline font-semibold text-[13px]">WAR-ROOM SEC-01</span>
+<span class="text-[10px] text-on-surface-variant font-mono">AUTOSAVE: LOCAL LOG 0x88F</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- MAIN VIEWPORT -->
+<div class="pl-64">
+<main class="min-h-screen pt-16 bg-background pb-12">
+<div class="max-w-[1280px] mx-auto p-6 flex flex-col gap-6">
+<!-- SUBHEADER TACTICAL STRIP -->
+<div class="flex flex-wrap items-center justify-between gap-4 bg-surface px-5 py-3 rounded-lg border border-border-subtle shadow-lg">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 rounded-full bg-brand-accent-amber animate-pulse"></span>
+<span class="font-headline font-bold text-white tracking-wide uppercase text-sm">ZONE // SEC-01 COMMAND POST</span>
+<span class="hidden md:inline-block px-2 py-0.5 text-[11px] font-mono rounded bg-surface-highlight text-secondary border border-border-strong">
+              RULESET: OU SMOGON 6V6 DRAFT
+            </span>
+</div>
+<div class="flex items-center gap-4 text-xs font-mono">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span>SYNC FREQ:</span>
+<span class="text-white font-semibold">144.20 MHz</span>
+</div>
+<div class="h-3.5 w-px bg-border-subtle"></div>
+<div class="flex items-center gap-1.5 text-brand-accent-amber font-semibold">
+<span class="material-symbols-outlined text-[15px]">bolt</span>
+<span>GRID STABLE</span>
+</div>
+</div>
+</div>
+<!-- MAIN TWO-COLUMN WAR-ROOM DASHBOARD (1280px OPTIMIZED) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT/CENTER MAIN PANEL (7 COLS) -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<!-- 1. JOIN ROOM TERMINAL (FIRST ON PAGE) -->
+<div class="bg-surface-card p-6 rounded-xl border border-border-strong shadow-[0_4px_24px_rgba(0,0,0,0.45)] relative overflow-hidden">
+<div class="absolute -top-16 -right-16 w-48 h-48 bg-brand-accent-amber/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-brand-accent-amber/20 border border-brand-accent-amber/50 flex items-center justify-center text-brand-accent-amber">
+<span class="material-symbols-outlined text-[20px]">vpn_key</span>
+</div>
+<div>
+<h2 class="font-headline font-bold text-white text-lg tracking-tight uppercase">ENGAGE FREQUENCY // JOIN ROOM</h2>
+<p class="text-xs text-on-surface-variant font-mono">ENTER ACTIVE 6-DIGIT ARENA FREQUENCY CODE</p>
+</div>
+</div>
+<span class="text-[10px] font-mono px-2 py-1 rounded bg-surface-base border border-border-subtle text-secondary uppercase tracking-wider">ACCESS NODE</span>
+</div>
+<form class="flex flex-col gap-4" onsubmit="event.preventDefault();">
+<div class="flex flex-col sm:flex-row gap-3">
+<div class="relative flex-1 bg-surface-base rounded-lg border-2 border-border-strong focus-within:border-brand-accent-amber focus-within:shadow-[0_0_15px_rgba(255,224,51,0.2)] flex items-center px-4 h-14 transition-all">
+<span class="font-headline font-bold text-2xl text-on-surface-variant/70 mr-2 select-none">#</span>
+<input autocomplete="off" class="w-full bg-transparent font-headline font-bold text-xl md:text-2xl text-brand-accent-amber placeholder:text-on-surface-variant/40 tracking-[0.25em] uppercase focus:outline-none" id="roomCodeInput" maxlength="6" placeholder="ENTER CODE" spellcheck="false" type="text" value="9X4KQ2"/>
+<button class="text-on-surface-variant hover:text-white transition-colors p-1" onclick="document.getElementById('roomCodeInput').value='';" title="Clear" type="button">
+<span class="material-symbols-outlined text-[18px]">backspace</span>
+</button>
+</div>
+<button class="h-14 px-7 bg-brand-accent-amber hover:bg-yellow-300 text-black font-headline font-bold text-base uppercase rounded-lg shadow-[0_0_20px_rgba(255,224,51,0.35)] flex items-center justify-center gap-2.5 transition-all transform active:scale-[0.98] shrink-0" type="submit">
+<span>JOIN ARENA</span>
+<span class="material-symbols-outlined font-bold text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Frequency Cache Presets -->
+<div class="pt-2 border-t border-border-subtle/70">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-mono text-on-surface-variant uppercase tracking-wider">FREQUENCY CACHE</span>
+<span class="text-[10px] font-mono text-brand-accent-amber uppercase">ONE-TOUCH LOAD</span>
+</div>
+<div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
+<button class="h-9 bg-surface hover:bg-surface-highlight text-on-surface hover:text-white border border-border-subtle rounded font-mono text-xs font-semibold tracking-wider transition-colors" onclick="document.getElementById('roomCodeInput').value='7704OU'" type="button">
+                      7704OU
+                    </button>
+<button class="h-9 bg-surface-highlight border border-brand-accent-amber/40 text-brand-accent-amber rounded font-mono text-xs font-bold tracking-wider transition-colors" onclick="document.getElementById('roomCodeInput').value='9X4KQ2'" type="button">
+                      9X4KQ2
+                    </button>
+<button class="h-9 bg-surface hover:bg-surface-highlight text-on-surface hover:text-white border border-border-subtle rounded font-mono text-xs font-semibold tracking-wider transition-colors" onclick="document.getElementById('roomCodeInput').value='VGC2024'" type="button">
+                      VGC-24
+                    </button>
+<button class="h-9 bg-surface hover:bg-surface-highlight text-on-surface hover:text-white border border-border-subtle rounded font-mono text-xs font-semibold tracking-wider transition-colors" onclick="document.getElementById('roomCodeInput').value='DRAFT8'" type="button">
+                      DRAFT8
+                    </button>
+<button class="h-9 bg-surface hover:bg-surface-highlight text-on-surface hover:text-white border border-border-subtle rounded font-mono text-xs font-semibold tracking-wider transition-colors" onclick="document.getElementById('roomCodeInput').value='METAPX'" type="button">
+                      METAPX
+                    </button>
+<button class="h-9 bg-surface hover:bg-surface-highlight text-on-surface hover:text-white border border-border-subtle rounded font-mono text-xs font-semibold tracking-wider transition-colors" onclick="document.getElementById('roomCodeInput').value='UBER01'" type="button">
+                      UBER01
+                    </button>
+</div>
+</div>
+</form>
+</div>
+<!-- 2. 'NEW MATCH' PRIMARY ACTION BUTTON & CARD -->
+<div class="bg-surface p-5 rounded-xl border border-border-subtle shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3.5 w-full sm:w-auto">
+<div class="w-12 h-12 rounded-lg bg-surface-highlight border border-border-strong flex items-center justify-center text-secondary shadow-inner">
+<span class="material-symbols-outlined text-[26px]">add_box</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-white text-base uppercase tracking-tight">INITIALIZE NEW MATCH</span>
+<span class="text-xs text-on-surface-variant">Host a custom auction war-room with tiered salary rules &amp; bot fill</span>
+</div>
+</div>
+<button class="w-full sm:w-auto h-11 px-5 bg-surface-highlight hover:bg-border-strong text-white border border-border-strong hover:border-brand-accent-amber/50 font-headline font-semibold text-xs tracking-wider uppercase rounded-lg flex items-center justify-center gap-2 transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>CONFIGURE NEW MATCH</span>
+</button>
+</div>
+<!-- 3. RESUME MATCH CARD FOR ACTIVE SESSION -->
+<div class="bg-surface-card p-6 rounded-xl border border-border-strong shadow-xl flex flex-col gap-4 relative overflow-hidden">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-status-live-green animate-ping"></span>
+<span class="font-mono text-[11px] text-status-live-green uppercase tracking-widest font-semibold">ACTIVE SESSION RESTORABLE</span>
+</div>
+<h3 class="font-headline font-bold text-2xl text-white tracking-tight uppercase">ROOM #9X4-KQ2</h3>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-surface-base border border-brand-accent-amber/40 text-brand-accent-amber font-headline font-bold text-sm tracking-wide">
+                    ROUND 4 // PICK 19
+                  </span>
+</div>
+</div>
+<!-- Salary Cap and Metrics Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+<div class="bg-surface-base p-3 rounded-lg border border-border-subtle flex flex-col">
+<span class="text-[10px] font-mono uppercase text-on-surface-variant">SALARY EXPENDED</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline font-bold text-white text-lg">$140</span>
+<span class="text-xs text-on-surface-variant font-mono">/ $200</span>
+</div>
+</div>
+<div class="bg-surface-base p-3 rounded-lg border border-border-subtle flex flex-col">
+<span class="text-[10px] font-mono uppercase text-on-surface-variant">AVAILABLE CAP</span>
+<span class="font-headline font-bold text-brand-accent-amber text-lg mt-0.5">$60 PTS</span>
+</div>
+<div class="bg-surface-base p-3 rounded-lg border border-border-subtle flex flex-col">
+<span class="text-[10px] font-mono uppercase text-on-surface-variant">WAR-ROOM ROSTER</span>
+<span class="font-headline font-bold text-secondary text-lg mt-0.5">8 TRAINERS</span>
+</div>
+<div class="bg-surface-base p-3 rounded-lg border border-border-subtle flex flex-col">
+<span class="text-[10px] font-mono uppercase text-on-surface-variant">DRAFT COMPLETION</span>
+<span class="font-headline font-bold text-white text-lg mt-0.5">62.5%</span>
+</div>
+</div>
+<!-- Progress bar -->
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex justify-between items-center text-xs font-mono">
+<span class="text-on-surface-variant uppercase text-[11px]">PICK COMPLETION SPECTRUM</span>
+<span class="text-secondary font-semibold">19 / 32 SLOTS FILLED</span>
+</div>
+<div class="w-full h-2.5 bg-surface-base rounded-full border border-border-subtle p-0.5 overflow-hidden">
+<div class="h-full bg-gradient-to-r from-yellow-500 to-brand-accent-amber rounded-full shadow-[0_0_8px_rgba(255,224,51,0.6)]" style="width: 62.5%;"></div>
+</div>
+</div>
+<!-- Resume CTA Action Buttons -->
+<div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+<button class="w-full sm:flex-1 h-12 bg-brand-accent-amber hover:bg-yellow-300 text-black font-headline font-bold text-sm tracking-wide uppercase rounded-lg shadow-lg flex items-center justify-center gap-2 transition-all transform active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span>
+<span>RESUME WAR-ROOM</span>
+</button>
+<button class="w-full sm:w-auto h-12 px-4 bg-surface hover:bg-surface-highlight text-white border border-border-strong font-headline font-semibold text-xs tracking-wider uppercase rounded-lg flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">share</span>
+<span>SHARE ROOM</span>
+</button>
+</div>
+</div>
+<!-- 4. SUBTLE 'RESET SAVED DATA' LINK AT BOTTOM -->
+<div class="flex items-center justify-between px-2 pt-1 text-xs">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-mono">
+<span class="material-symbols-outlined text-[15px]">database</span>
+<span>LOCAL STATE CACHE #9X4-KQ2 VALID</span>
+</div>
+<button class="group flex items-center gap-1.5 text-on-surface-variant hover:text-status-urgent transition-colors" onclick="confirm('TERMINATE SAVED DRAFT DATA? This action will purge room #9X4-KQ2 local state.');" type="button">
+<span class="material-symbols-outlined text-[15px] group-hover:rotate-12 transition-transform">delete_forever</span>
+<span class="font-mono text-[11px] uppercase tracking-wider underline underline-offset-4 decoration-border-strong hover:decoration-status-urgent">Reset saved data</span>
+</button>
+</div>
+</div>
+<!-- RIGHT PANEL: WAR-ROOM ACTIVE SESSION ARCHIVES & ROSTER TELEMETRY (5 COLS) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- ACTIVE ARCHIVES CONTAINER -->
+<div class="bg-surface p-5 rounded-xl border border-border-strong shadow-xl flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-border-subtle pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-brand-accent-amber text-[20px]">folder_special</span>
+<h3 class="font-headline font-bold text-white text-base uppercase tracking-tight">ACTIVE SESSION ARCHIVES</h3>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-base border border-border-subtle text-[11px] font-mono text-status-live-green">
+<span class="w-1.5 h-1.5 rounded-full bg-status-live-green"></span>
+<span>ROOM 9X4</span>
+</div>
+</div>
+<!-- SQUAD ROSTER PREVIEW (3 OF 6 LOCKED) -->
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between text-xs">
+<span class="font-mono uppercase text-on-surface-variant tracking-wider text-[11px]">YOUR DRAFTED SQUAD</span>
+<span class="font-mono font-bold text-brand-accent-amber text-[11px]">3 OF 6 LOCKED</span>
+</div>
+<!-- POKEMON CARDS STACK -->
+<div class="flex flex-col gap-2">
+<!-- SLOT 1: GARCHOMP -->
+<div class="bg-surface-card p-2.5 rounded-lg border border-border-subtle flex items-center justify-between hover:border-border-strong transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded bg-surface-base border border-border-subtle overflow-hidden flex items-center justify-center p-1 shrink-0">
+<img alt="Garchomp tactical sprite" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP6dDPT8MspoeaZmalwmXS7seFQk9R8ss4OMlA_Ln9hPtTq-ae5V5etj9hoMxtsqFrJ01x0UJA3GvPPK098eeGjC99agdtNY981u_SyM1sN2OADec2XlF4xKnajjDEdrNA6cKNs5lZACf3hug2UJYQAPts5LFmPY0dI2bA-xhXNkcC9c8UcZWfVbil50xW2Kqtx4894lMcDLnxJ-13utzhBVaDUssock4xhiEpycMK"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-white text-sm tracking-wide">GARCHOMP</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="bg-type-dragon/90 text-white font-mono text-[9px] font-bold px-1.5 py-0.2 rounded uppercase">DRAGON</span>
+<span class="bg-type-ground/90 text-white font-mono text-[9px] font-bold px-1.5 py-0.2 rounded uppercase">GROUND</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline font-bold text-brand-accent-amber text-base">$54</span>
+<span class="text-[10px] font-mono text-on-surface-variant">ROUND 1</span>
+</div>
+</div>
+<!-- SLOT 2: IRON VALIANT -->
+<div class="bg-surface-card p-2.5 rounded-lg border border-border-subtle flex items-center justify-between hover:border-border-strong transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded bg-surface-base border border-border-subtle overflow-hidden flex items-center justify-center p-1 shrink-0">
+<img alt="Iron Valiant tactical sprite" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvQBdWiiV6MxODyvclThHKJ0u60Zg2cqHBWBlri7qtMDA9-NYfFp65t_bwph8m6jSZwrmmRSTqTDjz87UDjQzTXofG4fu_38zx2lXnsbdpc1dQIrx_Ra2xsR7oFMV1fB6gC_K8Zs9D9oOMRCwHDDXCggaXrVipFJLh1J2k9fQE42Pk4-lCvR2gLFZASKDi4qhKAoWfj9_d28VlpFxhJbBL5lPPZhlfXk3I2GN0vpTA"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-white text-sm tracking-wide">IRON VALIANT</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="bg-type-fairy/90 text-white font-mono text-[9px] font-bold px-1.5 py-0.2 rounded uppercase">FAIRY</span>
+<span class="bg-type-fighting/90 text-white font-mono text-[9px] font-bold px-1.5 py-0.2 rounded uppercase">FIGHT</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline font-bold text-brand-accent-amber text-base">$48</span>
+<span class="text-[10px] font-mono text-on-surface-variant">ROUND 2</span>
+</div>
+</div>
+<!-- SLOT 3: ROTOM-WASH -->
+<div class="bg-surface-card p-2.5 rounded-lg border border-border-subtle flex items-center justify-between hover:border-border-strong transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded bg-surface-base border border-border-subtle overflow-hidden flex items-center justify-center p-1 shrink-0">
+<img alt="Rotom Wash tactical sprite" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX8auaoHImjvMHWMUx6yZO2Qqqx9Upb39QzNhfMjLvobPHrk7-u36Fq0PXAHfEyP6uyDqSzvifYCaMITCg4amx6TOVNc--Z5zFyL-Z24qPPWg6c0PPJFcrr9UrFA6rT15kAZClwl02JxVtdwtkJYiN_GakQQqpUXDWKdLjIUVkxZyhF20iMvnc85rID8ex0XAnHrGyc29HQoz6E9j9_KIZH4uER9Cf42IvjnXSiyCA"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-white text-sm tracking-wide">ROTOM-W</span>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="bg-type-electric text-black font-mono text-[9px] font-bold px-1.5 py-0.2 rounded uppercase">ELEC</span>
+<span class="bg-type-water/90 text-white font-mono text-[9px] font-bold px-1.5 py-0.2 rounded uppercase">WATER</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline font-bold text-brand-accent-amber text-base">$38</span>
+<span class="text-[10px] font-mono text-on-surface-variant">ROUND 3</span>
+</div>
+</div>
+<!-- SLOT 4: PENDING NOMINATION -->
+<div class="bg-surface-base/80 p-2.5 rounded-lg border border-dashed border-border-strong flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded bg-surface-card border border-border-subtle flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">hourglass_top</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-semibold text-on-surface-variant text-xs uppercase">SLOT 4 // NOMINATING</span>
+<span class="text-[10px] font-mono text-brand-accent-amber">CURRENTLY ON THE BLOCK</span>
+</div>
+</div>
+<span class="font-mono text-[10px] uppercase font-bold text-brand-accent-amber bg-brand-accent-amber/15 px-2 py-0.5 rounded border border-brand-accent-amber/30 animate-pulse">BIDDING</span>
+</div>
+</div>
+</div>
+<!-- BUDGET BURN METRICS & BAR TELEMETRY -->
+<div class="bg-surface-base p-3.5 rounded-lg border border-border-subtle flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant tracking-wider">BUDGET BURN METRICS</span>
+<span class="text-xs font-headline font-bold text-brand-accent-amber">AVG $46.6 / PKM</span>
+</div>
+<!-- Tactical Mini Chart -->
+<div class="grid grid-cols-6 gap-1.5 h-16 pt-2 items-end">
+<div class="bg-surface-highlight rounded flex flex-col justify-end p-0.5 h-full border border-border-subtle">
+<div class="bg-brand-accent-amber rounded-sm w-full" style="height: 85%;"></div>
+<span class="font-mono text-[9px] text-center text-on-surface-variant mt-1">R1</span>
+</div>
+<div class="bg-surface-highlight rounded flex flex-col justify-end p-0.5 h-full border border-border-subtle">
+<div class="bg-brand-accent-amber rounded-sm w-full" style="height: 75%;"></div>
+<span class="font-mono text-[9px] text-center text-on-surface-variant mt-1">R2</span>
+</div>
+<div class="bg-surface-highlight rounded flex flex-col justify-end p-0.5 h-full border border-border-subtle">
+<div class="bg-brand-accent-amber rounded-sm w-full" style="height: 60%;"></div>
+<span class="font-mono text-[9px] text-center text-on-surface-variant mt-1">R3</span>
+</div>
+<div class="bg-surface-highlight rounded flex flex-col justify-end p-0.5 h-full border border-brand-accent-amber/40">
+<div class="bg-status-live-green rounded-sm w-full animate-pulse" style="height: 35%;"></div>
+<span class="font-mono text-[9px] text-center text-brand-accent-amber font-bold mt-1">R4</span>
+</div>
+<div class="bg-surface-highlight/40 rounded flex flex-col justify-end p-0.5 h-full border border-border-subtle/40 opacity-40">
+<div class="bg-on-surface-variant rounded-sm w-full" style="height: 0%;"></div>
+<span class="font-mono text-[9px] text-center text-on-surface-variant mt-1">R5</span>
+</div>
+<div class="bg-surface-highlight/40 rounded flex flex-col justify-end p-0.5 h-full border border-border-subtle/40 opacity-40">
+<div class="bg-on-surface-variant rounded-sm w-full" style="height: 0%;"></div>
+<span class="font-mono text-[9px] text-center text-on-surface-variant mt-1">R6</span>
+</div>
+</div>
+</div>
+<!-- NETWORK DIAGNOSTICS -->
+<div class="grid grid-cols-2 gap-2.5">
+<div class="flex items-center gap-2.5 bg-surface-card p-2.5 rounded-lg border border-border-subtle">
+<span class="material-symbols-outlined text-status-live-green text-[18px]">speed</span>
+<div class="flex flex-col">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase">PING</span>
+<span class="font-mono text-xs font-bold text-white">18 MS (US-EAST)</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5 bg-surface-card p-2.5 rounded-lg border border-border-subtle">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<div class="flex flex-col">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase">PACKET LOSS</span>
+<span class="font-mono text-xs font-bold text-secondary">0.00% SYNC</span>
+</div>
+</div>
+</div>
+</div>
+<!-- LIVE GLOBAL ARENA DISPATCHES -->
+<div class="bg-surface-card p-4 rounded-xl border border-border-strong shadow-lg flex flex-col gap-3">
+<div class="flex items-center justify-between border-b border-border-subtle pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">cell_tower</span>
+<span class="font-headline font-bold text-white text-xs uppercase tracking-wide">LIVE GLOBAL DISPATCHES</span>
+</div>
+<span class="font-mono text-[10px] text-brand-accent-amber uppercase">FEED // STABLE</span>
+</div>
+<div class="flex flex-col gap-1.5 font-mono text-xs">
+<div class="flex items-start gap-2 p-2 rounded bg-surface-base border border-border-subtle">
+<span class="text-[10px] text-brand-accent-amber mt-0.5">14:02:18</span>
+<span class="text-on-surface"><strong class="text-secondary font-semibold">RED_ASH</strong> won Kingambit for <strong class="text-brand-accent-amber font-bold">$62</strong> in Room #8812</span>
+</div>
+<div class="flex items-start gap-2 p-2 rounded bg-surface-base border border-border-subtle">
+<span class="text-[10px] text-brand-accent-amber mt-0.5">14:01:54</span>
+<span class="text-on-surface"><strong class="text-secondary font-semibold">CYNTHIA_VGC</strong> locked draft room #9X4-KQ2 with 8 players</span>
+</div>
+<div class="flex items-start gap-2 p-2 rounded bg-surface-base border border-border-subtle">
+<span class="text-[10px] text-brand-accent-amber mt-0.5">14:00:22</span>
+<span class="text-on-surface"><strong class="text-secondary font-semibold">LEON_CHAMP</strong> outbid on Flutter Mane ($71)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

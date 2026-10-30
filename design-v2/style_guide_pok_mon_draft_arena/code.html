@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Style Guide · Pokémon Draft Arena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700;800&family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-base: #080d18;
+    --bg-surface: #10192a;
+    --bg-surface-elevated: #162238;
+    --bg-surface-high: #1e2e4a;
+    --border-subtle: #243552;
+    --border-strong: #33486e;
+
+    /* Theme Brand Accents */
+    --primary-yellow: #ffe033;
+    --primary-yellow-hover: #ffea66;
+    --primary-yellow-text: #0a0e17;
+    --accent-red: #ef4444;
+    --accent-red-hover: #f87171;
+    --accent-green: #22c55e;
+    --accent-amber: #f59e0b;
+    --accent-cyan: #06b6d4;
+
+    /* Typography */
+    --font-heading: 'Chakra Petch', sans-serif;
+    --font-numbers: 'JetBrains Mono', monospace;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+
+    /* Type Chips */
+    --type-normal: #9fa19f;
+    --type-fire: #e65b2e;
+    --type-water: #2980ef;
+    --type-grass: #3fa129;
+    --type-electric: #fac000;
+    --type-ice: #3dd9ff;
+    --type-fighting: #ff8000;
+    --type-poison: #9141cb;
+    --type-ground: #915121;
+    --type-flying: #81b9ef;
+    --type-psychic: #ef4179;
+    --type-bug: #91a119;
+    --type-rock: #afa981;
+    --type-ghost: #704170;
+    --type-dragon: #5060e1;
+    --type-steel: #60a1b8;
+    --type-dark: #50413f;
+    --type-fairy: #ef70ef;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg-base);
+    color: #e2e8f0;
+    font-family: var(--font-body);
+    line-height: 1.4;
+    padding: 32px 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .sg-header {
+    border-bottom: 2px solid var(--border-subtle);
+    padding-bottom: 24px;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .sg-title {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sg-badge {
+    background: var(--primary-yellow);
+    color: var(--primary-yellow-text);
+    font-family: var(--font-numbers);
+    font-weight: 800;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.08em;
+  }
+  .sg-tagline {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    color: #94a3b8;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .three-words {
+    color: var(--primary-yellow);
+    font-weight: 700;
+  }
+
+  /* Grid Layout */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .grid-full {
+    margin-bottom: 24px;
+  }
+
+  /* Card */
+  .card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #f8fafc;
+  }
+  .spec-label {
+    font-family: var(--font-numbers);
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  /* Color Swatches */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+  .swatch {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .swatch-color {
+    height: 52px;
+    width: 100%;
+  }
+  .swatch-meta {
+    padding: 10px;
+    font-size: 12px;
+  }
+  .swatch-name {
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2px;
+  }
+  .swatch-hex {
+    font-family: var(--font-numbers);
+    color: #94a3b8;
+    font-size: 11px;
+  }
+
+  /* 18 Pokémon Type Chips */
+  .chips-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 900px) {
+    .chips-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .chips-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .type-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 2px 4px rgba(0,0,0,0.4);
+    border: 1px solid rgba(0,0,0,0.2);
+    min-height: 38px;
+  }
+  .chip-electric { color: #111a2e !important; text-shadow: none !important; }
+  .chip-ice { color: #082133 !important; text-shadow: none !important; }
+
+  /* Role Chips */
+  .role-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--bg-surface-high);
+    border: 1px solid var(--border-strong);
+    color: #cbd5e1;
+  }
+  .role-chip.primary {
+    background: rgba(255, 224, 51, 0.12);
+    border-color: rgba(255, 224, 51, 0.4);
+    color: var(--primary-yellow);
+  }
+  .role-chip.danger {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #f87171;
+  }
+
+  /* Typography */
+  .type-sample-box {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .font-row {
+    background: var(--bg-surface-elevated);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+  }
+  .font-title {
+    font-family: var(--font-numbers);
+    font-size: 11px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .sample-heading {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  .sample-numbers {
+    font-family: var(--font-numbers);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--primary-yellow);
+  }
+
+  /* Buttons */
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 48px; /* Touch target >= 44px */
+    padding: 0 24px;
+    border-radius: 12px;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s ease;
+    width: 100%;
+  }
+  .btn-primary {
+    background: var(--primary-yellow);
+    color: var(--primary-yellow-text);
+    box-shadow: 0 4px 14px rgba(255, 224, 51, 0.25);
+  }
+  .btn-primary:hover {
+    background: var(--primary-yellow-hover);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: var(--bg-surface-high);
+    color: #ffffff;
+    border: 1px solid var(--border-strong);
+  }
+  .btn-secondary:hover {
+    background: #25395c;
+  }
+  .btn-disabled {
+    background: #182337;
+    color: #475569;
+    border: 1px solid #1f2c44;
+    cursor: not-allowed;
+  }
+
+  /* Stat Bars & HP Bar */
+  .stat-row {
+    display: grid;
+    grid-template-columns: 48px 1fr 40px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .stat-name {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+  }
+  .stat-track {
+    background: #131d2e;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #1f2e47;
+  }
+  .stat-fill {
+    height: 100%;
+    border-radius: 4px;
+  }
+  .stat-val {
+    font-family: var(--font-numbers);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+    color: #f1f5f9;
+  }
+
+  /* HP Bars */
+  .hp-bar-card {
+    background: var(--bg-surface-elevated);
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 12px;
+  }
+  .hp-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .hp-track {
+    background: #0a101b;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #1c2b44;
+    position: relative;
+  }
+  .hp-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+  }
+  .hp-green { background: #22c55e; width: 85%; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4); }
+  .hp-yellow { background: #eab308; width: 45%; box-shadow: 0 0 10px rgba(234, 179, 8, 0.4); }
+  .hp-red { background: #ef4444; width: 18%; box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
+
+  /* Timer Ring */
+  .timer-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 16px;
+    background: var(--bg-surface-elevated);
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+  }
+  .timer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .timer-ring-svg {
+    transform: rotate(-90deg);
+  }
+  .timer-circle-bg {
+    fill: none;
+    stroke: #1b283f;
+    stroke-width: 6;
+  }
+  .timer-circle-fill-normal {
+    fill: none;
+    stroke: var(--primary-yellow);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 226;
+    stroke-dashoffset: 56;
+  }
+  .timer-circle-fill-urgent {
+    fill: none;
+    stroke: var(--accent-red);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 226;
+    stroke-dashoffset: 170;
+  }
+  .timer-caption {
+    font-family: var(--font-numbers);
+    font-size: 11px;
+    color: #94a3b8;
+  }
+
+  /* Toast Message */
+  .toast-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .toast {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: var(--bg-surface-high);
+    border: 1px solid var(--border-strong);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .toast-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .toast-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .toast.error {
+    border-color: rgba(239, 68, 68, 0.4);
+    background: #1c141e;
+  }
+  .toast.error .toast-dot { background: var(--accent-red); box-shadow: 0 0 8px var(--accent-red); }
+  .toast-action-btn {
+    font-family: var(--font-numbers);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-yellow);
+    background: rgba(255, 224, 51, 0.1);
+    border: 1px solid rgba(255, 224, 51, 0.3);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  /* Modal */
+  .modal-preview {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-strong);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.6);
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .modal-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .modal-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .modal-body {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .modal-footer {
+    display: flex;
+    gap: 12px;
+  }
+
+  /* Tab Bar */
+  .tab-bar {
+    display: flex;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 6px;
+    gap: 6px;
+  }
+  .tab-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #64748b;
+    transition: all 0.15s ease;
+    min-height: 48px; /* touch target >= 44px */
+  }
+  .tab-item.active {
+    background: var(--primary-yellow);
+    color: var(--primary-yellow-text);
+    box-shadow: 0 2px 8px rgba(255, 224, 51, 0.2);
+  }
+  .tab-item:not(.active):hover {
+    background: var(--bg-surface-high);
+    color: #cbd5e1;
+  }
+
+  /* Responsive comparison footer */
+  .responsive-banner {
+    background: var(--bg-surface-elevated);
+    border: 1px dashed var(--border-strong);
+    border-radius: 14px;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .responsive-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .device-tag {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-family: var(--font-numbers);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-yellow);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Style Guide Header -->
+  <header class="sg-header">
+    <div>
+      <div class="sg-title">
+        <span>POKÉMON DRAFT ARENA</span>
+        <span class="sg-badge">STYLE GUIDE V1.0</span>
+      </div>
+      <div class="sg-tagline">
+        Look: <span class="three-words">Tactical · Arcade · High-Contrast</span> (Visual Design System)
+      </div>
+    </div>
+    <div style="font-family: var(--font-numbers); font-size: 13px; color: #64748b;">
+      STANDARDS: PHONE (390PX) & DESKTOP (1280PX)
+    </div>
+  </header>
+
+  <!-- 1. Color Palette -->
+  <section class="grid-full">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">1. Base & Functional Palette</h2>
+        <span class="spec-label">8 Core Tokens</span>
+      </div>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--bg-base);"></div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Background</div>
+            <div class="swatch-hex">#080D18</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--bg-surface);"></div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Surface</div>
+            <div class="swatch-hex">#10192A</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--primary-yellow);"></div>
+          <div class="swatch-meta">
+            <div class="swatch-name" style="color: var(--primary-yellow);">Primary Action</div>
+            <div class="swatch-hex">#FFE033</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FFFFFF;"></div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Text Primary</div>
+            <div class="swatch-hex">#FFFFFF</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #94A3B8;"></div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Text Secondary</div>
+            <div class="swatch-hex">#94A3B8</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--accent-green);"></div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Success</div>
+            <div class="swatch-hex">#22C55E</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--accent-amber);"></div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Warning</div>
+            <div class="swatch-hex">#F59E0B</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: var(--accent-red);"></div>
+          <div class="swatch-meta">
+            <div class="swatch-name">Danger / Urgency</div>
+            <div class="swatch-hex">#EF4444</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Pokémon Type Chips (All 18) -->
+  <section class="grid-full">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">2. 18 Pokémon Elemental Type Chips</h2>
+        <span class="spec-label">Calibrated for high contrast & dark background readability</span>
+      </div>
+      <div class="chips-grid">
+        <div class="type-chip" style="background: var(--type-normal);">NORMAL</div>
+        <div class="type-chip" style="background: var(--type-fire);">FIRE</div>
+        <div class="type-chip" style="background: var(--type-water);">WATER</div>
+        <div class="type-chip" style="background: var(--type-grass);">GRASS</div>
+        <div class="type-chip chip-electric" style="background: var(--type-electric);">ELECTRIC</div>
+        <div class="type-chip chip-ice" style="background: var(--type-ice);">ICE</div>
+
+        <div class="type-chip" style="background: var(--type-fighting);">FIGHTING</div>
+        <div class="type-chip" style="background: var(--type-poison);">POISON</div>
+        <div class="type-chip" style="background: var(--type-ground);">GROUND</div>
+        <div class="type-chip" style="background: var(--type-flying); color: #0f172a;">FLYING</div>
+        <div class="type-chip" style="background: var(--type-psychic);">PSYCHIC</div>
+        <div class="type-chip" style="background: var(--type-bug);">BUG</div>
+
+        <div class="type-chip" style="background: var(--type-rock);">ROCK</div>
+        <div class="type-chip" style="background: var(--type-ghost);">GHOST</div>
+        <div class="type-chip" style="background: var(--type-dragon);">DRAGON</div>
+        <div class="type-chip" style="background: var(--type-steel);">STEEL</div>
+        <div class="type-chip" style="background: var(--type-dark);">DARK</div>
+        <div class="type-chip" style="background: var(--type-fairy);">FAIRY</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Row: Typography & Buttons -->
+  <div class="grid-2">
+    <!-- Typography -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">3. Typography System</h2>
+        <span class="spec-label">2 Dedicated Typefaces</span>
+      </div>
+      <div class="type-sample-box">
+        <div class="font-row">
+          <div class="font-title">Headings Font · Chakra Petch Bold (Sans-Serif)</div>
+          <div class="sample-heading">CHOOSE BATTLE SQUAD</div>
+          <div style="font-size: 13px; color: #94a3b8; margin-top: 4px;">Uppercase, crisp, tactile arcade geometry</div>
+        </div>
+        <div class="font-row">
+          <div class="font-title">Numbers & Stats Font · JetBrains Mono Bold</div>
+          <div class="sample-numbers">04s · $145 · 280/280 HP</div>
+          <div style="font-size: 13px; color: #94a3b8; margin-top: 4px;">Tabular numerals, monospaced alignment for bids & timers</div>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="role-chip primary">Physical Sweeper</span>
+          <span class="role-chip">Special Wall</span>
+          <span class="role-chip danger">Speed Pivot</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">4. Interactive Buttons</h2>
+        <span class="spec-label">Touch Targets ≥ 44px (Height: 48px)</span>
+      </div>
+      <div class="btn-group">
+        <div>
+          <button class="btn btn-primary">
+            <span>BID +$5 ($47)</span>
+            <span style="font-family: var(--font-numbers); font-size: 12px; opacity: 0.85;">▶</span>
+          </button>
+          <div class="font-title" style="margin: 4px 0 0 4px;">Primary (Yellow #FFE033 · High Focus)</div>
+        </div>
+        <div>
+          <button class="btn btn-secondary">
+            <span>RESUME MATCH #9X4</span>
+          </button>
+          <div class="font-title" style="margin: 4px 0 0 4px;">Secondary (Surface Elevated · Subtle border)</div>
+        </div>
+        <div>
+          <button class="btn btn-disabled" disabled>
+            <span>LOCK TEAM (PICK 2 MORE)</span>
+          </button>
+          <div class="font-title" style="margin: 4px 0 0 4px;">Disabled (Subtle outline · Dimmed label)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row: Stat Bars, HP Bars & Timer Rings -->
+  <div class="grid-2">
+    <!-- Stat Bars & HP Bar -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">5. Stat Bars & Dynamic HP Gauge</h2>
+        <span class="spec-label">Base Stats & Tri-Color HP Thresholds</span>
+      </div>
+      
+      <!-- Stat Bars -->
+      <div style="margin-bottom: 20px;">
+        <div class="font-title" style="margin-bottom: 12px;">Pokémon Base Stat Bars</div>
+        <div class="stat-row">
+          <span class="stat-name">HP</span>
+          <div class="stat-track"><div class="stat-fill" style="width: 72%; background: #38bdf8;"></div></div>
+          <span class="stat-val">108</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-name">ATK</span>
+          <div class="stat-track"><div class="stat-fill" style="width: 86%; background: #ef4444;"></div></div>
+          <span class="stat-val">130</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-name">SPE</span>
+          <div class="stat-track"><div class="stat-fill" style="width: 68%; background: #a855f7;"></div></div>
+          <span class="stat-val">102</span>
+        </div>
+      </div>
+
+      <!-- HP Bars (Green, Yellow, Red) -->
+      <div>
+        <div class="font-title" style="margin-bottom: 12px;">Combat HP Gauge States (Green · Yellow · Red)</div>
+        <div class="hp-bar-card">
+          <div class="hp-meta">
+            <span style="color: #22c55e;">GARCHOMP · HEALTHY</span>
+            <span style="font-family: var(--font-numbers);">272/320 HP (85%)</span>
+          </div>
+          <div class="hp-track"><div class="hp-fill hp-green"></div></div>
+        </div>
+        <div class="hp-bar-card">
+          <div class="hp-meta">
+            <span style="color: #eab308;">LUCARIO · CAUTION</span>
+            <span style="font-family: var(--font-numbers);">126/280 HP (45%)</span>
+          </div>
+          <div class="hp-track"><div class="hp-fill hp-yellow"></div></div>
+        </div>
+        <div class="hp-bar-card">
+          <div class="hp-meta">
+            <span style="color: #ef4444;">TYRANITAR · CRITICAL</span>
+            <span style="font-family: var(--font-numbers);">61/340 HP (18%)</span>
+          </div>
+          <div class="hp-track"><div class="hp-fill hp-red"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timer Ring & Toast & Modal -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">6. Timer Rings, Toasts & Modal</h2>
+        <span class="spec-label">Interactive Overlays & Turn Timing</span>
+      </div>
+
+      <!-- Timer Rings -->
+      <div style="margin-bottom: 20px;">
+        <div class="font-title" style="margin-bottom: 12px;">Turn & Auction Countdown Rings</div>
+        <div class="timer-box">
+          <div class="timer-item">
+            <div style="position: relative; width: 84px; height: 84px;">
+              <svg class="timer-ring-svg" width="84" height="84" viewBox="0 0 84 84">
+                <circle class="timer-circle-bg" cx="42" cy="42" r="36"></circle>
+                <circle class="timer-circle-fill-normal" cx="42" cy="42" r="36"></circle>
+              </svg>
+              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <span style="font-family: var(--font-numbers); font-size: 20px; font-weight: 800; color: #ffffff;">23s</span>
+              </div>
+            </div>
+            <span class="timer-caption">STANDARD TIMER</span>
+          </div>
+
+          <div class="timer-item">
+            <div style="position: relative; width: 84px; height: 84px;">
+              <svg class="timer-ring-svg" width="84" height="84" viewBox="0 0 84 84">
+                <circle class="timer-circle-bg" cx="42" cy="42" r="36"></circle>
+                <circle class="timer-circle-fill-urgent" cx="42" cy="42" r="36"></circle>
+              </svg>
+              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <span style="font-family: var(--font-numbers); font-size: 20px; font-weight: 800; color: var(--accent-red);">04s</span>
+              </div>
+            </div>
+            <span class="timer-caption" style="color: var(--accent-red); font-weight: 700;">HURRY (≤ 5s ALERT)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div style="margin-bottom: 20px;">
+        <div class="font-title" style="margin-bottom: 10px;">Toast Notification (Errors & Sync)</div>
+        <div class="toast-container">
+          <div class="toast error">
+            <div class="toast-content">
+              <div class="toast-dot"></div>
+              <span>Connection interrupted · Room #X7P</span>
+            </div>
+            <button class="toast-action-btn">COPY DETAILS</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Component -->
+      <div>
+        <div class="font-title" style="margin-bottom: 10px;">Dialog / Modal Preview</div>
+        <div class="modal-preview">
+          <div class="modal-header">
+            <div class="modal-title">
+              <span style="color: var(--accent-red);">⚠</span>
+              <span>HOST DISCONNECTED</span>
+            </div>
+            <div class="modal-close">✕</div>
+          </div>
+          <div class="modal-body">
+            Room host left the draft arena. Reconnecting to backup server in <strong style="color: var(--primary-yellow); font-family: var(--font-numbers);">08s</strong>.
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" style="height: 42px; font-size: 13px;">RETURN TO LOBBY</button>
+            <button class="btn btn-primary" style="height: 42px; font-size: 13px;">RECONNECT NOW</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 7. Tab Bar (Bottom Nav for Phone / Top Nav for Desktop) -->
+  <section class="grid-full">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">7. Navigation Tab Bar</h2>
+        <span class="spec-label">Mobile Bottom Bar & Desktop Global Navigation</span>
+      </div>
+      <div class="tab-bar">
+        <div class="tab-item active">
+          <span>⚔ AUCTION</span>
+        </div>
+        <div class="tab-item">
+          <span>👥 SQUAD (4/6)</span>
+        </div>
+        <div class="tab-item">
+          <span>📊 SCOUT REPORT</span>
+        </div>
+        <div class="tab-item">
+          <span>⚙ RULES</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Responsive Scaling Guideline -->
+  <div class="responsive-banner">
+    <div class="responsive-item">
+      <span class="device-tag">PHONE 390px</span>
+      <span style="font-size: 13px; color: #cbd5e1;">Single column stack, bottom sheet drawers, fixed 48px bottom action bar</span>
+    </div>
+    <div class="responsive-item">
+      <span class="device-tag">DESKTOP 1280px</span>
+      <span style="font-size: 13px; color: #cbd5e1;">Persistent side panels (history & roster), expanded 16:9 battle stage</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

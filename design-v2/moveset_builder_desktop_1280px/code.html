@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-tertiary-fixed-variant":"#930013","type-flying":"#81B9EF","status-urgent":"#EF4444","surface-container-high":"#242a38","type-rock":"#AFA981","inverse-primary":"#6d5e00","error":"#ffb4ab","on-tertiary-fixed":"#410004","secondary-fixed-dim":"#00dbe9","type-grass":"#3FA129","brand-accent-amber":"#FFD000","on-tertiary":"#68000a","error-container":"#93000a","type-ground":"#915121","on-secondary-container":"#00686f","type-ice":"#3DCEF3","on-primary-fixed-variant":"#524600","on-primary":"#393000","on-background":"#dde2f5","status-live-green":"#10B981","on-secondary-fixed":"#002022","type-dragon":"#5060E1","on-error-container":"#ffdad6","type-electric":"#FAC000","type-normal":"#9FA19F","type-bug":"#91A119","secondary":"#d3fbff","type-ghost":"#704170","inverse-surface":"#dde2f5","tertiary":"#fffcff","on-primary-fixed":"#211b00","type-fighting":"#FF8000","primary-fixed":"#ffe24c","surface-tint":"#e3c60c","on-secondary-fixed-variant":"#004f54","outline-variant":"#4c4733","tertiary-fixed":"#ffdad7","surface-container-low":"#161b29","border-subtle":"#223555","on-secondary":"#00363a","on-surface":"#dde2f5","outline":"#979179","surface-bright":"#333948","surface-variant":"#2f3543","on-error":"#690005","tertiary-container":"#ffd7d4","surface-base":"#0B111E","surface-container-lowest":"#080e1b","type-poison":"#8F41CB","surface-card":"#162238","surface-container":"#1a1f2d","type-dark":"#50413F","surface-raised":"#111A2E","on-tertiary-container":"#c02028","background":"#0d1320","secondary-fixed":"#7df4ff","primary-container":"#ffe033","surface-highlight":"#1E2D4A","primary":"#fffcff","secondary-container":"#00eefc","type-fairy":"#EF70EF","tertiary-fixed-dim":"#ffb3ad","border-strong":"#354E7A","type-water":"#2980EF","primary-fixed-dim":"#e3c60c","surface":"#0d1320","type-steel":"#60A1B8","type-fire":"#E62829","surface-dim":"#0d1320","surface-container-highest":"#2f3543","type-psychic":"#EF4179","on-primary-container":"#726300","on-surface-variant":"#cec6ac","inverse-on-surface":"#2a303f"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"margin":"1rem","gutter-desktop":"1.5rem","margin-desktop":"2.5rem","gutter":"1rem","space-xl":"2rem","space-xs":"0.25rem","gutter-tablet":"1.25rem","space-sm":"0.5rem","space-md":"1rem","space-lg":"1.5rem","space-2xl":"3rem","margin-tablet":"1.5rem"},fontFamily:{"display-hero-mobile":["Space Grotesk"],"display-hero":["Space Grotesk"],"body-lg":["Geist"],"headline-xl-mobile":["Space Grotesk"],"label-numeric-stat":["Space Grotesk"],"label-badge":["Geist"],"headline-xl":["Space Grotesk"],"body-sm":["Geist"],"headline-lg":["Space Grotesk"],"label-meta":["Geist"],"body-md":["Geist"],"headline-md":["Space Grotesk"],"headline-sm":["Space Grotesk"]},fontSize:{"display-hero-mobile":["36px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"display-hero":["56px",{"lineHeight":"60px","letterSpacing":"-0.03em","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-xl-mobile":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-numeric-stat":["18px",{"lineHeight":"22px","letterSpacing":"0.05em","fontWeight":"700"}],"label-badge":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"700"}],"headline-xl":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-meta":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"body-md":["15px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface-base font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-raised z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center justify-between bg-surface-card"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary-container text-[18px]">swords</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary font-bold">PKMN Draft</span><span class="font-label-badge text-label-badge uppercase tracking-widest text-on-surface-variant">Arena Spec 1.4</span></div></div><div class="flex items-center justify-center w-5 h-5 rounded bg-surface-container-high"><span class="material-symbols-outlined text-[14px] text-on-surface-variant">terminal</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs font-label-badge text-label-badge uppercase tracking-widest text-on-surface-variant">War-Room Modules</div></div><nav class="flex flex-col gap-space-xs px-space-md" data-active-classes="bg-primary-container text-on-primary-container font-bold shadow-[0_0_12px_rgba(255,224,51,0.25)]"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="arena-hub" href="#"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-headline-sm text-headline-sm">Arena Hub</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="squad-select" href="#"><span class="material-symbols-outlined text-[20px]">group_work</span><span class="font-headline-sm text-headline-sm">Squad Select</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container font-bold shadow-[0_0_12px_rgba(255,224,51,0.25)]" data-path="moveset" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-headline-sm text-headline-sm">Moveset</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="battle-arena" href="#"><span class="material-symbols-outlined text-[20px]">stadium</span><span class="font-headline-sm text-headline-sm">Battle Arena</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="match-result" href="#"><span class="material-symbols-outlined text-[20px]">military_tech</span><span class="font-headline-sm text-headline-sm">Match Result</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="scout-report" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span><span class="font-headline-sm text-headline-sm">Scout Report</span></a></nav></div><div class="p-space-md flex flex-col gap-space-sm bg-surface-container-low"><div class="p-space-sm rounded bg-surface-card flex items-center justify-between"><div class="flex flex-col"><span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">Phase Status</span><span class="font-headline-sm text-headline-sm text-primary-fixed">Live Draft</span></div><span class="material-symbols-outlined text-primary-fixed text-[20px]">timer</span></div><div class="flex items-center justify-between px-space-sm py-space-xs text-on-surface-variant"><span class="font-label-meta text-label-meta">Engine v1.4.2</span><span class="font-label-meta text-label-meta">Cluster 09</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-raised/95 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.3)]"><div class="h-16 w-full px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm px-space-md py-space-xs rounded bg-surface-card"><span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant">Room</span><span class="font-headline-sm text-headline-sm text-primary tracking-wider">PKMN-8842-X</span></div><div class="flex items-center gap-space-sm px-space-md py-space-xs rounded bg-surface-card"><span class="w-2 h-2 rounded-full bg-status-live-green"></span><span class="font-label-badge text-label-badge uppercase tracking-wider text-status-live-green">Active Sync</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-on-surface-variant">wifi</span><span class="font-label-numeric-stat text-body-sm text-on-surface-variant">18ms</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm px-space-sm py-space-xs rounded bg-surface-card"><span class="font-label-meta text-label-meta text-on-surface-variant">Tier Cap:</span><span class="font-headline-sm text-headline-sm text-brand-accent-amber">OU/Draft</span></div><div class="flex items-center gap-space-sm pl-space-sm"><div class="flex flex-col items-end"><span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Commander Red</span><span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider">Battle Tactician</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="relative pt-16 bg-surface-base min-h-screen"><div class="flex flex-col w-full text-on-surface">
+<div class="p-space-lg flex flex-col gap-space-lg w-full">
+<div class="flex items-center justify-between bg-surface-raised p-space-md rounded-xl shadow-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-surface-card text-brand-accent-amber shadow-sm">
+<span class="material-symbols-outlined text-[24px]">tune</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-headline-md tracking-tight text-primary">TACTICAL MOVESET TUNER</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-highlight font-label-badge text-label-badge text-secondary-fixed-dim uppercase tracking-wider">Phase II: Loadout Lock</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Calibrate battle maneuvers, coverage vectors, and held armaments before lobby commitment</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg bg-surface-base">
+<span class="material-symbols-outlined text-brand-accent-amber text-[18px]">verified</span>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant leading-none">TEAM SYNERGY</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-primary-fixed leading-tight">94.8% VECT</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg bg-surface-base">
+<span class="material-symbols-outlined text-status-live-green text-[18px]">bolt</span>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant leading-none">META CONFORMANCE</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-status-live-green leading-tight">LEGAL // GEN 9 OU</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-space-lg items-start w-full">
+<div class="col-span-3 flex flex-col gap-space-md">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-label-badge text-label-badge uppercase tracking-widest text-on-surface-variant">Selected Combatants (4/4)</span>
+<span class="font-label-meta text-label-meta text-brand-accent-amber">LOCKED</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-md rounded-xl bg-surface-highlight shadow-lg flex flex-col gap-space-sm relative overflow-hidden transition-all duration-150">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-type-dragon/15 blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-base flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Stylized battle icon render of Garchomp facing forward against dark tactical blueprint background with subtle glowing cyan ambient highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg3t3ttnqQ0lACm78aFF7jvbGgmtk35okDE3LWcMU1_knZrN913HZLeb0dSnxQkhuLDk5i_A3yHQuUODQYuZNCGOme_FFJSHnQPVw7KzWAHDVzuWqj2V9pwsylhvhwEpcvCCB8-Qfjly7c_nqh_pbZJrvQr6PIXfL83jz34dutUtAYVzav0NidLXQ4WKwjSJhTuIUZYb9RH9VfOITZfI8Jv2PQh54Owhfxd7bgMbzw"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-primary">Garchomp</span>
+<span class="px-space-xs py-0.5 rounded bg-brand-accent-amber text-surface-base font-label-badge text-label-badge uppercase">Active</span>
+</div>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Lv. 100 • Male</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-brand-accent-amber text-[20px]">radio_button_checked</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-dragon text-tertiary">DRAGON</span>
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-ground text-tertiary">GROUND</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs text-body-sm">
+<div class="flex flex-col p-space-xs rounded bg-surface-base/80">
+<span class="font-label-meta text-label-meta text-on-surface-variant">HELD ITEM</span>
+<span class="font-headline-sm text-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-error">token</span> Life Orb
+                </span>
+</div>
+<div class="flex flex-col p-space-xs rounded bg-surface-base/80">
+<span class="font-label-meta text-label-meta text-on-surface-variant">ABILITY</span>
+<span class="font-headline-sm text-body-sm text-primary-fixed-dim">Rough Skin</span>
+</div>
+</div>
+<div class="flex flex-col p-space-xs rounded bg-surface-base/80 gap-1">
+<div class="flex justify-between items-center">
+<span class="font-label-meta text-label-meta text-on-surface-variant">EV SPREAD</span>
+<span class="font-label-badge text-label-badge text-secondary-fixed-dim">Physical Sweeper</span>
+</div>
+<span class="font-label-meta text-label-meta text-on-surface font-mono">252 Atk / 4 SpD / 252 Spe (Jolly)</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-card hover:bg-surface-raised transition-all cursor-pointer flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-base flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Tactical sci-fi battle profile of Rotom Wash plasma appliance form glowing with electric blue lightning" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_xB2RI2qK5fhz9WganIkfIDoPLhgN8ll9AdDgmzLbwQfLv3vRmBo4PHXpeAXDvpkkuo-W3mAv82C72qmYPah-Jxbtb7XKAtFLDesJerxyFkDgT8c_F5ua8-nH7ygVBWZY-bp-wbq80XxijQ9y3XIbTvng3fB6cY7GKQ8LGkMvTehS2vr7Fz8cJAJFpWnHaF70vgV-DundmKviDB8EYbwwEjYdK7fvE4-I1DCpiMLD"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Rotom-Wash</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Pivot Pivot Spec</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]">radio_button_unchecked</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-electric text-surface-base">ELECTRIC</span>
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-water text-tertiary">WATER</span>
+</div>
+<div class="flex justify-between text-body-sm px-space-xs py-1 rounded bg-surface-base/40">
+<span class="font-label-meta text-label-meta text-on-surface-variant">Choice Specs • Levitate</span>
+<span class="font-label-badge text-label-badge text-status-live-green">READY</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-card hover:bg-surface-raised transition-all cursor-pointer flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-base flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Chiseled battle armor profile of Corviknight in dark metallic navy blue feathers with crimson ocular visor reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArNLmwTjPfXmXxdKOkgaDsPqq_dK5DwFN00u8tsrO9beKrzojo5Pw7rPq7ujLWN_natz7k82jVGJx8NX1OqBETxoaoGe471Wu8oZD2sLSpg4iC-lw5bxWnHzcAbaz6EhEGMQWYI3Ubi5JDvt_q9zITYqEBFxutMdgzxKdPuxtoX0GxnCIfYjblGhvqMvLiwF7Wltn8bpvYNVuG98_zNJVmG4AIP6_285WkDgdsw_Gd"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Corviknight</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Defensive Bastion</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]">radio_button_unchecked</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-flying text-surface-base">FLYING</span>
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-steel text-tertiary">STEEL</span>
+</div>
+<div class="flex justify-between text-body-sm px-space-xs py-1 rounded bg-surface-base/40">
+<span class="font-label-meta text-label-meta text-on-surface-variant">Leftovers • Pressure</span>
+<span class="font-label-badge text-label-badge text-status-live-green">READY</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-card hover:bg-surface-raised transition-all cursor-pointer flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-base flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Tactical moth illustration of Volcarona with six glowing fiery wings emitting hot ember solar particles on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMMXqE2U7So_jHtP7oOzmSVOzuBFu376h0pC11njo4oJGVPXfbTZQbwo8ahpuFKx47fWgOP4KwuU0ZTuuOpYU2SWVD1vuIAxy-k2qZe63b-CKo2XR4qtXXM0yA00IsKIaajtuyg4BlynlTAdlDM4JJE8Ui5j8_aNDAj9Ks_pvz_-MuZ1__hKk-OrGk-m0lCOEscz6mnYk4RK7w-C1ZL6YQbNDqHzI29GDV2x4hzacl"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Volcarona</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Quiver Setup</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[20px]">radio_button_unchecked</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-bug text-tertiary">BUG</span>
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-fire text-tertiary">FIRE</span>
+</div>
+<div class="flex justify-between text-body-sm px-space-xs py-1 rounded bg-surface-base/40">
+<span class="font-label-meta text-label-meta text-on-surface-variant">Heavy-Duty Boots • Flame Body</span>
+<span class="font-label-badge text-label-badge text-status-live-green">READY</span>
+</div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-high flex items-center gap-space-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[20px]">speed</span>
+<div class="flex flex-col">
+<span class="font-label-badge text-label-badge text-secondary uppercase">Active Speed Tier</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">333 Spe (Outspeeds base 100 unboosted)</span>
+</div>
+</div>
+</div>
+<div class="col-span-5 flex flex-col gap-space-md">
+<div class="flex items-center justify-between px-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-badge text-label-badge uppercase tracking-widest text-on-surface-variant">Active 4-Move Tactical Dock</span>
+<span class="font-label-meta text-label-meta text-brand-accent-amber font-mono">SLOTS [4/4]</span>
+</div>
+<button class="font-label-meta text-label-meta text-secondary-fixed-dim hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">restart_alt</span> Reset Defaults
+          </button>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-md rounded-xl bg-surface-card hover:bg-surface-highlight transition-all shadow-md flex flex-col gap-space-sm group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded bg-surface-base text-primary font-label-numeric-stat text-body-sm flex items-center justify-center font-bold">1</span>
+<span class="font-headline-md text-headline-md text-primary group-hover:text-primary-container transition-colors">Earthquake</span>
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-ground text-tertiary">GROUND</span>
+<span class="px-2 py-0.5 rounded font-label-badge text-label-badge bg-surface-base text-brand-accent-amber uppercase tracking-wider">STAB</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-raised font-label-badge text-label-badge text-on-surface-variant uppercase">Physical</span>
+<button class="w-7 h-7 rounded bg-surface-base hover:bg-error-container text-on-surface-variant hover:text-error flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-space-xs bg-surface-base p-space-sm rounded-lg text-center">
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PWR</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-primary font-bold">100</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">ACC</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-primary font-bold">100%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PP</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-on-surface">10/10</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PRIORITY</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-on-surface">0</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="truncate">Inflicts standard contact tremor damage. Hits adjacent foes in double battles.</span>
+<span class="font-label-meta text-label-meta text-status-live-green whitespace-nowrap ml-2">Targets All</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-card hover:bg-surface-highlight transition-all shadow-md flex flex-col gap-space-sm group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded bg-surface-base text-primary font-label-numeric-stat text-body-sm flex items-center justify-center font-bold">2</span>
+<span class="font-headline-md text-headline-md text-primary group-hover:text-primary-container transition-colors">Swords Dance</span>
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-normal text-surface-base">NORMAL</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-raised font-label-badge text-label-badge text-secondary-fixed-dim uppercase">Status</span>
+<button class="w-7 h-7 rounded bg-surface-base hover:bg-error-container text-on-surface-variant hover:text-error flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-space-xs bg-surface-base p-space-sm rounded-lg text-center">
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PWR</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-on-surface-variant">—</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">ACC</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-on-surface-variant">—</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PP</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-on-surface">20/20</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PRIORITY</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-on-surface">0</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="truncate">Sharply boosts the user's Attack stat by +2 stages on execution.</span>
+<span class="font-label-meta text-label-meta text-brand-accent-amber whitespace-nowrap ml-2">+2 ATK Stage</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-card hover:bg-surface-highlight transition-all shadow-md flex flex-col gap-space-sm group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded bg-surface-base text-primary font-label-numeric-stat text-body-sm flex items-center justify-center font-bold">3</span>
+<span class="font-headline-md text-headline-md text-primary group-hover:text-primary-container transition-colors">Dragon Claw</span>
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-dragon text-tertiary">DRAGON</span>
+<span class="px-2 py-0.5 rounded font-label-badge text-label-badge bg-surface-base text-brand-accent-amber uppercase tracking-wider">STAB</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-raised font-label-badge text-label-badge text-on-surface-variant uppercase">Physical</span>
+<button class="w-7 h-7 rounded bg-surface-base hover:bg-error-container text-on-surface-variant hover:text-error flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-space-xs bg-surface-base p-space-sm rounded-lg text-center">
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PWR</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-primary font-bold">80</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">ACC</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-primary font-bold">100%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PP</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-on-surface">15/15</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PRIORITY</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-on-surface">0</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="truncate">Strikes the foe with sharp draconic talons. Consistent single-target damage.</span>
+<span class="font-label-meta text-label-meta text-status-live-green whitespace-nowrap ml-2">Contact</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-card hover:bg-surface-highlight transition-all shadow-md flex flex-col gap-space-sm group">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded bg-surface-base text-primary font-label-numeric-stat text-body-sm flex items-center justify-center font-bold">4</span>
+<span class="font-headline-md text-headline-md text-primary group-hover:text-primary-container transition-colors">Stone Edge</span>
+<span class="px-2 py-0.5 rounded-full font-label-badge text-label-badge bg-type-rock text-tertiary">ROCK</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-raised font-label-badge text-label-badge text-on-surface-variant uppercase">Physical</span>
+<button class="w-7 h-7 rounded bg-surface-base hover:bg-error-container text-on-surface-variant hover:text-error flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-space-xs bg-surface-base p-space-sm rounded-lg text-center">
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PWR</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-primary font-bold">100</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">ACC</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-brand-accent-amber font-bold">80%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PP</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-on-surface">5/5</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">PRIORITY</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-on-surface">0</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="truncate">High critical hit ratio (+1). Provides essential counter to Flying switch-ins.</span>
+<span class="font-label-meta text-label-meta text-type-electric whitespace-nowrap ml-2">Crit Rate +1</span>
+</div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-primary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed-dim">radar</span>
+              Gen 9 Meta Coverage Matrix
+            </span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">498 / 522 Neutral or Super-Effective</span>
+</div>
+<div class="grid grid-cols-6 gap-1 pt-1">
+<div class="flex flex-col items-center p-1 rounded bg-type-fire/20 text-center">
+<span class="font-label-badge text-[10px] text-type-fire uppercase font-bold">FIRE</span>
+<span class="font-headline-sm text-body-sm font-bold text-status-live-green">2.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-type-electric/20 text-center">
+<span class="font-label-badge text-[10px] text-type-electric uppercase font-bold">ELEC</span>
+<span class="font-headline-sm text-body-sm font-bold text-status-live-green">2.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-type-poison/20 text-center">
+<span class="font-label-badge text-[10px] text-type-poison uppercase font-bold">POIS</span>
+<span class="font-headline-sm text-body-sm font-bold text-status-live-green">2.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-type-rock/20 text-center">
+<span class="font-label-badge text-[10px] text-type-rock uppercase font-bold">ROCK</span>
+<span class="font-headline-sm text-body-sm font-bold text-status-live-green">2.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-type-steel/20 text-center">
+<span class="font-label-badge text-[10px] text-type-steel uppercase font-bold">STEEL</span>
+<span class="font-headline-sm text-body-sm font-bold text-status-live-green">2.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-type-flying/20 text-center">
+<span class="font-label-badge text-[10px] text-type-flying uppercase font-bold">FLY</span>
+<span class="font-headline-sm text-body-sm font-bold text-status-live-green">2.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-type-dragon/20 text-center">
+<span class="font-label-badge text-[10px] text-type-dragon uppercase font-bold">DRAG</span>
+<span class="font-headline-sm text-body-sm font-bold text-status-live-green">2.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-type-ice/20 text-center">
+<span class="font-label-badge text-[10px] text-type-ice uppercase font-bold">ICE</span>
+<span class="font-headline-sm text-body-sm font-bold text-status-live-green">2.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-type-bug/20 text-center">
+<span class="font-label-badge text-[10px] text-type-bug uppercase font-bold">BUG</span>
+<span class="font-headline-sm text-body-sm font-bold text-status-live-green">2.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-surface-base text-center">
+<span class="font-label-badge text-[10px] text-type-grass uppercase font-bold">GRASS</span>
+<span class="font-headline-sm text-body-sm font-bold text-on-surface">1.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-surface-base text-center">
+<span class="font-label-badge text-[10px] text-type-water uppercase font-bold">WATR</span>
+<span class="font-headline-sm text-body-sm font-bold text-on-surface">1.0x</span>
+</div>
+<div class="flex flex-col items-center p-1 rounded bg-surface-base text-center">
+<span class="font-label-badge text-[10px] text-type-fairy uppercase font-bold">FAIR</span>
+<span class="font-headline-sm text-body-sm font-bold text-on-surface-variant">0.5x</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-meta text-label-meta text-on-surface-variant">Super-Effective Hit Types: <strong class="text-status-live-green">9 of 18</strong></span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Zero Hits: <strong class="text-primary font-mono">0 (0.0%)</strong></span>
+</div>
+</div>
+</div>
+<div class="col-span-4 flex flex-col gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-label-badge text-label-badge uppercase tracking-widest text-on-surface-variant">Move Codex Pool (42 Available)</span>
+<span class="font-label-meta text-label-meta text-secondary-fixed-dim">Garchomp Compatible</span>
+</div>
+<div class="relative w-full">
+<input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-base text-on-surface placeholder:text-outline text-body-md focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="Search move name, type, or effect..." type="text" value=""/>
+<span class="material-symbols-outlined absolute left-3 top-3 text-[18px] text-outline">search</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1">
+<button class="px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-headline-sm text-body-sm font-bold whitespace-nowrap shadow-sm">All (42)</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-surface-raised text-on-surface font-headline-sm text-body-sm whitespace-nowrap">Physical (24)</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-surface-raised text-on-surface font-headline-sm text-body-sm whitespace-nowrap">Special (9)</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-surface-raised text-on-surface font-headline-sm text-body-sm whitespace-nowrap">Status (9)</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-surface-raised text-brand-accent-amber font-headline-sm text-body-sm whitespace-nowrap">STAB Only</button>
+</div>
+<div class="p-space-md rounded-xl bg-surface-raised flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-brand-accent-amber flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span> Meta Recommended
+            </span>
+<span class="font-label-meta text-label-meta text-on-surface-variant font-mono">98.2% PICK</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary">Smogon OU Standard Sweeper Loadout</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Recommended tech swap: Substitute or Scale Shot over Stone Edge for extreme hyper-offense matchups.</p>
+</div>
+<div class="flex flex-col gap-space-xs overflow-y-auto max-h-[460px] pr-1">
+<div class="p-space-sm rounded-lg bg-surface-card hover:bg-surface-highlight flex items-center justify-between transition-colors group">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary">Poison Jab</span>
+<span class="px-1.5 py-0.2 rounded-full font-label-badge text-[10px] bg-type-poison text-tertiary">POISON</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">80 PWR / 100%</span>
+</div>
+<span class="font-body-sm text-label-meta text-on-surface-variant">30% poison chance. Hard counters Fairy switch-ins.</span>
+</div>
+<button class="px-space-sm py-1.5 rounded bg-surface-base hover:bg-primary-container hover:text-on-primary-container text-secondary font-headline-sm text-body-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span> Swap
+            </button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-card hover:bg-surface-highlight flex items-center justify-between transition-colors group">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary">Fire Fang</span>
+<span class="px-1.5 py-0.2 rounded-full font-label-badge text-[10px] bg-type-fire text-tertiary">FIRE</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">65 PWR / 95%</span>
+</div>
+<span class="font-body-sm text-label-meta text-on-surface-variant">10% burn/flinch. Punishes Ferrothorn / Corviknight.</span>
+</div>
+<button class="px-space-sm py-1.5 rounded bg-surface-base hover:bg-primary-container hover:text-on-primary-container text-secondary font-headline-sm text-body-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span> Swap
+            </button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-card hover:bg-surface-highlight flex items-center justify-between transition-colors group">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary">Stealth Rock</span>
+<span class="px-1.5 py-0.2 rounded-full font-label-badge text-[10px] bg-type-rock text-tertiary">ROCK</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Status / —%</span>
+</div>
+<span class="font-body-sm text-label-meta text-on-surface-variant">Entry hazard. Essential passive team damage tool.</span>
+</div>
+<button class="px-space-sm py-1.5 rounded bg-surface-base hover:bg-primary-container hover:text-on-primary-container text-secondary font-headline-sm text-body-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span> Swap
+            </button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-card hover:bg-surface-highlight flex items-center justify-between transition-colors group">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary">Scale Shot</span>
+<span class="px-1.5 py-0.2 rounded-full font-label-badge text-[10px] bg-type-dragon text-tertiary">DRAGON</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">25x PWR / 90%</span>
+</div>
+<span class="font-body-sm text-label-meta text-on-surface-variant">Multi-hit. +1 Speed stage on hit at cost of -1 Def.</span>
+</div>
+<button class="px-space-sm py-1.5 rounded bg-surface-base hover:bg-primary-container hover:text-on-primary-container text-secondary font-headline-sm text-body-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span> Swap
+            </button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-card hover:bg-surface-highlight flex items-center justify-between transition-colors group">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary">Crunch</span>
+<span class="px-1.5 py-0.2 rounded-full font-label-badge text-[10px] bg-type-dark text-tertiary">DARK</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">80 PWR / 100%</span>
+</div>
+<span class="font-body-sm text-label-meta text-on-surface-variant">20% lower target Defense. Targets Ghost/Psychic.</span>
+</div>
+<button class="px-space-sm py-1.5 rounded bg-surface-base hover:bg-primary-container hover:text-on-primary-container text-secondary font-headline-sm text-body-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span> Swap
+            </button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-card hover:bg-surface-highlight flex items-center justify-between transition-colors group">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary">Aqua Tail</span>
+<span class="px-1.5 py-0.2 rounded-full font-label-badge text-[10px] bg-type-water text-tertiary">WATER</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">90 PWR / 90%</span>
+</div>
+<span class="font-body-sm text-label-meta text-on-surface-variant">Heavy water physical lash with broad coverage.</span>
+</div>
+<button class="px-space-sm py-1.5 rounded bg-surface-base hover:bg-primary-container hover:text-on-primary-container text-secondary font-headline-sm text-body-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span> Swap
+            </button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-card hover:bg-surface-highlight flex items-center justify-between transition-colors group">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary">Iron Head</span>
+<span class="px-1.5 py-0.2 rounded-full font-label-badge text-[10px] bg-type-steel text-tertiary">STEEL</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">80 PWR / 100%</span>
+</div>
+<span class="font-body-sm text-label-meta text-on-surface-variant">30% target flinch. Solid Fairy and Ice counter.</span>
+</div>
+<button class="px-space-sm py-1.5 rounded bg-surface-base hover:bg-primary-container hover:text-on-primary-container text-secondary font-headline-sm text-body-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span> Swap
+            </button>
+</div>
+</div>
+</div>
+</div>
+<div class="sticky bottom-0 z-30 p-space-md rounded-xl bg-surface-raised/95 backdrop-blur-xl flex items-center justify-between shadow-2xl">
+<div class="flex items-center gap-space-md">
+<button class="h-12 px-space-md rounded-lg bg-surface-card hover:bg-surface-highlight text-on-surface font-headline-sm text-headline-sm flex items-center gap-space-xs transition-colors shadow-sm">
+<span class="material-symbols-outlined text-brand-accent-amber text-[20px]">magic_button</span>
+          Auto-Fill Meta Loadouts (All 4)
+        </button>
+<button class="h-12 px-space-md rounded-lg bg-surface-card hover:bg-surface-highlight text-on-surface-variant hover:text-primary font-headline-sm text-headline-sm flex items-center gap-space-xs transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">content_paste_go</span>
+          Export PokéPaste
+        </button>
+<div class="flex items-center gap-2 pl-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-status-live-green animate-pulse"></span>
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Roster State Validated (4/4 Ready)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="h-12 px-space-lg rounded-lg bg-surface-card hover:bg-surface-highlight text-on-surface-variant hover:text-on-surface font-headline-sm text-headline-sm transition-colors">
+          Discard Edits
+        </button>
+<button class="h-12 px-space-xl rounded-lg bg-primary-container hover:bg-brand-accent-amber text-on-primary-container font-headline-md text-headline-sm uppercase tracking-wide font-bold flex items-center gap-space-sm transition-all duration-150 shadow-[0_0_20px_rgba(255,224,51,0.35)] active:translate-y-0.5">
+<span>CONFIRM ALL MOVESETS &amp; ENTER COMBAT</span>
+<span class="material-symbols-outlined text-[22px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const swapButtons = document.querySelectorAll('button:has(.material-symbols-outlined)');
+    swapButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (btn.innerText.includes('Swap')) {
+          const moveName = btn.closest('.group')?.querySelector('.font-headline-sm')?.innerText;
+          if (moveName) {
+            btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span> Slotted';
+            btn.classList.add('bg-status-live-green', 'text-surface-base');
+            setTimeout(() => {
+              btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">swap_horiz</span> Swap';
+              btn.classList.remove('bg-status-live-green', 'text-surface-base');
+            }, 1200);
+          }
+        }
+      });
+    });
+  })();
+</script></main></div></body></html>

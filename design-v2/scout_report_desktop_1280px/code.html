@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-low":"#161b29","on-primary-container":"#726300","on-secondary-container":"#00686f","on-secondary-fixed":"#002022","on-primary-fixed":"#211b00","inverse-surface":"#dde2f5","background":"#0d1320","tertiary":"#fffcff","surface-container-lowest":"#080e1b","type-dark":"#50413F","surface":"#0d1320","surface-card":"#162238","tertiary-fixed-dim":"#ffb3ad","on-tertiary":"#68000a","surface-variant":"#2f3543","outline":"#979179","type-normal":"#9FA19F","surface-raised":"#111A2E","secondary":"#d3fbff","type-psychic":"#EF4179","surface-base":"#0B111E","type-ghost":"#704170","on-tertiary-container":"#c02028","type-bug":"#91A119","surface-highlight":"#1E2D4A","on-tertiary-fixed-variant":"#930013","secondary-fixed-dim":"#00dbe9","on-secondary-fixed-variant":"#004f54","tertiary-fixed":"#ffdad7","on-tertiary-fixed":"#410004","primary":"#fffcff","type-fighting":"#FF8000","error":"#ffb4ab","on-error-container":"#ffdad6","brand-accent-amber":"#FFD000","type-grass":"#3FA129","secondary-container":"#00eefc","primary-fixed":"#ffe24c","inverse-on-surface":"#2a303f","error-container":"#93000a","type-poison":"#8F41CB","outline-variant":"#4c4733","on-error":"#690005","tertiary-container":"#ffd7d4","on-background":"#dde2f5","on-primary":"#393000","border-strong":"#354E7A","on-surface-variant":"#cec6ac","type-water":"#2980EF","status-urgent":"#EF4444","surface-container-highest":"#2f3543","type-rock":"#AFA981","type-flying":"#81B9EF","surface-dim":"#0d1320","secondary-fixed":"#7df4ff","type-dragon":"#5060E1","type-ground":"#915121","surface-bright":"#333948","primary-container":"#ffe033","inverse-primary":"#6d5e00","primary-fixed-dim":"#e3c60c","type-fairy":"#EF70EF","on-primary-fixed-variant":"#524600","type-ice":"#3DCEF3","type-electric":"#FAC000","surface-container-high":"#242a38","type-fire":"#E62829","surface-tint":"#e3c60c","type-steel":"#60A1B8","status-live-green":"#10B981","on-surface":"#dde2f5","border-subtle":"#223555","surface-container":"#1a1f2d","on-secondary":"#00363a"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-2xl":"3rem",margin:"1rem","gutter-tablet":"1.25rem","gutter-desktop":"1.5rem","space-xs":"0.25rem","space-md":"1rem","margin-tablet":"1.5rem",gutter:"1rem","space-sm":"0.5rem","margin-desktop":"2.5rem","space-lg":"1.5rem","space-xl":"2rem"},fontFamily:{"headline-xl":["Space Grotesk"],"label-numeric-stat":["Space Grotesk"],"display-hero":["Space Grotesk"],"body-md":["Geist"],"display-hero-mobile":["Space Grotesk"],"headline-lg":["Space Grotesk"],"body-lg":["Geist"],"headline-md":["Space Grotesk"],"label-badge":["Geist"],"headline-sm":["Space Grotesk"],"headline-xl-mobile":["Space Grotesk"],"label-meta":["Geist"],"body-sm":["Geist"]},fontSize:{"headline-xl":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-numeric-stat":["18px",{lineHeight:"22px",letterSpacing:"0.05em",fontWeight:"700"}],"display-hero":["56px",{lineHeight:"60px",letterSpacing:"-0.03em",fontWeight:"700"}],"body-md":["15px",{lineHeight:"22px",letterSpacing:"0em",fontWeight:"400"}],"display-hero-mobile":["36px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"body-lg":["18px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"0em",fontWeight:"600"}],"label-badge":["11px",{lineHeight:"14px",letterSpacing:"0.08em",fontWeight:"700"}],"headline-sm":["16px",{lineHeight:"24px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-xl-mobile":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"label-meta":["12px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"500"}],"body-sm":["13px",{lineHeight:"18px",letterSpacing:"0.01em",fontWeight:"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-raised z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center justify-between bg-surface-base"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center"><span class="material-symbols-outlined text-primary-container text-[20px]">sports_esports</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase text-primary tracking-wide">Draft Arena</span><span class="font-label-meta text-label-meta text-on-surface-variant uppercase tracking-wider">War-Room OS v4.2</span></div></div><div class="flex items-center gap-space-xs px-space-xs py-0.5 rounded bg-surface-container-high"><span class="w-2 h-2 rounded-full bg-status-live-green"></span><span class="font-label-badge text-label-badge text-status-live-green uppercase">Live</span></div></div><div class="px-space-md pt-space-lg pb-space-sm"><span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">Tactical Navigation</span></div><nav class="flex flex-col gap-space-xs px-space-sm" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm text-headline-sm shadow-inner"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="auction-room" href="#"><span class="material-symbols-outlined text-[20px]">gavel</span><span>Auction Room</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="set-break" href="#"><span class="material-symbols-outlined text-[20px]">timer</span><span>Set Break</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container font-headline-sm text-headline-sm shadow-inner" data-path="scout-report" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span><span>Scout Report</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="roster-matrix" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Roster Matrix</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="tier-budget-ledger" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span>Budget Ledger</span></a></nav><div class="px-space-md pt-space-lg pb-space-sm"><span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">War-Room Telemetry</span></div><div class="px-space-md flex flex-col gap-space-xs"><div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-card"><span class="font-label-meta text-label-meta text-on-surface-variant">Server Latency</span><span class="font-headline-sm text-headline-sm text-secondary">18ms</span></div><div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-card"><span class="font-label-meta text-label-meta text-on-surface-variant">Sync Protocol</span><span class="font-label-badge text-label-badge text-status-live-green uppercase">Websocket OK</span></div></div></div><div class="p-space-md bg-surface-container-lowest flex flex-col gap-space-sm"><div class="flex items-center justify-between"><span class="font-label-meta text-label-meta text-on-surface-variant">Host Connection</span><span class="font-label-meta text-label-meta text-primary font-headline-sm">Region: US-EAST</span></div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-body-sm text-body-sm text-on-surface font-headline-sm truncate">Cmdr. Red</span><span class="font-label-badge text-label-badge text-on-surface-variant truncate uppercase">Franchise GM</span></div><button class="p-1 text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-raised/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-full px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs font-label-meta text-label-meta text-on-surface-variant"><span class="text-on-surface">Arena Root</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-primary-container font-headline-sm text-headline-sm">Draft Operations</span></div><div class="hidden md:flex items-center gap-space-sm px-space-sm py-1 rounded bg-surface-base"><span class="font-label-badge text-label-badge uppercase text-on-surface-variant">Room PIN</span><span class="font-label-numeric-stat text-label-numeric-stat text-primary-container tracking-widest font-headline-sm">PKMN-8842-X</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">content_copy</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-card"><span class="w-2 h-2 rounded-full bg-status-live-green"></span><span class="font-label-meta text-label-meta text-on-surface uppercase">Draft Sync Active</span></div><div class="hidden lg:flex items-center gap-space-xs font-label-meta text-label-meta px-space-sm py-1 rounded bg-surface-container-high"><span class="text-on-surface-variant">Phase:</span><span class="text-secondary font-headline-sm text-headline-sm uppercase">Round 3 of 10</span></div><div class="flex items-center gap-space-sm"><button class="flex items-center justify-center w-9 h-9 rounded-lg bg-surface-card text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">tune</span></button><button class="flex items-center justify-center w-9 h-9 rounded-lg bg-surface-card text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg lg:p-space-xl flex flex-col gap-space-lg max-w-[1360px] mx-auto w-full">
+<!-- Top Metadata Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-md bg-surface-raised px-space-lg py-space-md rounded-xl shadow-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-surface-highlight text-primary-container">
+<span class="material-symbols-outlined text-[24px]">analytics</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary uppercase tracking-wide">Draft War-Room Scout Telemetry</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Session Protocol: PKMN-8842-X // Stage: Complete Post-Auction</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-1 rounded bg-surface-card font-label-badge text-label-badge text-secondary uppercase tracking-wider">Meta Gen 9 VGC Draft</span>
+<span class="px-space-sm py-1 rounded bg-surface-container-high font-label-badge text-label-badge text-status-live-green uppercase tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-live-green animate-pulse"></span> Complete
+        </span>
+</div>
+</div>
+<!-- Main Dual Cockpit Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: Analytics Cockpit (~520px equivalent at 5 of 12 cols) -->
+<div class="xl:col-span-5 flex flex-col gap-space-md">
+<!-- Assessment Panel -->
+<div class="bg-surface-raised rounded-xl p-space-lg flex flex-col gap-space-lg shadow-lg relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-52 h-52 bg-primary-container/5 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Section Super-Header -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge text-primary-container uppercase tracking-widest">Tactical Diagnostic</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant font-headline-sm">REV 4.2</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary uppercase tracking-tight">
+              WAR-ROOM EVALUATION // POST-DRAFT SCOUT REPORT
+            </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Comprehensive statistical triage calculated against 12 opposing franchise rosters in US-EAST Draft Conference.
+            </p>
+</div>
+<!-- 4 Telemetry Score Rings Grid -->
+<div class="grid grid-cols-2 gap-space-md">
+<!-- Ring 1: Draft Grade -->
+<div class="bg-surface-card rounded-xl p-space-md flex flex-col items-center justify-center text-center gap-space-xs shadow-sm hover:bg-surface-highlight transition-colors relative group">
+<div class="relative w-24 h-24 flex items-center justify-center">
+<svg class="w-24 h-24 transform -rotate-90" viewbox="0 0 96 96">
+<circle class="text-surface-base" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="7"></circle>
+<circle class="text-primary-container transition-all duration-1000" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="15" stroke-linecap="round" stroke-width="7"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-primary-container leading-none">A+</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">94pt</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary uppercase mt-1">Draft Grade</span>
+<span class="font-label-badge text-label-badge text-status-live-green uppercase tracking-wider">Top 4% Global</span>
+</div>
+<!-- Ring 2: Role Coverage -->
+<div class="bg-surface-card rounded-xl p-space-md flex flex-col items-center justify-center text-center gap-space-xs shadow-sm hover:bg-surface-highlight transition-colors relative group">
+<div class="relative w-24 h-24 flex items-center justify-center">
+<svg class="w-24 h-24 transform -rotate-90" viewbox="0 0 96 96">
+<circle class="text-surface-base" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="7"></circle>
+<circle class="text-secondary-fixed-dim transition-all duration-1000" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="30" stroke-linecap="round" stroke-width="7"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-secondary leading-none">88%</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">7/8 roles</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary uppercase mt-1">Role Coverage</span>
+<span class="font-label-badge text-label-badge text-secondary uppercase tracking-wider">Dual Pivot Solid</span>
+</div>
+<!-- Ring 3: Type Coverage -->
+<div class="bg-surface-card rounded-xl p-space-md flex flex-col items-center justify-center text-center gap-space-xs shadow-sm hover:bg-surface-highlight transition-colors relative group">
+<div class="relative w-24 h-24 flex items-center justify-center">
+<svg class="w-24 h-24 transform -rotate-90" viewbox="0 0 96 96">
+<circle class="text-surface-base" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="7"></circle>
+<circle class="text-brand-accent-amber transition-all duration-1000" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="20" stroke-linecap="round" stroke-width="7"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-primary-container leading-none">92%</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">16 Types</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary uppercase mt-1">Type Coverage</span>
+<span class="font-label-badge text-label-badge text-status-live-green uppercase tracking-wider">Stab Supremacy</span>
+</div>
+<!-- Ring 4: Speed Profile -->
+<div class="bg-surface-card rounded-xl p-space-md flex flex-col items-center justify-center text-center gap-space-xs shadow-sm hover:bg-surface-highlight transition-colors relative group">
+<div class="relative w-24 h-24 flex items-center justify-center">
+<svg class="w-24 h-24 transform -rotate-90" viewbox="0 0 96 96">
+<circle class="text-surface-base" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="7"></circle>
+<circle class="text-type-water transition-all duration-1000" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="38" stroke-linecap="round" stroke-width="7"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-primary leading-none">85%</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Avg 101</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary uppercase mt-1">Speed Profile</span>
+<span class="font-label-badge text-label-badge text-secondary uppercase tracking-wider">Mid-Tier Dominance</span>
+</div>
+</div>
+<!-- Tactical Win-Chance Bar -->
+<div class="bg-surface-base rounded-xl p-space-md flex flex-col gap-space-sm shadow-inner">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">query_stats</span>
+<span class="font-headline-sm text-headline-sm text-primary uppercase">ESTIMATE: 68% WIN PROJECTION</span>
+</div>
+<span class="font-label-badge text-label-badge px-2 py-0.5 rounded bg-surface-card text-status-live-green font-headline-sm uppercase">+12% vs Mean</span>
+</div>
+<div class="w-full h-4 bg-surface-raised rounded-full overflow-hidden flex relative p-0.5">
+<div class="h-full bg-primary-container rounded-full relative transition-all duration-700" style="width: 68%;">
+<div class="absolute right-0 top-0 bottom-0 w-2 bg-on-primary rounded-full animate-ping"></div>
+</div>
+<div class="h-full bg-surface-variant/40 rounded-r-full" style="width: 32%;"></div>
+</div>
+<div class="flex items-center justify-between font-label-meta text-label-meta text-on-surface-variant pt-1">
+<span>League Median: 50%</span>
+<span>Projected Seed: #2 Contender</span>
+</div>
+</div>
+<!-- Roster Cap Usage Summary -->
+<div class="flex items-center justify-between bg-surface-card rounded-lg px-space-md py-space-sm">
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant">Auction Budget Consumed</span>
+<span class="font-headline-md text-headline-md text-primary">$186 <span class="text-body-sm text-on-surface-variant font-normal">/ $200 Cap ($14 Banked)</span></span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-meta text-label-meta text-on-surface-variant">Slots Acquired</span>
+<span class="font-headline-md text-headline-md text-secondary">6 <span class="text-body-sm text-on-surface-variant font-normal">/ 6 Roster Max</span></span>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full h-12 rounded-lg bg-primary-container hover:bg-brand-accent-amber text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wider flex items-center justify-center gap-space-sm shadow-md transition-all active:translate-y-0.5 cursor-pointer" type="button">
+<span>CONTINUE TO SQUAD SELECT</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- RIGHT PANEL: Tactical Diagnostics (~640px equivalent at 7 of 12 cols) -->
+<div class="xl:col-span-7 flex flex-col gap-space-lg">
+<!-- 4 Highlight Cards in 2x2 Crisp Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Card 1: Best Steal -->
+<div class="bg-surface-raised rounded-xl p-space-md shadow-md flex flex-col justify-between gap-space-md hover:bg-surface-card transition-all">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-highlight flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-status-live-green text-[22px]">trending_up</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-status-live-green">Best Steal</span>
+<span class="font-headline-md text-headline-md text-primary leading-tight">Rotom-Wash · $14</span>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-surface-base font-label-badge text-label-badge text-status-live-green font-headline-sm uppercase">+38% Val</span>
+</div>
+<div class="flex items-center justify-between bg-surface-base rounded-lg p-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full text-white font-label-badge text-label-badge bg-type-electric">ELECTRIC</span>
+<span class="px-2 py-0.5 rounded-full text-white font-label-badge text-label-badge bg-type-water">WATER</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-label-meta">Projected EV: $22.50</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Acquired 37% below consensus auction market value. Unlocks unmatched VoltTurn pivoting and ground-immunity redundancy.
+            </p>
+</div>
+<!-- Card 2: Biggest Overpay -->
+<div class="bg-surface-raised rounded-xl p-space-md shadow-md flex flex-col justify-between gap-space-md hover:bg-surface-card transition-all">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-highlight flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-status-urgent text-[22px]">trending_down</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-status-urgent">Biggest Overpay</span>
+<span class="font-headline-md text-headline-md text-primary leading-tight">Tyranitar · $58</span>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-surface-base font-label-badge text-label-badge text-status-urgent font-headline-sm uppercase">+28% Infl</span>
+</div>
+<div class="flex items-center justify-between bg-surface-base rounded-lg p-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full text-white font-label-badge text-label-badge bg-type-rock">ROCK</span>
+<span class="px-2 py-0.5 rounded-full text-white font-label-badge text-label-badge bg-type-dark">DARK</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-label-meta">Target: $45.00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Bidding war with Team Rocket forced critical budget squeeze. Must deliver weather control output to justify top-tier capital.
+            </p>
+</div>
+<!-- Card 3: Weakness Alert -->
+<div class="bg-surface-raised rounded-xl p-space-md shadow-md flex flex-col justify-between gap-space-md hover:bg-surface-card transition-all">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-highlight flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-type-ice text-[22px]">ac_unit</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-status-urgent">Weakness Alert</span>
+<span class="font-headline-md text-headline-md text-primary leading-tight">Ice 3x Vulnerability</span>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-type-ice/20 font-label-badge text-label-badge text-type-ice font-headline-sm uppercase">Threat Critical</span>
+</div>
+<div class="flex flex-col gap-1 bg-surface-base rounded-lg p-space-sm">
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Exposed Combatants:</span>
+<div class="flex items-center gap-2 font-headline-sm text-headline-sm text-on-surface">
+<span class="text-type-dragon">Garchomp (4x)</span>
+<span class="text-on-surface-variant">·</span>
+<span class="text-type-grass">Amoonguss (2x)</span>
+<span class="text-on-surface-variant">·</span>
+<span class="text-type-flying">Corviknight (1x)</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Priority target for opposing Chien-Pao and Baxcalibur. Requires defensive Tera or early Rotom pivot setups.
+            </p>
+</div>
+<!-- Card 4: MVP Pick -->
+<div class="bg-surface-raised rounded-xl p-space-md shadow-md flex flex-col justify-between gap-space-md hover:bg-surface-card transition-all">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-highlight flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary-container text-[22px]">military_tech</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-primary-container">MVP Franchise Pick</span>
+<span class="font-headline-md text-headline-md text-primary leading-tight">Garchomp · $52</span>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-surface-base font-label-badge text-label-badge text-primary-container font-headline-sm uppercase">Tier OU Anchor</span>
+</div>
+<div class="flex items-center justify-between bg-surface-base rounded-lg p-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full text-white font-label-badge text-label-badge bg-type-dragon">DRAGON</span>
+<span class="px-2 py-0.5 rounded-full text-white font-label-badge text-label-badge bg-type-ground">GROUND</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary">130 Atk / 102 Spe</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Premier sweeper and Swords Dance win-condition. Outspeeds base-100 benchmark threats and anchors physical offense.
+            </p>
+</div>
+</div>
+<!-- Team Synergy & Elemental Weakness Heatmap Matrix -->
+<div class="bg-surface-raised rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px]">grid_4x4</span>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary uppercase">Team Synergy & Elemental Weakness Heatmap</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">18 Elemental Typing Breakdown Across 6 Drafted Members</span>
+</div>
+</div>
+<!-- Heatmap Legend -->
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded bg-status-urgent/80"></span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase">Weak (2x+)</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded bg-surface-card"></span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase">Neutral</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-3 h-3 rounded bg-status-live-green/80"></span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase">Resist / Imm</span>
+</div>
+</div>
+</div>
+<!-- Heatmap 18-Type Grid Table -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-space-xs pt-space-xs">
+<!-- 1. Normal -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-normal">NOR</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+2</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-3/4 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">1 Imm / 1 Res</span>
+</div>
+<!-- 2. Fire -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-fire">FIR</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+3</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-5/6 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">3 Res / 0 Weak</span>
+</div>
+<!-- 3. Water -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-water">WAT</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+2</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-3/4 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Res / 1 Weak</span>
+</div>
+<!-- 4. Grass -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-grass">GRA</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+1</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-2/3 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Res / 1 Weak</span>
+</div>
+<!-- 5. Electric -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-electric">ELE</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+4</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-full rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Imm / 2 Res</span>
+</div>
+<!-- 6. Ice (Critical Alert) -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-ice">ICE</span>
+<span class="font-label-meta text-label-meta text-status-urgent font-headline-sm">-3</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-urgent w-full rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-status-urgent font-headline-sm">3 Vulnerable</span>
+</div>
+<!-- 7. Fighting -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-fighting">FIG</span>
+<span class="font-label-meta text-label-meta text-status-urgent font-headline-sm">-1</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-urgent w-1/2 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Weak / 1 Res</span>
+</div>
+<!-- 8. Poison -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-poison">POI</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+3</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-5/6 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">1 Imm / 2 Res</span>
+</div>
+<!-- 9. Ground -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-ground">GRO</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+2</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-3/4 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Imm / 1 Weak</span>
+</div>
+<!-- 10. Flying -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-flying">FLY</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+1</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-2/3 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Res / 1 Weak</span>
+</div>
+<!-- 11. Psychic -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-psychic">PSY</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+2</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-3/4 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">1 Imm / 2 Res</span>
+</div>
+<!-- 12. Bug -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-bug">BUG</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+2</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-3/4 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Res / 1 Weak</span>
+</div>
+<!-- 13. Rock -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-rock">ROC</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+2</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-3/4 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">3 Res / 1 Weak</span>
+</div>
+<!-- 14. Ghost -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-ghost">GHO</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+1</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-2/3 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Res / 1 Weak</span>
+</div>
+<!-- 15. Dragon -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-dragon">DRA</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant font-headline-sm">0</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-1/2 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">1 Weak / 1 Res</span>
+</div>
+<!-- 16. Dark -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-dark">DAR</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+2</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-3/4 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Res / 0 Weak</span>
+</div>
+<!-- 17. Steel -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-steel">STE</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-headline-sm">+2</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-live-green w-3/4 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Res / 0 Weak</span>
+</div>
+<!-- 18. Fairy -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded text-[10px] text-white font-label-badge bg-type-fairy">FAI</span>
+<span class="font-label-meta text-label-meta text-status-urgent font-headline-sm">-1</span>
+</div>
+<div class="w-full h-1.5 bg-surface-card rounded-full overflow-hidden">
+<div class="h-full bg-status-urgent w-1/2 rounded-full"></div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant">2 Weak / 1 Res</span>
+</div>
+</div>
+<!-- Bottom Heatmap Insight -->
+<div class="flex items-center justify-between bg-surface-base rounded-lg px-space-md py-space-sm">
+<span class="font-label-meta text-label-meta text-on-surface-variant">
+              Net Coverage Rating: <span class="text-status-live-green font-headline-sm">+22 Overall Resistance Surplus</span>
+</span>
+<span class="font-label-badge text-label-badge text-secondary uppercase tracking-wider">
+              Optimal Lead: Rotom-Wash / Amoonguss
+            </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for button press and telemetry hover logging
+  document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.classList.add('scale-[0.98]');
+      setTimeout(() => this.classList.remove('scale-[0.98]'), 150);
+    });
+  });
+</script></main></div></body></html>

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>Pokémon Draft Arena - Bot Picker Terminal</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-base": "#080e1b",
+            "background": "#080e1b",
+            "surface": "#0d1320",
+            "surface-dim": "#0d1320",
+            "surface-card": "#161b29",
+            "surface-raised": "#111827",
+            "surface-highlight": "#1e293b",
+            "surface-container-low": "#0f1624",
+            "surface-container": "#161b29",
+            "surface-variant": "#222f46",
+            "border-subtle": "#1e293b",
+            "border-strong": "#2a3b5c",
+            "primary": "#fffcff",
+            "primary-container": "#ffe033",
+            "on-primary": "#211b00",
+            "on-primary-container": "#211b00",
+            "brand-accent-amber": "#ffd000",
+            "secondary": "#38bdf8",
+            "secondary-container": "#0284c7",
+            "on-surface": "#f1f5f9",
+            "on-surface-variant": "#94a3b8",
+            "status-live-green": "#10b981",
+            "status-urgent": "#ef4444",
+            "type-fire": "#f97316",
+            "type-water": "#38bdf8",
+            "type-grass": "#22c55e",
+            "type-electric": "#eab308",
+            "type-psychic": "#ec4899",
+            "type-dragon": "#6366f1",
+            "type-steel": "#94a3b8",
+            "type-dark": "#64748b"
+          },
+          fontFamily: {
+            "headline": ["'Space Grotesk'", "sans-serif"],
+            "body": ["'Geist'", "sans-serif"],
+            "mono-stat": ["'Space Grotesk'", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #080e1b;
+        color: #f1f5f9;
+        font-family: 'Geist', sans-serif;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #080e1b;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #2a3b5c;
+      }
+    }
+    .hud-glow {
+      box-shadow: 0 0 15px rgba(255, 224, 51, 0.15);
+    }
+    .hud-border-glow {
+      border: 1px solid rgba(255, 224, 51, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-surface-base text-on-surface antialiased selection:bg-primary-container selection:text-on-primary">
+<!-- Fixed Top Header -->
+<header class="fixed top-0 left-0 right-0 h-16 bg-[#0b1220]/95 backdrop-blur-md border-b border-border-subtle z-50 flex items-center justify-between px-5">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded bg-primary-container flex items-center justify-center shadow-[0_0_14px_rgba(255,224,51,0.4)]">
+<span class="material-symbols-outlined text-on-primary font-bold text-[22px]">sports_esports</span>
+</div>
+<div class="flex flex-col leading-tight">
+<span class="font-headline font-bold text-white text-[15px] tracking-wider uppercase">POKÉMON DRAFT ARENA</span>
+<span class="font-mono text-[10px] text-primary-container tracking-widest uppercase font-semibold">TACTICAL SPEC 1.4 // WAR-ROOM</span>
+</div>
+</div>
+<div class="h-6 w-px bg-border-subtle hidden md:block"></div>
+<div class="hidden md:flex items-center gap-2 bg-surface-card px-3 py-1 rounded border border-border-subtle">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant tracking-wider">ROOM:</span>
+<span class="text-[12px] font-mono font-bold text-secondary tracking-widest">PKM-7704</span>
+<button class="text-on-surface-variant hover:text-white transition-colors ml-1" title="Copy Room ID">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-surface-card px-3 py-1 rounded border border-border-subtle">
+<span class="w-2 h-2 rounded-full bg-status-live-green animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.9)]"></span>
+<span class="text-[11px] font-mono text-status-live-green font-bold tracking-wider uppercase">LINKED: 18MS</span>
+</div>
+<div class="flex items-center gap-2.5 pl-2 border-l border-border-subtle">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-semibold text-white leading-none">WAR_COMMANDER</p>
+<p class="text-[10px] font-mono text-primary-container leading-none mt-1">SUPER_ADMIN</p>
+</div>
+<div class="w-9 h-9 rounded bg-surface-card border border-border-strong flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Persistent Left Sidebar -->
+<aside class="fixed left-0 top-16 bottom-0 w-64 bg-[#0a0f1d] border-r border-border-subtle z-40 flex flex-col justify-between">
+<div class="p-4 flex flex-col gap-5">
+<div class="flex items-center justify-between px-2 pt-1 border-b border-border-subtle/60 pb-3">
+<span class="text-[11px] font-mono uppercase tracking-widest text-on-surface-variant font-bold">WAR-ROOM MODULES</span>
+<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-primary-container/10 text-primary-container border border-primary-container/30">BETA v2.2</span>
+</div>
+<nav class="flex flex-col gap-1.5">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-highlight transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+<span class="font-headline text-[13px] font-medium uppercase tracking-wide">Arena Hub</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-highlight transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">settings_input_component</span>
+<span class="font-headline text-[13px] font-medium uppercase tracking-wide">Draft Setup</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-lg bg-primary-container text-on-primary font-bold shadow-[0_0_16px_rgba(255,224,51,0.25)]" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] font-bold">smart_toy</span>
+<span class="font-headline text-[13px] uppercase tracking-wide">Bot Draft Terminal</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-on-primary"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-highlight transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+<span class="font-headline text-[13px] font-medium uppercase tracking-wide">Host Command Lobby</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-highlight transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="font-headline text-[13px] font-medium uppercase tracking-wide">Guest Bidding Lobby</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-highlight transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span class="font-headline text-[13px] font-medium uppercase tracking-wide">Tier Rules Codex</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Bottom Telemetry -->
+<div class="p-4 border-t border-border-subtle bg-surface-base">
+<div class="bg-surface-card p-3 rounded-lg border border-border-subtle flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">ARENA COCKPIT</span>
+<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface-highlight text-secondary font-bold border border-secondary/30">OU META</span>
+</div>
+<div class="flex items-center justify-between text-xs pt-1 border-t border-border-subtle/50">
+<span class="text-on-surface-variant font-medium">AUCTION TICKS:</span>
+<span class="font-mono font-bold text-primary-container">1200 PTS</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface-variant font-medium">SYS STATUS:</span>
+<span class="text-status-live-green font-mono font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-live-green"></span> ONLINE
+          </span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Chassis -->
+<div class="pl-64">
+<main class="relative pt-16 min-h-screen bg-surface-base pb-10">
+<div class="max-w-[1360px] mx-auto p-6 flex flex-col gap-6">
+<!-- Top Telemetry Subheader Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 bg-[#0f172a] border border-border-strong px-5 py-3 rounded-xl shadow-lg">
+<div class="flex items-center gap-4 flex-wrap">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse shadow-[0_0_10px_rgba(255,224,51,0.8)]"></span>
+<span class="font-headline font-bold text-white text-sm tracking-wider uppercase">AI MATRIX PROTOCOL</span>
+</div>
+<span class="text-border-strong font-mono">/</span>
+<div class="flex items-center gap-2 bg-[#080e1b] px-3 py-1 rounded border border-border-subtle">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">ENGINE:</span>
+<span class="text-[12px] font-mono font-bold text-secondary">NEURAL-OU-V4.2</span>
+</div>
+<div class="hidden sm:flex items-center gap-2 bg-[#080e1b] px-3 py-1 rounded border border-border-subtle">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">SEED:</span>
+<span class="text-[12px] font-mono font-semibold text-primary-container">#892A-44C</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">memory</span>
+<span class="text-[11px] font-mono text-on-surface-variant uppercase">COMPUTE LOAD:</span>
+<span class="text-[12px] font-mono font-bold text-status-live-green">14.8 GFLOPS</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">speed</span>
+<span class="text-[11px] font-mono text-on-surface-variant uppercase">LATENCY TARGET:</span>
+<span class="text-[12px] font-mono font-bold text-primary-container">0.02ms</span>
+</div>
+</div>
+</div>
+<!-- Main Tactical Grid: Left 8-col / Right 4-col -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+<!-- LEFT / CENTER COLUMN: BOT SELECTION DECK (8 cols) -->
+<div class="xl:col-span-8 flex flex-col gap-5">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-container text-[24px]">smart_toy</span>
+<h1 class="font-headline font-bold text-white text-lg tracking-wide uppercase">DESIGNATE OPPONENT PERSONAS</h1>
+</div>
+<span class="text-[11px] font-mono uppercase tracking-widest text-secondary bg-secondary/10 border border-secondary/30 px-2.5 py-1 rounded font-bold">
+                MULTI-AGENT SEEDED
+              </span>
+</div>
+<!-- 2x2 Bot Persona Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- CARD 1: AGGRESSIVE -->
+<div class="relative bg-surface-card border border-border-strong rounded-xl p-5 flex flex-col justify-between shadow-xl transition-all duration-200 hover:border-status-urgent/80 hover:bg-[#192236] cursor-pointer group" onclick="toggleBotSlot(this, 'AGGRESSIVE')">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-base border border-status-urgent/40 flex items-center justify-center text-status-urgent shadow-inner group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-white text-base tracking-wide uppercase">AGGRESSIVE</span>
+<span class="w-2 h-2 rounded-full bg-status-urgent shadow-[0_0_8px_rgba(239,68,68,0.9)]"></span>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">MODEL: BERSERKER-MK3</span>
+</div>
+</div>
+<span class="bot-badge text-[11px] font-mono font-bold uppercase tracking-wider text-on-primary bg-primary-container px-2.5 py-1 rounded shadow-[0_0_10px_rgba(255,224,51,0.35)]">
+                    DEPLOYED
+                  </span>
+</div>
+<!-- Signature Core Badge Box -->
+<div class="my-4 bg-surface-base/80 border border-border-subtle rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">SIGNATURE CORE</span>
+<span class="font-headline font-bold text-type-fire text-sm uppercase mt-0.5">Gouging Fire / Chi-Yu</span>
+<span class="text-xs text-slate-400 mt-0.5">Overbids S-tier sweepers aggressively</span>
+</div>
+<div class="w-11 h-11 rounded-lg bg-surface-card border border-type-fire/30 flex items-center justify-center text-type-fire">
+<span class="material-symbols-outlined text-[24px]">bolt</span>
+</div>
+</div>
+<!-- Trait Telemetry Bars -->
+<div class="flex flex-col gap-2.5 bg-surface-base/90 border border-border-subtle p-3 rounded-lg">
+<!-- Bidding Pace -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">BIDDING PACE</span>
+<span class="text-[11px] font-mono font-bold text-status-urgent">94% FAST</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-status-urgent h-full rounded-full shadow-[0_0_8px_rgba(239,68,68,0.8)]" style="width: 94%;"></div>
+</div>
+</div>
+<!-- Risk Tolerance -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">RISK TOLERANCE</span>
+<span class="text-[11px] font-mono font-bold text-status-urgent">88% HIGH</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-status-urgent h-full rounded-full shadow-[0_0_8px_rgba(239,68,68,0.8)]" style="width: 88%;"></div>
+</div>
+</div>
+<!-- Type Focus -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">TYPE FOCUS</span>
+<span class="text-[11px] font-mono font-bold text-type-fire">HYPER-OFFENSE</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-type-fire h-full rounded-full shadow-[0_0_8px_rgba(249,115,22,0.8)]" style="width: 82%;"></div>
+</div>
+</div>
+</div>
+<!-- Footer Stats -->
+<div class="mt-4 pt-2 border-t border-border-subtle flex items-center justify-between">
+<span class="text-[11px] font-mono text-on-surface-variant uppercase">COIN ALLOC: FIRST 3 RDS</span>
+<span class="text-xs font-mono font-bold text-primary-container">650 / 1200 PTS</span>
+</div>
+</div>
+<!-- CARD 2: STRATEGIST -->
+<div class="relative bg-surface-card border border-border-strong rounded-xl p-5 flex flex-col justify-between shadow-xl transition-all duration-200 hover:border-secondary/80 hover:bg-[#192236] cursor-pointer group" onclick="toggleBotSlot(this, 'STRATEGIST')">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-base border border-secondary/40 flex items-center justify-center text-secondary shadow-inner group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-white text-base tracking-wide uppercase">STRATEGIST</span>
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(56,189,248,0.9)]"></span>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">MODEL: DEEP-ALGO-V7</span>
+</div>
+</div>
+<span class="bot-badge text-[11px] font-mono font-bold uppercase tracking-wider text-on-primary bg-primary-container px-2.5 py-1 rounded shadow-[0_0_10px_rgba(255,224,51,0.35)]">
+                    DEPLOYED
+                  </span>
+</div>
+<!-- Signature Core -->
+<div class="my-4 bg-surface-base/80 border border-border-subtle rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">SIGNATURE CORE</span>
+<span class="font-headline font-bold text-secondary text-sm uppercase mt-0.5">Ting-Lu / Gliscor</span>
+<span class="text-xs text-slate-400 mt-0.5">Balances hazard stack &amp; defensive pivots</span>
+</div>
+<div class="w-11 h-11 rounded-lg bg-surface-card border border-secondary/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[24px]">shield</span>
+</div>
+</div>
+<!-- Trait Telemetry Bars -->
+<div class="flex flex-col gap-2.5 bg-surface-base/90 border border-border-subtle p-3 rounded-lg">
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">BIDDING PACE</span>
+<span class="text-[11px] font-mono font-bold text-secondary">42% PATIENT</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-secondary h-full rounded-full shadow-[0_0_8px_rgba(56,189,248,0.8)]" style="width: 42%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">RISK TOLERANCE</span>
+<span class="text-[11px] font-mono font-bold text-secondary">25% CONSERVATIVE</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-secondary h-full rounded-full shadow-[0_0_8px_rgba(56,189,248,0.8)]" style="width: 25%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">TYPE FOCUS</span>
+<span class="text-[11px] font-mono font-bold text-type-steel">STEEL / WATER / FAIRY</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-type-steel h-full rounded-full shadow-[0_0_8px_rgba(148,163,184,0.8)]" style="width: 88%;"></div>
+</div>
+</div>
+</div>
+<!-- Footer Stats -->
+<div class="mt-4 pt-2 border-t border-border-subtle flex items-center justify-between">
+<span class="text-[11px] font-mono text-on-surface-variant uppercase">COIN ALLOC: BALANCED SPREAD</span>
+<span class="text-xs font-mono font-bold text-primary-container">410 / 1200 PTS</span>
+</div>
+</div>
+<!-- CARD 3: CHAOS -->
+<div class="relative bg-surface-card border border-border-strong rounded-xl p-5 flex flex-col justify-between shadow-xl transition-all duration-200 hover:border-type-psychic/80 hover:bg-[#192236] cursor-pointer group" onclick="toggleBotSlot(this, 'CHAOS')">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-base border border-type-psychic/40 flex items-center justify-center text-type-psychic shadow-inner group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">casino</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-white text-base tracking-wide uppercase">CHAOS</span>
+<span class="w-2 h-2 rounded-full bg-type-psychic shadow-[0_0_8px_rgba(236,72,153,0.9)]"></span>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">MODEL: ENTROPY-RN-X</span>
+</div>
+</div>
+<span class="bot-badge text-[11px] font-mono font-bold uppercase tracking-wider text-on-primary bg-primary-container px-2.5 py-1 rounded shadow-[0_0_10px_rgba(255,224,51,0.35)]">
+                    DEPLOYED
+                  </span>
+</div>
+<!-- Signature Core -->
+<div class="my-4 bg-surface-base/80 border border-border-subtle rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">SIGNATURE CORE</span>
+<span class="font-headline font-bold text-type-psychic text-sm uppercase mt-0.5">Iron Valiant / Ogerpon-C</span>
+<span class="text-xs text-slate-400 mt-0.5">Wildcard unpredictable price inflation</span>
+</div>
+<div class="w-11 h-11 rounded-lg bg-surface-card border border-type-psychic/30 flex items-center justify-center text-type-psychic">
+<span class="material-symbols-outlined text-[24px]">flare</span>
+</div>
+</div>
+<!-- Trait Telemetry Bars -->
+<div class="flex flex-col gap-2.5 bg-surface-base/90 border border-border-subtle p-3 rounded-lg">
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">BIDDING PACE</span>
+<span class="text-[11px] font-mono font-bold text-type-psychic">76% ERRATIC</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-type-psychic h-full rounded-full shadow-[0_0_8px_rgba(236,72,153,0.8)]" style="width: 76%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">RISK TOLERANCE</span>
+<span class="text-[11px] font-mono font-bold text-type-psychic">98% VOLATILE</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-type-psychic h-full rounded-full shadow-[0_0_8px_rgba(236,72,153,0.8)]" style="width: 98%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">TYPE FOCUS</span>
+<span class="text-[11px] font-mono font-bold text-type-dragon">HYBRID RAIN / SUN MIX</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-type-dragon h-full rounded-full shadow-[0_0_8px_rgba(99,102,241,0.8)]" style="width: 68%;"></div>
+</div>
+</div>
+</div>
+<!-- Footer Stats -->
+<div class="mt-4 pt-2 border-t border-border-subtle flex items-center justify-between">
+<span class="text-[11px] font-mono text-on-surface-variant uppercase">COIN ALLOC: RANDOM SPIKES</span>
+<span class="text-xs font-mono font-bold text-primary-container">520 / 1200 PTS</span>
+</div>
+</div>
+<!-- CARD 4: SNIPER (Standby) -->
+<div class="relative bg-surface-card border border-border-strong rounded-xl p-5 flex flex-col justify-between shadow-xl transition-all duration-200 hover:border-primary-container/60 hover:bg-[#192236] cursor-pointer group opacity-85" onclick="toggleBotSlot(this, 'SNIPER')">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-base border border-border-subtle flex items-center justify-center text-primary-container shadow-inner group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">radar</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-white text-base tracking-wide uppercase">SNIPER</span>
+<span class="w-2 h-2 rounded-full bg-slate-500"></span>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">MODEL: ZERO-CLOCK-9</span>
+</div>
+</div>
+<span class="bot-badge text-[11px] font-mono font-bold uppercase tracking-wider text-slate-300 bg-surface-highlight border border-border-subtle px-2.5 py-1 rounded">
+                    STANDBY
+                  </span>
+</div>
+<!-- Signature Core -->
+<div class="my-4 bg-surface-base/80 border border-border-subtle rounded-lg p-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">SIGNATURE CORE</span>
+<span class="font-headline font-bold text-primary-container text-sm uppercase mt-0.5">Kingambit / Dragapult</span>
+<span class="text-xs text-slate-400 mt-0.5">Submits winning bid at 00:01s threshold</span>
+</div>
+<div class="w-11 h-11 rounded-lg bg-surface-card border border-primary-container/30 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[24px]">timer</span>
+</div>
+</div>
+<!-- Trait Telemetry Bars -->
+<div class="flex flex-col gap-2.5 bg-surface-base/90 border border-border-subtle p-3 rounded-lg">
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">BIDDING PACE</span>
+<span class="text-[11px] font-mono font-bold text-primary-container">12% LAST SECOND</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-primary-container h-full rounded-full shadow-[0_0_8px_rgba(255,224,51,0.8)]" style="width: 12%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">RISK TOLERANCE</span>
+<span class="text-[11px] font-mono font-bold text-primary-container">55% CALCULATED</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-primary-container h-full rounded-full shadow-[0_0_8px_rgba(255,224,51,0.8)]" style="width: 55%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant">TYPE FOCUS</span>
+<span class="text-[11px] font-mono font-bold text-type-dark">HIGH SPEED / PRIORITY</span>
+</div>
+<div class="w-full bg-[#111827] h-2 rounded-full overflow-hidden border border-border-subtle">
+<div class="bg-yellow-400 h-full rounded-full shadow-[0_0_8px_rgba(250,204,21,0.8)]" style="width: 78%;"></div>
+</div>
+</div>
+</div>
+<!-- Footer Stats -->
+<div class="mt-4 pt-2 border-t border-border-subtle flex items-center justify-between">
+<span class="text-[11px] font-mono text-on-surface-variant uppercase">COIN ALLOC: ENDGAME SAVE</span>
+<span class="text-xs font-mono font-bold text-primary-container">390 / 1200 PTS</span>
+</div>
+</div>
+</div>
+<!-- Simulation Rules Strip -->
+<div class="bg-surface-card border border-border-strong rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded bg-[#0a0f1d] border border-border-subtle flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-white text-xs tracking-wider uppercase">SIMULATION RULES ACTIVE</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Gen 9 SV OverUsed draft regulations with Tera-Captain &amp; Auction bans enforced.</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-mono px-2.5 py-1 rounded bg-[#080e1b] border border-border-subtle text-status-live-green font-bold">RNG VERIFIED</span>
+<span class="text-[10px] font-mono px-2.5 py-1 rounded bg-[#080e1b] border border-border-subtle text-secondary font-bold">11 ROUND DRAFT</span>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: SIMULATION POD CONFIGURATION PANEL (4 cols) -->
+<div class="xl:col-span-4 flex flex-col gap-5">
+<div class="bg-surface-card border border-border-strong rounded-xl p-5 flex flex-col gap-5 shadow-2xl relative overflow-hidden">
+<!-- Top accent highlight line -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary-container to-transparent"></div>
+<!-- Header -->
+<div class="flex flex-col gap-1 border-b border-border-subtle pb-4">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-mono uppercase tracking-widest text-primary-container font-bold">MODULE 03 // RUNTIME</span>
+<span class="flex items-center gap-1.5 text-[10px] font-mono text-status-live-green uppercase font-semibold">
+<span class="w-2 h-2 rounded-full bg-status-live-green animate-pulse"></span> READY
+                  </span>
+</div>
+<h2 class="font-headline font-bold text-white text-base tracking-wide uppercase mt-1">SIMULATION POD CONFIGURATION</h2>
+<p class="text-xs text-on-surface-variant">Calibrate active agent slots and room loadout</p>
+</div>
+<!-- Number of Bots Stepper Box -->
+<div class="bg-surface-base border border-border-subtle rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant font-bold tracking-wider">NUMBER OF BOTS</span>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-highlight text-secondary font-bold border border-secondary/20">MAX 7 SLOTS</span>
+</div>
+<div class="flex items-center justify-between gap-4 py-2">
+<!-- Minus Button -->
+<button class="w-12 h-12 rounded-lg bg-surface-card hover:bg-surface-highlight border border-border-strong active:scale-95 flex items-center justify-center text-white transition-all shadow-md" id="btn-bot-decrement">
+<span class="material-symbols-outlined text-[22px]">remove</span>
+</button>
+<!-- Digital Display Readout -->
+<div class="flex flex-col items-center justify-center flex-1">
+<div class="flex items-baseline gap-1.5">
+<span class="font-mono-stat font-bold text-4xl text-primary-container tracking-tight" id="bot-count-val">3</span>
+<span class="font-headline text-lg text-on-surface-variant font-semibold">/ 7</span>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest mt-0.5">ACTIVE AGENTS</span>
+</div>
+<!-- Plus Button -->
+<button class="w-12 h-12 rounded-lg bg-surface-card hover:bg-surface-highlight border border-border-strong active:scale-95 flex items-center justify-center text-white transition-all shadow-md" id="btn-bot-increment">
+<span class="material-symbols-outlined text-[22px]">add</span>
+</button>
+</div>
+<!-- Slot Gauge Indicators -->
+<div class="grid grid-cols-7 gap-1.5 pt-1" id="slot-indicators">
+<div class="h-2 rounded bg-primary-container shadow-[0_0_8px_rgba(255,224,51,0.6)]"></div>
+<div class="h-2 rounded bg-primary-container shadow-[0_0_8px_rgba(255,224,51,0.6)]"></div>
+<div class="h-2 rounded bg-primary-container shadow-[0_0_8px_rgba(255,224,51,0.6)]"></div>
+<div class="h-2 rounded bg-surface-highlight border border-border-subtle"></div>
+<div class="h-2 rounded bg-surface-highlight border border-border-subtle"></div>
+<div class="h-2 rounded bg-surface-highlight border border-border-subtle"></div>
+<div class="h-2 rounded bg-surface-highlight border border-border-subtle"></div>
+</div>
+</div>
+<!-- Opponent AI Loadout Summary -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-headline font-bold text-white text-xs uppercase tracking-wider">OPPONENT AI LOADOUT SUMMARY</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">analytics</span>
+</div>
+<!-- Projected Draft Pace -->
+<div class="bg-surface-base border border-border-subtle rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-card border border-border-subtle flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">speed</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase">PROJECTED DRAFT PACE</span>
+<span class="text-xs font-semibold text-white">AGGRESSIVE / FAST</span>
+</div>
+</div>
+<span class="font-mono text-xs font-bold text-primary-container">~14 MIN</span>
+</div>
+<!-- Meta Coverage Index -->
+<div class="bg-surface-base border border-border-subtle rounded-lg p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase">META COVERAGE INDEX</span>
+<span class="font-mono text-xs font-bold text-secondary">87.4%</span>
+</div>
+<!-- Type Spread Multi-bar -->
+<div class="flex gap-1 h-1.5 w-full rounded overflow-hidden">
+<div class="h-full bg-type-fire flex-1" title="Fire"></div>
+<div class="h-full bg-type-water flex-1" title="Water"></div>
+<div class="h-full bg-type-grass flex-1" title="Grass"></div>
+<div class="h-full bg-type-electric flex-1" title="Electric"></div>
+<div class="h-full bg-type-dragon flex-1" title="Dragon"></div>
+<div class="h-full bg-type-steel flex-1" title="Steel"></div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-border-subtle/50 text-[10px] font-mono">
+<span class="text-on-surface-variant uppercase">OU TIER COMPLIANCE</span>
+<span class="text-status-live-green font-bold uppercase tracking-wider">OPTIMIZED</span>
+</div>
+</div>
+<!-- Loaded Agents Preview List -->
+<div class="bg-surface-base border border-border-subtle rounded-lg p-3 flex flex-col gap-2">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider">LOADED AGENTS PREVIEW</span>
+<div class="flex flex-col gap-1.5" id="loaded-agents-list">
+<div class="flex items-center justify-between bg-surface-card px-2.5 py-1.5 rounded border border-border-subtle">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-urgent"></span>
+<span class="font-headline text-xs font-semibold text-white">SLOT 1: AGGRESSIVE</span>
+</div>
+<span class="text-[10px] font-mono font-bold text-status-urgent">FAST PACE</span>
+</div>
+<div class="flex items-center justify-between bg-surface-card px-2.5 py-1.5 rounded border border-border-subtle">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-headline text-xs font-semibold text-white">SLOT 2: STRATEGIST</span>
+</div>
+<span class="text-[10px] font-mono font-bold text-secondary">CONSERVATIVE</span>
+</div>
+<div class="flex items-center justify-between bg-surface-card px-2.5 py-1.5 rounded border border-border-subtle">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-type-psychic"></span>
+<span class="font-headline text-xs font-semibold text-white">SLOT 3: CHAOS</span>
+</div>
+<span class="text-[10px] font-mono font-bold text-type-psychic">VOLATILE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Start Draft CTA Button -->
+<div class="flex flex-col gap-2 pt-1">
+<button class="w-full h-14 rounded-xl bg-primary-container hover:bg-brand-accent-amber active:scale-[0.98] text-on-primary font-headline font-bold text-base tracking-widest uppercase flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(255,224,51,0.4)] transition-all" id="start-draft-trigger">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>START DRAFT</span>
+</button>
+<div class="flex items-center justify-between px-1 text-[11px] font-mono">
+<span class="text-on-surface-variant uppercase">ESTIMATED FIRST PICK:</span>
+<span class="font-bold text-primary-container">T-00:03 SEC</span>
+</div>
+</div>
+</div>
+<!-- Tactical Draft Logic Note Card -->
+<div class="bg-surface-card border border-border-strong rounded-xl p-4 flex items-center gap-3.5 shadow-lg">
+<div class="w-10 h-10 rounded-lg bg-[#0a0f1d] border border-secondary/30 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[22px]">info</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-white text-xs tracking-wider uppercase">TACTICAL DRAFT LOGIC</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Each bot dynamically calculates real-time tier margins and adjusts bid aggression using remaining budget.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Interactive Logic -->
+<script>
+    let botCount = 3;
+    const maxBots = 7;
+    const minBots = 1;
+
+    const countDisplay = document.getElementById('bot-count-val');
+    const btnDec = document.getElementById('btn-bot-decrement');
+    const btnInc = document.getElementById('btn-bot-increment');
+    const slotIndicators = document.getElementById('slot-indicators');
+
+    function renderSlots() {
+      if (!countDisplay || !slotIndicators) return;
+      countDisplay.textContent = botCount;
+
+      const bars = slotIndicators.children;
+      for (let i = 0; i < bars.length; i++) {
+        if (i < botCount) {
+          bars[i].className = 'h-2 rounded bg-primary-container shadow-[0_0_8px_rgba(255,224,51,0.6)]';
+        } else {
+          bars[i].className = 'h-2 rounded bg-surface-highlight border border-border-subtle';
+        }
+      }
+    }
+
+    if (btnDec) {
+      btnDec.addEventListener('click', () => {
+        if (botCount > minBots) {
+          botCount--;
+          renderSlots();
+        }
+      });
+    }
+
+    if (btnInc) {
+      btnInc.addEventListener('click', () => {
+        if (botCount < maxBots) {
+          botCount++;
+          renderSlots();
+        }
+      });
+    }
+
+    window.toggleBotSlot = function(cardElem, personaName) {
+      const badge = cardElem.querySelector('.bot-badge');
+      const isDeployed = badge.textContent.trim() === 'DEPLOYED';
+
+      if (isDeployed) {
+        badge.textContent = 'STANDBY';
+        badge.className = 'bot-badge text-[11px] font-mono font-bold uppercase tracking-wider text-slate-300 bg-surface-highlight border border-border-subtle px-2.5 py-1 rounded';
+        cardElem.classList.add('opacity-85');
+      } else {
+        badge.textContent = 'DEPLOYED';
+        badge.className = 'bot-badge text-[11px] font-mono font-bold uppercase tracking-wider text-on-primary bg-primary-container px-2.5 py-1 rounded shadow-[0_0_10px_rgba(255,224,51,0.35)]';
+        cardElem.classList.remove('opacity-85');
+      }
+    };
+
+    const startBtn = document.getElementById('start-draft-trigger');
+    if (startBtn) {
+      startBtn.addEventListener('click', () => {
+        startBtn.classList.add('scale-95');
+        setTimeout(() => {
+          startBtn.classList.remove('scale-95');
+        }, 150);
+      });
+    }
+  </script>
+</body></html>

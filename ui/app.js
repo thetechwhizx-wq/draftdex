@@ -997,8 +997,9 @@ export class DraftDexApp {
       return;
     }
 
-    // Check if lot index reset to 0 (meaning a set break occurred!)
-    if (this.matchState.currentLotIndex === 0 && this.matchState.currentSetIndex > 0) {
+    // Check if lot index reset to 0 (meaning a set break occurred between regular sets!)
+    const isAccelerated = this.matchState.status === 'accelerated_round' || !!this.matchState.acceleratedSet;
+    if (this.matchState.currentLotIndex === 0 && this.matchState.currentSetIndex > 0 && !isAccelerated) {
       this.matchState.status = 'set_break';
       this.persistState();
       if (this.p2pSession) {
@@ -1053,7 +1054,7 @@ export class DraftDexApp {
     if (btnContinue) {
       if (this.isHost) {
         btnContinue.addEventListener('click', () => {
-          this.matchState.status = 'in_progress';
+          this.matchState.status = this.matchState.acceleratedSet ? 'accelerated_round' : 'in_progress';
           this.persistState();
           if (this.p2pSession) {
             this.p2pSession.updateMatchState(this.matchState);

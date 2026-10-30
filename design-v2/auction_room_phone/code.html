@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0d1320;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#161b29", "on-primary-container": "#726300", "on-secondary-container": "#00686f", "on-secondary-fixed": "#002022", "on-primary-fixed": "#211b00", "inverse-surface": "#dde2f5", "background": "#0d1320", "tertiary": "#fffcff", "surface-container-lowest": "#080e1b", "type-dark": "#50413F", "surface": "#0d1320", "surface-card": "#162238", "tertiary-fixed-dim": "#ffb3ad", "on-tertiary": "#68000a", "surface-variant": "#2f3543", "outline": "#979179", "type-normal": "#9FA19F", "surface-raised": "#111A2E", "secondary": "#d3fbff", "type-psychic": "#EF4179", "surface-base": "#0B111E", "type-ghost": "#704170", "on-tertiary-container": "#c02028", "type-bug": "#91A119", "surface-highlight": "#1E2D4A", "on-tertiary-fixed-variant": "#930013", "secondary-fixed-dim": "#00dbe9", "on-secondary-fixed-variant": "#004f54", "tertiary-fixed": "#ffdad7", "on-tertiary-fixed": "#410004", "primary": "#fffcff", "type-fighting": "#FF8000", "error": "#ffb4ab", "on-error-container": "#ffdad6", "brand-accent-amber": "#FFD000", "type-grass": "#3FA129", "secondary-container": "#00eefc", "primary-fixed": "#ffe24c", "inverse-on-surface": "#2a303f", "error-container": "#93000a", "type-poison": "#8F41CB", "outline-variant": "#4c4733", "on-error": "#690005", "tertiary-container": "#ffd7d4", "on-background": "#dde2f5", "on-primary": "#393000", "border-strong": "#354E7A", "on-surface-variant": "#cec6ac", "type-water": "#2980EF", "status-urgent": "#EF4444", "surface-container-highest": "#2f3543", "type-rock": "#AFA981", "type-flying": "#81B9EF", "surface-dim": "#0d1320", "secondary-fixed": "#7df4ff", "type-dragon": "#5060E1", "type-ground": "#915121", "surface-bright": "#333948", "primary-container": "#ffe033", "inverse-primary": "#6d5e00", "primary-fixed-dim": "#e3c60c", "type-fairy": "#EF70EF", "on-primary-fixed-variant": "#524600", "type-ice": "#3DCEF3", "type-electric": "#FAC000", "surface-container-high": "#242a38", "type-fire": "#E62829", "surface-tint": "#e3c60c", "type-steel": "#60A1B8", "status-live-green": "#10B981", "on-surface": "#dde2f5", "border-subtle": "#223555", "surface-container": "#1a1f2d", "on-secondary": "#00363a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xl": "3rem", "margin": "1rem", "gutter-tablet": "1.25rem", "gutter-desktop": "1.5rem", "space-xs": "0.25rem", "space-md": "1rem", "margin-tablet": "1.5rem", "gutter": "1rem", "space-sm": "0.5rem", "margin-desktop": "2.5rem", "space-lg": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "headline-xl": ["Space Grotesk"], "label-numeric-stat": ["Space Grotesk"], "display-hero": ["Space Grotesk"], "body-md": ["Geist"], "display-hero-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "body-lg": ["Geist"], "headline-md": ["Space Grotesk"], "label-badge": ["Geist"], "headline-sm": ["Space Grotesk"], "headline-xl-mobile": ["Space Grotesk"], "label-meta": ["Geist"], "body-sm": ["Geist"] }, "fontSize": { "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-numeric-stat": ["18px", { "lineHeight": "22px", "letterSpacing": "0.05em", "fontWeight": "700" }], "display-hero": ["56px", { "lineHeight": "60px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "body-md": ["15px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "display-hero-mobile": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }], "label-badge": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "label-meta": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><button aria-label="Back to previous screen" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface hover:text-primary-container transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[20px]">arrow_back</span></button><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-live-green opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-status-live-green"></span></span><span class="font-label-badge text-label-badge text-status-live-green uppercase tracking-wider">LIVE ARENA</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface truncate uppercase tracking-tight">Auction Room</h1></div></div><div class="flex items-center gap-space-sm shrink-0"><div class="flex items-center gap-space-xs bg-surface-raised px-space-sm py-space-xs rounded-lg"><span class="material-symbols-outlined text-primary-container text-[14px]">vpn_key</span><span class="font-label-meta text-label-meta text-primary-container font-bold tracking-widest">PK-940</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface"><div class="flex flex-col w-full text-on-surface pb-6 select-none">
+<!-- Top Arena Telemetry Bar -->
+<div class="px-margin pt-space-xs pb-space-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm tracking-wide text-primary uppercase">SET A: OVERUSED ELITE</span>
+<span class="font-label-badge text-label-badge bg-surface-container px-space-xs py-0.5 rounded text-on-surface-variant font-bold">POOL A</span>
+</div>
+<span class="font-label-meta text-label-meta text-primary-container font-bold tracking-wider uppercase">3 of 12 lots</span>
+</div>
+<div class="flex items-center gap-space-xs flex-wrap">
+<div class="flex items-center gap-1 bg-surface-container-low px-space-sm py-1 rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-primary-container">timer</span>
+<span class="font-label-meta text-label-meta">Timer: 15s</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-space-sm py-1 rounded text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-brand-accent-amber">payments</span>
+<span class="font-label-meta text-label-meta">Budget: $200 Cap</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-space-sm py-1 rounded text-on-surface-variant ml-auto">
+<span class="w-1.5 h-1.5 rounded-full bg-status-live-green animate-pulse"></span>
+<span class="font-label-badge text-label-badge text-status-live-green uppercase tracking-widest">SYNCED</span>
+</div>
+</div>
+</div>
+<!-- Main Combat Lot Display -->
+<div class="px-margin flex flex-col gap-space-sm">
+<div class="relative bg-surface-card rounded-xl p-space-md shadow-xl flex flex-col gap-space-md overflow-hidden">
+<!-- Ambient Glow Behind Art -->
+<div class="absolute -right-10 -top-10 w-44 h-44 bg-type-dragon/15 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-10 top-20 w-36 h-36 bg-type-ground/15 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Lot Header & Artwork Banner -->
+<div class="flex items-start justify-between gap-space-sm relative z-10">
+<div class="flex flex-col gap-1 min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-badge text-label-badge bg-surface-container-highest text-primary-container px-2 py-0.5 rounded uppercase font-bold tracking-wider">OU TIER</span>
+<span class="font-label-badge text-label-badge bg-surface-container-high text-secondary px-2 py-0.5 rounded font-bold uppercase tracking-wider">#4 in Pool</span>
+</div>
+<h2 class="font-headline-xl-mobile text-headline-xl-mobile uppercase tracking-tight text-primary leading-none mt-1">GARCHOMP</h2>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="font-label-badge text-label-badge bg-type-dragon text-tertiary px-2 py-0.5 rounded-full shadow-[0_0_8px_rgba(80,96,225,0.4)]">DRAGON</span>
+<span class="font-label-badge text-label-badge bg-type-ground text-tertiary px-2 py-0.5 rounded-full shadow-[0_0_8px_rgba(145,81,33,0.4)]">GROUND</span>
+</div>
+</div>
+<div class="relative w-28 h-28 shrink-0 flex items-center justify-center bg-surface-raised rounded-lg p-1 shadow-inner">
+<img class="w-full h-full object-contain rounded" data-alt="High-resolution competitive Pokémon card art of Garchomp roaring in a desert cyber arena, hyper-detailed mechanical dragon scales, sharp scythe fins, intense amber ambient lighting, cinematic dynamic pose." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdcQO6HsI7fSc2J4lwY_Xg3MuOTynEw7dK0qUuTv_1dQ5pVgskNXOxEG0_XhkxGV9ze_PMrqu1G6Lu4mD3rej7GqC_gBQwDeZn99K5_p9buzo1hYzeXpZ0Bvd3KIcDBuuOJTVNLDqGhKruWdNvBno9fc6OU8SmdkJ69NI9XAYfDozExQo1uuu4164E5SQHw6ZbUvGev6t50CvaZdGZrQEvnIQ6I5h0DAuNx9a8CoJh"/>
+<div class="absolute bottom-1 right-1 bg-surface-base/90 backdrop-blur-sm px-1.5 py-0.5 rounded">
+<span class="font-label-badge text-label-badge text-outline uppercase font-mono">BASE $15</span>
+</div>
+</div>
+</div>
+<!-- Tactical Roles -->
+<div class="flex items-center gap-space-xs">
+<span class="font-label-meta text-label-meta bg-surface-highlight text-on-surface px-2 py-1 rounded">Physical Sweeper</span>
+<span class="font-label-meta text-label-meta bg-surface-highlight text-on-surface px-2 py-1 rounded">Wall Breaker</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant ml-auto font-mono">BST 600</span>
+</div>
+<!-- Segmented Stat Matrix (Recessed Dark Bar) -->
+<div class="bg-surface-base p-space-sm rounded-lg flex flex-col gap-1.5 shadow-inner">
+<div class="grid grid-cols-2 gap-x-space-md gap-y-1 text-[11px] font-mono">
+<!-- HP -->
+<div class="flex items-center gap-1.5">
+<span class="w-6 text-on-surface-variant font-bold">HP</span>
+<span class="w-7 text-right font-bold text-primary">108</span>
+<div class="flex-1 bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-status-live-green h-full rounded-full" style="width: 72%;"></div>
+</div>
+</div>
+<!-- ATK -->
+<div class="flex items-center gap-1.5">
+<span class="w-6 text-primary-container font-bold">ATK</span>
+<span class="w-7 text-right font-bold text-primary-container">130</span>
+<div class="flex-1 bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 86%;"></div>
+</div>
+</div>
+<!-- DEF -->
+<div class="flex items-center gap-1.5">
+<span class="w-6 text-on-surface-variant font-bold">DEF</span>
+<span class="w-7 text-right font-bold text-primary">95</span>
+<div class="flex-1 bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 63%;"></div>
+</div>
+</div>
+<!-- SPA -->
+<div class="flex items-center gap-1.5">
+<span class="w-6 text-on-surface-variant font-bold">SPA</span>
+<span class="w-7 text-right font-bold text-primary">80</span>
+<div class="flex-1 bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-type-psychic h-full rounded-full" style="width: 53%;"></div>
+</div>
+</div>
+<!-- SPD -->
+<div class="flex items-center gap-1.5">
+<span class="w-6 text-on-surface-variant font-bold">SPD</span>
+<span class="w-7 text-right font-bold text-primary">85</span>
+<div class="flex-1 bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary-fixed h-full rounded-full" style="width: 56%;"></div>
+</div>
+</div>
+<!-- SPE -->
+<div class="flex items-center gap-1.5">
+<span class="w-6 text-secondary-container font-bold">SPE</span>
+<span class="w-7 text-right font-bold text-secondary-container">102</span>
+<div class="flex-1 bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 68%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Defensive Profile Telemetry -->
+<div class="flex flex-col gap-1 text-[11px]">
+<div class="flex items-center gap-1 flex-wrap">
+<span class="text-error font-bold font-label-badge uppercase mr-1">Weak:</span>
+<span class="bg-type-ice/20 text-type-ice px-1.5 py-0.5 rounded font-bold font-mono">Ice 4x</span>
+<span class="bg-type-fairy/20 text-type-fairy px-1.5 py-0.5 rounded font-bold font-mono">Fairy 2x</span>
+<span class="bg-type-dragon/20 text-type-dragon px-1.5 py-0.5 rounded font-bold font-mono">Dragon 2x</span>
+</div>
+<div class="flex items-center gap-1 flex-wrap">
+<span class="text-status-live-green font-bold font-label-badge uppercase mr-1">Resist:</span>
+<span class="bg-type-fire/20 text-type-fire px-1.5 py-0.5 rounded font-bold font-mono">Fire</span>
+<span class="bg-type-poison/20 text-type-poison px-1.5 py-0.5 rounded font-bold font-mono">Poison</span>
+<span class="bg-type-rock/20 text-type-rock px-1.5 py-0.5 rounded font-bold font-mono">Rock</span>
+<span class="text-secondary font-bold font-label-badge uppercase ml-2 mr-1">Immune:</span>
+<span class="bg-type-electric/20 text-type-electric px-1.5 py-0.5 rounded font-bold font-mono">Electric</span>
+</div>
+</div>
+</div>
+<!-- Live Auction Action Deck -->
+<div class="bg-surface-raised rounded-xl p-space-md shadow-2xl flex flex-col gap-space-md">
+<!-- High Voltage Bidding Readout -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-widest font-bold">CURRENT BID</span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-xl text-headline-xl text-primary-container font-mono tracking-tighter leading-none" id="current-bid-display">$42</span>
+<span class="font-label-meta text-label-meta text-secondary-container font-bold uppercase tracking-wider">USD</span>
+</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px] text-error">gavel</span>
+<span class="font-label-meta text-label-meta text-on-surface">Leading: <strong class="text-error uppercase">RED (HOST)</strong></span>
+</div>
+</div>
+<!-- Synchronized Pulse Timer Ring -->
+<div class="relative w-20 h-20 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container transition-all duration-1000 ease-linear shadow-lg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" id="timer-stroke" stroke="currentColor" stroke-dasharray="60, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-sm text-headline-sm font-mono text-primary font-bold leading-none" id="timer-text">09s</span>
+<span class="text-[9px] font-mono tracking-widest text-on-surface-variant uppercase">CLOCK</span>
+</div>
+</div>
+</div>
+<!-- User Tactile Bidding Controls -->
+<div class="flex items-center gap-space-sm">
+<button class="h-12 px-space-md rounded-lg bg-surface-card hover:bg-surface-highlight active:scale-95 text-secondary border-none font-headline-sm text-headline-sm tracking-wider uppercase flex items-center justify-center transition-all cursor-pointer" id="pass-btn">
+          PASS
+        </button>
+<button class="flex-1 h-12 px-space-md rounded-lg bg-primary-container text-on-primary-fixed hover:bg-brand-accent-amber active:scale-98 font-headline-sm text-headline-sm font-bold tracking-wide uppercase flex items-center justify-center gap-space-xs shadow-[0_0_16px_rgba(255,224,51,0.35)] transition-all cursor-pointer" id="bid-btn">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span id="bid-label">BID $47 (+ $5)</span>
+</button>
+</div>
+<!-- Tactical Purse and Allocation Readout -->
+<div class="bg-surface-base px-space-md py-space-sm rounded-lg flex items-center justify-between text-on-surface-variant font-mono">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider">YOUR PURSE</span>
+<span class="text-[14px] font-bold text-status-live-green">$145 Left</span>
+</div>
+<div class="h-6 w-px bg-surface-variant"></div>
+<div class="flex flex-col items-center">
+<span class="text-[10px] uppercase tracking-wider">CEILING</span>
+<span class="text-[14px] font-bold text-primary-container">$128 MAX BID</span>
+</div>
+<div class="h-6 w-px bg-surface-variant"></div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] uppercase tracking-wider">SLOTS LEFT</span>
+<span class="text-[14px] font-bold text-primary">4/10 PKMN</span>
+</div>
+</div>
+</div>
+<!-- Collapsible Drawer Container: Activity Log & Upcoming Queue -->
+<div class="bg-surface-card rounded-xl shadow-lg overflow-hidden flex flex-col">
+<!-- Drawer Handle & Header -->
+<div class="px-space-md py-space-sm bg-surface-highlight flex items-center justify-between cursor-pointer">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary-container">history</span>
+<span class="font-headline-sm text-headline-sm text-primary">Last 5 Bids & Upcoming Lots</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">unfold_more</span>
+</div>
+<div class="p-space-md flex flex-col gap-space-md">
+<!-- Compact Recent Bids Ledger -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-badge text-label-badge text-outline uppercase tracking-wider">Recent Bids (5)</span>
+<div class="flex flex-col gap-1 font-mono text-[12px]">
+<div class="flex items-center justify-between py-1 px-2 rounded bg-surface-raised">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-status-live-green"></span>
+<span class="font-bold text-error">RED (HOST)</span>
+</div>
+<span class="font-bold text-primary-container">$42</span>
+</div>
+<div class="flex items-center justify-between py-1 px-2 rounded bg-surface-base/50">
+<span class="text-on-surface">BLUE</span>
+<span class="text-on-surface-variant">$38</span>
+</div>
+<div class="flex items-center justify-between py-1 px-2 rounded bg-surface-base/50">
+<span class="text-on-surface">RED</span>
+<span class="text-on-surface-variant">$35</span>
+</div>
+<div class="flex items-center justify-between py-1 px-2 rounded bg-surface-base/50">
+<span class="text-on-surface">CYNTHIA</span>
+<span class="text-on-surface-variant">$30</span>
+</div>
+<div class="flex items-center justify-between py-1 px-2 rounded bg-surface-base/50">
+<span class="text-on-surface">ASH</span>
+<span class="text-on-surface-variant">$25</span>
+</div>
+</div>
+</div>
+<!-- Up Next Preview Strip -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge text-outline uppercase tracking-wider">UP NEXT (LOT 4 - 6)</span>
+<span class="font-label-meta text-label-meta text-secondary-container cursor-pointer">View Deck</span>
+</div>
+<div class="grid grid-cols-3 gap-space-xs">
+<!-- Lot 4 -->
+<div class="bg-surface-raised p-2 rounded-lg flex flex-col items-center gap-1 text-center shadow-sm">
+<span class="font-label-badge text-label-badge text-on-surface-variant">LOT 4</span>
+<img class="w-10 h-10 object-contain rounded" data-alt="Tactical card sprite thumbnail of Rotom Wash hovering with glowing electric blue water aura on dark slate backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcTYSrgbYaGeXvDJf-k43XYqo5JY1RG4Ocea1HwyiP-VnyfPSz6BQLR2TaDP_kL_-iYrenMSLvimEwH2be9pGg1qf9TsVO9E24jNNbYLQZ4zjJHnkik1jUVonv-_TVFY6EeBsH1osrW03uebZJ1P5K1oXCs8WxrctPg8duNIwcBe0foylS3aLC59_GG-dt0gRn1QyhKIrPA5IfkoWHvP3emVt4LBRMTrzcda-ziZTZ"/>
+<span class="font-label-meta text-label-meta font-bold text-primary truncate w-full">Rotom-W</span>
+<span class="font-label-badge text-label-badge text-primary-container font-mono font-bold">BASE $12</span>
+</div>
+<!-- Lot 5 -->
+<div class="bg-surface-raised p-2 rounded-lg flex flex-col items-center gap-1 text-center shadow-sm">
+<span class="font-label-badge text-label-badge text-on-surface-variant">LOT 5</span>
+<img class="w-10 h-10 object-contain rounded" data-alt="Tactical card sprite thumbnail of Corviknight in heavy steel armor plumage with glowing red eyes on dark slate background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjjvxaQeiPBBI6wRk752UcRat1m6AQcVhTIg1oAPx0fIKhVCJ1WIriqFmMNka2bmPldfZvncBMkWpxMDU8KoZSW8zqA_BgyBLKSyxud2rlfRUY1EJzeh4xqi0551dNQIwJRhbqJmpDBRiQTrtDs_X_GAr6tCO0MLxj1N08xMtthnpmxX-Erx3SYcG1pKJoRhyODY6uQinQESpuvbyREMdJFsZiI7z1hj19BT73SjTx"/>
+<span class="font-label-meta text-label-meta font-bold text-primary truncate w-full">Corviknight</span>
+<span class="font-label-badge text-label-badge text-primary-container font-mono font-bold">BASE $18</span>
+</div>
+<!-- Lot 6 -->
+<div class="bg-surface-raised p-2 rounded-lg flex flex-col items-center gap-1 text-center shadow-sm">
+<span class="font-label-badge text-label-badge text-on-surface-variant">LOT 6</span>
+<img class="w-10 h-10 object-contain rounded" data-alt="Tactical card sprite thumbnail of Dragapult with sleek stealth bomber dragon horns launching dreepy missiles on dark slate background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1fLDu8sVey2wBS8zN4vQgakBfz3gctu64P9W4VcMjMojA9wuWnnKxZMWsrQHEpcPiDdFOvg_m3cZypXz6Ujy7to8wy65bc10ORkRSDx2c7mC1m2pq94OIOSF9m1Wb_BMkpkV5rpCdywVXNmCGMovrJ6HgCoDcfC8A9PZjgCl2xCLuUO9B0X7Em2VvxkypJ2KKa2TwMOQweNe2q74Wu8pc_Rbo_HK1VZJg0c3FAgOM"/>
+<span class="font-label-meta text-label-meta font-bold text-primary truncate w-full">Dragapult</span>
+<span class="font-label-badge text-label-badge text-primary-container font-mono font-bold">BASE $22</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initAuctionTicker() {
+    let currentBid = 42;
+    let secondsLeft = 9;
+    const bidDisplay = document.getElementById('current-bid-display');
+    const bidBtn = document.getElementById('bid-btn');
+    const bidLabel = document.getElementById('bid-label');
+    const timerText = document.getElementById('timer-text');
+    const timerStroke = document.getElementById('timer-stroke');
+
+    // Countdown micro-interaction
+    const interval = setInterval(() => {
+      if (secondsLeft > 0) {
+        secondsLeft--;
+        const formatted = secondsLeft < 10 ? '0' + secondsLeft + 's' : secondsLeft + 's';
+        if (timerText) timerText.textContent = formatted;
+        
+        // Progress dash offset calculation
+        const pct = (secondsLeft / 15) * 100;
+        if (timerStroke) {
+          timerStroke.setAttribute('stroke-dasharray', pct + ', 100');
+          if (secondsLeft <= 4) {
+            timerStroke.classList.remove('text-primary-container');
+            timerStroke.classList.add('text-status-urgent');
+            timerText.classList.add('text-status-urgent');
+          }
+        }
+      } else {
+        if (timerText) timerText.textContent = 'SOLD';
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    // Live Bid Button Interactive Feedback
+    if (bidBtn) {
+      bidBtn.addEventListener('click', () => {
+        currentBid += 5;
+        if (bidDisplay) bidDisplay.textContent = '$' + currentBid;
+        if (bidLabel) bidLabel.textContent = 'BID $' + (currentBid + 5) + ' (+ $5)';
+        
+        // Reset timer tension to simulate intense late snipe
+        secondsLeft = 12;
+        if (timerText) {
+          timerText.textContent = '12s';
+          timerText.classList.remove('text-status-urgent');
+        }
+        if (timerStroke) {
+          timerStroke.classList.remove('text-status-urgent');
+          timerStroke.classList.add('text-primary-container');
+          timerStroke.setAttribute('stroke-dasharray', '80, 100');
+        }
+      });
+    }
+  })();
+</script></main></body></html>

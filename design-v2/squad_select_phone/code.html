@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0d1320;color:#dde2f5;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed-variant": "#930013", "type-flying": "#81B9EF", "status-urgent": "#EF4444", "surface-container-high": "#242a38", "type-rock": "#AFA981", "inverse-primary": "#6d5e00", "error": "#ffb4ab", "on-tertiary-fixed": "#410004", "secondary-fixed-dim": "#00dbe9", "type-grass": "#3FA129", "brand-accent-amber": "#FFD000", "on-tertiary": "#68000a", "error-container": "#93000a", "type-ground": "#915121", "on-secondary-container": "#00686f", "type-ice": "#3DCEF3", "on-primary-fixed-variant": "#524600", "on-primary": "#393000", "on-background": "#dde2f5", "status-live-green": "#10B981", "on-secondary-fixed": "#002022", "type-dragon": "#5060E1", "on-error-container": "#ffdad6", "type-electric": "#FAC000", "type-normal": "#9FA19F", "type-bug": "#91A119", "secondary": "#d3fbff", "type-ghost": "#704170", "inverse-surface": "#dde2f5", "tertiary": "#fffcff", "on-primary-fixed": "#211b00", "type-fighting": "#FF8000", "primary-fixed": "#ffe24c", "surface-tint": "#e3c60c", "on-secondary-fixed-variant": "#004f54", "outline-variant": "#4c4733", "tertiary-fixed": "#ffdad7", "surface-container-low": "#161b29", "border-subtle": "#223555", "on-secondary": "#00363a", "on-surface": "#dde2f5", "outline": "#979179", "surface-bright": "#333948", "surface-variant": "#2f3543", "on-error": "#690005", "tertiary-container": "#ffd7d4", "surface-base": "#0B111E", "surface-container-lowest": "#080e1b", "type-poison": "#8F41CB", "surface-card": "#162238", "surface-container": "#1a1f2d", "type-dark": "#50413F", "surface-raised": "#111A2E", "on-tertiary-container": "#c02028", "background": "#0d1320", "secondary-fixed": "#7df4ff", "primary-container": "#ffe033", "surface-highlight": "#1E2D4A", "primary": "#fffcff", "secondary-container": "#00eefc", "type-fairy": "#EF70EF", "tertiary-fixed-dim": "#ffb3ad", "border-strong": "#354E7A", "type-water": "#2980EF", "primary-fixed-dim": "#e3c60c", "surface": "#0d1320", "type-steel": "#60A1B8", "type-fire": "#E62829", "surface-dim": "#0d1320", "surface-container-highest": "#2f3543", "type-psychic": "#EF4179", "on-primary-container": "#726300", "on-surface-variant": "#cec6ac", "inverse-on-surface": "#2a303f" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1rem", "gutter-desktop": "1.5rem", "margin-desktop": "2.5rem", "gutter": "1rem", "space-xl": "2rem", "space-xs": "0.25rem", "gutter-tablet": "1.25rem", "space-sm": "0.5rem", "space-md": "1rem", "space-lg": "1.5rem", "space-2xl": "3rem", "margin-tablet": "1.5rem" }, "fontFamily": { "display-hero-mobile": ["Space Grotesk"], "display-hero": ["Space Grotesk"], "body-lg": ["Geist"], "headline-xl-mobile": ["Space Grotesk"], "label-numeric-stat": ["Space Grotesk"], "label-badge": ["Geist"], "headline-xl": ["Space Grotesk"], "body-sm": ["Geist"], "headline-lg": ["Space Grotesk"], "label-meta": ["Geist"], "body-md": ["Geist"], "headline-md": ["Space Grotesk"], "headline-sm": ["Space Grotesk"] }, "fontSize": { "display-hero-mobile": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-hero": ["56px", { "lineHeight": "60px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "label-numeric-stat": ["18px", { "lineHeight": "22px", "letterSpacing": "0.05em", "fontWeight": "700" }], "label-badge": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "700" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "label-meta": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-md": ["15px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface-base/85 backdrop-blur-xl pt-safe shadow-[0_4px_20px_rgba(0,0,0,0.5)]"><div class="h-16 px-space-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="Navigate Back" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-raised/80 text-on-surface hover:text-primary-container transition-colors active:scale-95" onclick="history.back()"><span class="material-symbols-outlined text-[20px]">arrow_back</span></button><div class="flex flex-col pl-space-xs"><span class="font-label-meta text-label-meta tracking-wider uppercase text-on-surface-variant/70">TACTICAL ARENA</span><h1 class="font-headline-sm text-headline-sm uppercase tracking-tight text-on-surface font-semibold">Squad Select</h1></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs bg-surface-card/90 px-space-sm py-1 rounded-full shadow-[0_0_12px_rgba(16,185,129,0.15)]"><span class="w-2 h-2 rounded-full bg-status-live-green animate-pulse"></span><span class="font-label-badge text-label-badge text-status-live-green tracking-widest font-bold">PK-940</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 ring-1 ring-border-strong"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full pb-32">
+<!-- Top Matchup Telemetry Bar -->
+<div class="px-space-md pt-space-md pb-space-sm flex items-center justify-between gap-space-sm bg-surface-raised">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center justify-center w-8 h-8 rounded-lg bg-surface-container-high text-brand-accent-amber">
+<span class="material-symbols-outlined text-[18px]">swords</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface leading-none">PREVIEW STAGE</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase mt-0.5 tracking-wider">BO3 SERIES • GAME 1</span>
+</div>
+</div>
+<!-- 30s Countdown Dial Micro-Widget -->
+<div class="relative flex items-center gap-space-xs bg-surface-base px-space-sm py-1.5 rounded-lg shadow-inner">
+<div class="relative w-7 h-7 flex items-center justify-center">
+<svg class="w-7 h-7 -rotate-90" viewbox="0 0 36 36">
+<circle class="text-surface-highlight" cx="18" cy="18" fill="none" r="14" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary-container" cx="18" cy="18" fill="none" id="timer-ring" r="14" stroke="currentColor" stroke-dasharray="88" stroke-dashoffset="18" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute font-headline-sm text-[12px] font-bold text-primary-container leading-none" id="countdown-val">24s</span>
+</div>
+<span class="font-label-badge text-label-badge text-status-urgent uppercase tracking-widest animate-pulse">LOCKING</span>
+</div>
+</div>
+<!-- Tactical Threat Radar Chips -->
+<div class="px-space-md py-space-sm overflow-x-auto no-scrollbar flex items-center gap-space-xs bg-surface-base">
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-error text-[11px] font-label-badge whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+<span>NO SPEEDSTER</span>
+</div>
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-brand-accent-amber text-[11px] font-label-badge whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-[13px]">ac_unit</span>
+<span>ICE 3X VULNERABILITY</span>
+</div>
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-status-live-green text-[11px] font-label-badge whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+<span>ELECTRIC IMMUNITY</span>
+</div>
+</div>
+<!-- Opponent Live Recon Strip -->
+<div class="px-space-md py-space-sm bg-surface-container-low shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-type-psychic">RIVAL SCOUT</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">• ASH_K99</span>
+</div>
+<span class="font-label-meta text-label-meta text-type-electric">TEAM RATING: 1840</span>
+</div>
+<!-- Opponent Mini Squad Roster -->
+<div class="grid grid-cols-6 gap-1.5 pt-0.5">
+<div class="flex flex-col items-center bg-surface-base p-1 rounded-lg">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Landorus Therian forme competitive pokemon portrait, hyper-detailed dynamic digital art, intense desert sand background, cyan tactical battle hud lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWjvuhYwi5HHSA4ZXgZY4vSTGJTReMWcUnrJrDTpb7qCC8AkC8yKMh7zLyxsUGfHSh32DkV4z2Wwz8IP8YilHKE3Hth1yBbqiugAM1vsx52sVtRm4Fp4hhn0hyzGAgV3KzP4w9y9QBWHUeiRWoQt2y-nyV5LKoybHUmcuRwT5UvyENmu_i12N1E2XbqOeC0TrunDKyug03wMCeenoK2ePphxEKSDU5BWHrSxvTpzwN"/>
+</div>
+<span class="font-label-badge text-[9px] text-on-surface-variant truncate w-full text-center mt-0.5">Lando-T</span>
+</div>
+<div class="flex flex-col items-center bg-surface-base p-1 rounded-lg">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Weavile dark ice type pokemon portrait, sharp claws, glowing red eyes in winter blizzard backdrop, dark navy sci-fi arena illumination" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjZSet6kwplj_kQY9QE7mpkFLHvVbSKKBSy0-YDF6Ni7KzJVTnKWfvatvnt1-ryvM_1XiYLIh-oFChVYqPZBSDsKdJgRznuKv-2nKPrcnPYSiYCW2VbllQroqMGBMGMnyp-WUElYkGwdvYIHINV4yFZfd8qsMBBCt579kyHLNXOqH9wwduYJzIHhOAkCwgtGu9aK8gyQ-tfB0DMlgPA1f89W1ibPBOwcWA-vsE0A1R"/>
+</div>
+<span class="font-label-badge text-[9px] text-on-surface-variant truncate w-full text-center mt-0.5">Weavile</span>
+</div>
+<div class="flex flex-col items-center bg-surface-base p-1 rounded-lg">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Heatran fire steel pokemon magma beast portrait, fiery molten steel glow, volcanic chamber backdrop, electric warm embers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1ny7mnVC5E9WWqP-DRnvmxJSgTjC_tZlmbjWXYeYATNWN1_9wGYGMhi2yrxubX-j1cOen4Nn9IT_6yz4N7Oa4TaA5jqn2sHpL0xYEHoUQxCmOvrAep3wiVvDQXhdNcncObOeemhcQfBzA6FQ2IcFE1fEL0Y76JohKXhUNKKdF_dHNAez4AYo2ZavsqdjTQv4hCM2uwe_C5rpBo878OHmLlTDpCfkSli5wDD-wOwlN"/>
+</div>
+<span class="font-label-badge text-[9px] text-on-surface-variant truncate w-full text-center mt-0.5">Heatran</span>
+</div>
+<div class="flex flex-col items-center bg-surface-base p-1 rounded-lg">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Rillaboom grass gorilla drummer pokemon with wooden drum kit, glowing emerald jungle vibes, cinematic competitive draft render" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvEM56b_l2Oy-Allro8Z0WJyGKngefwkDk59c36-nB9wLCah5JWRbjoyUBXYSg_VrRJTxfIzD3Sw11ufN8MK9RCXIv-ZHX8ISZ1JfBEkGWJtNeVAzn7XKvHjqr93wB00uweJ4hKzYh339v4L8jL3NpNUq8p8fg9ZL9PSTkLEi8mVJG0PZ2lm-tF-ndcDuQYRW1kkhwOF4MnPKYJjvkK6RL6EZYCFlDfPXL4dROcW2W"/>
+</div>
+<span class="font-label-badge text-[9px] text-on-surface-variant truncate w-full text-center mt-0.5">Rillaboom</span>
+</div>
+<div class="flex flex-col items-center bg-surface-base p-1 rounded-lg">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Urshifu rapid strike fighting water pokemon dynamic battle pose, water martial arts swirls, tactical draft arena style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvJi_XZvRLbVx-lVUaemQMAsTZ6gP3TZjPRDoooOR3eDNgNjCw1ZwyrjQDcoRMSFwF-Zu8zshICePwrWthvdc03JWIfZpEhFuVVtkZb0f88-3mR2FUUdDNBg38Wl-KLE7mGBBCrkaZ-UDiGlDCri8dz0HZxQb2boXno-8VyzRFtK43uUURnQqshLS3GVHT_dIt6Olp9BkVCLdWpXVcm-dF4IABvMJuejNOxkdBUUMC"/>
+</div>
+<span class="font-label-badge text-[9px] text-on-surface-variant truncate w-full text-center mt-0.5">Urshifu</span>
+</div>
+<div class="flex flex-col items-center bg-surface-base p-1 rounded-lg">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Zapdos legendary electric flying bird pokemon portrait, electric jagged lightning bolts, thunderstorm arena background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwvoo4ClgXo8UvvXo7VcBSvkAH9rkFBgaZL_NJOgN85NQ6w-3HBrVThjJ108xeJDPsgKcBDX7xNgj7WXTPapR41BLCwxF2yBinJBhGh8kvNJt9DVeqVHJ7xB-SL7oeR7LAEsHZzy16iOPz6Y0vwFmUkDwUQAH1GVWTEy_yQLjwG2vAdZh54q0cyakJBXX7j8RaNO38H-mO0HQvLklPe_Ixu0jzdfYsUFIK1-7EBqZl"/>
+</div>
+<span class="font-label-badge text-[9px] text-on-surface-variant truncate w-full text-center mt-0.5">Zapdos</span>
+</div>
+</div>
+</div>
+<!-- Primary Selection Header & Lead Dropdown -->
+<div class="px-space-md pt-space-md pb-space-xs flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm uppercase text-on-surface font-semibold tracking-tight">ACTIVE BATTLE ROSTER</h2>
+<span class="font-label-badge text-label-badge px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container font-bold shadow-sm" id="picked-badge">4 OF 6 PICKED</span>
+</div>
+<!-- Lead Pick Selector -->
+<div class="relative">
+<select class="appearance-none bg-surface-card text-on-surface font-label-badge text-label-badge py-1.5 pl-2.5 pr-6 rounded-lg uppercase tracking-wide cursor-pointer focus:outline-none focus:bg-surface-highlight shadow-sm" id="lead-select">
+<option value="445">LEAD: GARCHOMP</option>
+<option value="479">LEAD: ROTOM-W</option>
+<option value="823">LEAD: CORVIKNIGHT</option>
+<option value="637">LEAD: VOLCARONA</option>
+</select>
+<span class="material-symbols-outlined text-[14px] absolute right-1.5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- 2-Column Combatant Grid -->
+<div class="px-space-md pt-space-xs grid grid-cols-2 gap-space-sm">
+<!-- Card 1: Garchomp (Selected) -->
+<div class="combatant-card relative flex flex-col p-space-sm rounded-xl bg-surface-highlight shadow-md cursor-pointer transition-transform active:scale-[0.98]" data-id="445">
+<div class="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-md z-10 check-indicator">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+<div class="relative w-full h-24 rounded-lg overflow-hidden bg-surface-container-high mb-2">
+<img class="w-full h-full object-cover" data-alt="Garchomp apex dragon shark pokemon close-up dynamic render, midnight blue scales, glowing golden yellow eye, high contrast dark arena neon background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhjDWXIpfwTm6uL8_dhEdCrdB9Oe1hh-460rPQuoLrQUzW00zxRYL3JUyueCMWtoZ9MmTJ9JAyfXyLgG5qVK-C-00ZA2Di-YJG3FJbwJUnaVr2m49yIQU276xum6APXj5nbR_-C9mUUlNlmlcSOpJdjSiao6Hfu55uww_XkzOZ5Z6nOGduc_ej2UsOiaE20SucTeSyrcaebE2wfGt-zVu36S6qtIvmVFVPhOGCrq1f"/>
+<div class="absolute bottom-1 left-1 flex items-center gap-1 bg-surface-base/80 backdrop-blur-sm px-1.5 py-0.5 rounded text-[10px] font-label-badge text-type-dragon">
+<span>#445</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">GARCHOMP</span>
+</div>
+<span class="font-label-meta text-[11px] text-type-electric uppercase tracking-wider mb-1.5">PHYSICAL SWEEPER</span>
+<div class="flex items-center gap-1 mb-2">
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-dragon text-tertiary">DRAGON</span>
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-ground text-tertiary">GROUND</span>
+</div>
+<!-- Tactical Mini Bar -->
+<div class="w-full bg-surface-base h-1.5 rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full w-[82%]"></div>
+</div>
+<span class="font-label-meta text-[10px] text-on-surface-variant mt-1">SPEED TIER: 102 BST</span>
+</div>
+<!-- Card 2: Rotom-W (Selected) -->
+<div class="combatant-card relative flex flex-col p-space-sm rounded-xl bg-surface-highlight shadow-md cursor-pointer transition-transform active:scale-[0.98]" data-id="479">
+<div class="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-md z-10 check-indicator">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+<div class="relative w-full h-24 rounded-lg overflow-hidden bg-surface-container-high mb-2">
+<img class="w-full h-full object-cover" data-alt="Rotom Wash plasma electrical washing machine pokemon, electric hydro vortex energy, dark techno arena with cyan water sparks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiPpJSMwNUPn0ud0FIuolAbWlhk7Y5GMOxjf51ZLWm4JTrzwocmel76z8FcRB6Q-EszU6OP0H1nCa9tz4us1ems1fssI1e0VqT1_CKc9aChEMWMT2OST4kINjri1dxpZDQLPO2osDVehDz9HwkxzGlmiArUAOTRu_TDNn0iEzlHggE0bL-MIMvp05SSaCGtRv-s7GQd_Y-sYO1UV03USfrGYAHDnSw5U2G-Wrv_DNf"/>
+<div class="absolute bottom-1 left-1 flex items-center gap-1 bg-surface-base/80 backdrop-blur-sm px-1.5 py-0.5 rounded text-[10px] font-label-badge text-type-electric">
+<span>#479</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">ROTOM-W</span>
+</div>
+<span class="font-label-meta text-[11px] text-type-electric uppercase tracking-wider mb-1.5">VOLT PIVOT</span>
+<div class="flex items-center gap-1 mb-2">
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-electric text-on-surface">ELEC</span>
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-water text-tertiary">WATER</span>
+</div>
+<div class="w-full bg-surface-base h-1.5 rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full w-[65%]"></div>
+</div>
+<span class="font-label-meta text-[10px] text-on-surface-variant mt-1">SPEED TIER: 86 BST</span>
+</div>
+<!-- Card 3: Corviknight (Selected) -->
+<div class="combatant-card relative flex flex-col p-space-sm rounded-xl bg-surface-highlight shadow-md cursor-pointer transition-transform active:scale-[0.98]" data-id="823">
+<div class="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-md z-10 check-indicator">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+<div class="relative w-full h-24 rounded-lg overflow-hidden bg-surface-container-high mb-2">
+<img class="w-full h-full object-cover" data-alt="Corviknight armored raven steel flying pokemon heroic portrait, glowing red optical sensors, midnight steel feathers, brutalist futuristic hangar setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrZbf7BHJA9yvRkF3NNJUzEVB-6JBccbV30nc1ayMcAGRyQVaMOGPX85Xk7MCVWh3sHUUst57wMbt4pK5anT5t4PM6OmE3zTjrFCw6ByYehRps_wLaJJgQL0hwYcCyecvqEsGv7bnRgowF6Pkt1FdktD0Tx1XCsYAl7t2T5dOOyCSsVpBUigj4Ro0NAxWed6dflCCzPf1ZTxfjjTZ2R2URkBPbnKnIdPJ5v4Mhagmt"/>
+<div class="absolute bottom-1 left-1 flex items-center gap-1 bg-surface-base/80 backdrop-blur-sm px-1.5 py-0.5 rounded text-[10px] font-label-badge text-type-steel">
+<span>#823</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">CORVIKNIGHT</span>
+</div>
+<span class="font-label-meta text-[11px] text-type-electric uppercase tracking-wider mb-1.5">PHYSICAL DEF-WALL</span>
+<div class="flex items-center gap-1 mb-2">
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-flying text-on-surface">FLY</span>
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-steel text-tertiary">STEEL</span>
+</div>
+<div class="w-full bg-surface-base h-1.5 rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full w-[95%]"></div>
+</div>
+<span class="font-label-meta text-[10px] text-on-surface-variant mt-1">DEFENSE TIER: 105 BST</span>
+</div>
+<!-- Card 4: Volcarona (Selected) -->
+<div class="combatant-card relative flex flex-col p-space-sm rounded-xl bg-surface-highlight shadow-md cursor-pointer transition-transform active:scale-[0.98]" data-id="637">
+<div class="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-md z-10 check-indicator">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+<div class="relative w-full h-24 rounded-lg overflow-hidden bg-surface-container-high mb-2">
+<img class="w-full h-full object-cover" data-alt="Volcarona solar moth fiery wings ember explosion, fiery orange glowing insect warrior, dark obsidian colosseum arena lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPxvl1mSA1p2HSDF5yMbdHETUHJqad1PjCEn_6CYh1oi6_hgpq6AIGr3PMzgwIqa67P8dgqI4jx0g_1aoh9osumviZJHysuIjkU189uC4lxAYQlG0oCj01F8oJxZV_OoE89zXLVcOVVBeHG_scn_oY0nwzHdQxXdPDREqehAkQZTv0Erg7VUSpxG34QzZ5hxQvwJd8rKX-WSNUHOpBQRKfO3arMneVbPU-dGiA2-DS"/>
+<div class="absolute bottom-1 left-1 flex items-center gap-1 bg-surface-base/80 backdrop-blur-sm px-1.5 py-0.5 rounded text-[10px] font-label-badge text-type-fire">
+<span>#637</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">VOLCARONA</span>
+</div>
+<span class="font-label-meta text-[11px] text-type-electric uppercase tracking-wider mb-1.5">SPECIAL SWEEPER</span>
+<div class="flex items-center gap-1 mb-2">
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-bug text-tertiary">BUG</span>
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-fire text-tertiary">FIRE</span>
+</div>
+<div class="w-full bg-surface-base h-1.5 rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full w-[92%]"></div>
+</div>
+<span class="font-label-meta text-[10px] text-on-surface-variant mt-1">SP.ATK TIER: 135 BST</span>
+</div>
+<!-- Card 5: Toxapex (Unselected) -->
+<div class="combatant-card relative flex flex-col p-space-sm rounded-xl bg-surface-card shadow-sm cursor-pointer transition-transform active:scale-[0.98] opacity-75" data-id="748">
+<div class="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-surface-highlight text-on-surface-variant flex items-center justify-center shadow z-10 check-indicator">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</div>
+<div class="relative w-full h-24 rounded-lg overflow-hidden bg-surface-container-high mb-2">
+<img class="w-full h-full object-cover" data-alt="Toxapex spiky bunker shell sea creature pokemon, venomous purple spines, glowing bioluminescent toxic marine abyss" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeMdgcDslgvculZ3v_sDhk4CxfP8YyT7Pea58t5UYzcy096CmSAuyB8FEwhA7KEtnAN_a0qCy2IUgJbIRpXG1NCtHKzVz6H4oIFASgQVPkqbfbHxoI9BEFF0lb6dOgoK6ICnw9Jh_zbCRaR7CITvH0tqsX_UqIUYI3gr44PWcEykhAqRB2XVXBwLq-uD4U8KeXQ2TMEiRkQrFMkGg7bFJo-7VoRKCFSHFDJSufaErR"/>
+<div class="absolute bottom-1 left-1 flex items-center gap-1 bg-surface-base/80 backdrop-blur-sm px-1.5 py-0.5 rounded text-[10px] font-label-badge text-type-poison">
+<span>#748</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">TOXAPEX</span>
+</div>
+<span class="font-label-meta text-[11px] text-on-surface-variant uppercase tracking-wider mb-1.5">BUNKER WALL</span>
+<div class="flex items-center gap-1 mb-2">
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-poison text-tertiary">POISON</span>
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-water text-tertiary">WATER</span>
+</div>
+<div class="w-full bg-surface-base h-1.5 rounded-full overflow-hidden flex">
+<div class="bg-surface-bright h-full w-[88%]"></div>
+</div>
+<span class="font-label-meta text-[10px] text-on-surface-variant mt-1">RESILIENCE: 152 DEF</span>
+</div>
+<!-- Card 6: Dragapult (Unselected) -->
+<div class="combatant-card relative flex flex-col p-space-sm rounded-xl bg-surface-card shadow-sm cursor-pointer transition-transform active:scale-[0.98] opacity-75" data-id="887">
+<div class="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-surface-highlight text-on-surface-variant flex items-center justify-center shadow z-10 check-indicator">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</div>
+<div class="relative w-full h-24 rounded-lg overflow-hidden bg-surface-container-high mb-2">
+<img class="w-full h-full object-cover" data-alt="Dragapult stealth bomber ghostly dragon pokemon with dreepy missiles, translucent ghostly tail, sleek cyan holographic draft war-room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS0gd6H_a1Qw2yTSbrMzE9yD74p3AymWYieQVCK9_tqCX_9DmNGagAGPQHdfDtgacfDv-mXgbyksXqW-5cfb37ObZ8q7H9V2gNSR1yTgzSAnEIeCB3Pvd0NRi5Dxaz-PTtBzLIoQDHjIJDzP4RuFVGGMGFiLSxvoPgRu97JNGUkl8B5ur11EE1LJQjFS_EcV8sCN6FIut8VaRJb8FVtdd1gm0Djqyzy5ZQmPoxYVqg"/>
+<div class="absolute bottom-1 left-1 flex items-center gap-1 bg-surface-base/80 backdrop-blur-sm px-1.5 py-0.5 rounded text-[10px] font-label-badge text-type-ghost">
+<span>#887</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">DRAGAPULT</span>
+</div>
+<span class="font-label-meta text-[11px] text-on-surface-variant uppercase tracking-wider mb-1.5">SPEED INFILTRATOR</span>
+<div class="flex items-center gap-1 mb-2">
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-dragon text-tertiary">DRAGON</span>
+<span class="font-label-badge text-[9px] px-1.5 py-0.5 rounded bg-type-ghost text-tertiary">GHOST</span>
+</div>
+<div class="w-full bg-surface-base h-1.5 rounded-full overflow-hidden flex">
+<div class="bg-surface-bright h-full w-[96%]"></div>
+</div>
+<span class="font-label-meta text-[10px] text-on-surface-variant mt-1">VELOCITY: 142 SPE</span>
+</div>
+</div>
+<!-- Team Balance Quick Stat Bar -->
+<div class="mx-space-md mt-space-md p-space-sm bg-surface-container-low rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-highlight flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[16px]">shield_with_heart</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[12px] uppercase text-on-surface">TYPE RESIST PROFILE</span>
+<span class="font-label-meta text-[10px] text-on-surface-variant">7 RESISTS • 3 WEAKNESSES</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-status-live-green"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-status-live-green"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-brand-accent-amber"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-status-urgent"></span>
+</div>
+</div>
+<!-- Fixed Bottom HUD Action Deck -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-surface-base/95 backdrop-blur-xl px-space-md py-space-sm shadow-[0_-8px_24px_rgba(0,0,0,0.6)]">
+<div class="max-w-[420px] mx-auto flex flex-col gap-2">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-type-electric">check_circle</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">RULES: 4 MONS • PICK LEAD FIRST</span>
+</div>
+<button class="font-label-badge text-label-badge text-type-electric hover:underline uppercase" id="reset-btn">RESET</button>
+</div>
+<!-- Action Button (Interactive state toggles between Lock Team and Proceed) -->
+<button class="w-full h-12 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase font-bold rounded-lg shadow-[0_0_18px_rgba(255,224,51,0.35)] active:translate-y-0.5 transition-all flex items-center justify-center gap-2" id="lock-btn">
+<span id="btn-text">PROCEED TO MOVESET</span>
+<span class="material-symbols-outlined text-[20px] font-bold">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  (function initDraftCockpit() {
+    let selectedSet = new Set(['445', '479', '823', '637']);
+    const cards = document.querySelectorAll('.combatant-card');
+    const badge = document.getElementById('picked-badge');
+    const lockBtn = document.getElementById('lock-btn');
+    const btnText = document.getElementById('btn-text');
+    const countdownVal = document.getElementById('countdown-val');
+    const resetBtn = document.getElementById('reset-btn');
+
+    // Simple countdown timer tick
+    let timeLeft = 24;
+    const timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        timeLeft = 30;
+      }
+      if (countdownVal) {
+        countdownVal.textContent = timeLeft + 's';
+        if (timeLeft < 10) {
+          countdownVal.classList.remove('text-primary-container');
+          countdownVal.classList.add('text-status-urgent');
+        } else {
+          countdownVal.classList.add('text-primary-container');
+          countdownVal.classList.remove('text-status-urgent');
+        }
+      }
+    }, 1000);
+
+    function updateUI() {
+      const count = selectedSet.size;
+      badge.textContent = `${count} OF 6 PICKED`;
+
+      if (count === 4) {
+        badge.className = "font-label-badge text-label-badge px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container font-bold shadow-sm";
+        lockBtn.className = "w-full h-12 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase font-bold rounded-lg shadow-[0_0_18px_rgba(255,224,51,0.35)] active:translate-y-0.5 transition-all flex items-center justify-center gap-2";
+        btnText.textContent = "PROCEED TO MOVESET";
+      } else {
+        const remaining = 4 - count;
+        badge.className = "font-label-badge text-label-badge px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-bold shadow-sm";
+        lockBtn.className = "w-full h-12 bg-surface-highlight text-on-surface font-headline-sm text-headline-sm uppercase font-bold rounded-lg active:translate-y-0.5 transition-all flex items-center justify-center gap-2";
+        btnText.textContent = remaining > 0 ? `LOCK TEAM (SELECT ${remaining} MORE)` : `SELECT EXACTLY 4 (DESELECT ${count - 4})`;
+      }
+
+      cards.forEach(card => {
+        const id = card.getAttribute('data-id');
+        const indicator = card.querySelector('.check-indicator');
+        const icon = indicator.querySelector('.material-symbols-outlined');
+
+        if (selectedSet.has(id)) {
+          card.classList.remove('bg-surface-card', 'opacity-75');
+          card.classList.add('bg-surface-highlight', 'shadow-md');
+          indicator.classList.remove('bg-surface-highlight', 'text-on-surface-variant');
+          indicator.classList.add('bg-primary-container', 'text-on-primary-container');
+          icon.textContent = 'check';
+        } else {
+          card.classList.remove('bg-surface-highlight', 'shadow-md');
+          card.classList.add('bg-surface-card', 'opacity-75');
+          indicator.classList.remove('bg-primary-container', 'text-on-primary-container');
+          indicator.classList.add('bg-surface-highlight', 'text-on-surface-variant');
+          icon.textContent = 'add';
+        }
+      });
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.getAttribute('data-id');
+        if (selectedSet.has(id)) {
+          if (selectedSet.size > 1) {
+            selectedSet.delete(id);
+          }
+        } else {
+          if (selectedSet.size < 4) {
+            selectedSet.add(id);
+          } else {
+            // Reached limit, replace behavior or prompt
+            const first = selectedSet.values().next().value;
+            selectedSet.delete(first);
+            selectedSet.add(id);
+          }
+        }
+        updateUI();
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        selectedSet.clear();
+        updateUI();
+      });
+    }
+
+    if (lockBtn) {
+      lockBtn.addEventListener('click', () => {
+        if (selectedSet.size === 4) {
+          lockBtn.classList.add('scale-95');
+          setTimeout(() => lockBtn.classList.remove('scale-95'), 120);
+        }
+      });
+    }
+
+    updateUI();
+  })();
+</script></main></body></html>

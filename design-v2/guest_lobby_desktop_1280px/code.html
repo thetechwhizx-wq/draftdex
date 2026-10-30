@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>Pokémon Draft Arena - Tactical War-Room Guest Lobby</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-base": "#080e1b",
+            "surface-dim": "#0d1320",
+            "surface": "#0d1320",
+            "surface-card": "#161b29",
+            "surface-raised": "#111a2e",
+            "surface-highlight": "#1e2d4a",
+            "surface-variant": "#223555",
+            "surface-bright": "#2b3d60",
+            "border-subtle": "#1e2d48",
+            "border-strong": "#2a426c",
+            "border-accent": "#ffe033",
+            "on-surface": "#dde2f5",
+            "on-surface-variant": "#93a3c8",
+            "primary-container": "#ffe033",
+            "brand-accent-amber": "#ffd000",
+            "on-primary-fixed": "#211b00",
+            "secondary": "#7df4ff",
+            "secondary-container": "#00eefc",
+            "status-live-green": "#10b981",
+            "status-urgent": "#ef4444",
+            "type-fire": "#e62829",
+            "type-electric": "#fac000",
+            "type-water": "#2980ef",
+            "type-grass": "#3fa129"
+          },
+          fontFamily: {
+            "headline": ["Space Grotesk", "sans-serif"],
+            "body": ["Geist", "sans-serif"],
+            "mono": ["monospace"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      background-color: #080e1b;
+      color: #dde2f5;
+      font-family: 'Geist', sans-serif;
+      overscroll-behavior: none;
+    }
+    .hud-border {
+      box-shadow: inset 0 0 0 1px rgba(125, 244, 255, 0.08);
+    }
+    .hud-glow {
+      box-shadow: 0 0 20px -3px rgba(255, 224, 51, 0.15);
+    }
+    .scanline {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02) 50%, rgba(0,0,0,0.1) 51%);
+      background-size: 100% 4px;
+    }
+  </style>
+</head>
+<body class="bg-surface-base font-body antialiased selection:bg-primary-container selection:text-black min-h-screen flex flex-col">
+<!-- TOP TACTICAL NAVIGATION BAR -->
+<header class="fixed top-0 left-0 right-0 h-16 bg-surface-dim/95 border-b border-border-subtle/80 backdrop-blur-xl z-50 flex items-center justify-between px-5">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-md bg-primary-container flex items-center justify-center shadow-[0_0_15px_rgba(255,224,51,0.4)]">
+<span class="material-symbols-outlined text-black font-bold text-xl">sports_esports</span>
+</div>
+<div class="flex flex-col leading-tight">
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-base tracking-wide text-white uppercase">POKÉMON DRAFT ARENA</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-highlight text-primary-container font-mono text-[10px] font-bold tracking-wider border border-primary-container/20">SPEC 1.4</span>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant/80 tracking-widest uppercase">TACTICAL MULTIPLAYER LOBBY</span>
+</div>
+</div>
+<div class="h-6 w-px bg-border-subtle hidden md:block"></div>
+<!-- ACTIVE ROOM CODE BADGE -->
+<div class="hidden sm:flex items-center gap-2 bg-surface-card px-3 py-1.5 rounded-md border border-border-subtle">
+<span class="text-[11px] font-mono uppercase text-on-surface-variant font-semibold">ROOM:</span>
+<span class="font-headline font-bold text-xs tracking-wider text-secondary">PKM-7704</span>
+<button class="text-on-surface-variant hover:text-secondary transition-colors ml-1 p-0.5" title="Copy Room ID">
+<span class="material-symbols-outlined text-[15px] block">content_copy</span>
+</button>
+</div>
+</div>
+<!-- RIGHT STATUS META -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-surface-card px-3 py-1 rounded-full border border-status-live-green/30 shadow-[0_0_10px_rgba(16,185,129,0.15)]">
+<span class="w-2 h-2 rounded-full bg-status-live-green animate-pulse"></span>
+<span class="text-[11px] font-mono text-status-live-green uppercase tracking-wider font-semibold">LINKED: 18MS</span>
+</div>
+<div class="flex items-center gap-3 pl-2 border-l border-border-subtle">
+<div class="text-right hidden md:block">
+<div class="text-xs font-semibold text-white">ASH_K</div>
+<div class="text-[10px] font-mono text-secondary">GUEST #4</div>
+</div>
+<div class="w-9 h-9 rounded-lg bg-surface-highlight border border-border-strong flex items-center justify-center relative overflow-hidden">
+<img alt="Trainer Ash Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxHE942sYjY_ja2zuCdaaVna7Jk3tCw9MMiZxcRSQt3oSB9mQg6EbWdIxhD2zToQiYZy9HXsm3CMzpPsxrvZXYxv0gjpAdVDSufcXvxwCAlKIvL81QUpPNxiKDkLdRN3Fzl-4BPWPUZ7F0P_Sk4c0-1h1k-QdNguQOh6plKt3eSLzXGFkdVTertRrKMrzIG4JorkcacGuFbiusBXd2MoekSxerayx-bU0VeNFZY93P"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SIDEBAR NAVIGATION -->
+<aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-dim border-r border-border-subtle z-40 flex flex-col justify-between">
+<div class="p-4 flex flex-col gap-5">
+<div class="flex items-center justify-between px-2 pt-1">
+<span class="text-[11px] font-mono uppercase tracking-widest text-on-surface-variant font-semibold">WAR-ROOM MODULES</span>
+<span class="text-[10px] font-mono text-primary-container bg-primary-container/10 px-1.5 py-0.5 rounded border border-primary-container/20">BETA v2.2</span>
+</div>
+<nav class="flex flex-col gap-1.5 font-headline font-semibold text-sm">
+<a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-highlight/50 transition-all group" href="#">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant group-hover:text-secondary">dashboard</span>
+<span>Arena Hub</span>
+</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-highlight/50 transition-all group" href="#">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant group-hover:text-secondary">tune</span>
+<span>Draft Setup</span>
+</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-highlight/50 transition-all group" href="#">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant group-hover:text-secondary">smart_toy</span>
+<span>Bot Draft Terminal</span>
+</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-highlight/50 transition-all group" href="#">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant group-hover:text-secondary">terminal</span>
+<span>Host Command Lobby</span>
+</span>
+</a>
+<!-- ACTIVE ROUTE -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-lg bg-primary-container text-black font-bold shadow-[0_0_15px_rgba(255,224,51,0.25)] transition-all" href="#">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-black">groups</span>
+<span>Guest Bidding Lobby</span>
+</span>
+<span class="w-1.5 h-1.5 rounded-full bg-black"></span>
+</a>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-white hover:bg-surface-highlight/50 transition-all group" href="#">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[19px] text-on-surface-variant group-hover:text-secondary">menu_book</span>
+<span>Tier Rules Codex</span>
+</span>
+</a>
+</nav>
+</div>
+<!-- SIDEBAR FOOTER TELEMETRY -->
+<div class="p-4 border-t border-border-subtle bg-surface-card/60">
+<div class="bg-surface-dim rounded-lg p-3 border border-border-subtle flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-mono uppercase text-on-surface-variant tracking-wider font-semibold">ARENA COCKPIT</span>
+<span class="text-[10px] font-mono text-secondary bg-surface-highlight px-1.5 py-0.5 rounded border border-secondary/20">OU META</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">AUCTION TICKS</span>
+<span class="font-headline font-bold text-xs text-brand-accent-amber">1200 PTS</span>
+</div>
+<div class="w-full bg-surface-highlight h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-brand-accent-amber h-full w-3/4 rounded-full"></div>
+</div>
+</div>
+</div>
+</aside>
+<!-- MAIN VIEWPORT CONTENT (OFFSET BY SIDEBAR & HEADER) -->
+<div class="pl-64 pt-16 flex-1 flex flex-col bg-surface-base">
+<main class="w-full max-w-[1400px] mx-auto p-6 lg:p-8 flex flex-col gap-6">
+<!-- TOP PASSKEY & HOST HEADER ROW -->
+<div class="grid grid-cols-12 gap-5 items-stretch">
+<!-- Deployed Lobby Passkey Box (7 cols) -->
+<div class="col-span-12 lg:col-span-7 bg-surface-dim border border-border-subtle rounded-xl p-5 relative overflow-hidden flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xl">
+<div class="absolute -right-8 -top-8 w-44 h-44 bg-secondary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex items-center gap-4 relative z-10">
+<div class="w-12 h-12 rounded-lg bg-surface-card border border-border-strong flex items-center justify-center text-primary-container shadow-inner">
+<span class="material-symbols-outlined text-2xl">vpn_key</span>
+</div>
+<div>
+<div class="text-[11px] font-mono text-on-surface-variant uppercase tracking-widest font-semibold flex items-center gap-2">
+                DEPLOYED LOBBY PASSKEY
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+<div class="flex items-center gap-3 mt-1">
+<span class="font-headline text-3xl font-bold tracking-widest text-white" id="room-code-display">X7P-4Q9</span>
+<button class="h-8 px-2.5 rounded-md bg-surface-card hover:bg-surface-highlight text-secondary border border-border-subtle hover:border-secondary/50 transition-all flex items-center gap-1.5 active:scale-95 text-xs font-mono font-medium" id="copy-btn">
+<span class="material-symbols-outlined text-[16px]" id="copy-icon">content_copy</span>
+<span>COPY</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-surface-card/80 border border-border-subtle px-4 py-2.5 rounded-lg relative z-10 self-start sm:self-auto">
+<div class="w-2.5 h-2.5 rounded-full bg-status-live-green animate-ping"></div>
+<div>
+<div class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider font-semibold">SYNCHRONIZATION</div>
+<div class="font-mono text-xs font-bold text-status-live-green tracking-wide">P2P MESH ACTIVE</div>
+</div>
+</div>
+</div>
+<!-- Appointed Leader (Host Card - 5 cols) -->
+<div class="col-span-12 lg:col-span-5 bg-surface-dim border border-border-subtle rounded-xl p-5 relative overflow-hidden flex items-center justify-between shadow-xl">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="w-13 h-13 w-12 h-12 rounded-lg bg-surface-card border border-type-fire/40 overflow-hidden shadow-[0_0_15px_rgba(230,40,41,0.25)]">
+<img alt="Host RED Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2N050bpBvmMkH5fETkh0fqJb5yEbps-HiVPuZQ6uD-NjrHj1RVPZL-bMuTNNnqo-n0gPeMsNp2iNsIJSf4N5frgO5leutHUuw05-mP88kc6H9DcwiCoCiTWYuOFYXAjFXEfQPuCNoGrNC2hM1k5sm75pJjoTHV-11u6UKuHs3SiINJ0SLEkzpL2tjC7rJAFxl0EGmlMf1qHn6gSFAHthpK6ckVzwQClYY_4YtMZZw"/>
+</div>
+<span class="absolute -bottom-1 -right-1 px-1.5 py-0.5 bg-type-fire text-white font-mono text-[9px] font-bold rounded shadow uppercase">HOST</span>
+</div>
+<div>
+<div class="text-[10px] font-mono uppercase tracking-widest text-on-surface-variant font-semibold">APPOINTED LEADER</div>
+<div class="font-headline font-bold text-xl text-white tracking-wide">Host: RED</div>
+<div class="text-[11px] font-mono text-on-surface-variant">NODE: 192.168.1.101</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="px-2.5 py-1 rounded bg-status-live-green/10 border border-status-live-green/30 text-status-live-green font-mono text-xs font-bold tracking-wider">
+              STATE: READY
+            </span>
+<span class="text-[10px] font-mono text-on-surface-variant">HOST AUTHORITY LVL 4</span>
+</div>
+</div>
+</div>
+<!-- MAIN TWO-COLUMN WORKSPACE -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- LEFT / CENTER COLUMN (8 cols): Governance Protocols & Challenger Grid -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-6">
+<!-- Tactical Governance Protocols Row -->
+<div class="bg-surface-dim border border-border-subtle rounded-xl p-5 shadow-xl flex flex-col gap-3">
+<div class="flex items-center justify-between pb-1 border-b border-border-subtle/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-base">gavel</span>
+<span class="text-[11px] font-mono uppercase tracking-widest text-on-surface font-bold">TACTICAL GOVERNANCE PROTOCOLS</span>
+</div>
+<span class="text-[11px] font-mono text-secondary font-semibold bg-surface-card px-2 py-0.5 rounded border border-border-subtle">OU REGULATION G</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-surface-card border border-border-subtle p-3 rounded-lg flex flex-col gap-1">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider font-semibold">FORMAT</span>
+<span class="font-headline font-bold text-sm text-white">Standard 35m</span>
+</div>
+<div class="bg-surface-card border border-border-subtle p-3 rounded-lg flex flex-col gap-1">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider font-semibold">ROSTER QUOTA</span>
+<span class="font-headline font-bold text-sm text-secondary-container">10 PKMN</span>
+</div>
+<div class="bg-surface-card border border-border-subtle p-3 rounded-lg flex flex-col gap-1">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider font-semibold">BUDGET PURSE</span>
+<span class="font-headline font-bold text-sm text-primary-container">$200 Cap</span>
+</div>
+<div class="bg-surface-card border border-border-subtle p-3 rounded-lg flex flex-col gap-1">
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider font-semibold">BID WINDOW</span>
+<span class="font-headline font-bold text-sm text-brand-accent-amber">15s Timer</span>
+</div>
+</div>
+</div>
+<!-- Challenger Link Grid -->
+<div class="bg-surface-dim border border-border-subtle rounded-xl p-5 shadow-xl flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-xl">grid_view</span>
+<h2 class="font-headline font-bold text-base text-white tracking-wide uppercase">CHALLENGER LINK GRID</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="text-xs font-mono font-semibold text-primary-container bg-primary-container/10 px-2 py-0.5 rounded border border-primary-container/20">3 / 4 SEATS LOCKED</span>
+</div>
+</div>
+<!-- 4 ACTIVE PLAYERS TILES -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Player 1: RED (HOST) -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-4 flex flex-col justify-between gap-3 hover:border-border-strong transition-all">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface-raised border border-type-fire/30 overflow-hidden shadow-inner">
+<img alt="RED Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2N050bpBvmMkH5fETkh0fqJb5yEbps-HiVPuZQ6uD-NjrHj1RVPZL-bMuTNNnqo-n0gPeMsNp2iNsIJSf4N5frgO5leutHUuw05-mP88kc6H9DcwiCoCiTWYuOFYXAjFXEfQPuCNoGrNC2hM1k5sm75pJjoTHV-11u6UKuHs3SiINJ0SLEkzpL2tjC7rJAFxl0EGmlMf1qHn6gSFAHthpK6ckVzwQClYY_4YtMZZw"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-base text-white">RED</span>
+<span class="px-1.5 py-0.2 rounded bg-type-fire/20 text-type-fire font-mono text-[9px] font-bold border border-type-fire/30">HOST</span>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">NODE: 192.168.1.101</span>
+</div>
+</div>
+<!-- Status Pill: Ready (Green) -->
+<div class="flex items-center gap-1.5 bg-status-live-green/10 border border-status-live-green/30 px-2 py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-status-live-green"></span>
+<span class="font-mono text-[11px] font-bold text-status-live-green uppercase tracking-wider">READY</span>
+</div>
+</div>
+<div class="bg-surface-dim/80 rounded-lg px-3 py-2 border border-border-subtle/50 flex items-center justify-between text-xs font-mono">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-status-live-green">wifi</span>
+<span>12ms</span>
+</div>
+<span class="text-secondary font-semibold tracking-wider">SYNC 100%</span>
+</div>
+</div>
+<!-- Player 2: BLUE -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-4 flex flex-col justify-between gap-3 hover:border-border-strong transition-all">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface-raised border border-type-electric/30 overflow-hidden shadow-inner">
+<img alt="BLUE Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhCFPl_3r9tx6rEdcwpJ2FNO8sSpmrN7-WOydbyxAoAC_-iy5OhMh5dd6UsstIA0s_ykFCIV8ulAvAk0a6-xFGlSkX9Ib-dXUCB0-UZULBox61hksAVDv8iQRpa32tRguaU7FuqT9rX5Nz9OcGT_R51OZ-xbEM4-NMyUWISnO2Q0dGDMbnj57jpnfB5CwuA6Z92YEVwNqAcCc_8O453eNrgaII2_sLILXlcK7WP7eR"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-base text-white">BLUE</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-highlight text-on-surface-variant font-mono text-[9px]">GUEST</span>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">NODE: 192.168.1.104</span>
+</div>
+</div>
+<!-- Status Pill: Syncing (Orange Dot) -->
+<div class="flex items-center gap-1.5 bg-brand-accent-amber/10 border border-brand-accent-amber/30 px-2 py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-brand-accent-amber animate-pulse"></span>
+<span class="font-mono text-[11px] font-bold text-brand-accent-amber uppercase tracking-wider">SYNCING</span>
+</div>
+</div>
+<div class="bg-surface-dim/80 rounded-lg px-3 py-2 border border-border-subtle/50 flex items-center justify-between text-xs font-mono">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-brand-accent-amber">wifi</span>
+<span>48ms</span>
+</div>
+<span class="text-brand-accent-amber font-semibold tracking-wider">HANDSHAKE 78%</span>
+</div>
+</div>
+<!-- Player 3: CYNTHIA -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-4 flex flex-col justify-between gap-3 hover:border-border-strong transition-all">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface-raised border border-border-strong overflow-hidden shadow-inner">
+<img alt="CYNTHIA Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA33wakHWo9TdcER1ngJONSG8mZc8W67x1HOqjBvytHM2A4voTUiJnIlGgy0lhdOOVoPnDtxywsX1xAEpaQefGhN9GzP4JZYvf9tjk5d_7evxZfYkbPzfAjdBDfT0DG9HvxxaEsrCuwpilESKLyPdIVKbG3qJz0iPLSHAV_LGEUi_VdVwmvCVjtSAkaiWBo3iFKfuMLNXeVMXuHPbtkEuR2_ocR8g9ONTmmGZJcoNu1"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-base text-white">CYNTHIA</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-highlight text-on-surface-variant font-mono text-[9px]">GUEST</span>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">NODE: 192.168.1.109</span>
+</div>
+</div>
+<!-- Status Pill: Ready (Green) -->
+<div class="flex items-center gap-1.5 bg-status-live-green/10 border border-status-live-green/30 px-2 py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-status-live-green"></span>
+<span class="font-mono text-[11px] font-bold text-status-live-green uppercase tracking-wider">READY</span>
+</div>
+</div>
+<div class="bg-surface-dim/80 rounded-lg px-3 py-2 border border-border-subtle/50 flex items-center justify-between text-xs font-mono">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-status-live-green">wifi</span>
+<span>24ms</span>
+</div>
+<span class="text-secondary font-semibold tracking-wider">SYNC 100%</span>
+</div>
+</div>
+<!-- Player 4: ASH_K (YOU) -->
+<div class="bg-surface-card border-2 border-primary-container/40 rounded-xl p-4 flex flex-col justify-between gap-3 shadow-lg relative" id="self-card-preview">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface-raised border border-primary-container/50 overflow-hidden shadow-inner">
+<img alt="ASH_K Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxHE942sYjY_ja2zuCdaaVna7Jk3tCw9MMiZxcRSQt3oSB9mQg6EbWdIxhD2zToQiYZy9HXsm3CMzpPsxrvZXYxv0gjpAdVDSufcXvxwCAlKIvL81QUpPNxiKDkLdRN3Fzl-4BPWPUZ7F0P_Sk4c0-1h1k-QdNguQOh6plKt3eSLzXGFkdVTertRrKMrzIG4JorkcacGuFbiusBXd2MoekSxerayx-bU0VeNFZY93P"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-base text-white">ASH_K</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-black font-mono text-[9px] font-bold uppercase">YOU</span>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">NODE: 127.0.0.1 (LOCAL)</span>
+</div>
+</div>
+<!-- Status Pill: NOT READY (Red/Toggable) -->
+<div class="flex items-center gap-1.5 bg-status-urgent/10 border border-status-urgent/30 px-2 py-1 rounded transition-colors" id="self-status-pill">
+<span class="w-2 h-2 rounded-full bg-status-urgent" id="self-status-dot"></span>
+<span class="font-mono text-[11px] font-bold text-status-urgent uppercase tracking-wider" id="self-status-text">NOT READY</span>
+</div>
+</div>
+<div class="bg-surface-dim/80 rounded-lg px-3 py-2 border border-border-subtle/50 flex items-center justify-between text-xs font-mono">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-secondary">wifi</span>
+<span>18ms</span>
+</div>
+<span class="text-secondary font-semibold tracking-wider">STAGING BUFFER</span>
+</div>
+</div>
+</div>
+<!-- Banner Notice -->
+<div class="bg-surface-raised border border-border-subtle rounded-lg p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+<div class="flex items-center gap-2.5 text-on-surface">
+<span class="material-symbols-outlined text-primary-container text-[18px]">info</span>
+<span>Awaiting all challengers to confirm readiness before Host triggers Draft Phase.</span>
+</div>
+<span class="font-mono text-[11px] text-secondary tracking-widest font-semibold uppercase whitespace-nowrap">NET PROTOCOL: UDP-QUIC</span>
+</div>
+</div>
+</div>
+<!-- RIGHT SIDE COLUMN (4 cols): GUEST STAGING TERMINAL -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-5">
+<div class="bg-surface-dim border border-border-subtle rounded-xl p-5 shadow-2xl flex flex-col gap-5 relative overflow-hidden">
+<!-- Terminal Header -->
+<div class="flex items-center justify-between pb-3 border-b border-border-subtle/60">
+<div class="flex flex-col">
+<span class="text-[10px] font-mono uppercase tracking-widest text-primary-container font-bold">CLIENT MODULE 04</span>
+<h3 class="font-headline font-bold text-lg text-white tracking-wide">GUEST STAGING TERMINAL</h3>
+</div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></div>
+</div>
+<!-- Trainer Profile Preview (ASH_K - Pallet League Guest, Challenger #4) -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-3.5 flex items-center gap-3.5">
+<div class="w-14 h-14 rounded-lg bg-surface-raised border border-primary-container/40 overflow-hidden shrink-0 shadow-md">
+<img alt="Trainer ASH_K Staging" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBxX6GgOQVPfX9mW22i7hE4I5JMYeI0HLcy0s7mKhla8a4KREvyzVo08GTcsbjyQfW4H2EsUPWCXFLj1uUv_CY6NIVU7nF_d3xOJFLlBd5rUZDBvR4LjIPR2r7u1Eay4J4sb8Z0h7WYWr3S3_amybKa0Dp39fpADgMONoagdZ5kYhzGwe6KHIWEfLGA4Rj5HZ8HzdscYsU25jm-BVyQrP88MT76KmGq5jMrW57OMCu"/>
+</div>
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-base text-white">ASH_K</span>
+<span class="px-1.5 py-0.2 rounded bg-primary-container/20 text-primary-container border border-primary-container/40 text-[9px] font-mono font-bold uppercase">CHALLENGER #4</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">Pallet League Guest</span>
+<span class="text-[10px] font-mono text-secondary mt-0.5 tracking-wider uppercase font-semibold">TIER: OU SPECIALIST</span>
+</div>
+</div>
+<!-- Live Telemetry Jitter Wave Graph & Readout -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-4 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant font-semibold">LIVE TELEMETRY JITTER</span>
+<span class="text-xs font-mono font-bold text-status-live-green tracking-wide">18 MS (STABLE)</span>
+</div>
+<!-- Jitter Wave SVG Graph -->
+<div class="w-full h-16 bg-surface-dim rounded-lg border border-border-subtle/80 p-1 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-secondary/5 scanline pointer-events-none"></div>
+<svg class="w-full h-full text-secondary" fill="none" preserveaspectratio="none" viewbox="0 0 240 40">
+<path d="M0,20 L25,20 L35,10 L45,30 L55,20 L80,20 L90,6 L100,34 L110,20 L140,20 L150,14 L160,26 L170,20 L195,20 L205,10 L215,28 L225,20 L240,20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+<path d="M0,20 L25,20 L35,10 L45,30 L55,20 L80,20 L90,6 L100,34 L110,20 L140,20 L150,14 L160,26 L170,20 L195,20 L205,10 L215,28 L225,20 L240,20 L240,40 L0,40 Z" fill="currentColor" fill-opacity="0.08"></path>
+</svg>
+</div>
+<div class="flex items-center justify-between text-[11px] font-mono text-on-surface-variant pt-1 border-t border-border-subtle/40">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-live-green"></span>
+                  PACKET LOSS: <strong class="text-white">0.0%</strong>
+</span>
+<span>BUFFER: <strong class="text-secondary">A+ ZERO-DROP</strong></span>
+</div>
+</div>
+<!-- Client Sync Checklist with Green Checkmarks -->
+<div class="bg-surface-card border border-border-subtle rounded-xl p-4 flex flex-col gap-2.5">
+<span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant font-semibold">CLIENT SYNC CHECKLIST</span>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between text-xs py-1 border-b border-border-subtle/30">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-status-live-green">check_circle</span>
+<span>Showdown Dex Cache v9.2</span>
+</div>
+<span class="font-mono text-[10px] font-bold text-status-live-green uppercase tracking-wider">SYNCED</span>
+</div>
+<div class="flex items-center justify-between text-xs py-1 border-b border-border-subtle/30">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-status-live-green">check_circle</span>
+<span>Cap Allocator Ledger</span>
+</div>
+<span class="font-mono text-[10px] font-bold text-status-live-green uppercase tracking-wider">VALIDATED</span>
+</div>
+<div class="flex items-center justify-between text-xs py-1">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-status-live-green">check_circle</span>
+<span>Auction Audio Chimes</span>
+</div>
+<span class="font-mono text-[10px] font-bold text-status-live-green uppercase tracking-wider">PRIMED</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons: Large High-Contrast Electric Yellow Toggle & Outline Leave Button -->
+<div class="flex flex-col gap-3 pt-2">
+<button class="w-full h-13 py-3.5 bg-primary-container hover:bg-brand-accent-amber text-black font-headline font-bold text-base uppercase tracking-wider rounded-lg flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(255,224,51,0.3)] transition-all active:scale-[0.98] cursor-pointer" id="ready-toggle-btn">
+<span class="material-symbols-outlined text-2xl font-bold" id="ready-btn-icon">done_all</span>
+<span id="ready-btn-label">I AM READY</span>
+</button>
+<button class="w-full h-11 border border-status-urgent/40 hover:bg-status-urgent/10 text-status-urgent font-headline font-semibold text-sm uppercase tracking-wider rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98] cursor-pointer" id="leave-arena-btn">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span>LEAVE ARENA</span>
+</button>
+</div>
+<!-- Security Watermark -->
+<div class="flex items-center justify-between text-on-surface-variant/70 text-[10px] font-mono pt-1">
+<span>SECURE GUEST INSTANCE</span>
+<span>REV 2025.4 // MESH-NET</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- INTERACTIVITY SCRIPT -->
+<script>
+    (function initTacticalGuestLobby() {
+      // Copy Passkey functionality
+      const copyBtn = document.getElementById('copy-btn');
+      const copyIcon = document.getElementById('copy-icon');
+      const roomCodeDisplay = document.getElementById('room-code-display');
+
+      if (copyBtn && roomCodeDisplay) {
+        copyBtn.addEventListener('click', () => {
+          const passkey = roomCodeDisplay.textContent.trim();
+          navigator.clipboard?.writeText(passkey).then(() => {
+            copyIcon.textContent = 'check';
+            copyBtn.classList.add('text-status-live-green', 'border-status-live-green');
+            setTimeout(() => {
+              copyIcon.textContent = 'content_copy';
+              copyBtn.classList.remove('text-status-live-green', 'border-status-live-green');
+            }, 1800);
+          }).catch(() => {
+            copyIcon.textContent = 'check';
+            setTimeout(() => { copyIcon.textContent = 'content_copy'; }, 1500);
+          });
+        });
+      }
+
+      // Ready Toggle Logic
+      const readyBtn = document.getElementById('ready-toggle-btn');
+      const readyBtnLabel = document.getElementById('ready-btn-label');
+      const readyBtnIcon = document.getElementById('ready-btn-icon');
+
+      const selfStatusPill = document.getElementById('self-status-pill');
+      const selfStatusDot = document.getElementById('self-status-dot');
+      const selfStatusText = document.getElementById('self-status-text');
+
+      let isReady = false;
+
+      if (readyBtn) {
+        readyBtn.addEventListener('click', () => {
+          isReady = !isReady;
+          if (isReady) {
+            // Player becomes READY
+            readyBtn.classList.remove('bg-primary-container', 'hover:bg-brand-accent-amber', 'text-black', 'shadow-[0_0_25px_rgba(255,224,51,0.3)]');
+            readyBtn.classList.add('bg-status-live-green', 'hover:bg-status-live-green/90', 'text-black', 'shadow-[0_0_25px_rgba(16,185,129,0.4)]');
+            readyBtnLabel.textContent = 'READY CONFIRMED';
+            readyBtnIcon.textContent = 'check_circle';
+
+            // Update card pill in Challenger Link Grid
+            selfStatusPill.classList.remove('bg-status-urgent/10', 'border-status-urgent/30');
+            selfStatusPill.classList.add('bg-status-live-green/10', 'border-status-live-green/30');
+            selfStatusDot.classList.remove('bg-status-urgent');
+            selfStatusDot.classList.add('bg-status-live-green');
+            selfStatusText.classList.remove('text-status-urgent');
+            selfStatusText.classList.add('text-status-live-green');
+            selfStatusText.textContent = 'READY';
+          } else {
+            // Player reverts to NOT READY
+            readyBtn.classList.add('bg-primary-container', 'hover:bg-brand-accent-amber', 'text-black', 'shadow-[0_0_25px_rgba(255,224,51,0.3)]');
+            readyBtn.classList.remove('bg-status-live-green', 'hover:bg-status-live-green/90', 'text-black', 'shadow-[0_0_25px_rgba(16,185,129,0.4)]');
+            readyBtnLabel.textContent = 'I AM READY';
+            readyBtnIcon.textContent = 'done_all';
+
+            // Revert card pill
+            selfStatusPill.classList.add('bg-status-urgent/10', 'border-status-urgent/30');
+            selfStatusPill.classList.remove('bg-status-live-green/10', 'border-status-live-green/30');
+            selfStatusDot.classList.add('bg-status-urgent');
+            selfStatusDot.classList.remove('bg-status-live-green');
+            selfStatusText.classList.add('text-status-urgent');
+            selfStatusText.classList.remove('text-status-live-green');
+            selfStatusText.textContent = 'NOT READY';
+          }
+        });
+      }
+
+      // Leave Arena confirmation
+      const leaveBtn = document.getElementById('leave-arena-btn');
+      if (leaveBtn) {
+        leaveBtn.addEventListener('click', () => {
+          if (confirm('Disconnect and abandon Guest Slot in Room X7P-4Q9?')) {
+            leaveBtn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">sync</span><span>DISCONNECTING...</span>';
+            setTimeout(() => {
+              window.location.hash = '#hub';
+            }, 600);
+          }
+        });
+      }
+    })();
+  </script>
+</body></html>

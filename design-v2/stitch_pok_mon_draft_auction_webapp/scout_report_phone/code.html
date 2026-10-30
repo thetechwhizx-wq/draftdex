@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0d1320;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#161b29", "on-primary-container": "#726300", "on-secondary-container": "#00686f", "on-secondary-fixed": "#002022", "on-primary-fixed": "#211b00", "inverse-surface": "#dde2f5", "background": "#0d1320", "tertiary": "#fffcff", "surface-container-lowest": "#080e1b", "type-dark": "#50413F", "surface": "#0d1320", "surface-card": "#162238", "tertiary-fixed-dim": "#ffb3ad", "on-tertiary": "#68000a", "surface-variant": "#2f3543", "outline": "#979179", "type-normal": "#9FA19F", "surface-raised": "#111A2E", "secondary": "#d3fbff", "type-psychic": "#EF4179", "surface-base": "#0B111E", "type-ghost": "#704170", "on-tertiary-container": "#c02028", "type-bug": "#91A119", "surface-highlight": "#1E2D4A", "on-tertiary-fixed-variant": "#930013", "secondary-fixed-dim": "#00dbe9", "on-secondary-fixed-variant": "#004f54", "tertiary-fixed": "#ffdad7", "on-tertiary-fixed": "#410004", "primary": "#fffcff", "type-fighting": "#FF8000", "error": "#ffb4ab", "on-error-container": "#ffdad6", "brand-accent-amber": "#FFD000", "type-grass": "#3FA129", "secondary-container": "#00eefc", "primary-fixed": "#ffe24c", "inverse-on-surface": "#2a303f", "error-container": "#93000a", "type-poison": "#8F41CB", "outline-variant": "#4c4733", "on-error": "#690005", "tertiary-container": "#ffd7d4", "on-background": "#dde2f5", "on-primary": "#393000", "border-strong": "#354E7A", "on-surface-variant": "#cec6ac", "type-water": "#2980EF", "status-urgent": "#EF4444", "surface-container-highest": "#2f3543", "type-rock": "#AFA981", "type-flying": "#81B9EF", "surface-dim": "#0d1320", "secondary-fixed": "#7df4ff", "type-dragon": "#5060E1", "type-ground": "#915121", "surface-bright": "#333948", "primary-container": "#ffe033", "inverse-primary": "#6d5e00", "primary-fixed-dim": "#e3c60c", "type-fairy": "#EF70EF", "on-primary-fixed-variant": "#524600", "type-ice": "#3DCEF3", "type-electric": "#FAC000", "surface-container-high": "#242a38", "type-fire": "#E62829", "surface-tint": "#e3c60c", "type-steel": "#60A1B8", "status-live-green": "#10B981", "on-surface": "#dde2f5", "border-subtle": "#223555", "surface-container": "#1a1f2d", "on-secondary": "#00363a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xl": "3rem", "margin": "1rem", "gutter-tablet": "1.25rem", "gutter-desktop": "1.5rem", "space-xs": "0.25rem", "space-md": "1rem", "margin-tablet": "1.5rem", "gutter": "1rem", "space-sm": "0.5rem", "margin-desktop": "2.5rem", "space-lg": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "headline-xl": ["Space Grotesk"], "label-numeric-stat": ["Space Grotesk"], "display-hero": ["Space Grotesk"], "body-md": ["Geist"], "display-hero-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "body-lg": ["Geist"], "headline-md": ["Space Grotesk"], "label-badge": ["Geist"], "headline-sm": ["Space Grotesk"], "headline-xl-mobile": ["Space Grotesk"], "label-meta": ["Geist"], "body-sm": ["Geist"] }, "fontSize": { "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-numeric-stat": ["18px", { "lineHeight": "22px", "letterSpacing": "0.05em", "fontWeight": "700" }], "display-hero": ["56px", { "lineHeight": "60px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "body-md": ["15px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "display-hero-mobile": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }], "label-badge": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "label-meta": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><button aria-label="Back to previous screen" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface hover:text-primary-container transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[20px]">arrow_back</span></button><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-live-green opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-status-live-green"></span></span><span class="font-label-badge text-label-badge text-status-live-green uppercase tracking-wider">LIVE ARENA</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface truncate uppercase tracking-tight">Scout Report</h1></div></div><div class="flex items-center gap-space-sm shrink-0"><div class="flex items-center gap-space-xs bg-surface-raised px-space-sm py-space-xs rounded-lg"><span class="material-symbols-outlined text-primary-container text-[14px]">vpn_key</span><span class="font-label-meta text-label-meta text-primary-container font-bold tracking-widest">PK-940</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface"><div class="flex flex-col w-full pb-safe">
+<!-- Tactical Report Banner & Matchup Simulation Score -->
+<div class="px-margin pt-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">analytics</span>
+<span class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-wider">POST-DRAFT SCOUT REPORT</span>
+</div>
+<div class="bg-surface-raised px-space-sm py-space-xs rounded-lg flex items-center gap-space-xs shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-status-live-green"></span>
+<span class="font-label-badge text-label-badge text-secondary-container tracking-widest uppercase">AUDIT VERIFIED</span>
+</div>
+</div>
+<!-- Win Chance Tactical Telemetry Bar -->
+<div class="bg-surface-card p-space-md rounded-xl shadow-md flex flex-col gap-space-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-28 h-28 bg-primary-container/5 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-widest">ESTIMATE</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">· Monte Carlo v4.2</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-lg text-headline-lg text-primary-container font-bold">68%</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase">WIN CHANCE</span>
+</div>
+</div>
+<!-- Segmented Tactical Bar -->
+<div class="w-full bg-surface-base h-3 rounded-lg overflow-hidden flex p-0.5 shadow-inner">
+<div class="bg-primary-container h-full rounded-l-DEFAULT transition-all duration-1000 ease-out shadow-[0_0_8px_rgba(255,224,51,0.5)]" style="width: 68%;"></div>
+<div class="bg-surface-highlight h-full rounded-r-DEFAULT flex-1"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-meta text-label-meta">
+<span>BASELINE 50.0%</span>
+<span class="text-status-live-green flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+          +18.0% META ADVANTAGE
+        </span>
+</div>
+</div>
+</div>
+<!-- 2x2 Telemetry Score Rings Grid -->
+<div class="px-margin pt-space-md grid grid-cols-2 gap-space-sm">
+<!-- Ring 1: Draft Grade -->
+<div class="bg-surface-card p-space-md rounded-xl flex flex-col items-center justify-between text-center relative overflow-hidden shadow-sm group">
+<div class="w-full flex items-center justify-between font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider mb-space-xs">
+<span>OVERALL</span>
+<span class="text-primary-container">SYS-1</span>
+</div>
+<div class="relative w-24 h-24 my-space-xs flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-raised" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="94, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-lg text-headline-lg text-primary-container leading-none">A+</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant font-bold tracking-tighter">94/100</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Draft Grade</span>
+</div>
+<!-- Ring 2: Role Coverage -->
+<div class="bg-surface-card p-space-md rounded-xl flex flex-col items-center justify-between text-center relative overflow-hidden shadow-sm">
+<div class="w-full flex items-center justify-between font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider mb-space-xs">
+<span>PIVOT / TANK</span>
+<span class="text-secondary-fixed">8/9 ROLES</span>
+</div>
+<div class="relative w-24 h-24 my-space-xs flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-raised" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-secondary-fixed-dim" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="88, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-lg text-headline-lg text-secondary-fixed leading-none">88%</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider">SOLID</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Role Coverage</span>
+</div>
+<!-- Ring 3: Type Coverage -->
+<div class="bg-surface-card p-space-md rounded-xl flex flex-col items-center justify-between text-center relative overflow-hidden shadow-sm">
+<div class="w-full flex items-center justify-between font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider mb-space-xs">
+<span>OFFENSIVE</span>
+<span class="text-status-live-green">17 TYPES</span>
+</div>
+<div class="relative w-24 h-24 my-space-xs flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-raised" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-status-live-green" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="92, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-lg text-headline-lg text-status-live-green leading-none">92%</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider">ELITE</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Type Coverage</span>
+</div>
+<!-- Ring 4: Speed Profile -->
+<div class="bg-surface-card p-space-md rounded-xl flex flex-col items-center justify-between text-center relative overflow-hidden shadow-sm">
+<div class="w-full flex items-center justify-between font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider mb-space-xs">
+<span>TIERS >110</span>
+<span class="text-type-electric">PACE 85</span>
+</div>
+<div class="relative w-24 h-24 my-space-xs flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-raised" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-brand-accent-amber" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="85, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-lg text-headline-lg text-brand-accent-amber leading-none">85%</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider">FAST</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Speed Profile</span>
+</div>
+</div>
+<!-- Highlights & Risk Factors Header -->
+<div class="px-margin pt-space-lg flex items-center justify-between">
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-widest">TACTICAL HIGHLIGHTS & ROSTER AUDIT</span>
+<span class="font-label-meta text-label-meta text-primary-container">4 FLAGS</span>
+</div>
+<!-- Four Highlight Cards -->
+<div class="px-margin pt-space-sm flex flex-col gap-space-sm">
+<!-- 1. Best Steal Card -->
+<div class="bg-surface-card p-space-md rounded-xl flex items-center gap-space-md shadow-sm relative overflow-hidden">
+<div class="w-14 h-14 rounded-lg bg-surface-base shrink-0 flex items-center justify-center relative overflow-hidden">
+<img class="w-12 h-12 object-contain relative z-10" data-alt="High tech neon holographic icon of Rotom Wash hovering with glowing electric blue and water plasma currents in dark tactical arcade style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsKHv0OPSjZjocsGFj2QFe_zcppDgXy0DsRAdPJKKZtdp_NGfyilfq-jqda76USJD2kiBip39YeoViIKifg530PVu1odkGze1z3zg5wCMqkMyoKwE8eQuyFjXUSdpHzD6gwWzTP3JZCzQkLfl0F7Cwl_IRpFCJmFF1dLGbEhPCtcyO-824xkufiC31NyYmGAajq8y1JLzn9UXrB_KGMUzyfSn35KvgnfhFR1TY0dUs"/>
+<div class="absolute inset-0 bg-type-electric/15"></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-badge text-label-badge bg-status-live-green/20 text-status-live-green px-1.5 py-0.5 rounded uppercase font-bold">BEST STEAL</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Rotom-Wash</span>
+</div>
+<span class="font-label-numeric-stat text-label-numeric-stat text-status-live-green font-bold">$14</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Below $22 average · Saved $8 draft equity</p>
+<div class="flex items-center gap-1.5 mt-1.5">
+<span class="px-1.5 py-0.2 bg-type-electric text-on-surface font-label-badge text-[10px] rounded uppercase font-bold">Electric</span>
+<span class="px-1.5 py-0.2 bg-type-water text-on-surface font-label-badge text-[10px] rounded uppercase font-bold">Water</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Pivot Pivot Tank</span>
+</div>
+</div>
+</div>
+<!-- 2. Biggest Overpay Card -->
+<div class="bg-surface-card p-space-md rounded-xl flex items-center gap-space-md shadow-sm relative overflow-hidden">
+<div class="w-14 h-14 rounded-lg bg-surface-base shrink-0 flex items-center justify-center relative overflow-hidden">
+<img class="w-12 h-12 object-contain relative z-10" data-alt="Fierce armored Tyranitar roaring with glowing sandstorm neon particle effects against a dark deep navy tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF-2ZqOMaTnzw8hTRLKg62LrvqMlEPpk0ZiEDCDv825UJUN-cKIaqysoXNV3IQttpaBjAiZIQAuzqqiI180Ru1qdNvjqHkBty8AnIPbdAJ21x-Jm6gewOKYz0s2Heo_X3kdzeBLkSjaqxT25T3H-4JvwoiR5v9CGjfylm4y67I7eLBPNOXrMCcMacKkmG9Pj22iithQcBbjcLiKq0DeX796BKCLxVWe0xlSVSpvSE5"/>
+<div class="absolute inset-0 bg-type-rock/15"></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-badge text-label-badge bg-type-fighting/20 text-type-fighting px-1.5 py-0.5 rounded uppercase font-bold">OVERPAY</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Tyranitar</span>
+</div>
+<span class="font-label-numeric-stat text-label-numeric-stat text-type-fighting font-bold">$58</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">+$16 premium · High bidding war inflator</p>
+<div class="flex items-center gap-1.5 mt-1.5">
+<span class="px-1.5 py-0.2 bg-type-rock text-on-surface font-label-badge text-[10px] rounded uppercase font-bold">Rock</span>
+<span class="px-1.5 py-0.2 bg-type-dark text-on-surface font-label-badge text-[10px] rounded uppercase font-bold">Dark</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Sand Stream Setter</span>
+</div>
+</div>
+</div>
+<!-- 3. Weakness Alert Card -->
+<div class="bg-surface-card p-space-md rounded-xl flex flex-col gap-space-xs shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-6 h-6 rounded-md bg-status-urgent/20 text-status-urgent flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-status-urgent font-bold truncate">Ice 3x Vulnerability</span>
+</div>
+<span class="font-label-badge text-label-badge bg-type-ice/20 text-type-ice px-2 py-0.5 rounded uppercase font-bold tracking-wider">DEFICIT WARNING</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Quad-weakness cluster exposes backend to fast Ice Spinner and Freeze-Dry sweepers:</p>
+<div class="grid grid-cols-3 gap-space-xs mt-space-xs">
+<div class="bg-surface-raised p-space-xs rounded-lg flex items-center gap-1.5 min-w-0">
+<span class="w-1.5 h-1.5 rounded-full bg-status-urgent shrink-0"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Garchomp</span>
+</div>
+<div class="bg-surface-raised p-space-xs rounded-lg flex items-center gap-1.5 min-w-0">
+<span class="w-1.5 h-1.5 rounded-full bg-status-urgent shrink-0"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Landorus-T</span>
+</div>
+<div class="bg-surface-raised p-space-xs rounded-lg flex items-center gap-1.5 min-w-0">
+<span class="w-1.5 h-1.5 rounded-full bg-status-urgent shrink-0"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">Dragonite</span>
+</div>
+</div>
+</div>
+<!-- 4. MVP Pick Card -->
+<div class="bg-surface-card p-space-md rounded-xl flex items-center gap-space-md shadow-sm relative overflow-hidden">
+<div class="w-14 h-14 rounded-lg bg-surface-base shrink-0 flex items-center justify-center relative overflow-hidden">
+<img class="w-12 h-12 object-contain relative z-10" data-alt="Futuristic cyber Garchomp with cyan glowing aerodynamic fins and fierce dragon claws poised in high-tech battle terminal arena" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9z44Izs4IECfUI9q3n7Yo5O_Q0_UQ3JTlTWoeH8iOoU9txIkKaDdmjsKrfn8I8uPg8cNQZQU6XPvtcmnzBj2hXZ7vwPQgWwm2LslynfALlqTbS8rAuMypT2lib67HR3FgHhzYmhTsCyT1FHdcyw2-oIRSgaVmYha9vYUDIxVrOyNxA00bzN-LfhPjBinoVG-tzqacYiDKhfZ1J6hkPPvna1YHQRFJudM78hc33jO8"/>
+<div class="absolute inset-0 bg-type-dragon/15"></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Garchomp</span>
+</div>
+<span class="font-label-badge text-label-badge bg-primary-container text-on-primary font-bold px-2 py-0.5 rounded uppercase tracking-wider">MVP PICK</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Primary Sweeper · Swords Dance & Scale Shot</p>
+<div class="flex items-center gap-1.5 mt-1.5">
+<span class="px-1.5 py-0.2 bg-type-dragon text-on-surface font-label-badge text-[10px] rounded uppercase font-bold">Dragon</span>
+<span class="px-1.5 py-0.2 bg-type-ground text-on-surface font-label-badge text-[10px] rounded uppercase font-bold">Ground</span>
+<span class="font-label-meta text-label-meta text-status-live-green font-semibold">102 SPD / 130 ATK</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Action Dock -->
+<div class="px-margin pt-space-lg pb-space-lg flex flex-col gap-space-xs">
+<button class="w-full h-12 bg-primary-container hover:bg-brand-accent-amber active:scale-[0.99] text-surface-base font-headline-sm text-headline-sm font-bold uppercase tracking-wider rounded-lg flex items-center justify-center gap-space-xs shadow-[0_0_16px_rgba(255,224,51,0.35)] transition-all">
+<span>CONTINUE</span>
+<span class="material-symbols-outlined text-[20px] font-bold">arrow_forward</span>
+</button>
+<div class="flex items-center justify-center gap-space-xs text-on-surface-variant font-label-meta text-label-meta mt-1">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+<span>Scout telemetries autosaved to Room PK-940 Vault</span>
+</div>
+</div>
+</div></main></body></html>

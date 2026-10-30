@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "type-fighting": "#FF8000", "status-urgent": "#EF4444", "type-poison": "#8F41CB", "on-surface-variant": "#cec6ac", "type-bug": "#91A119", "inverse-primary": "#6d5e00", "surface-dim": "#0d1320", "surface-highlight": "#1E2D4A", "secondary-container": "#00eefc", "type-water": "#2980EF", "surface-bright": "#333948", "type-grass": "#3FA129", "surface-container-high": "#242a38", "on-primary-container": "#726300", "surface-variant": "#2f3543", "tertiary-fixed": "#ffdad7", "primary-fixed": "#ffe24c", "error-container": "#93000a", "type-steel": "#60A1B8", "on-secondary": "#00363a", "type-dragon": "#5060E1", "type-ghost": "#704170", "tertiary": "#fffcff", "surface-raised": "#111A2E", "inverse-on-surface": "#2a303f", "type-ice": "#3DCEF3", "on-error": "#690005", "primary-fixed-dim": "#e3c60c", "on-primary": "#393000", "surface-card": "#162238", "tertiary-container": "#ffd7d4", "on-secondary-container": "#00686f", "type-psychic": "#EF4179", "on-secondary-fixed-variant": "#004f54", "on-secondary-fixed": "#002022", "type-ground": "#915121", "status-live-green": "#10B981", "on-background": "#dde2f5", "type-flying": "#81B9EF", "border-subtle": "#223555", "surface-tint": "#e3c60c", "primary": "#fffcff", "on-tertiary-container": "#c02028", "on-tertiary-fixed": "#410004", "type-fire": "#E62829", "on-tertiary": "#68000a", "on-primary-fixed-variant": "#524600", "type-fairy": "#EF70EF", "on-primary-fixed": "#211b00", "type-normal": "#9FA19F", "secondary-fixed": "#7df4ff", "surface-base": "#0B111E", "primary-container": "#ffe033", "inverse-surface": "#dde2f5", "tertiary-fixed-dim": "#ffb3ad", "brand-accent-amber": "#FFD000", "outline": "#979179", "background": "#0d1320", "on-tertiary-fixed-variant": "#930013", "on-surface": "#dde2f5", "type-rock": "#AFA981", "outline-variant": "#4c4733", "surface-container-lowest": "#080e1b", "surface-container-highest": "#2f3543", "error": "#ffb4ab", "border-strong": "#354E7A", "surface": "#0d1320", "secondary-fixed-dim": "#00dbe9", "surface-container-low": "#161b29", "type-dark": "#50413F", "on-error-container": "#ffdad6", "surface-container": "#1a1f2d", "type-electric": "#FAC000", "secondary": "#d3fbff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter-desktop": "1.5rem", "margin": "1rem", "gutter-tablet": "1.25rem", "margin-tablet": "1.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "gutter": "1rem", "space-lg": "1.5rem", "margin-desktop": "2.5rem", "space-2xl": "3rem", "space-md": "1rem", "space-xl": "2rem" }, fontFamily: { "body-md": ["Geist"], "headline-sm": ["Space Grotesk"], "label-numeric-stat": ["Space Grotesk"], "body-sm": ["Geist"], "display-hero-mobile": ["Space Grotesk"], "display-hero": ["Space Grotesk"], "body-lg": ["Geist"], "label-meta": ["Geist"], "headline-xl-mobile": ["Space Grotesk"], "headline-xl": ["Space Grotesk"], "label-badge": ["Geist"], "headline-md": ["Space Grotesk"], "headline-lg": ["Space Grotesk"] }, fontSize: { "body-md": ["15px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "400" }], "headline-sm": ["16px", { lineHeight: "24px", letterSpacing: "0.01em", fontWeight: "600" }], "label-numeric-stat": ["18px", { lineHeight: "22px", letterSpacing: "0.05em", fontWeight: "700" }], "body-sm": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "400" }], "display-hero-mobile": ["36px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "display-hero": ["56px", { lineHeight: "60px", letterSpacing: "-0.03em", fontWeight: "700" }], "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "400" }], "label-meta": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }], "headline-xl-mobile": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-xl": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-badge": ["11px", { lineHeight: "14px", letterSpacing: "0.08em", fontWeight: "700" }], "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "0em", fontWeight: "600" }], "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "0.01em", fontWeight: "600" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-base text-on-surface font-body-md text-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-base/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-16 px-space-md flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Go Back" class="w-11 h-11 flex items-center justify-center rounded-lg bg-surface-card text-on-surface hover:text-primary-container active:scale-95 transition-transform" onclick="history.back()"><span class="material-symbols-outlined text-[20px]">arrow_back</span></button><div class="flex flex-col"><span class="font-label-meta text-label-meta uppercase tracking-widest text-primary-container">ARENA PRE-DRAFT</span><h1 class="font-headline-sm text-headline-sm uppercase tracking-tight text-on-surface leading-tight truncate max-w-[200px]">Host Lobby</h1></div></div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface-base"><div class="flex flex-col w-full pb-safe">
+<!-- Top Voltage Accent Bar -->
+<div class="h-1 w-full bg-gradient-to-r from-brand-accent-amber via-secondary-fixed-dim to-transparent"></div>
+<!-- Content Chassis -->
+<div class="p-margin flex flex-col gap-space-md">
+<!-- Room Access Terminal Block -->
+<div class="bg-surface-raised rounded-xl p-space-md shadow-xl relative overflow-hidden flex flex-col items-center justify-center text-center">
+<div class="absolute -right-12 -top-12 w-28 h-28 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-status-live-green animate-pulse"></span>
+<span class="font-label-meta text-label-meta uppercase tracking-widest text-secondary-fixed">BROADCAST ROOM</span>
+</div>
+<div class="font-headline-xl-mobile text-headline-xl-mobile tracking-widest text-primary-container font-headline-xl uppercase select-all my-space-xs font-bold drop-shadow-[0_0_12px_rgba(255,224,51,0.25)]">
+        X7P-4Q9
+      </div>
+<!-- Quick Action Controls -->
+<div class="grid grid-cols-2 gap-space-sm w-full mt-space-sm">
+<button class="h-11 flex items-center justify-center gap-space-xs rounded-lg bg-surface-card text-secondary hover:bg-surface-highlight active:scale-95 transition-all text-label-badge font-label-badge uppercase" id="copy-btn" onclick="navigator.clipboard?.writeText('X7P-4Q9'); this.innerText='COPIED!';">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span>Copy</span>
+</button>
+<button class="h-11 flex items-center justify-center gap-space-xs rounded-lg bg-surface-card text-secondary hover:bg-surface-highlight active:scale-95 transition-all text-label-badge font-label-badge uppercase">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>Share</span>
+</button>
+</div>
+</div>
+<!-- Arena Rules Filter Chips (Horizontal Scroller) -->
+<div class="flex items-center gap-space-xs overflow-x-auto py-space-xs no-scrollbar -mx-margin px-margin">
+<div class="flex-shrink-0 px-space-sm py-1.5 rounded-full bg-surface-card text-on-surface font-label-badge text-label-badge uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-brand-accent-amber">timer</span>
+        Standard 35m
+      </div>
+<div class="flex-shrink-0 px-space-sm py-1.5 rounded-full bg-surface-card text-on-surface font-label-badge text-label-badge uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-brand-accent-amber">20mp</span>
+        10 PKMN
+      </div>
+<div class="flex-shrink-0 px-space-sm py-1.5 rounded-full bg-surface-card text-on-surface font-label-badge text-label-badge uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-brand-accent-amber">payments</span>
+        $200 Cap
+      </div>
+<div class="flex-shrink-0 px-space-sm py-1.5 rounded-full bg-surface-card text-on-surface font-label-badge text-label-badge uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-brand-accent-amber">speed</span>
+        15s Bids
+      </div>
+<div class="flex-shrink-0 px-space-sm py-1.5 rounded-full bg-surface-card text-on-surface font-label-badge text-label-badge uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-brand-accent-amber">layers</span>
+        Gen 1-9
+      </div>
+</div>
+<!-- Live Roster Management Stack -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-secondary">WAR ROOM SQUAD (4/6)</span>
+<span class="font-label-badge text-label-badge uppercase text-status-live-green flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-status-live-green"></span>
+          LOBBY SYNCHRONIZED
+        </span>
+</div>
+<!-- Host Node -->
+<div class="bg-surface-raised rounded-xl p-space-sm flex items-center justify-between shadow-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-11 h-11 rounded-lg bg-surface-card flex items-center justify-center shrink-0 overflow-hidden">
+<span class="material-symbols-outlined text-brand-accent-amber text-[26px]">sports_martial_arts</span>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-surface-raised flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-status-live-green"></span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight truncate">RED</span>
+<span class="px-1.5 py-0.5 rounded bg-primary-container text-surface-base font-label-badge text-label-badge font-bold uppercase">HOST</span>
+</div>
+<span class="font-label-meta text-label-meta text-secondary flex items-center gap-1">
+              Terminal Alpha
+            </span>
+</div>
+</div>
+<div class="px-space-sm py-1 rounded bg-surface-card text-status-live-green font-headline-sm text-body-sm font-bold flex items-center gap-1">
+          Ready ✓
+        </div>
+</div>
+<!-- Guest 1: Blue -->
+<div class="bg-surface-card rounded-xl p-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-11 h-11 rounded-lg bg-surface-highlight flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-type-water text-[24px]">swords</span>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-surface-card flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-status-live-green"></span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight truncate">BLUE</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Rival Chassis</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-1 rounded bg-surface-highlight text-status-live-green font-headline-sm text-body-sm font-bold">
+            Ready ✓
+          </span>
+<button aria-label="Kick Blue" class="w-9 h-9 rounded-lg bg-surface-highlight text-status-urgent hover:bg-error-container flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Guest 2: Cynthia -->
+<div class="bg-surface-card rounded-xl p-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-11 h-11 rounded-lg bg-surface-highlight flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-type-dragon text-[24px]">shield</span>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-surface-card flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-status-live-green"></span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight truncate">CYNTHIA</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Sinnoh Lead</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-1 rounded bg-surface-highlight text-status-live-green font-headline-sm text-body-sm font-bold">
+            Ready ✓
+          </span>
+<button aria-label="Kick Cynthia" class="w-9 h-9 rounded-lg bg-surface-highlight text-status-urgent hover:bg-error-container flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Guest 3: Ash -->
+<div class="bg-surface-card rounded-xl p-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-11 h-11 rounded-lg bg-surface-highlight flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-type-electric text-[24px]">bolt</span>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-surface-card flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-status-live-green"></span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight truncate">ASH</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">Pallet Link</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-1 rounded bg-surface-highlight text-status-live-green font-headline-sm text-body-sm font-bold">
+            Ready ✓
+          </span>
+<button aria-label="Kick Ash" class="w-9 h-9 rounded-lg bg-surface-highlight text-status-urgent hover:bg-error-container flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Empty Seat Slot -->
+<div class="h-16 rounded-xl bg-surface-base/60 flex items-center justify-center gap-space-xs shadow-inner">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] animate-pulse">hourglass_top</span>
+<span class="font-body-md text-body-md text-on-surface-variant font-medium">Waiting for player…</span>
+</div>
+</div>
+<!-- Start Trigger Station -->
+<div class="pt-space-xs">
+<button class="w-full h-14 rounded-lg bg-primary-container text-surface-base font-headline-md text-headline-md font-bold uppercase tracking-wider flex items-center justify-center gap-space-sm shadow-[0_0_20px_rgba(255,224,51,0.35)] hover:bg-brand-accent-amber active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined text-[24px]">play_arrow</span>
+        START
+      </button>
+</div>
+</div>
+</div></main></body></html>

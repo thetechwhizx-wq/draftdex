@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-tertiary-fixed-variant":"#930013","type-flying":"#81B9EF","status-urgent":"#EF4444","surface-container-high":"#242a38","type-rock":"#AFA981","inverse-primary":"#6d5e00","error":"#ffb4ab","on-tertiary-fixed":"#410004","secondary-fixed-dim":"#00dbe9","type-grass":"#3FA129","brand-accent-amber":"#FFD000","on-tertiary":"#68000a","error-container":"#93000a","type-ground":"#915121","on-secondary-container":"#00686f","type-ice":"#3DCEF3","on-primary-fixed-variant":"#524600","on-primary":"#393000","on-background":"#dde2f5","status-live-green":"#10B981","on-secondary-fixed":"#002022","type-dragon":"#5060E1","on-error-container":"#ffdad6","type-electric":"#FAC000","type-normal":"#9FA19F","type-bug":"#91A119","secondary":"#d3fbff","type-ghost":"#704170","inverse-surface":"#dde2f5","tertiary":"#fffcff","on-primary-fixed":"#211b00","type-fighting":"#FF8000","primary-fixed":"#ffe24c","surface-tint":"#e3c60c","on-secondary-fixed-variant":"#004f54","outline-variant":"#4c4733","tertiary-fixed":"#ffdad7","surface-container-low":"#161b29","border-subtle":"#223555","on-secondary":"#00363a","on-surface":"#dde2f5","outline":"#979179","surface-bright":"#333948","surface-variant":"#2f3543","on-error":"#690005","tertiary-container":"#ffd7d4","surface-base":"#0B111E","surface-container-lowest":"#080e1b","type-poison":"#8F41CB","surface-card":"#162238","surface-container":"#1a1f2d","type-dark":"#50413F","surface-raised":"#111A2E","on-tertiary-container":"#c02028","background":"#0d1320","secondary-fixed":"#7df4ff","primary-container":"#ffe033","surface-highlight":"#1E2D4A","primary":"#fffcff","secondary-container":"#00eefc","type-fairy":"#EF70EF","tertiary-fixed-dim":"#ffb3ad","border-strong":"#354E7A","type-water":"#2980EF","primary-fixed-dim":"#e3c60c","surface":"#0d1320","type-steel":"#60A1B8","type-fire":"#E62829","surface-dim":"#0d1320","surface-container-highest":"#2f3543","type-psychic":"#EF4179","on-primary-container":"#726300","on-surface-variant":"#cec6ac","inverse-on-surface":"#2a303f"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"margin":"1rem","gutter-desktop":"1.5rem","margin-desktop":"2.5rem","gutter":"1rem","space-xl":"2rem","space-xs":"0.25rem","gutter-tablet":"1.25rem","space-sm":"0.5rem","space-md":"1rem","space-lg":"1.5rem","space-2xl":"3rem","margin-tablet":"1.5rem"},fontFamily:{"display-hero-mobile":["Space Grotesk"],"display-hero":["Space Grotesk"],"body-lg":["Geist"],"headline-xl-mobile":["Space Grotesk"],"label-numeric-stat":["Space Grotesk"],"label-badge":["Geist"],"headline-xl":["Space Grotesk"],"body-sm":["Geist"],"headline-lg":["Space Grotesk"],"label-meta":["Geist"],"body-md":["Geist"],"headline-md":["Space Grotesk"],"headline-sm":["Space Grotesk"]},fontSize:{"display-hero-mobile":["36px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"display-hero":["56px",{"lineHeight":"60px","letterSpacing":"-0.03em","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-xl-mobile":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-numeric-stat":["18px",{"lineHeight":"22px","letterSpacing":"0.05em","fontWeight":"700"}],"label-badge":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"700"}],"headline-xl":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"400"}],"headline-lg":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-meta":["12px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"body-md":["15px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"0.01em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface-base font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-raised z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center justify-between bg-surface-card"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary-container text-[18px]">swords</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary font-bold">PKMN Draft</span><span class="font-label-badge text-label-badge uppercase tracking-widest text-on-surface-variant">Arena Spec 1.4</span></div></div><div class="flex items-center justify-center w-5 h-5 rounded bg-surface-container-high"><span class="material-symbols-outlined text-[14px] text-on-surface-variant">terminal</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm py-space-xs font-label-badge text-label-badge uppercase tracking-widest text-on-surface-variant">War-Room Modules</div></div><nav class="flex flex-col gap-space-xs px-space-md" data-active-classes="bg-primary-container text-on-primary-container font-bold shadow-[0_0_12px_rgba(255,224,51,0.25)]"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="arena-hub" href="#"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-headline-sm text-headline-sm">Arena Hub</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="squad-select" href="#"><span class="material-symbols-outlined text-[20px]">group_work</span><span class="font-headline-sm text-headline-sm">Squad Select</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="moveset" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-headline-sm text-headline-sm">Moveset</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="battle-arena" href="#"><span class="material-symbols-outlined text-[20px]">stadium</span><span class="font-headline-sm text-headline-sm">Battle Arena</span></a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container font-bold shadow-[0_0_12px_rgba(255,224,51,0.25)]" data-path="match-result" href="#"><span class="material-symbols-outlined text-[20px]">military_tech</span><span class="font-headline-sm text-headline-sm">Match Result</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="scout-report" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span><span class="font-headline-sm text-headline-sm">Scout Report</span></a></nav></div><div class="p-space-md flex flex-col gap-space-sm bg-surface-container-low"><div class="p-space-sm rounded bg-surface-card flex items-center justify-between"><div class="flex flex-col"><span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">Phase Status</span><span class="font-headline-sm text-headline-sm text-primary-fixed">Live Draft</span></div><span class="material-symbols-outlined text-primary-fixed text-[20px]">timer</span></div><div class="flex items-center justify-between px-space-sm py-space-xs text-on-surface-variant"><span class="font-label-meta text-label-meta">Engine v1.4.2</span><span class="font-label-meta text-label-meta">Cluster 09</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-raised/95 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.3)]"><div class="h-16 w-full px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm px-space-md py-space-xs rounded bg-surface-card"><span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant">Room</span><span class="font-headline-sm text-headline-sm text-primary tracking-wider">PKMN-8842-X</span></div><div class="flex items-center gap-space-sm px-space-md py-space-xs rounded bg-surface-card"><span class="w-2 h-2 rounded-full bg-status-live-green"></span><span class="font-label-badge text-label-badge uppercase tracking-wider text-status-live-green">Active Sync</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-on-surface-variant">wifi</span><span class="font-label-numeric-stat text-body-sm text-on-surface-variant">18ms</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm px-space-sm py-space-xs rounded bg-surface-card"><span class="font-label-meta text-label-meta text-on-surface-variant">Tier Cap:</span><span class="font-headline-sm text-headline-sm text-brand-accent-amber">OU/Draft</span></div><div class="flex items-center gap-space-sm pl-space-sm"><div class="flex flex-col items-end"><span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Commander Red</span><span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider">Battle Tactician</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="relative pt-16 bg-surface-base min-h-screen"><div class="flex flex-col w-full">
+<!-- Dynamic Audio Pulse & Canvas Glow Backdrop -->
+<div class="relative w-full overflow-hidden px-gutter-desktop py-space-lg flex flex-col gap-space-lg">
+<!-- Ambient Depth Accents -->
+<div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-primary-container/10 blur-[100px] pointer-events-none"></div>
+<div class="absolute top-1/3 -right-24 w-80 h-80 rounded-full bg-secondary-container/10 blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-10 left-1/3 w-72 h-72 rounded-full bg-type-fighting/10 blur-[90px] pointer-events-none"></div>
+<!-- Match Celebration & Head-to-Head Banner -->
+<section class="relative w-full rounded-xl bg-surface-card p-space-lg shadow-xl overflow-hidden">
+<!-- High-tech Grid Line Background Motif -->
+<div class="absolute inset-0 bg-gradient-to-r from-surface-raised via-transparent to-surface-raised pointer-events-none"></div>
+<div class="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-brand-accent-amber/5 to-transparent pointer-events-none"></div>
+<div class="relative flex flex-col lg:flex-row items-center justify-between gap-space-lg z-10">
+<!-- Status Overline & Big Banner -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 rounded-full bg-status-live-green/20 text-status-live-green font-label-badge text-label-badge uppercase tracking-widest flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-live-green animate-pulse"></span>
+              Live Sync Complete
+            </span>
+<span class="text-on-surface-variant font-label-meta text-label-meta uppercase tracking-wider">
+              Battle Arena Concluded · Season 12 Ranked Match
+            </span>
+</div>
+<div class="flex items-baseline gap-space-md mt-1">
+<h1 class="font-display-hero text-display-hero uppercase tracking-tight text-primary-fixed drop-shadow-[0_0_24px_rgba(255,224,51,0.35)]">
+              VICTORY
+            </h1>
+<div class="px-space-md py-space-xs rounded bg-surface-raised flex items-center gap-space-xs text-brand-accent-amber">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="font-headline-sm text-headline-sm uppercase tracking-wider">Flawless Sweep</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Command Center Hash: <span class="font-label-numeric-stat text-body-sm text-secondary">PKMN-CLASH-S12-8842-CLN</span> · Duration: 04m 12s
+          </p>
+</div>
+<!-- Head-To-Head Tactical Score Card -->
+<div class="flex items-center gap-space-lg bg-surface-raised px-space-xl py-space-md rounded-xl shadow-md min-w-[380px] justify-between">
+<!-- Player Red -->
+<div class="flex items-center gap-space-md">
+<div class="relative">
+<div class="w-12 h-12 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-headline-md text-headline-md">
+                R
+              </div>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-status-live-green flex items-center justify-center text-[10px] text-surface-base font-bold">✓</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">Commander Red</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Tactician [YOU]</span>
+</div>
+</div>
+<!-- Score Digit -->
+<div class="flex items-center gap-space-sm px-space-md py-space-xs rounded-lg bg-surface-container-high">
+<span class="font-headline-xl text-headline-xl text-primary-container">3</span>
+<span class="text-on-surface-variant font-headline-md text-headline-md opacity-40">—</span>
+<span class="font-headline-xl text-headline-xl text-on-surface-variant">0</span>
+</div>
+<!-- Opponent Cynthia -->
+<div class="flex items-center gap-space-md flex-row-reverse text-right">
+<div class="w-12 h-12 rounded-lg bg-surface-highlight text-on-surface flex items-center justify-center font-headline-md text-headline-md">
+              C
+            </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-bold leading-tight">Cynthia</span>
+<span class="font-label-meta text-label-meta text-outline uppercase">Sinnoh Champ</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Post-Combat Triage Cockpit (Two-Panel Grid) -->
+<div class="grid grid-cols-12 gap-space-lg items-start">
+<!-- ================= LEFT PANEL: MATCH MVP & COMBAT TELEMETRY ================= -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Match MVP Highlight Box -->
+<div class="relative rounded-xl bg-surface-card p-space-lg shadow-xl overflow-hidden">
+<!-- Tactical Glow & Backdrop Gradient -->
+<div class="absolute -top-16 -right-16 w-60 h-60 rounded-full bg-type-fighting/20 blur-3xl pointer-events-none"></div>
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-brand-accent-amber text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary">Match MVP Telemetry</span>
+</div>
+<span class="font-label-badge text-label-badge uppercase tracking-widest px-space-sm py-0.5 rounded bg-brand-accent-amber/20 text-brand-accent-amber font-bold">
+              Combat Star · Unit #0448
+            </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-lg mt-space-sm items-center">
+<!-- Roster Graphic / Sprite Focus -->
+<div class="md:col-span-5 relative flex flex-col items-center justify-center p-space-md rounded-lg bg-surface-raised overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-raised via-transparent to-type-steel/10 pointer-events-none"></div>
+<div class="relative w-36 h-36 flex items-center justify-center">
+<img class="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]" data-alt="Hyper-detailed 3D tactical holographic render of Lucario standing resolute in battle stance, blue aura glow emanating from metallic spikes on paws, dark sci-fi military arena backdrop with subtle amber telemetry particles and cybernetic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxAi6ipfRlbUncovhpnYw-uq2kkSYTB9aQPtEGIBSyA-GkR_sDa3qmllDfOD8OPYROQY67UcOo6YYzvHLjJ3IG8wkFyxuhC6M6w4Ot8jNLxZ-PcSXCoOGgrmSA6p1KrGfn5b7Jk586HCRPhLtTtFMjhG8NCDgsYuW1OFpPpYcyst1RAy_Ccre82BwSkFeRLPjwKkXrbe84Zf2wxb4ANn-ucEA-BR974CLCER0HGRFU"/>
+</div>
+<!-- Species Identity & Type Pills -->
+<div class="mt-space-xs text-center flex flex-col items-center">
+<h3 class="font-headline-lg text-headline-lg text-primary tracking-wide">LUCARIO</h3>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<span class="px-space-sm py-0.5 rounded-full bg-type-fighting text-primary font-label-badge text-label-badge tracking-wider uppercase shadow-sm">
+                    Fighting
+                  </span>
+<span class="px-space-sm py-0.5 rounded-full bg-type-steel text-primary font-label-badge text-label-badge tracking-wider uppercase shadow-sm">
+                    Steel
+                  </span>
+</div>
+</div>
+</div>
+<!-- Detailed In-Match Output Breakdown -->
+<div class="md:col-span-7 flex flex-col gap-space-md">
+<div class="grid grid-cols-3 gap-space-sm">
+<!-- Stat 1: KOs -->
+<div class="p-space-sm rounded-lg bg-surface-raised flex flex-col justify-between">
+<span class="font-label-meta text-label-meta uppercase text-on-surface-variant">Confirmed KOs</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-xl text-headline-xl text-status-live-green font-bold">3</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">/ 3</span>
+</div>
+<span class="font-label-badge text-label-badge text-status-live-green tracking-wide">100% Team Kills</span>
+</div>
+<!-- Stat 2: DMG Dealt -->
+<div class="p-space-sm rounded-lg bg-surface-raised flex flex-col justify-between">
+<span class="font-label-meta text-label-meta uppercase text-on-surface-variant">Total Dealt</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-xl text-headline-xl text-primary-fixed font-bold">420</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">HP</span>
+</div>
+<span class="font-label-badge text-label-badge text-brand-accent-amber tracking-wide">+84% Over Par</span>
+</div>
+<!-- Stat 3: DMG Recv -->
+<div class="p-space-sm rounded-lg bg-surface-raised flex flex-col justify-between">
+<span class="font-label-meta text-label-meta uppercase text-on-surface-variant">DMG Received</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-xl text-headline-xl text-secondary font-bold">0</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant">HP</span>
+</div>
+<span class="font-label-badge text-label-badge text-secondary tracking-wide">Untouched Ward</span>
+</div>
+</div>
+<!-- Base Stat Recessed Telemetry Bar -->
+<div class="p-space-sm rounded-lg bg-surface-raised flex flex-col gap-space-xs">
+<div class="flex justify-between items-center text-on-surface-variant font-label-meta text-label-meta">
+<span class="uppercase tracking-wider">Aura Load Capacity (SPE / ATK Peak)</span>
+<span class="text-primary font-label-numeric-stat text-body-sm">BST 525 · Optimized EV</span>
+</div>
+<div class="w-full bg-surface-container-high h-2.5 rounded-full overflow-hidden flex">
+<div class="bg-type-fighting h-full w-[45%]" title="Physical Momentum"></div>
+<div class="bg-type-steel h-full w-[35%]" title="Defensive Steel Cushion"></div>
+<div class="bg-brand-accent-amber h-full w-[20%]" title="Swords Dance Boost"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] text-on-surface-variant font-label-badge uppercase pt-0.5">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-type-fighting"></span> Close Combat</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-type-steel"></span> Bullet Punch</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-brand-accent-amber"></span> Aura Sphere</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 4 Circular Telemetry Score Dials -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<!-- Dial 1: Draft Mastery -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col items-center justify-center text-center shadow-lg relative overflow-hidden group hover:bg-surface-highlight transition-colors">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant mb-space-xs">Draft Mastery</span>
+<div class="relative w-24 h-24 my-1 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 36 36">
+<path class="text-surface-raised" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-brand-accent-amber" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="94, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-primary font-bold">A+</span>
+<span class="font-label-meta text-[10px] text-brand-accent-amber -mt-1 font-bold">94 PT</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-status-live-green uppercase tracking-wider mt-1">Tier OU S-Tier</span>
+</div>
+<!-- Dial 2: Pre-Match Win Rate -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col items-center justify-center text-center shadow-lg relative overflow-hidden group hover:bg-surface-highlight transition-colors">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant mb-space-xs">Win Rate Proj.</span>
+<div class="relative w-24 h-24 my-1 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 36 36">
+<path class="text-surface-raised" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-type-water" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="68, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-primary font-bold">68%</span>
+<span class="font-label-meta text-[10px] text-type-water -mt-1 uppercase">Pre-Battle</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider mt-1">Advantage (+14%)</span>
+</div>
+<!-- Dial 3: Execution Precision -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col items-center justify-center text-center shadow-lg relative overflow-hidden group hover:bg-surface-highlight transition-colors">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant mb-space-xs">Execution</span>
+<div class="relative w-24 h-24 my-1 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 36 36">
+<path class="text-surface-raised" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-status-live-green" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="96, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-primary font-bold">96%</span>
+<span class="font-label-meta text-[10px] text-status-live-green -mt-1 uppercase">Flawless</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-status-live-green uppercase tracking-wider mt-1">0 Misclicks</span>
+</div>
+<!-- Dial 4: Opponent Counter Rating -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col items-center justify-center text-center shadow-lg relative overflow-hidden group hover:bg-surface-highlight transition-colors">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant mb-space-xs">Counter Index</span>
+<div class="relative w-24 h-24 my-1 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 36 36">
+<path class="text-surface-raised" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-type-psychic" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="91, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-primary font-bold">91%</span>
+<span class="font-label-meta text-[10px] text-type-psychic -mt-1 uppercase">Read Matrix</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-primary-fixed uppercase tracking-wider mt-1">Full Checkmate</span>
+</div>
+</div>
+<!-- Combat Efficiency Metrics Strip -->
+<div class="p-space-md rounded-xl bg-surface-card shadow-lg flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-full md:w-auto">
+<div class="w-10 h-10 rounded-lg bg-surface-raised flex items-center justify-center text-brand-accent-amber">
+<span class="material-symbols-outlined text-[24px]">speed</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase tracking-wider">Combat Efficiency Pace</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">High Momentum Dominance</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg w-full md:w-auto justify-between md:justify-end">
+<!-- 8 Turns Total -->
+<div class="flex flex-col items-center px-space-md py-1 rounded bg-surface-raised">
+<span class="font-headline-md text-headline-md text-primary-container font-bold">8</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase">Turns Total</span>
+</div>
+<!-- 2 Critical Hits -->
+<div class="flex flex-col items-center px-space-md py-1 rounded bg-surface-raised">
+<span class="font-headline-md text-headline-md text-type-fire font-bold">2</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase">Crits Landed</span>
+</div>
+<!-- 3 Hazards Placed -->
+<div class="flex flex-col items-center px-space-md py-1 rounded bg-surface-raised">
+<span class="font-headline-md text-headline-md text-type-rock font-bold">3</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase">Hazards Active</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= RIGHT PANEL: KEY PIVOT TIMELINE & COMBAT ANALYSIS ================= -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Pivotal Timeline -->
+<div class="rounded-xl bg-surface-card p-space-lg shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">timeline</span>
+<h2 class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary">Key Pivot Timeline</h2>
+</div>
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Tactical Turn Decider</span>
+</div>
+<!-- Turn by turn chain -->
+<div class="flex flex-col gap-space-md relative pl-2 mt-space-xs">
+<!-- Vertical Spine Line -->
+<div class="absolute left-6 top-3 bottom-3 w-0.5 bg-surface-container-high pointer-events-none"></div>
+<!-- T-02 Switch Item -->
+<div class="relative flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-type-water/20 text-type-water flex items-center justify-center shrink-0 z-10 font-label-badge text-label-badge border-2 border-surface-card">
+                T-02
+              </div>
+<div class="p-space-sm rounded-lg bg-surface-raised flex-1 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md text-secondary font-semibold">Calculated Hard Switch</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-highlight text-type-water font-label-badge text-[10px] uppercase">Momentum +40%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Lucario enters on a predicted Stone Edge from Cynthia's <strong class="text-on-surface">Tyranitar</strong>. 4x Rock resistance nullifies chip damage and forces the defensive pivot.
+                </p>
+</div>
+</div>
+<!-- T-05 Setup Item -->
+<div class="relative flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-brand-accent-amber/20 text-brand-accent-amber flex items-center justify-center shrink-0 z-10 font-label-badge text-label-badge border-2 border-surface-card">
+                T-05
+              </div>
+<div class="p-space-sm rounded-lg bg-surface-raised flex-1 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md text-brand-accent-amber font-semibold">Swords Dance Window</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-highlight text-brand-accent-amber font-label-badge text-[10px] uppercase">Atk Boost +2</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Anticipating <strong class="text-on-surface">Milotic's</strong> defensive switch, danced to breach Recover sustainability. Defensive bulk was instantly pierced.
+                </p>
+</div>
+</div>
+<!-- T-08 Clinch Item -->
+<div class="relative flex items-start gap-space-md">
+<div class="w-8 h-8 rounded-full bg-status-live-green/20 text-status-live-green flex items-center justify-center shrink-0 z-10 font-label-badge text-label-badge border-2 border-surface-card">
+                T-08
+              </div>
+<div class="p-space-sm rounded-lg bg-surface-raised flex-1 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md text-status-live-green font-semibold">Aura Sphere Finish</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-highlight text-status-live-green font-label-badge text-[10px] uppercase">Final KO</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Aura Sphere bypasses Sand Veil accuracy reduction, neutralizing Cynthia's ace <strong class="text-on-surface">Garchomp</strong> to seal the definitive 3-0 sweep.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Opponent Post-Match Telemetry & ELO / MMR Rating Progression -->
+<div class="rounded-xl bg-surface-card p-space-lg shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-on-surface-variant">Ranked ELO &amp; MMR Progression</span>
+<span class="font-label-badge text-label-badge text-brand-accent-amber uppercase">Official Ladder</span>
+</div>
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-raised">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-primary-container/20 text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">trending_up</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Tactician MMR</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">1,864</span>
+<span class="font-headline-sm text-headline-sm text-status-live-green font-bold">+24 MMR</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase">Current Tier</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-semibold uppercase">Grandmaster IV</span>
+<span class="font-label-meta text-[11px] text-outline">Leaderboard Rank #142</span>
+</div>
+</div>
+<!-- Opponent Quick Delta -->
+<div class="flex items-center justify-between text-on-surface-variant text-body-sm px-space-xs">
+<span>Opponent: <strong class="text-on-surface">Cynthia</strong> (Sinnoh)</span>
+<span class="text-status-urgent font-label-numeric-stat text-body-sm">-24 MMR (1,840)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Tactical Control Cockpit: Quick Action Trigger Bar -->
+<section class="mt-space-sm p-space-md rounded-xl bg-surface-card shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-space-md z-30">
+<!-- Primary Electric Yellow Button: Rematch -->
+<button class="w-full lg:w-auto h-12 px-space-xl rounded-lg bg-primary-container text-surface-base font-headline-sm text-headline-sm uppercase tracking-wider font-bold shadow-[0_0_16px_rgba(255,224,51,0.3)] hover:bg-brand-accent-amber active:translate-y-0.5 transition-all flex items-center justify-center gap-space-sm" id="btn-request-rematch" type="button">
+<span class="material-symbols-outlined text-[20px] transition-transform duration-500 group-hover:rotate-180" id="rematch-icon">sync</span>
+<span>Request Rematch ⟳</span>
+</button>
+<!-- Secondary Tactical Buttons Row -->
+<div class="flex flex-wrap lg:flex-nowrap items-center gap-space-sm w-full lg:w-auto">
+<!-- Export Replay -->
+<button class="flex-1 lg:flex-none h-11 px-space-md rounded-lg bg-surface-raised text-secondary font-headline-sm text-body-sm hover:bg-surface-highlight active:translate-y-0.5 transition-all flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">content_paste</span>
+<span>Export Battle Log 📋</span>
+</button>
+<!-- View Scout Report -->
+<button class="flex-1 lg:flex-none h-11 px-space-md rounded-lg bg-surface-raised text-on-surface font-headline-sm text-body-sm hover:bg-surface-highlight active:translate-y-0.5 transition-all flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">query_stats</span>
+<span>View Scout Report 🔍</span>
+</button>
+<!-- Return to Arena Hub -->
+<button class="w-full lg:w-auto h-11 px-space-md rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-highlight active:translate-y-0.5 transition-all flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span>Arena Hub ⌂</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+<script>
+  // Simple client-side micro-interaction for the rematch trigger
+  const rematchBtn = document.getElementById('btn-request-rematch');
+  const rematchIcon = document.getElementById('rematch-icon');
+  
+  if (rematchBtn) {
+    rematchBtn.addEventListener('click', () => {
+      rematchIcon.classList.add('animate-spin');
+      rematchBtn.classList.add('opacity-90');
+      rematchBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[20px] animate-spin">sync</span>
+        <span>TRANSMITTING CHALLENGE...</span>
+      `;
+      setTimeout(() => {
+        rematchBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[20px]">check_circle</span>
+          <span>CHALLENGE SENT · AWAITING CYNTHIA</span>
+        `;
+        rematchBtn.classList.remove('bg-primary-container', 'text-surface-base');
+        rematchBtn.classList.add('bg-status-live-green', 'text-surface-base');
+      }, 900);
+    });
+  }
+</script></main></div></body></html>

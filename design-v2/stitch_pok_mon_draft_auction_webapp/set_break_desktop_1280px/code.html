@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Space+Grotesk:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-low":"#161b29","on-primary-container":"#726300","on-secondary-container":"#00686f","on-secondary-fixed":"#002022","on-primary-fixed":"#211b00","inverse-surface":"#dde2f5","background":"#0d1320","tertiary":"#fffcff","surface-container-lowest":"#080e1b","type-dark":"#50413F","surface":"#0d1320","surface-card":"#162238","tertiary-fixed-dim":"#ffb3ad","on-tertiary":"#68000a","surface-variant":"#2f3543","outline":"#979179","type-normal":"#9FA19F","surface-raised":"#111A2E","secondary":"#d3fbff","type-psychic":"#EF4179","surface-base":"#0B111E","type-ghost":"#704170","on-tertiary-container":"#c02028","type-bug":"#91A119","surface-highlight":"#1E2D4A","on-tertiary-fixed-variant":"#930013","secondary-fixed-dim":"#00dbe9","on-secondary-fixed-variant":"#004f54","tertiary-fixed":"#ffdad7","on-tertiary-fixed":"#410004","primary":"#fffcff","type-fighting":"#FF8000","error":"#ffb4ab","on-error-container":"#ffdad6","brand-accent-amber":"#FFD000","type-grass":"#3FA129","secondary-container":"#00eefc","primary-fixed":"#ffe24c","inverse-on-surface":"#2a303f","error-container":"#93000a","type-poison":"#8F41CB","outline-variant":"#4c4733","on-error":"#690005","tertiary-container":"#ffd7d4","on-background":"#dde2f5","on-primary":"#393000","border-strong":"#354E7A","on-surface-variant":"#cec6ac","type-water":"#2980EF","status-urgent":"#EF4444","surface-container-highest":"#2f3543","type-rock":"#AFA981","type-flying":"#81B9EF","surface-dim":"#0d1320","secondary-fixed":"#7df4ff","type-dragon":"#5060E1","type-ground":"#915121","surface-bright":"#333948","primary-container":"#ffe033","inverse-primary":"#6d5e00","primary-fixed-dim":"#e3c60c","type-fairy":"#EF70EF","on-primary-fixed-variant":"#524600","type-ice":"#3DCEF3","type-electric":"#FAC000","surface-container-high":"#242a38","type-fire":"#E62829","surface-tint":"#e3c60c","type-steel":"#60A1B8","status-live-green":"#10B981","on-surface":"#dde2f5","border-subtle":"#223555","surface-container":"#1a1f2d","on-secondary":"#00363a"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-2xl":"3rem",margin:"1rem","gutter-tablet":"1.25rem","gutter-desktop":"1.5rem","space-xs":"0.25rem","space-md":"1rem","margin-tablet":"1.5rem",gutter:"1rem","space-sm":"0.5rem","margin-desktop":"2.5rem","space-lg":"1.5rem","space-xl":"2rem"},fontFamily:{"headline-xl":["Space Grotesk"],"label-numeric-stat":["Space Grotesk"],"display-hero":["Space Grotesk"],"body-md":["Geist"],"display-hero-mobile":["Space Grotesk"],"headline-lg":["Space Grotesk"],"body-lg":["Geist"],"headline-md":["Space Grotesk"],"label-badge":["Geist"],"headline-sm":["Space Grotesk"],"headline-xl-mobile":["Space Grotesk"],"label-meta":["Geist"],"body-sm":["Geist"]},fontSize:{"headline-xl":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-numeric-stat":["18px",{lineHeight:"22px",letterSpacing:"0.05em",fontWeight:"700"}],"display-hero":["56px",{lineHeight:"60px",letterSpacing:"-0.03em",fontWeight:"700"}],"body-md":["15px",{lineHeight:"22px",letterSpacing:"0em",fontWeight:"400"}],"display-hero-mobile":["36px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"body-lg":["18px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"400"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"0em",fontWeight:"600"}],"label-badge":["11px",{lineHeight:"14px",letterSpacing:"0.08em",fontWeight:"700"}],"headline-sm":["16px",{lineHeight:"24px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-xl-mobile":["28px",{lineHeight:"34px",letterSpacing:"-0.01em",fontWeight:"700"}],"label-meta":["12px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"500"}],"body-sm":["13px",{lineHeight:"18px",letterSpacing:"0.01em",fontWeight:"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-raised z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center justify-between bg-surface-base"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center"><span class="material-symbols-outlined text-primary-container text-[20px]">sports_esports</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase text-primary tracking-wide">Draft Arena</span><span class="font-label-meta text-label-meta text-on-surface-variant uppercase tracking-wider">War-Room OS v4.2</span></div></div><div class="flex items-center gap-space-xs px-space-xs py-0.5 rounded bg-surface-container-high"><span class="w-2 h-2 rounded-full bg-status-live-green"></span><span class="font-label-badge text-label-badge text-status-live-green uppercase">Live</span></div></div><div class="px-space-md pt-space-lg pb-space-sm"><span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">Tactical Navigation</span></div><nav class="flex flex-col gap-space-xs px-space-sm" data-active-classes="bg-primary-container text-on-primary-container font-headline-sm text-headline-sm shadow-inner"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="auction-room" href="#"><span class="material-symbols-outlined text-[20px]">gavel</span><span>Auction Room</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container font-headline-sm text-headline-sm shadow-inner" data-path="set-break" href="#"><span class="material-symbols-outlined text-[20px]">timer</span><span>Set Break</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="scout-report" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span><span>Scout Report</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="roster-matrix" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Roster Matrix</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="tier-budget-ledger" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span>Budget Ledger</span></a></nav><div class="px-space-md pt-space-lg pb-space-sm"><span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">War-Room Telemetry</span></div><div class="px-space-md flex flex-col gap-space-xs"><div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-card"><span class="font-label-meta text-label-meta text-on-surface-variant">Server Latency</span><span class="font-headline-sm text-headline-sm text-secondary">18ms</span></div><div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-card"><span class="font-label-meta text-label-meta text-on-surface-variant">Sync Protocol</span><span class="font-label-badge text-label-badge text-status-live-green uppercase">Websocket OK</span></div></div></div><div class="p-space-md bg-surface-container-lowest flex flex-col gap-space-sm"><div class="flex items-center justify-between"><span class="font-label-meta text-label-meta text-on-surface-variant">Host Connection</span><span class="font-label-meta text-label-meta text-primary font-headline-sm">Region: US-EAST</span></div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col min-w-0 flex-1"><span class="font-body-sm text-body-sm text-on-surface font-headline-sm truncate">Cmdr. Red</span><span class="font-label-badge text-label-badge text-on-surface-variant truncate uppercase">Franchise GM</span></div><button class="p-1 text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-raised/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-full px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs font-label-meta text-label-meta text-on-surface-variant"><span class="text-on-surface">Arena Root</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-primary-container font-headline-sm text-headline-sm">Draft Operations</span></div><div class="hidden md:flex items-center gap-space-sm px-space-sm py-1 rounded bg-surface-base"><span class="font-label-badge text-label-badge uppercase text-on-surface-variant">Room PIN</span><span class="font-label-numeric-stat text-label-numeric-stat text-primary-container tracking-widest font-headline-sm">PKMN-8842-X</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">content_copy</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-card"><span class="w-2 h-2 rounded-full bg-status-live-green"></span><span class="font-label-meta text-label-meta text-on-surface uppercase">Draft Sync Active</span></div><div class="hidden lg:flex items-center gap-space-xs font-label-meta text-label-meta px-space-sm py-1 rounded bg-surface-container-high"><span class="text-on-surface-variant">Phase:</span><span class="text-secondary font-headline-sm text-headline-sm uppercase">Round 3 of 10</span></div><div class="flex items-center gap-space-sm"><button class="flex items-center justify-center w-9 h-9 rounded-lg bg-surface-card text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">tune</span></button><button class="flex items-center justify-center w-9 h-9 rounded-lg bg-surface-card text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="relative pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive & Tactical Backdrop -->
+<div class="p-space-lg lg:p-space-xl flex flex-col gap-space-lg w-full max-w-[1600px] mx-auto">
+<!-- Top Break Status Ribbon -->
+<div class="w-full bg-surface-raised rounded-xl p-space-md flex flex-wrap items-center justify-between gap-space-md shadow-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container shadow-inner">
+<span class="material-symbols-outlined text-[24px]">timelapse</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm uppercase tracking-wider text-primary">Intermission Phase</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-highlight font-label-badge text-label-badge text-secondary uppercase">SET 01 CONCLUDED</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Franchises reviewing scouting ledgers and cap reserves before Set 2 nominates.</span>
+</div>
+</div>
+<!-- Quick Telemetry Chips -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="bg-surface-base px-space-md py-space-xs rounded-lg flex items-center gap-space-xs">
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Roster Quota:</span>
+<span class="font-headline-sm text-headline-sm text-primary">10 / 120 Total</span>
+</div>
+<div class="bg-surface-base px-space-md py-space-xs rounded-lg flex items-center gap-space-xs">
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Auction Tempo:</span>
+<span class="font-headline-sm text-headline-sm text-status-live-green">94.2% Flow Rate</span>
+</div>
+<div class="bg-surface-base px-space-md py-space-xs rounded-lg flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-label-meta text-label-meta text-primary-container uppercase">Host Ready</span>
+</div>
+</div>
+</div>
+<!-- Main Command Cockpit Split (1280px+ Optimized Bento) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- ================= LEFT COLUMN: SUMMARY, MVP, TIMER & FAST ACTIONS (4.5 Cols on XL) ================= -->
+<div class="xl:col-span-5 flex flex-col gap-space-lg">
+<!-- Set 1 Telemetry Stats Matrix -->
+<div class="bg-surface-raised rounded-xl p-space-md flex flex-col gap-space-md shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-4 bg-primary-container rounded-full"></span>
+<span class="font-headline-sm text-headline-sm uppercase text-primary tracking-wide">Set 1 Production Telemetry</span>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase">12 Total Lots</span>
+</div>
+<!-- 3-Pillar Stat Grid -->
+<div class="grid grid-cols-3 gap-space-sm">
+<div class="bg-surface-card rounded-lg p-space-sm flex flex-col gap-1 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Lots Sold</span>
+<span class="material-symbols-outlined text-[16px] text-status-live-green">verified</span>
+</div>
+<span class="font-headline-xl text-headline-xl text-primary font-bold">10</span>
+<span class="font-label-badge text-label-badge text-status-live-green tracking-wide">10 SOLD (83%)</span>
+</div>
+<div class="bg-surface-card rounded-lg p-space-sm flex flex-col gap-1 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Passed Lots</span>
+<span class="material-symbols-outlined text-[16px] text-error">cancel</span>
+</div>
+<span class="font-headline-xl text-headline-xl text-error font-bold">02</span>
+<span class="font-label-badge text-label-badge text-error tracking-wide">2 UNSOLD</span>
+</div>
+<div class="bg-surface-card rounded-lg p-space-sm flex flex-col gap-1 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Purse Spent</span>
+<span class="material-symbols-outlined text-[16px] text-primary-container">payments</span>
+</div>
+<span class="font-headline-xl text-headline-xl text-primary-container font-bold">$632</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant tracking-wide">AVG $63.2 / LOT</span>
+</div>
+</div>
+</div>
+<!-- Top Buy of Set Spotlight Card -->
+<div class="bg-surface-card rounded-xl p-space-md flex flex-col gap-space-md relative overflow-hidden shadow-lg">
+<!-- Ambient Type Glow Aura -->
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-type-dragon opacity-20 blur-3xl pointer-events-none rounded-full"></div>
+<div class="flex items-center justify-between z-10">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-primary-container text-on-primary-container font-label-badge text-label-badge uppercase tracking-wider font-bold">SET 1 MARQUEE BUY</span>
+<span class="font-label-meta text-label-meta text-on-surface-variant uppercase">Lot #07</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-base px-space-sm py-1 rounded-full text-secondary">
+<span class="material-symbols-outlined text-[14px]">local_fire_department</span>
+<span class="font-label-badge text-label-badge uppercase">High Watermark</span>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-space-md items-center z-10">
+<!-- Pokémon Render Placeholder -->
+<div class="col-span-5 relative group">
+<div class="w-full h-40 bg-surface-base rounded-lg flex items-center justify-center overflow-hidden shadow-inner relative">
+<img class="object-cover w-full h-full scale-105 group-hover:scale-110 transition-transform duration-300" data-alt="Dynamic full-body battle illustration of Garchomp swooping forward with glowing claws against a dark sci-fi arena backdrop, dramatic cyan and amber volumetric rim lighting, high-definition digital draft broadcast render." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbCnchnBNuoUSJs_z5uxC0tab3-3_Is7lMWtvcSNx37e3WHT7FiXKCTERzYq23iaXFg-TAni4-d3eCTw21ANig_VvJxYe8olLivz5Mu4EVx4jLsRzQOsljMWYIxDAf61V-bdRgeJ7VC8PKrMbKKYmjtHutDcsn_miIE-qEDn6W7fNGEwt62olD6ikSvuM3yBVG01FbWiH9rBq9uXOXmJ1xHhr3Fte_QodoYGG-__6b"/>
+<div class="absolute bottom-2 left-2 bg-surface-raised/90 backdrop-blur-md px-2 py-0.5 rounded text-primary font-label-badge text-label-badge">BST 600</div>
+</div>
+</div>
+<!-- Lot Details & Buyer Identity -->
+<div class="col-span-7 flex flex-col gap-space-xs">
+<div class="flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">Garchomp</span>
+<span class="font-headline-xl text-headline-xl text-primary-container font-bold">$42</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Pseudo-Legendary Sweeper • OU Tier</span>
+<!-- Type Chips & Acquisition Tag -->
+<div class="flex items-center gap-space-xs my-1">
+<span class="px-2 py-0.5 rounded-full bg-type-dragon text-white font-label-badge text-label-badge uppercase shadow-sm">Dragon</span>
+<span class="px-2 py-0.5 rounded-full bg-type-ground text-white font-label-badge text-label-badge uppercase shadow-sm">Ground</span>
+<span class="text-on-surface-variant text-[11px] font-label-meta">#445</span>
+</div>
+<!-- Buyer Dossier Tag -->
+<div class="mt-1 bg-surface-base p-space-xs rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-[12px]">R</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Red (Pallet Ops)</span>
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase">Winning Hammer</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-status-live-green uppercase font-bold">Acquired</span>
+</div>
+</div>
+</div>
+<!-- Segmented Stat Overview Bar -->
+<div class="bg-surface-base rounded-lg p-space-sm flex flex-col gap-1 z-10">
+<div class="flex items-center justify-between text-on-surface-variant font-label-meta text-label-meta">
+<span>STAT METRICS</span>
+<span class="text-primary">HP 108 / ATK 130 / DEF 95 / SPE 102</span>
+</div>
+<div class="grid grid-cols-6 gap-1 h-2">
+<div class="bg-status-live-green rounded-full h-full" title="HP: 108"></div>
+<div class="bg-primary-container rounded-full h-full" title="ATK: 130"></div>
+<div class="bg-type-ground rounded-full h-full" title="DEF: 95"></div>
+<div class="bg-surface-variant rounded-full h-full" title="SPA: 80"></div>
+<div class="bg-type-water rounded-full h-full" title="SPD: 85"></div>
+<div class="bg-secondary-container rounded-full h-full" title="SPE: 102"></div>
+</div>
+</div>
+</div>
+<!-- Arcade Break Countdown Ring & Immediate Command Actions -->
+<div class="bg-surface-raised rounded-xl p-space-lg flex flex-col items-center justify-center gap-space-md text-center shadow-lg relative overflow-hidden">
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-widest">INTERMISSION CLOCK ENGINE</span>
+<!-- Inline Countdown Graphic -->
+<div class="relative w-44 h-44 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 160 160">
+<!-- Track background -->
+<circle class="text-surface-highlight" cx="80" cy="80" fill="none" r="70" stroke="currentColor" stroke-width="8"></circle>
+<!-- Animated Ring Fill -->
+<circle class="text-primary-container transition-all duration-1000" cx="80" cy="80" fill="none" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="130" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-hero text-[44px] leading-tight text-primary font-bold tracking-tight" id="countdown-display">01:45</span>
+<span class="font-label-badge text-label-badge text-status-live-green uppercase tracking-wider font-bold">Auto Synchronized</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-headline-sm text-headline-sm text-on-surface">Next Set Begins Automatically</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Set 2 pools 12 more premier targets including Zapdos & Volcarona</span>
+</div>
+<!-- Big Primary Yellow Button + Manual Trigger Row -->
+<div class="w-full flex flex-col sm:flex-row items-center gap-space-sm pt-space-xs">
+<button class="w-full py-space-sm px-space-md bg-primary-container text-on-primary-container rounded-lg font-headline-sm text-headline-sm uppercase font-bold tracking-wider hover:bg-brand-accent-amber active:translate-y-0.5 transition-all shadow-md flex items-center justify-center gap-space-xs min-h-[48px]" type="button">
+<span>NEXT SET</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="w-full sm:w-auto px-space-md py-space-sm bg-surface-card text-secondary rounded-lg font-headline-sm text-headline-sm uppercase hover:bg-surface-highlight transition-all min-h-[48px] flex items-center justify-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">pause_circle</span>
+<span>HOLD TIMER</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= RIGHT COLUMN: MULTI-COLUMN LEDGER & ROSTER MATRIX DECK (7 Cols on XL) ================= -->
+<div class="xl:col-span-7 flex flex-col gap-space-lg">
+<!-- 1. Full Draft Matrix Ledger Table -->
+<div class="bg-surface-raised rounded-xl p-space-md flex flex-col gap-space-md shadow-md">
+<div class="flex items-center justify-between flex-wrap gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]">table_chart</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">Franchise Budget Ledger</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-meta text-label-meta text-on-surface-variant">BASE CAP:</span>
+<span class="font-label-numeric-stat text-label-numeric-stat text-primary-container">$300.00</span>
+</div>
+</div>
+<!-- High-Contrast Terminal Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-base text-on-surface-variant font-label-badge text-label-badge uppercase tracking-wider">
+<th class="py-space-sm px-space-md rounded-l-lg">Manager / Franchise</th>
+<th class="py-space-sm px-space-sm text-right">Spent</th>
+<th class="py-space-sm px-space-sm text-right">Cap Left</th>
+<th class="py-space-sm px-space-sm text-right">Avg / Lot</th>
+<th class="py-space-sm px-space-sm text-center">Roster</th>
+<th class="py-space-sm px-space-md text-right rounded-r-lg">Cap Status</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y-0">
+<!-- Ash -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded bg-type-electric flex items-center justify-center font-bold text-on-primary-fixed text-[12px]">A</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[14px] text-primary">Ash Ketchum</span>
+<span class="font-label-meta text-[11px] text-on-surface-variant">Kanto Storm</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-on-surface">$106</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-status-live-green font-bold">$194</td>
+<td class="py-space-sm px-space-sm text-right font-body-sm text-on-surface-variant">$53.0</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="px-2 py-0.5 rounded bg-surface-card font-label-badge text-label-badge text-primary">2 / 6</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-status-live-green/10 text-status-live-green font-label-badge text-label-badge uppercase font-bold">Stable</span>
+</td>
+</tr>
+<!-- Red -->
+<tr class="bg-surface-highlight/30 hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded bg-type-fire flex items-center justify-center font-bold text-white text-[12px]">R</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[14px] text-primary">Cmdr. Red</span>
+<span class="font-label-meta text-[11px] text-on-surface-variant">Pallet Apex</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-on-surface">$142</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-primary-container font-bold">$158</td>
+<td class="py-space-sm px-space-sm text-right font-body-sm text-on-surface-variant">$71.0</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="px-2 py-0.5 rounded bg-surface-card font-label-badge text-label-badge text-primary">2 / 6</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-primary-container/10 text-primary-container font-label-badge text-label-badge uppercase font-bold">Aggressive</span>
+</td>
+</tr>
+<!-- Blue -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded bg-type-water flex items-center justify-center font-bold text-white text-[12px]">B</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[14px] text-primary">Blue Oak</span>
+<span class="font-label-meta text-[11px] text-on-surface-variant">Viridian Rival</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-on-surface">$95</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-status-live-green font-bold">$205</td>
+<td class="py-space-sm px-space-sm text-right font-body-sm text-on-surface-variant">$47.5</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="px-2 py-0.5 rounded bg-surface-card font-label-badge text-label-badge text-primary">2 / 6</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-status-live-green/10 text-status-live-green font-label-badge text-label-badge uppercase font-bold">Liquid</span>
+</td>
+</tr>
+<!-- Cynthia -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded bg-type-dragon flex items-center justify-center font-bold text-white text-[12px]">C</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[14px] text-primary">Cynthia</span>
+<span class="font-label-meta text-[11px] text-on-surface-variant">Sinnoh Dynasty</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-on-surface">$124</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-primary-container font-bold">$176</td>
+<td class="py-space-sm px-space-sm text-right font-body-sm text-on-surface-variant">$62.0</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="px-2 py-0.5 rounded bg-surface-card font-label-badge text-label-badge text-primary">2 / 6</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-status-live-green/10 text-status-live-green font-label-badge text-label-badge uppercase font-bold">Stable</span>
+</td>
+</tr>
+<!-- Lance -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded bg-type-flying flex items-center justify-center font-bold text-white text-[12px]">L</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[14px] text-primary">Lance</span>
+<span class="font-label-meta text-[11px] text-on-surface-variant">Dragon Claw</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-on-surface">$97</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-status-live-green font-bold">$203</td>
+<td class="py-space-sm px-space-sm text-right font-body-sm text-on-surface-variant">$97.0</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="px-2 py-0.5 rounded bg-surface-card font-label-badge text-label-badge text-primary">1 / 6</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-secondary-container/20 text-secondary-container font-label-badge text-label-badge uppercase font-bold">Patience</span>
+</td>
+</tr>
+<!-- Steven -->
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded bg-type-steel flex items-center justify-center font-bold text-white text-[12px]">S</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[14px] text-primary">Steven Stone</span>
+<span class="font-label-meta text-[11px] text-on-surface-variant">Devon Heavy Metals</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-on-surface">$68</td>
+<td class="py-space-sm px-space-sm text-right font-label-numeric-stat text-[15px] text-status-live-green font-bold">$232</td>
+<td class="py-space-sm px-space-sm text-right font-body-sm text-on-surface-variant">$68.0</td>
+<td class="py-space-sm px-space-sm text-center">
+<span class="px-2 py-0.5 rounded bg-surface-card font-label-badge text-label-badge text-primary">1 / 6</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="px-2 py-0.5 rounded bg-secondary text-on-secondary font-label-badge text-label-badge uppercase font-bold">Deep Bank</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 2. Acquired Roster Previews: Multi-Manager Deck -->
+<div class="bg-surface-raised rounded-xl p-space-md flex flex-col gap-space-md shadow-md">
+<div class="flex items-center justify-between flex-wrap gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">view_carousel</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">Set 1 Acquired Squad Cards</span>
+</div>
+<span class="font-label-meta text-label-meta text-on-surface-variant">10 Pokémon Assigned to Active Rosters</span>
+</div>
+<!-- Cards Grid for Each Manager's Acquisitions -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-sm">
+<!-- Card: Red's Haul -->
+<div class="bg-surface-card rounded-lg p-space-sm flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between pb-1">
+<span class="font-headline-sm text-[13px] text-primary font-bold">Red (Pallet)</span>
+<span class="font-label-badge text-label-badge text-primary-container uppercase font-bold">2 Acquired</span>
+</div>
+<!-- Lot Item 1 -->
+<div class="bg-surface-base p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-raised overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Chiseled battle sprite of Garchomp roaring, sharp cinematic lighting, high-contrast digital draft avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8gUSlAG3emYqZK1hUdvIjalnc7BLUy0_aMWHaSqldXgTItrw91trwqKJH1SZgoMsg4ry5pn6PIbsasxZy4Xs-vLXD45aUwGQ0aJE5HC5Ni-dn5kO7ysI2LLm4y6QbtYTpofmfZPyHIeh89cVfO4T7C3bB6bGwuT8rhsESSwZXmJSZ67qg6unryewQ_bzcpX1BjGNmhtHA2RIuMM7ObQPwno-PRleEIponOsj2lzfw"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Garchomp</span>
+<div class="flex gap-1">
+<span class="px-1 text-[9px] rounded bg-type-dragon text-white font-bold">DRA</span>
+<span class="px-1 text-[9px] rounded bg-type-ground text-white font-bold">GRO</span>
+</div>
+</div>
+</div>
+<span class="font-label-numeric-stat text-[14px] text-primary-container font-bold">$42</span>
+</div>
+<!-- Lot Item 2 -->
+<div class="bg-surface-base p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-raised overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Scizor metallic armored mantis Pokémon striking a tactical pose with crimson armor and glowing optics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByOsDl_mx19DymXiIxCQufzwZZR5IZ5fdWn1cm_FxpOZQH17jFaVz4qo2fuYue_2mSOzW4Il-sSb2CqQqJWGHY9EHyviBkxe9CsopgAMwAXk_wedB0gf5_SU-eno693kDPx0BF_AAPRRqL3quVzB_GO2yOoIWJH4piOSfqqZ20n28NHEfLUc8yhK4yYUeXzZWZ6EFDbJVr4cfoSr1dZlHuHNvh_YQ-3eym06q5_b5L"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Scizor</span>
+<div class="flex gap-1">
+<span class="px-1 text-[9px] rounded bg-type-bug text-white font-bold">BUG</span>
+<span class="px-1 text-[9px] rounded bg-type-steel text-white font-bold">STL</span>
+</div>
+</div>
+</div>
+<span class="font-label-numeric-stat text-[14px] text-primary-container font-bold">$100</span>
+</div>
+</div>
+<!-- Card: Ash's Haul -->
+<div class="bg-surface-card rounded-lg p-space-sm flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between pb-1">
+<span class="font-headline-sm text-[13px] text-primary font-bold">Ash Ketchum</span>
+<span class="font-label-badge text-label-badge text-secondary uppercase font-bold">2 Acquired</span>
+</div>
+<div class="bg-surface-base p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-raised overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Lucario charging an aura sphere with electric blue energy particles against dark space background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYyTiYkQKRnlmF-VjwgfoIS5p9ppA1V1SWdlsk_NOKiitYRXUXKY7G19RXDwxvzBB4FTe-6iPF5hnyyAZZvyMj4SMNVKq7grySF3f3cEbg9rFAISX3-tbRIs0aq-5OmViB1bSoXEARJ6SANYLJnVU8SOLbRZbRCr10rMm4jR0h1YqOMvuLaiahx5znUg4BzEWaBHKt0Jl6RnhdSJWmlQ9bu_L0Z4y2RGaPckhr6nky"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Lucario</span>
+<div class="flex gap-1">
+<span class="px-1 text-[9px] rounded bg-type-fighting text-white font-bold">FGT</span>
+<span class="px-1 text-[9px] rounded bg-type-steel text-white font-bold">STL</span>
+</div>
+</div>
+</div>
+<span class="font-label-numeric-stat text-[14px] text-primary-container font-bold">$54</span>
+</div>
+<div class="bg-surface-base p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-raised overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Greninja ninja frog water pokemon preparing a water shuriken in dark shadow lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoGtTsFWysDXtzXiC9_5bQoDxvDduBQfOI1eE2kIVDTYkvj8QxT2GQKV2uDq-qJg5AyRrsvxmF0rldYoQHmYMQPTebNlHAH2-59GT4hN2InTD38o7ED2nI2bgVGrLdlI1nL8wu-AvcwyemRZ0AJAktgOFS2coKN-xSpecxOCtBrWMRERXq4qmTRIgn70v7SkT_MNv3GdTM7LYJAhdTdtnh2LXvpACELNRgHt99s6AZ"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Greninja</span>
+<div class="flex gap-1">
+<span class="px-1 text-[9px] rounded bg-type-water text-white font-bold">WAT</span>
+<span class="px-1 text-[9px] rounded bg-type-dark text-white font-bold">DRK</span>
+</div>
+</div>
+</div>
+<span class="font-label-numeric-stat text-[14px] text-primary-container font-bold">$52</span>
+</div>
+</div>
+<!-- Card: Blue's Haul -->
+<div class="bg-surface-card rounded-lg p-space-sm flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between pb-1">
+<span class="font-headline-sm text-[13px] text-primary font-bold">Blue Oak</span>
+<span class="font-label-badge text-label-badge text-secondary uppercase font-bold">2 Acquired</span>
+</div>
+<div class="bg-surface-base p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-raised overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Tyranitar ferocious rock monster Pokémon roaring with sandstorm swirling around its heavy carapace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChTxB1tWJ0UQrYmteds9ObtI3aTXVt5p30HZrD7YT6IikqZyO_qlls3-0Xt9vET6WVf6JUribtGGNx-We9X6kfPJyG191qvy84dKIvVitR5s93cVX9FNfyQRFt5ynxUg1knzJa5OXaIML8SjGD87R4UVx4aSXYNxjSWjqXoTqNAk3K2COK9UzqGWVTsDHH0X350Cyc3AgxH3VM7ZT9sVw2AzTUXQnTe5NWpyQ6dVYG"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Tyranitar</span>
+<div class="flex gap-1">
+<span class="px-1 text-[9px] rounded bg-type-rock text-white font-bold">RCK</span>
+<span class="px-1 text-[9px] rounded bg-type-dark text-white font-bold">DRK</span>
+</div>
+</div>
+</div>
+<span class="font-label-numeric-stat text-[14px] text-primary-container font-bold">$58</span>
+</div>
+<div class="bg-surface-base p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-raised overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Aerodactyl prehistoric flying pterosaur Pokémon with glowing amber eyes against dark stormy sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_QMjzt1jbpGKZPQdpsn4OfLSVZLNuiaYATbyTNJVrcPKjXAh88xYfbotR4IxEgScMSDBoCejFO02XpNPgw_mfkCBcOzcIvR-27NuXUKT53JB6zLSEPvXRLFC_Q5kVgnGwwD_u3RCqqkszi0MJ_pYiUs0QWMf-ORhovaLRRaWxdKu73sQaspphILuLtIf495bxmoINdcxwAjMrHB6gsVD6hDpK8WjPooxpL_u87rgK"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Aerodactyl</span>
+<div class="flex gap-1">
+<span class="px-1 text-[9px] rounded bg-type-rock text-white font-bold">RCK</span>
+<span class="px-1 text-[9px] rounded bg-type-flying text-white font-bold">FLY</span>
+</div>
+</div>
+</div>
+<span class="font-label-numeric-stat text-[14px] text-primary-container font-bold">$37</span>
+</div>
+</div>
+<!-- Card: Cynthia's Haul -->
+<div class="bg-surface-card rounded-lg p-space-sm flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between pb-1">
+<span class="font-headline-sm text-[13px] text-primary font-bold">Cynthia</span>
+<span class="font-label-badge text-label-badge text-primary-container uppercase font-bold">2 Acquired</span>
+</div>
+<div class="bg-surface-base p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-raised overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Togekiss soaring gracefully with serene fairy wings against a shimmering starlit dusk sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz_qSiuzH8tR7R6LWl_lTmizOpEQ0XzMHiWbCQlrAE88qp6s2cjkZsaAReZyX4jZp2YooGixJhoZcoNJGaKFMYWcZ8LkdttYBxlTcPr48_3d30NRd2cUB6idRMj6IUJA2ORE_MRz1_iZfRDAeSzsXOCtMBr5xulUF_l_EMTYR613caH4gtQZ6pGZkWqLPVY_OWIV5ZQYrJ4NVor4BorHf6WQ6jbNV1Fp9rI-5kJ5Hy"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Togekiss</span>
+<div class="flex gap-1">
+<span class="px-1 text-[9px] rounded bg-type-fairy text-white font-bold">FRY</span>
+<span class="px-1 text-[9px] rounded bg-type-flying text-white font-bold">FLY</span>
+</div>
+</div>
+</div>
+<span class="font-label-numeric-stat text-[14px] text-primary-container font-bold">$61</span>
+</div>
+<div class="bg-surface-base p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-raised overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Milotic majestic aquatic sea serpent Pokémon with shimmering rainbow scales in deep blue water." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdcEKFaq8DpQST_HcW9hCZt4ugrp4KD998XfpDxx787IK9d8v8OIdyfgSbV2jlTJtQw9VqRKaY2D_AZQoPHeT8czfdtoMdpp-baC7HRzuvktsKz9EVaMRwou9_X8oZJs5kQRQtYWfvdM3FWOqrhjb6umSKz8ryF5ATXYzdxd0gmGTzDiYa5mjb4egVkYU3UUUpUOXma-WruTGNUUMn_L2GCEZdj56mS1Rpt4hqUaKs"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Milotic</span>
+<div class="flex gap-1">
+<span class="px-1 text-[9px] rounded bg-type-water text-white font-bold">WAT</span>
+</div>
+</div>
+</div>
+<span class="font-label-numeric-stat text-[14px] text-primary-container font-bold">$63</span>
+</div>
+</div>
+<!-- Card: Lance's Haul -->
+<div class="bg-surface-card rounded-lg p-space-sm flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between pb-1">
+<span class="font-headline-sm text-[13px] text-primary font-bold">Lance</span>
+<span class="font-label-badge text-label-badge text-status-live-green uppercase font-bold">1 Acquired</span>
+</div>
+<div class="bg-surface-base p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-raised overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Dragonite classic orange dragon Pokémon charging electric thunder punch in cinematic battle render." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFoO2xHPbegsBPu-pUW8ibGQ6Z692B9WiEx8LJgT8f3PFrhM4Fz9rmrZ5KIG09U_rKpX9mGg3h3MZlhGClq5Vfl1kB7ZPy1_Yakeqlo_L2aWXcXZR27fNrKhwlkWHGnlS4p61lE1PRKnPpV-76gPFwTFzOH4hiz65AJN1s70ETbHd__thReUDNMBGdNYZYx40L8VnDlgYK2ai_dG0EaiwJ8ybgG6H_vrcLBF2_Wi69"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Dragonite</span>
+<div class="flex gap-1">
+<span class="px-1 text-[9px] rounded bg-type-dragon text-white font-bold">DRA</span>
+<span class="px-1 text-[9px] rounded bg-type-flying text-white font-bold">FLY</span>
+</div>
+</div>
+</div>
+<span class="font-label-numeric-stat text-[14px] text-primary-container font-bold">$97</span>
+</div>
+<div class="p-2 text-center text-on-surface-variant font-label-meta text-[11px] bg-surface-base/50 rounded border-dashed">
+                Slot #2 Pending Set 2 Nomination
+              </div>
+</div>
+<!-- Card: Steven's Haul -->
+<div class="bg-surface-card rounded-lg p-space-sm flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center justify-between pb-1">
+<span class="font-headline-sm text-[13px] text-primary font-bold">Steven Stone</span>
+<span class="font-label-badge text-label-badge text-status-live-green uppercase font-bold">1 Acquired</span>
+</div>
+<div class="bg-surface-base p-space-xs rounded flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-raised overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Metagross massive steel supercomputer arachnid Pokémon hovering with psychic magnetic levitation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9pHomxrpigAy6_PZJVs0W8JmSotsW8xuXGEPhf_fs1P4dg2si52jiwGLqQn8VNfk-6VI90m-ViAulUjrfRvCcChfnSQWLlLV-rBOI7jpnI8WNlIHJlaWIh4PD6QnQN9MEh8KGjMoxvyLGnVvGeWJaz3KXxycKhElbi3CWXf9AwPlEwL_Q-p8znw2T-aubzQRM25tM-_oM5C43W65JzlGLfNqEJFtCwMyBbXZ4tuaR"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[13px] text-primary">Metagross</span>
+<div class="flex gap-1">
+<span class="px-1 text-[9px] rounded bg-type-steel text-white font-bold">STL</span>
+<span class="px-1 text-[9px] rounded bg-type-psychic text-white font-bold">PSY</span>
+</div>
+</div>
+</div>
+<span class="font-label-numeric-stat text-[14px] text-primary-container font-bold">$68</span>
+</div>
+<div class="p-2 text-center text-on-surface-variant font-label-meta text-[11px] bg-surface-base/50 rounded border-dashed">
+                Slot #2 Pending Set 2 Nomination
+              </div>
+</div>
+</div>
+</div>
+<!-- Set 2 On-Deck Preview Teaser -->
+<div class="bg-surface-card rounded-xl p-space-md flex items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-raised flex items-center justify-center text-brand-accent-amber">
+<span class="material-symbols-outlined text-[28px]">electric_bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary uppercase">Upcoming Nominees in Set 2</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Includes Zapdos, Volcarona, Excadrill, Rotom-Wash, and Heatran.</span>
+</div>
+</div>
+<button class="px-space-md py-space-xs bg-surface-highlight text-secondary rounded-lg font-headline-sm text-headline-sm hover:bg-surface-container-high transition-colors" type="button">
+            Inspect Pool
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple intermission countdown timer simulation
+  (function() {
+    let timeLeft = 105; // 1 minute 45 seconds
+    const display = document.getElementById('countdown-display');
+
+    if (!display) return;
+
+    const timer = setInterval(() => {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        display.textContent = '00:00';
+        return;
+      }
+
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      display.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }, 1000);
+  })();
+</script></main></div></body></html>
