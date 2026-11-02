@@ -240,12 +240,35 @@ export async function runSmokeTest({ exitOnFinish = true } = {}) {
       await page.waitForTimeout(200);
     }
 
+    // Phase 1 UI Verification: Advanced Drawer & Pool Filter Counters
+    const btnAdv = await page.$('#btn-toggle-advanced');
+    if (btnAdv) {
+      await btnAdv.click();
+      await page.waitForTimeout(200);
+      const poolCounter = await page.$('#pool-counter');
+      if (poolCounter) {
+        const text = await poolCounter.innerText();
+        console.log(`  [Setup UI] Pool counter verified: ${text}`);
+      }
+      // Test Famous filter toggle independence
+      if (await page.$('#chip-famous')) {
+        await page.click('#chip-famous');
+        await page.waitForTimeout(150);
+        await page.click('#chip-famous'); // Toggle back
+        await page.waitForTimeout(150);
+      }
+    }
+
     // ==========================================
     // 3. SCREEN: LOBBY
     // ==========================================
     console.log('\n--- 3. Testing Lobby Screen ---');
     await page.click('#btn-create-match');
     await page.waitForSelector('#btn-start-auction', { state: 'visible' });
+    const lobbySummary = await page.$('#lobby-settings-summary');
+    if (lobbySummary) {
+      console.log('  [Lobby UI] Compact settings summary verified');
+    }
     await analyzeAndCaptureScreen('lobby');
 
     // ==========================================
@@ -254,6 +277,10 @@ export async function runSmokeTest({ exitOnFinish = true } = {}) {
     console.log('\n--- 4. Testing Auction Screen ---');
     await page.click('#btn-start-auction');
     await page.waitForSelector('#btn-pass', { state: 'visible' });
+    const auctionSummary = await page.$('#auction-settings-summary');
+    if (auctionSummary) {
+      console.log('  [Auction UI] Compact settings summary verified');
+    }
     await analyzeAndCaptureScreen('auction');
 
     // Play through auction until set break or scout report

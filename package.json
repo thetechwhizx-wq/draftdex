@@ -5,7 +5,8 @@
   "scripts": {
     "build:css": "tailwindcss -c tailwind.config.cjs -i ui/style.css -o ui/tailwind.css --minify",
     "test:ui": "node tests/ui-smoke.mjs",
-    "test": "node engine/tests/phase0.test.js && node engine/tests/phase1.test.js && node engine/tests/phase2.test.js && node engine/tests/phase3.test.js && node engine/tests/phase4.test.js && node engine/tests/phase5.test.js && node engine/tests/phase6.test.js && node engine/tests/phase7.test.js && node engine/tests/phase8.test.js && node engine/tests/phase9.test.js",
+    "test:phase1-v2": "node engine/tests/phase1-v2.test.js",
+    "test": "node engine/tests/phase0.test.js && node engine/tests/phase1.test.js && node engine/tests/phase2.test.js && node engine/tests/phase3.test.js && node engine/tests/phase4.test.js && node engine/tests/phase5.test.js && node engine/tests/phase6.test.js && node engine/tests/phase7.test.js && node engine/tests/phase8.test.js && node engine/tests/phase9.test.js && node engine/tests/phase1-v2.test.js",
     "test:phase0": "node engine/tests/phase0.test.js",
     "test:phase1": "node engine/tests/phase1.test.js",
     "test:phase2": "node engine/tests/phase2.test.js",

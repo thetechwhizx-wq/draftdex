@@ -84,8 +84,11 @@ export function renderLobbyScreen({ matchState, copied = false, isHost = true })
       </div>
 
       <!-- Match Settings Strip -->
-      <div class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-2">
-        <span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Match Overview</span>
+      <div class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-2 shadow-sm" id="lobby-settings-summary">
+        <div class="flex items-center justify-between">
+          <span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Match Settings</span>
+          <span class="text-xs text-primary-container font-headline-sm uppercase">${matchState.settings.preset || 'Standard'} Mode</span>
+        </div>
         <div class="grid grid-cols-3 gap-2 text-center">
           <div class="bg-surface-container p-2 rounded-lg">
             <span class="font-label-caps text-[10px] text-outline uppercase block">Budget</span>
@@ -99,6 +102,13 @@ export function renderLobbyScreen({ matchState, copied = false, isHost = true })
             <span class="font-label-caps text-[10px] text-outline uppercase block">Start Bid</span>
             <span class="font-numeral-lg text-numeral-lg text-tertiary-fixed-dim">$${matchState.settings.startBid}</span>
           </div>
+        </div>
+        <!-- Compact Timers & Scope Sub-strip -->
+        <div class="flex items-center justify-between bg-surface-container px-3 py-1.5 rounded-lg text-xs text-outline font-headline-sm">
+          <span>Bid: <strong class="text-on-surface">${matchState.settings.bidTimer}s</strong></span>
+          <span>Open: <strong class="text-on-surface">${matchState.settings.openTimer || 18}s</strong></span>
+          <span>Turn: <strong class="text-on-surface">${matchState.settings.battleTurnTimer || 30}s</strong></span>
+          <span>${matchState.settings.famousMix ? 'Famous Only' : (matchState.settings.generations?.length === 9 ? 'All Gens' : `Gen ${matchState.settings.generations?.join(',')}`)}</span>
         </div>
       </div>
 

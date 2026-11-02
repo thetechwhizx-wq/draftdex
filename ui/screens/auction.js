@@ -107,6 +107,13 @@ export function renderAuctionScreen({ matchState, currentTimerSeconds = 10, tota
         </div>
       </div>
 
+      <!-- Compact Settings Summary Strip -->
+      <div class="flex items-center justify-between bg-surface-container px-3 py-1 rounded-lg text-[11px] font-headline-sm text-outline" id="auction-settings-summary">
+        <span class="text-primary-container font-semibold uppercase">${matchState.settings.preset || 'Standard'}</span>
+        <span>${matchState.settings.teamSize} PKMN · $${matchState.settings.budget}</span>
+        <span>Bid: ${matchState.settings.bidTimer}s · Turn: ${matchState.settings.battleTurnTimer || 30}s</span>
+      </div>
+
       <!-- Primary Active Lot Card -->
       <div class="flex flex-col bg-surface-container rounded-xl overflow-hidden shadow-xl">
         <!-- Creature Visual Banner -->

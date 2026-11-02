@@ -100,19 +100,26 @@ export function recommendSettings({
   // Preset base timers + small deliberation modifier if high-stakes / high base bid
   let finalOpenTimer;
   let finalBidTimer;
+  let finalBattleTurnTimer;
 
   if (locked.has('openTimer') && currentValues.openTimer !== undefined) {
-    finalOpenTimer = Number(currentValues.openTimer);
+    finalOpenTimer = Math.max(3, Number(currentValues.openTimer));
   } else {
     const timerBonus = finalStartBid >= 10 ? 3 : 0;
     finalOpenTimer = presetConfig.baseTimers.openTimer + timerBonus;
   }
 
   if (locked.has('bidTimer') && currentValues.bidTimer !== undefined) {
-    finalBidTimer = Number(currentValues.bidTimer);
+    finalBidTimer = Math.max(3, Number(currentValues.bidTimer));
   } else {
     const timerBonus = finalStartBid >= 10 ? 2 : 0;
     finalBidTimer = presetConfig.baseTimers.bidTimer + timerBonus;
+  }
+
+  if (locked.has('battleTurnTimer') && currentValues.battleTurnTimer !== undefined) {
+    finalBattleTurnTimer = Math.max(10, Number(currentValues.battleTurnTimer));
+  } else {
+    finalBattleTurnTimer = 30; // default 30s
   }
 
   return {
@@ -123,6 +130,7 @@ export function recommendSettings({
     startBid: finalStartBid,
     openTimer: finalOpenTimer,
     bidTimer: finalBidTimer,
+    battleTurnTimer: finalBattleTurnTimer,
     lockedFields: Array.from(locked)
   };
 }

@@ -37,7 +37,8 @@ import {
   ACTION_TYPES,
   generateSalt,
   computeCommitment,
-  verifyCommitment
+  verifyCommitment,
+  filterPokemon
 } from '../engine/index.js';
 
 import {
@@ -80,7 +81,8 @@ export class DraftDexApp {
       selectedGens: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       famousMix: false,
       lockedFields: new Set(),
-      isAdvancedOpen: false
+      isAdvancedOpen: false,
+      setupErrorMessage: null
     };
 
     // Live auction runtime
@@ -101,8 +103,9 @@ export class DraftDexApp {
     // Battle runtime state
     this.battleCurrentSelection = null;
     this.battleCommitState = 'pending'; // 'pending' | 'committed' | 'resolving'
-    this.battleTimerSeconds = 25;
-    this.battleTotalTimerSeconds = 25;
+    const battleTimer = this.matchState?.settings?.battleTurnTimer || 30;
+    this.battleTimerSeconds = battleTimer;
+    this.battleTotalTimerSeconds = battleTimer;
     this.battleTimerInterval = null;
     this.isBenchOpen = false;
     this.isLogOpen = false;
@@ -591,19 +594,52 @@ export class DraftDexApp {
   // ==========================================
   renderSetup() {
     if (!this.root) return;
+
+    // Compute recommendations based on active preset and manual locks
     const recommended = recommendSettings({
       preset: this.setupConfig.preset,
       lockedFields: this.setupConfig.lockedFields,
       currentValues: this.currentSetupValues || {}
     });
 
+    const settingsValues = {
+      ...recommended,
+      ...(this.currentSetupValues || {})
+    };
+    this.currentSetupValues = settingsValues;
+
+    // Real-time pool availability calculation
+    const eligibleList = filterPokemon({
+      generations: this.setupConfig.selectedGens,
+      famousMixOnly: this.setupConfig.famousMix,
+      fullyEvolvedOnly: true
+    });
+    const availablePoolCount = eligibleList.length;
+
+    let genSummary = '';
+    const gensArr = [...this.setupConfig.selectedGens].sort((a, b) => a - b);
+    if (gensArr.length === 9) {
+      genSummary = 'Gen 1-9';
+    } else if (gensArr.length === 1) {
+      genSummary = `Gen ${gensArr[0]}`;
+    } else {
+      genSummary = `Gen ${gensArr.join(', ')}`;
+    }
+    if (this.setupConfig.famousMix) {
+      genSummary += ', Famous only';
+    }
+    const poolSummaryText = `${genSummary}: ${availablePoolCount} available`;
+
     this.root.innerHTML = renderSetupScreen({
-      settings: recommended,
+      settings: settingsValues,
       activePreset: this.setupConfig.preset,
       selectedGens: this.setupConfig.selectedGens,
       famousMix: this.setupConfig.famousMix,
       lockedFields: this.setupConfig.lockedFields,
-      isAdvancedOpen: this.setupConfig.isAdvancedOpen
+      isAdvancedOpen: this.setupConfig.isAdvancedOpen,
+      availablePoolCount,
+      poolSummaryText,
+      errorMessage: this.setupConfig.setupErrorMessage
     });
 
     // Back button
@@ -615,6 +651,13 @@ export class DraftDexApp {
       card.addEventListener('click', () => {
         const preset = card.dataset.preset;
         this.setupConfig.preset = preset;
+        const newRec = recommendSettings({
+          preset: this.setupConfig.preset,
+          lockedFields: this.setupConfig.lockedFields,
+          currentValues: this.currentSetupValues || {}
+        });
+        this.currentSetupValues = { ...newRec };
+        this.setupConfig.setupErrorMessage = null;
         this.renderSetup();
       });
     });
@@ -628,11 +671,20 @@ export class DraftDexApp {
       });
     }
 
-    // Gen chips
+    // Select All Generations
+    const btnSelectAll = this.root.querySelector('#btn-select-all-gens');
+    if (btnSelectAll) {
+      btnSelectAll.addEventListener('click', () => {
+        this.setupConfig.selectedGens = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        this.setupConfig.setupErrorMessage = null;
+        this.renderSetup();
+      });
+    }
+
+    // Generation chips: independent filter, last gen cannot be unticked
     this.root.querySelectorAll('.chip-gen').forEach(chip => {
       chip.addEventListener('click', () => {
         const gen = Number(chip.dataset.gen);
-        this.setupConfig.famousMix = false;
         if (this.setupConfig.selectedGens.includes(gen)) {
           if (this.setupConfig.selectedGens.length > 1) {
             this.setupConfig.selectedGens = this.setupConfig.selectedGens.filter(g => g !== gen);
@@ -640,15 +692,19 @@ export class DraftDexApp {
         } else {
           this.setupConfig.selectedGens.push(gen);
         }
+        // NEVER change famousMix
+        this.setupConfig.setupErrorMessage = null;
         this.renderSetup();
       });
     });
 
-    // Famous mix chip
+    // Famous only toggle: independent filter
     const chipFamous = this.root.querySelector('#chip-famous');
     if (chipFamous) {
       chipFamous.addEventListener('click', () => {
         this.setupConfig.famousMix = !this.setupConfig.famousMix;
+        // NEVER change selectedGens
+        this.setupConfig.setupErrorMessage = null;
         this.renderSetup();
       });
     }
@@ -666,40 +722,90 @@ export class DraftDexApp {
       });
     });
 
-    // Inputs
-    const inputTeam = this.root.querySelector('#input-team-size');
-    const inputBudget = this.root.querySelector('#input-budget');
-    const inputStart = this.root.querySelector('#input-start-bid');
-    const inputTimer = this.root.querySelector('#input-bid-timer');
-
-    this.currentSetupValues = {
-      teamSize: inputTeam?.value,
-      budget: inputBudget?.value,
-      startBid: inputStart?.value,
-      bidTimer: inputTimer?.value?.replace('s', '')
+    // Bind inputs with input and change listeners
+    const bindNumericInput = (id, field, minVal, maxVal) => {
+      const el = this.root.querySelector(id);
+      if (!el) return;
+      el.addEventListener('input', () => {
+        const val = Number(el.value);
+        if (!isNaN(val) && val > 0) {
+          this.currentSetupValues[field] = val;
+          this.setupConfig.lockedFields.add(field);
+        }
+      });
+      el.addEventListener('change', () => {
+        let val = Number(el.value);
+        if (isNaN(val) || val <= 0) val = minVal || 1;
+        if (minVal !== undefined) val = Math.max(minVal, val);
+        if (maxVal !== undefined) val = Math.min(maxVal, val);
+        el.value = val;
+        this.currentSetupValues[field] = val;
+        this.setupConfig.lockedFields.add(field);
+        this.setupConfig.setupErrorMessage = null;
+        this.renderSetup();
+      });
     };
+
+    bindNumericInput('#input-team-size', 'teamSize', 1, 12);
+    bindNumericInput('#input-budget', 'budget', 10);
+    bindNumericInput('#input-start-bid', 'startBid', 1);
+    bindNumericInput('#input-bid-timer', 'bidTimer', 3);
+    bindNumericInput('#input-open-timer', 'openTimer', 5);
+
+    // Battle turn timer chips
+    this.root.querySelectorAll('.chip-battle-timer').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const timer = Number(chip.dataset.timer);
+        this.currentSetupValues.battleTurnTimer = timer;
+        this.setupConfig.lockedFields.add('battleTurnTimer');
+        this.setupConfig.setupErrorMessage = null;
+        this.renderSetup();
+      });
+    });
 
     // Create match button
     const btnCreate = this.root.querySelector('#btn-create-match');
     if (btnCreate) {
-      btnCreate.addEventListener('click', () => this.handleCreateMatch(recommended));
+      btnCreate.addEventListener('click', () => {
+        const matchSettings = {
+          preset: this.setupConfig.preset,
+          teamSize: Number(this.currentSetupValues.teamSize),
+          budget: Number(this.currentSetupValues.budget),
+          startBid: Number(this.currentSetupValues.startBid),
+          bidTimer: Number(this.currentSetupValues.bidTimer),
+          openTimer: Number(this.currentSetupValues.openTimer || 18),
+          battleTurnTimer: Number(this.currentSetupValues.battleTurnTimer || 30),
+          generations: [...this.setupConfig.selectedGens],
+          famousMix: !!this.setupConfig.famousMix,
+          lockedFields: Array.from(this.setupConfig.lockedFields)
+        };
+        this.handleCreateMatch(matchSettings);
+      });
     }
   }
 
-  handleCreateMatch(recommended) {
-    // 6 random characters (no 0/O/1/I to avoid mix-ups): ~887 million combinations,
-    // so two hosts on the public PeerJS network almost never collide.
+  handleCreateMatch(matchSettings) {
     const ROOM_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
     let roomCode = '';
     for (let i = 0; i < 6; i++) roomCode += ROOM_CHARS[Math.floor(Math.random() * ROOM_CHARS.length)];
     const seed = 'match-seed-' + Date.now();
 
-    const { pool } = buildDraftPool({
-      generations: this.setupConfig.famousMix ? null : this.setupConfig.selectedGens,
-      famousMix: this.setupConfig.famousMix,
-      teamSize: recommended.teamSize,
-      seed
-    });
+    let pool;
+    try {
+      const res = buildDraftPool({
+        generations: matchSettings.generations,
+        famousMix: matchSettings.famousMix,
+        teamSize: matchSettings.teamSize,
+        seed
+      });
+      pool = res.pool;
+    } catch (err) {
+      console.warn('Cannot build pool for selected configuration:', err.message);
+      this.setupConfig.setupErrorMessage = err.message;
+      this.setupConfig.isAdvancedOpen = true;
+      this.renderSetup();
+      return; // STOP! Do not create match!
+    }
 
     this.isHost = true;
     this.userPlayerId = 'human';
@@ -714,13 +820,7 @@ export class DraftDexApp {
     this.matchState = createAuctionMatch({
       room: roomCode,
       seed,
-      settings: {
-        budget: recommended.budget,
-        teamSize: recommended.teamSize,
-        startBid: recommended.startBid,
-        openTimer: recommended.openTimer,
-        bidTimer: recommended.bidTimer
-      },
+      settings: matchSettings,
       players: [
         { id: 'human', name: 'You (Host)', isHost: true, guestToken: this.guestToken, connected: true },
         { id: 'bot', name: 'DexBot', isHost: false, isBot: true, connected: true }
@@ -894,8 +994,20 @@ export class DraftDexApp {
   startAuctionClock() {
     if (!this.isHost) return;
     this.clearAuctionTimer();
-    this.timerSeconds = this.matchState.settings.openTimer || 18;
-    this.totalTimerSeconds = this.timerSeconds;
+    let initialTimer = 18;
+    if (this.matchState?.settings) {
+      if (this.matchState.settings.openTimer !== undefined && this.matchState.settings.lockedFields?.includes('openTimer')) {
+        initialTimer = this.matchState.settings.openTimer;
+      } else if (this.matchState.settings.bidTimer !== undefined && this.matchState.settings.lockedFields?.includes('bidTimer')) {
+        initialTimer = this.matchState.settings.bidTimer;
+      } else if (this.matchState.settings.openTimer !== undefined) {
+        initialTimer = this.matchState.settings.openTimer;
+      } else if (this.matchState.settings.bidTimer !== undefined) {
+        initialTimer = this.matchState.settings.bidTimer;
+      }
+    }
+    this.timerSeconds = initialTimer;
+    this.totalTimerSeconds = initialTimer;
 
     this.timerInterval = setInterval(() => {
       this.timerSeconds--;

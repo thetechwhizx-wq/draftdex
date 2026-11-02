@@ -166,7 +166,14 @@ export function createAuctionMatch({
       budget,
       startBid,
       minIncrement,
-      minReserveSlotPrice
+      minReserveSlotPrice,
+      openTimer: settings.openTimer !== undefined ? Number(settings.openTimer) : 18,
+      bidTimer: settings.bidTimer !== undefined ? Number(settings.bidTimer) : 10,
+      battleTurnTimer: settings.battleTurnTimer !== undefined ? Number(settings.battleTurnTimer) : 30,
+      generations: settings.generations || [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      famousMix: !!settings.famousMix,
+      preset: settings.preset || 'standard',
+      lockedFields: settings.lockedFields ? Array.from(settings.lockedFields) : []
     },
     players: matchPlayers,
     sets,

@@ -1,14 +1,28 @@
 /**
  * Match Setup Screen
- * Visual source: design/stitch_pok_mon_draft_auction_webapp/match_setup/code.html
+ * Visual source: design/stitch_pok_mon_draft_auction_webapp/match_setup/code.html & design-v2
  */
 
-export function renderSetupScreen({ settings, activePreset = 'standard', selectedGens = [1, 2, 3, 4, 5, 6, 7, 8, 9], famousMix = false, lockedFields = new Set(), isAdvancedOpen = false }) {
+export function renderSetupScreen({
+  settings,
+  activePreset = 'standard',
+  selectedGens = [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  famousMix = false,
+  lockedFields = new Set(),
+  isAdvancedOpen = false,
+  availablePoolCount = 122,
+  poolSummaryText = '',
+  errorMessage = null
+}) {
   const isQuick = activePreset === 'quick';
   const isStandard = activePreset === 'standard';
   const isMarathon = activePreset === 'marathon';
 
   const gensList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const battleTimers = [15, 30, 45, 60, 90];
+  const currentBattleTimer = Number(settings.battleTurnTimer || 30);
+
+  const locked = lockedFields instanceof Set ? lockedFields : new Set(lockedFields || []);
 
   return `
     <header class="fixed top-0 w-full max-w-[390px] md:max-w-[768px] z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.25)] pt-safe">
@@ -17,8 +31,8 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
           <button aria-label="Back" id="btn-setup-back" class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-surface hover:text-primary-container transition-colors">
             <span class="material-symbols-outlined text-[20px]">arrow_back</span>
           </button>
-          <img alt="Apex Draft Arena Logo" class="h-8 w-auto object-contain" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"/>
-          <h1 class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">Lobby Config</h1>
+          <img alt="DraftDex Logo" class="h-8 w-auto object-contain" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"/>
+          <h1 class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">Draft Setup</h1>
         </div>
         <div class="flex items-center gap-space-sm">
           <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
@@ -33,7 +47,7 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
       <div class="flex items-center justify-between py-space-sm mb-space-sm">
         <div class="flex items-center gap-space-xs">
           <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
-          <span class="font-label-caps text-label-caps uppercase text-on-surface tracking-wider">Lobby Config</span>
+          <span class="font-label-caps text-label-caps uppercase text-on-surface tracking-wider">Format Selector</span>
         </div>
         <span class="font-tabular-stats text-tabular-stats text-outline">Tier 1 · Competitive</span>
       </div>
@@ -47,7 +61,7 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
       <!-- Preset Selector Stack -->
       <div class="flex flex-col gap-space-sm mb-space-lg" id="preset-group">
         <!-- Preset 1: Quick -->
-        <div class="preset-card relative p-space-md rounded-xl ${isQuick ? 'bg-surface-container-high shadow-md shadow-primary-container/10' : 'bg-surface-container hover:bg-surface-container-high shadow-sm'} transition-all cursor-pointer" id="card-quick" data-preset="quick">
+        <div class="preset-card relative p-space-md rounded-xl ${isQuick ? 'bg-surface-container-high shadow-md shadow-primary-container/10 ring-1 ring-primary-container' : 'bg-surface-container hover:bg-surface-container-high shadow-sm'} transition-all cursor-pointer" id="card-quick" data-preset="quick">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-space-md">
               <div class="w-10 h-10 rounded-lg ${isQuick ? 'bg-primary-container text-on-primary-container' : 'bg-surface-container-highest text-outline'} flex items-center justify-center">
@@ -55,7 +69,7 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
               </div>
               <div class="flex flex-col">
                 <span class="font-headline-sm text-headline-sm uppercase ${isQuick ? 'text-primary-container' : 'text-on-surface'}">Quick</span>
-                <span class="font-tabular-stats text-tabular-stats ${isQuick ? 'text-on-surface' : 'text-outline'}">15m · 4 PKMN</span>
+                <span class="font-tabular-stats text-tabular-stats ${isQuick ? 'text-on-surface' : 'text-outline'}">15m · 4 PKMN · $${isQuick ? settings.budget : 70}</span>
               </div>
             </div>
             <div class="check-indicator w-6 h-6 rounded-full ${isQuick ? 'bg-primary-container text-on-primary' : 'bg-surface-container-highest text-surface-dim'} flex items-center justify-center">
@@ -65,7 +79,7 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
         </div>
 
         <!-- Preset 2: Standard -->
-        <div class="preset-card relative p-space-md rounded-xl ${isStandard ? 'bg-surface-container-high shadow-md shadow-primary-container/10' : 'bg-surface-container hover:bg-surface-container-high shadow-sm'} transition-all cursor-pointer" id="card-standard" data-preset="standard">
+        <div class="preset-card relative p-space-md rounded-xl ${isStandard ? 'bg-surface-container-high shadow-md shadow-primary-container/10 ring-1 ring-primary-container' : 'bg-surface-container hover:bg-surface-container-high shadow-sm'} transition-all cursor-pointer" id="card-standard" data-preset="standard">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-space-md">
               <div class="icon-box w-10 h-10 rounded-lg ${isStandard ? 'bg-primary-container text-on-primary-container' : 'bg-surface-container-highest text-outline'} flex items-center justify-center">
@@ -76,7 +90,7 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
                   <span class="title-text font-headline-sm text-headline-sm uppercase ${isStandard ? 'text-primary-container' : 'text-on-surface'}">Standard</span>
                   <span class="badge-text px-1.5 py-0.5 rounded-full bg-primary-container/20 text-primary-container font-label-caps text-[10px] uppercase">Default</span>
                 </div>
-                <span class="font-tabular-stats text-tabular-stats ${isStandard ? 'text-on-surface' : 'text-outline'}">35m · 6 PKMN</span>
+                <span class="font-tabular-stats text-tabular-stats ${isStandard ? 'text-on-surface' : 'text-outline'}">35m · 6 PKMN · $${isStandard ? settings.budget : 100}</span>
               </div>
             </div>
             <div class="check-indicator w-6 h-6 rounded-full ${isStandard ? 'bg-primary-container text-on-primary' : 'bg-surface-container-highest text-surface-dim'} flex items-center justify-center">
@@ -86,7 +100,7 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
         </div>
 
         <!-- Preset 3: Marathon -->
-        <div class="preset-card relative p-space-md rounded-xl ${isMarathon ? 'bg-surface-container-high shadow-md shadow-primary-container/10' : 'bg-surface-container hover:bg-surface-container-high shadow-sm'} transition-all cursor-pointer" id="card-marathon" data-preset="marathon">
+        <div class="preset-card relative p-space-md rounded-xl ${isMarathon ? 'bg-surface-container-high shadow-md shadow-primary-container/10 ring-1 ring-primary-container' : 'bg-surface-container hover:bg-surface-container-high shadow-sm'} transition-all cursor-pointer" id="card-marathon" data-preset="marathon">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-space-md">
               <div class="w-10 h-10 rounded-lg ${isMarathon ? 'bg-primary-container text-on-primary-container' : 'bg-surface-container-highest text-outline'} flex items-center justify-center">
@@ -94,7 +108,7 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
               </div>
               <div class="flex flex-col">
                 <span class="font-headline-sm text-headline-sm uppercase ${isMarathon ? 'text-primary-container' : 'text-on-surface'}">Marathon</span>
-                <span class="font-tabular-stats text-tabular-stats ${isMarathon ? 'text-on-surface' : 'text-outline'}">60m · 10 PKMN</span>
+                <span class="font-tabular-stats text-tabular-stats ${isMarathon ? 'text-on-surface' : 'text-outline'}">60m · 10 PKMN · $${isMarathon ? settings.budget : 170}</span>
               </div>
             </div>
             <div class="check-indicator w-6 h-6 rounded-full ${isMarathon ? 'bg-primary-container text-on-primary' : 'bg-surface-container-highest text-surface-dim'} flex items-center justify-center">
@@ -121,34 +135,60 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
         <div class="${isAdvancedOpen ? 'flex' : 'hidden'} px-space-md pb-space-md flex-col gap-space-md bg-surface-container-low" id="advanced-drawer">
           <div class="w-full h-px bg-surface-container-highest mb-space-xs"></div>
           
+          <!-- Pool Scope and Counter Strip -->
+          <div class="flex items-center justify-between bg-surface-container p-space-sm rounded-lg shadow-inner">
+            <div class="flex flex-col">
+              <span class="font-label-caps text-[11px] uppercase text-outline">Active Pool Scope</span>
+              <span class="text-xs text-on-surface font-headline-sm" id="pool-summary-text">${poolSummaryText || 'Configured Generations'}</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-surface-container-highest px-2.5 py-1 rounded-full">
+              <span class="w-2 h-2 rounded-full ${availablePoolCount >= 24 ? 'bg-primary-container' : 'bg-status-urgent'} animate-pulse"></span>
+              <span class="font-label-caps text-[11px] font-bold ${availablePoolCount >= 24 ? 'text-primary-container' : 'text-status-urgent'}" id="pool-counter">${availablePoolCount} available</span>
+            </div>
+          </div>
+
           <!-- Generations Filter Chips -->
           <div class="flex flex-col gap-space-xs">
-            <span class="font-label-caps text-label-caps uppercase text-outline">Eligible Generations</span>
+            <div class="flex items-center justify-between">
+              <span class="font-label-caps text-label-caps uppercase text-outline">Eligible Generations</span>
+              <button id="btn-select-all-gens" class="text-xs text-primary-container hover:underline uppercase font-label-caps" type="button">Select All</button>
+            </div>
             <div class="flex flex-wrap gap-1.5" id="gen-chips-container">
               ${gensList.map(g => {
-                const active = selectedGens.includes(g) && !famousMix;
+                const active = selectedGens.includes(g);
                 return `
-                  <button class="chip-gen min-h-[44px] px-3 rounded-full ${active ? 'bg-surface-container-highest text-primary' : 'bg-surface-container text-outline'} font-label-caps text-label-caps uppercase flex items-center gap-1 active:scale-95 transition-transform shadow-sm" data-gen="${g}" type="button">
-                    <span class="material-symbols-outlined text-[16px] ${active ? 'text-primary-container' : 'text-outline/40'} chip-icon">check</span>
+                  <button class="chip-gen min-h-[40px] px-3 rounded-lg ${active ? 'bg-surface-container-highest text-primary-container ring-1 ring-primary-container/40' : 'bg-surface-container text-outline opacity-60'} font-label-caps text-label-caps uppercase flex items-center gap-1 active:scale-95 transition-transform shadow-sm" data-gen="${g}" type="button">
+                    <span class="material-symbols-outlined text-[16px] ${active ? 'text-primary-container' : 'text-outline/40'} chip-icon">${active ? 'check' : 'add'}</span>
                     <span>Gen ${g}</span>
                   </button>
                 `;
               }).join('')}
-              <button class="chip-famous min-h-[44px] px-3 rounded-full ${famousMix ? 'bg-surface-container-highest text-primary border border-primary-container/40' : 'bg-surface-container text-outline'} font-label-caps text-label-caps uppercase flex items-center gap-1 active:scale-95 transition-transform shadow-sm" id="chip-famous" type="button">
-                <span class="material-symbols-outlined text-[16px] ${famousMix ? 'text-primary-container' : 'text-outline/40'} chip-icon">check</span>
-                <span>Famous Mix</span>
+            </div>
+
+            <!-- Famous Only Filter -->
+            <div class="flex items-center justify-between bg-surface-container p-space-sm rounded-lg mt-2">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary-container text-[18px]">star</span>
+                <div class="flex flex-col">
+                  <span class="font-headline-sm text-xs uppercase text-on-surface">Famous only</span>
+                  <span class="text-[11px] text-outline">Filter to iconic fan favorites</span>
+                </div>
+              </div>
+              <button id="chip-famous" class="min-h-[36px] px-3 rounded-full ${famousMix ? 'bg-primary-container text-on-primary-container font-bold' : 'bg-surface-container-highest text-outline'} font-label-caps text-[11px] uppercase flex items-center gap-1 active:scale-95 transition-all shadow-sm" type="button">
+                <span class="material-symbols-outlined text-[15px]">${famousMix ? 'check' : 'remove'}</span>
+                <span>${famousMix ? 'Active' : 'Off'}</span>
               </button>
             </div>
           </div>
 
-          <!-- Advanced Inputs (2x2 Grid) -->
+          <!-- Advanced Numeric Inputs (Grid) -->
           <div class="grid grid-cols-2 gap-space-sm pt-space-xs">
             <!-- Team size -->
             <div class="flex flex-col gap-1 p-space-sm bg-surface-container rounded-lg">
               <div class="flex items-center justify-between text-outline">
                 <span class="font-label-caps text-[11px] uppercase">Team Size</span>
-                <button aria-label="Toggle lock team size" class="btn-lock min-w-[24px] min-h-[24px] flex items-center justify-center ${lockedFields.has('teamSize') ? 'text-primary-container font-bold' : 'text-outline hover:text-primary'} transition-colors" data-field="teamSize" type="button">
-                  <span class="material-symbols-outlined text-[14px]">${lockedFields.has('teamSize') ? 'lock' : 'lock_open'}</span>
+                <button aria-label="Toggle lock team size" class="btn-lock min-w-[24px] min-h-[24px] flex items-center justify-center ${locked.has('teamSize') ? 'text-primary-container font-bold' : 'text-outline hover:text-primary'} transition-colors" data-field="teamSize" type="button">
+                  <span class="material-symbols-outlined text-[14px]">${locked.has('teamSize') ? 'lock' : 'lock_open'}</span>
                 </button>
               </div>
               <div class="flex items-center">
@@ -160,8 +200,8 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
             <div class="flex flex-col gap-1 p-space-sm bg-surface-container rounded-lg">
               <div class="flex items-center justify-between text-outline">
                 <span class="font-label-caps text-[11px] uppercase">Budget</span>
-                <button aria-label="Toggle lock budget" class="btn-lock min-w-[24px] min-h-[24px] flex items-center justify-center ${lockedFields.has('budget') ? 'text-primary-container font-bold' : 'text-outline hover:text-primary'} transition-colors" data-field="budget" type="button">
-                  <span class="material-symbols-outlined text-[14px]">${lockedFields.has('budget') ? 'lock' : 'lock_open'}</span>
+                <button aria-label="Toggle lock budget" class="btn-lock min-w-[24px] min-h-[24px] flex items-center justify-center ${locked.has('budget') ? 'text-primary-container font-bold' : 'text-outline hover:text-primary'} transition-colors" data-field="budget" type="button">
+                  <span class="material-symbols-outlined text-[14px]">${locked.has('budget') ? 'lock' : 'lock_open'}</span>
                 </button>
               </div>
               <div class="flex items-center">
@@ -174,8 +214,8 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
             <div class="flex flex-col gap-1 p-space-sm bg-surface-container rounded-lg">
               <div class="flex items-center justify-between text-outline">
                 <span class="font-label-caps text-[11px] uppercase">Starting Bid</span>
-                <button aria-label="Toggle lock starting bid" class="btn-lock min-w-[24px] min-h-[24px] flex items-center justify-center ${lockedFields.has('startBid') ? 'text-primary-container font-bold' : 'text-outline hover:text-primary'} transition-colors" data-field="startBid" type="button">
-                  <span class="material-symbols-outlined text-[14px]">${lockedFields.has('startBid') ? 'lock' : 'lock_open'}</span>
+                <button aria-label="Toggle lock starting bid" class="btn-lock min-w-[24px] min-h-[24px] flex items-center justify-center ${locked.has('startBid') ? 'text-primary-container font-bold' : 'text-outline hover:text-primary'} transition-colors" data-field="startBid" type="button">
+                  <span class="material-symbols-outlined text-[14px]">${locked.has('startBid') ? 'lock' : 'lock_open'}</span>
                 </button>
               </div>
               <div class="flex items-center">
@@ -188,17 +228,63 @@ export function renderSetupScreen({ settings, activePreset = 'standard', selecte
             <div class="flex flex-col gap-1 p-space-sm bg-surface-container rounded-lg">
               <div class="flex items-center justify-between text-outline">
                 <span class="font-label-caps text-[11px] uppercase">Bid Timer</span>
-                <button aria-label="Toggle lock bid timer" class="btn-lock min-w-[24px] min-h-[24px] flex items-center justify-center ${lockedFields.has('bidTimer') ? 'text-primary-container font-bold' : 'text-outline hover:text-primary'} transition-colors" data-field="bidTimer" type="button">
-                  <span class="material-symbols-outlined text-[14px]">${lockedFields.has('bidTimer') ? 'lock' : 'lock_open'}</span>
+                <button aria-label="Toggle lock bid timer" class="btn-lock min-w-[24px] min-h-[24px] flex items-center justify-center ${locked.has('bidTimer') ? 'text-primary-container font-bold' : 'text-outline hover:text-primary'} transition-colors" data-field="bidTimer" type="button">
+                  <span class="material-symbols-outlined text-[14px]">${locked.has('bidTimer') ? 'lock' : 'lock_open'}</span>
                 </button>
               </div>
               <div class="flex items-center">
-                <input id="input-bid-timer" class="w-full bg-transparent font-numeral-lg text-numeral-lg text-primary placeholder:text-outline focus:outline-none" value="${settings.bidTimer}s" type="text"/>
+                <input id="input-bid-timer" class="w-full bg-transparent font-numeral-lg text-numeral-lg text-primary placeholder:text-outline focus:outline-none" value="${settings.bidTimer}" type="number" min="3"/>
+                <span class="font-body-sm text-outline ml-1">s</span>
               </div>
+            </div>
+
+            <!-- Open Timer -->
+            <div class="flex flex-col gap-1 p-space-sm bg-surface-container rounded-lg col-span-2">
+              <div class="flex items-center justify-between text-outline">
+                <span class="font-label-caps text-[11px] uppercase">Auction Open Timer</span>
+                <button aria-label="Toggle lock open timer" class="btn-lock min-w-[24px] min-h-[24px] flex items-center justify-center ${locked.has('openTimer') ? 'text-primary-container font-bold' : 'text-outline hover:text-primary'} transition-colors" data-field="openTimer" type="button">
+                  <span class="material-symbols-outlined text-[14px]">${locked.has('openTimer') ? 'lock' : 'lock_open'}</span>
+                </button>
+              </div>
+              <div class="flex items-center">
+                <input id="input-open-timer" class="w-full bg-transparent font-numeral-lg text-numeral-lg text-primary placeholder:text-outline focus:outline-none" value="${settings.openTimer || 18}" type="number" min="5"/>
+                <span class="font-body-sm text-outline ml-1">s</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Battle Turn Timer Selector Chips -->
+          <div class="flex flex-col gap-space-xs bg-surface-container p-space-sm rounded-lg">
+            <div class="flex items-center justify-between text-outline">
+              <span class="font-label-caps text-[11px] uppercase">Battle Turn Timer</span>
+              <button aria-label="Toggle lock battle turn timer" class="btn-lock min-w-[24px] min-h-[24px] flex items-center justify-center ${locked.has('battleTurnTimer') ? 'text-primary-container font-bold' : 'text-outline hover:text-primary'} transition-colors" data-field="battleTurnTimer" type="button">
+                <span class="material-symbols-outlined text-[14px]">${locked.has('battleTurnTimer') ? 'lock' : 'lock_open'}</span>
+              </button>
+            </div>
+            <div class="grid grid-cols-5 gap-1.5" id="battle-timer-chips">
+              ${battleTimers.map(t => {
+                const active = currentBattleTimer === t;
+                return `
+                  <button class="chip-battle-timer h-9 rounded ${active ? 'bg-primary-container text-on-primary-container font-bold shadow-md' : 'bg-surface-container-highest text-outline'} font-label-caps text-xs flex items-center justify-center transition-all active:scale-95" data-timer="${t}" type="button">
+                    ${t}s
+                  </button>
+                `;
+              }).join('')}
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Error Message Banner (if impossible pool or constraint violation) -->
+      ${errorMessage ? `
+        <div id="setup-error-banner" class="flex items-center gap-space-sm p-space-md rounded-xl bg-red-950/80 border border-red-500/60 text-red-200 mb-space-lg shadow-lg">
+          <span class="material-symbols-outlined text-red-400 text-[20px] flex-shrink-0">error</span>
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-xs uppercase font-bold text-red-300">Invalid Configuration</span>
+            <span class="text-xs text-red-200" id="setup-error-text">${errorMessage}</span>
+          </div>
+        </div>
+      ` : ''}
 
       <!-- Auto Balancing Summary Banner -->
       <div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container mb-space-lg shadow-sm">
