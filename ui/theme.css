@@ -1,0 +1,180 @@
+/**
+ * ui/theme.css
+ * Phase 3: Tactical Arena & Draft Terminal Design Tokens
+ * Source: design-v2/tactical_arena_draft_terminal/DESIGN.md
+ *         design-v2/style_guide_pok_mon_draft_arena/code.html
+ */
+
+:root {
+  /* Surfaces & Backgrounds */
+  --bg-base: #080d18;
+  --bg-surface: #10192a;
+  --bg-surface-elevated: #162238;
+  --bg-surface-high: #1e2e4a;
+  --bg-surface-highest: #283a5c;
+  
+  --border-subtle: #243552;
+  --border-strong: #33486e;
+
+  /* Theme Brand Accents */
+  --primary-yellow: #ffe033;
+  --primary-yellow-hover: #ffea66;
+  --primary-yellow-text: #0a0e17;
+  --accent-red: #ef4444;
+  --accent-red-hover: #f87171;
+  --accent-green: #22c55e;
+  --accent-amber: #f59e0b;
+  --accent-cyan: #06b6d4;
+
+  /* Text & Contrast */
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-outline: #64748b;
+
+  /* Typography */
+  --font-heading: 'Chakra Petch', 'Oswald', sans-serif;
+  --font-numbers: 'JetBrains Mono', 'Inter', monospace;
+  --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
+
+  /* Pokémon Type Colors */
+  --type-normal: #9fa19f;
+  --type-fire: #e65b2e;
+  --type-water: #2980ef;
+  --type-grass: #3fa129;
+  --type-electric: #fac000;
+  --type-ice: #3dd9ff;
+  --type-fighting: #ff8000;
+  --type-poison: #9141cb;
+  --type-ground: #915121;
+  --type-flying: #81b9ef;
+  --type-psychic: #ef4179;
+  --type-bug: #91a119;
+  --type-rock: #afa981;
+  --type-ghost: #704170;
+  --type-dragon: #5060e1;
+  --type-steel: #60a1b8;
+  --type-dark: #50413f;
+  --type-fairy: #ef70ef;
+}
+
+/* ============================================================
+   Native Scrolling & Slim Scrollbar (PC)
+   ============================================================ */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    display: block !important;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080d18;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #243552;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #33486e;
+  }
+}
+
+/* ============================================================
+   Component Utility Classes
+   ============================================================ */
+.tactical-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+}
+
+.tactical-card-interactive {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tactical-card-interactive:hover {
+  border-color: var(--primary-yellow);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.btn-tactical-primary {
+  background: var(--primary-yellow);
+  color: var(--primary-yellow-text);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 10px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.btn-tactical-primary:hover:not(:disabled) {
+  background: var(--primary-yellow-hover);
+  box-shadow: 0 0 16px rgba(255, 224, 51, 0.35);
+  transform: translateY(-1px);
+}
+.btn-tactical-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.btn-tactical-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-tactical-secondary {
+  background: var(--bg-surface-high);
+  color: #ffffff;
+  border: 1px solid var(--border-strong);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.btn-tactical-secondary:hover:not(:disabled) {
+  background: var(--bg-surface-highest);
+  border-color: #475569;
+}
+
+.btn-tactical-danger {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 10px;
+  transition: all 0.15s ease;
+}
+.btn-tactical-danger:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #ef4444;
+}
+
+/* Chips */
+.tactical-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
+}

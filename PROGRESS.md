@@ -505,3 +505,32 @@
 
 - **Open Items:**
   - Phase 2 complete and verified. Ready for Phase 3.
+
+### Phase 3: New Design System and Responsive Shell (In Progress - Milestone 1: Tokens & Style Guide)
+- **What was done:**
+  - **Task 1: Theme Tokens & Typography ([ui/theme.css](file:///c:/Users/Waters/Desktop/draftdex/ui/theme.css)):**
+    - Extracted complete tactical arena tokens from [design-v2/tactical_arena_draft_terminal/DESIGN.md](file:///c:/Users/Waters/Desktop/draftdex/design-v2/tactical_arena_draft_terminal/DESIGN.md):
+      - Surfaces: `#080d18` (main dark background), `#10192a` (container/panel), `#162238` (card/elevated), `#1e2e4a` (borders/dividers).
+      - Accent colors: `#ffe033` (electric tactical yellow brand primary), `#00f5ff` (cyan secondary), `#ff2a5f` (crimson alert/danger), `#00e5a3` (emerald green/success).
+      - 18 official Pokémon Type Chips with contrast-checked border and glow styles.
+      - Fonts: `Chakra Petch` (military/display headings), `JetBrains Mono` (timers, stats, money values, telemetry), `Plus Jakarta Sans` (body and UI text).
+    - Configured [tailwind.config.cjs](file:///c:/Users/Waters/Desktop/draftdex/tailwind.config.cjs) and compiled with local Tailwind build ([ui/tailwind.css](file:///c:/Users/Waters/Desktop/draftdex/ui/tailwind.css)).
+  - **Task 2: Responsive Shell & Native Scrolling:**
+    - Updated [index.html](file:///c:/Users/Waters/Desktop/draftdex/index.html) with responsive shell `w-full max-w-full sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1280px]` supporting phone (390px), tablet (768px), and PC (1280px).
+    - Preserved native browser scrolling (wheel, touch swipe, keyboard PageDown/Space) with custom slim tactical scrollbars on desktop and zero scroll locks.
+  - **Task 3: Interactive Style Guide ([ui/screens/styleguide.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/styleguide.js)):**
+    - Built comprehensive live style guide route at `#/styleguide` matching [design-v2/style_guide_pok_mon_draft_arena/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/style_guide_pok_mon_draft_arena/code.html).
+    - Showcases: Brand palette & surfaces, typography swatches, tactical buttons (primary, secondary, danger, ghost), state badges & status dots, cards & containers, circular countdown timers, stat telemetry bars with min/max indicators, 18 Pokémon type chips, dialog modal preview, and toast error notifications.
+    - Added quick navigation link to `#/styleguide` from the Home screen.
+  - **Task 4: Smoke Test & Multi-Viewport Verification:**
+    - Updated [tests/ui-smoke.mjs](file:///c:/Users/Waters/Desktop/draftdex/tests/ui-smoke.mjs) with step 11 covering `#/styleguide` at 390px, 768px, and 1280px.
+    - Captured screenshots for all 11 screens: `styleguide-390.png`, `styleguide-768.png`, `styleguide-1280.png`.
+
+- **Test Results:**
+  - `npm test`: **PASS** (12/12 test suites passed, 392 assertions passed, 0 failed)
+  - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
+
+- **Open Items:**
+  - Tokens and Style Guide available for visual review at `#/styleguide`.
+  - Begin screen-by-screen re-skinning in PLAN-v2 order: Home -> Setup -> Lobby -> Auction -> Set Break -> Scout Report -> Squad Select -> Countdown -> Result.
+

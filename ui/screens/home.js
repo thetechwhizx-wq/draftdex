@@ -71,6 +71,10 @@ export function renderHomeScreen({ savedMatch, errorNotice, onNewMatch, onResume
         <span class="material-symbols-outlined text-[18px]">delete_sweep</span>
         <span class="font-label-caps text-label-caps uppercase tracking-wider">Reset saved data</span>
       </button>
+
+      <a href="#/styleguide" id="link-styleguide" class="mt-2 self-center text-xs text-outline hover:text-primary-yellow font-mono tracking-wider transition-colors">
+        Design System Style Guide (v2) →
+      </a>
     </div>
   `;
 }

@@ -9,6 +9,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "bg-base": "#080d18",
+        "bg-surface": "#10192a",
+        "bg-surface-elevated": "#162238",
+        "bg-surface-high": "#1e2e4a",
+        "border-subtle": "#243552",
+        "border-strong": "#33486e",
+        "primary-yellow": "#ffe033",
+        "primary-yellow-hover": "#ffea66",
+        "accent-red": "#ef4444",
+        "accent-green": "#22c55e",
+        "accent-amber": "#f59e0b",
+        "accent-cyan": "#06b6d4",
         "surface": "#131314",
         "surface-dim": "#131314",
         "surface-bright": "#393939",

@@ -59,6 +59,7 @@ import { renderSquadSelectScreen } from './screens/squadSelect.js';
 import { renderCountdownScreen } from './screens/countdown.js';
 import { renderBattleScreen } from './screens/battle.js';
 import { renderResultScreen } from './screens/result.js';
+import { renderStyleGuideScreen } from './screens/styleguide.js';
 import { sounds } from './audio.js';
 
 export class DraftDexApp {
@@ -480,6 +481,9 @@ export class DraftDexApp {
       case 'result':
         this.renderResult(route.params.room);
         break;
+      case 'styleguide':
+        this.renderStyleGuide();
+        break;
       default:
         this.renderHome();
         break;
@@ -499,6 +503,11 @@ export class DraftDexApp {
   // ==========================================
   // SCREEN: HOME / RESUME
   // ==========================================
+  renderStyleGuide() {
+    if (!this.root) return;
+    this.root.innerHTML = renderStyleGuideScreen();
+  }
+
   renderHome() {
     if (!this.root) return;
 

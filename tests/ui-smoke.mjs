@@ -450,6 +450,14 @@ export async function runSmokeTest({ exitOnFinish = true } = {}) {
     await page.waitForSelector('#btn-rematch', { state: 'visible' });
     await analyzeAndCaptureScreen('result');
 
+    // ==========================================
+    // 11. SCREEN: STYLE GUIDE (PHASE 3)
+    // ==========================================
+    console.log('\n--- 11. Testing Style Guide Screen (Phase 3) ---');
+    await page.goto(`${url}/#/styleguide`, { waitUntil: 'domcontentloaded' });
+    await page.waitForSelector('.card-title', { state: 'visible' });
+    await analyzeAndCaptureScreen('styleguide');
+
     // Check if any page errors occurred during the entire match
     if (pageErrors.length > 0) {
       throw new Error(`Encountered ${pageErrors.length} unhandled JS error(s):\n${pageErrors.map(e => e.message || e).join('\n')}`);
