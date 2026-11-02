@@ -13,6 +13,10 @@ DraftDex-Pokemon-V2-ULTIMATE-1.html
 # Tests (not needed in production)
 engine/tests/
 
+# Cache & temporary build files
+scripts/.cache/
+*.backup.js
+
 # OS files
 .DS_Store
 Thumbs.db

@@ -19,7 +19,7 @@ export function renderBreakScreen({ matchState, completedSetIndex = 0 }) {
   }
 
   const topBuyPokemon = topBuy ? matchState.sets.flatMap(s => s.lots).find(l => l.pokemonId === topBuy.pokemonId)?.pokemon : null;
-  const topArtwork = topBuy ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${topBuy.pokemonId}.png` : '';
+  const topArtwork = topBuy ? `./assets/sprites/artwork/${topBuy.pokemonId}.png` : '';
 
   return `
     <header class="fixed top-0 w-full max-w-[390px] md:max-w-[768px] z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.25)] pt-safe">
@@ -28,7 +28,7 @@ export function renderBreakScreen({ matchState, completedSetIndex = 0 }) {
           <button aria-label="Back" id="btn-break-back" class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-surface hover:text-primary-container transition-colors">
             <span class="material-symbols-outlined text-[20px]">arrow_back</span>
           </button>
-          <img alt="Apex Draft Arena Logo" class="h-8 w-auto object-contain" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"/>
+          <img alt="Apex Draft Arena Logo" class="h-8 w-auto object-contain" src="./assets/icons/poke-ball.png"/>
           <h1 class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">Set Break</h1>
         </div>
         <div class="flex items-center gap-space-sm">
@@ -89,7 +89,7 @@ export function renderBreakScreen({ matchState, completedSetIndex = 0 }) {
           <div class="rounded-lg bg-surface-container-high p-3 flex items-center justify-between">
             <div class="flex items-center space-x-3 min-w-0">
               <div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex-shrink-0 relative overflow-hidden flex items-center justify-center">
-                <img class="w-full h-full object-contain p-0.5" src="${topArtwork}" alt="${escapeHtml(topBuyPokemon.name)}"/>
+                <img class="w-full h-full object-contain p-0.5" src="${topArtwork}" alt="${escapeHtml(topBuyPokemon.name)}" onerror="this.onerror=null; this.src='./assets/icons/poke-ball.png';"/>
                 <div class="absolute inset-0 bg-primary-container/10 mix-blend-overlay"></div>
               </div>
               <div class="min-w-0 flex flex-col">

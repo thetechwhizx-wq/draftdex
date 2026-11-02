@@ -69,8 +69,8 @@ export function renderBattleScreen({
   const playerInfo = getPokemonById(playerActive.id) || {};
   const oppInfo = getPokemonById(oppActive.id) || {};
 
-  const playerArtwork = playerInfo.artworkUrl || playerInfo.spriteUrl || '';
-  const oppArtwork = oppInfo.artworkUrl || oppInfo.spriteUrl || '';
+  const playerArtwork = playerInfo.artworkUrl || playerInfo.spriteUrl || (playerActive.id ? `./assets/sprites/back/${playerActive.id}.png` : '');
+  const oppArtwork = oppInfo.artworkUrl || oppInfo.spriteUrl || (oppActive.id ? `./assets/sprites/front/${oppActive.id}.png` : '');
 
   // HP Percentages
   const playerHpPct = Math.max(0, Math.min(100, Math.round((playerActive.currentHp / playerActive.maxHp) * 100)));
@@ -203,7 +203,7 @@ export function renderBattleScreen({
           <!-- Opponent Asset Visual -->
           <div class="relative w-44 h-36 mt-1 flex items-center justify-center">
             <div class="absolute inset-x-4 bottom-1 h-5 rounded-full bg-surface-container-lowest/60 blur-sm"></div>
-            <img class="w-36 h-36 object-contain z-10 drop-shadow-[0_12px_20px_rgba(0,0,0,0.8)] ${oppActive.isFainted ? 'opacity-30 grayscale' : ''}" src="${oppArtwork}" alt="${escapeHtml(oppActive.name)}"/>
+            <img class="w-36 h-36 object-contain z-10 drop-shadow-[0_12px_20px_rgba(0,0,0,0.8)] ${oppActive.isFainted ? 'opacity-30 grayscale' : ''}" src="${oppArtwork}" alt="${escapeHtml(oppActive.name)}" onerror="this.onerror=null; this.src='./assets/icons/poke-ball.png';"/>
           </div>
         </div>
 
@@ -212,7 +212,7 @@ export function renderBattleScreen({
           <!-- Player Asset Visual -->
           <div class="relative w-44 h-36 flex items-center justify-center z-10">
             <div class="absolute inset-x-3 bottom-1 h-5 rounded-full bg-surface-container-lowest/60 blur-sm"></div>
-            <img class="w-36 h-36 object-contain z-10 drop-shadow-[0_14px_24px_rgba(0,0,0,0.9)] ${playerActive.isFainted ? 'opacity-30 grayscale' : ''}" src="${playerArtwork}" alt="${escapeHtml(playerActive.name)}"/>
+            <img class="w-36 h-36 object-contain z-10 drop-shadow-[0_14px_24px_rgba(0,0,0,0.9)] ${playerActive.isFainted ? 'opacity-30 grayscale' : ''}" src="${playerArtwork}" alt="${escapeHtml(playerActive.name)}" onerror="this.onerror=null; this.src='./assets/icons/poke-ball.png';"/>
           </div>
 
           <!-- Player Status Hub -->
@@ -349,7 +349,7 @@ export function renderBattleScreen({
               if (idx === playerSideObj.activeIndex) return '';
 
               const pInfo = getPokemonById(p.id) || {};
-              const pArt = pInfo.artworkUrl || pInfo.spriteUrl || '';
+              const pArt = pInfo.artworkUrl || pInfo.spriteUrl || (p.id ? `./assets/sprites/icon/${p.id}.png` : '');
               const isSelected = currentSelection?.type === 'switch' && currentSelection.switchIndex === idx;
               const isFainted = p.isFainted;
               const hpPct = Math.max(0, Math.min(100, Math.round((p.currentHp / p.maxHp) * 100)));
@@ -364,7 +364,7 @@ export function renderBattleScreen({
                   data-name="${escapeHtml(p.name)}"
                   ${(isFainted || commitState !== 'pending' || isBattleCompleted) ? 'disabled' : ''}
                   type="button">
-                  <img class="w-10 h-10 object-contain drop-shadow ${isFainted ? 'grayscale' : ''}" src="${pArt}" alt="${escapeHtml(p.name)}"/>
+                  <img class="w-10 h-10 object-contain drop-shadow ${isFainted ? 'grayscale' : ''}" src="${pArt}" alt="${escapeHtml(p.name)}" onerror="this.onerror=null; this.src='./assets/icons/poke-ball.png';"/>
                   <span class="font-headline-sm text-headline-sm uppercase text-on-surface text-[14px] mt-1 leading-tight truncate w-full">
                     ${escapeHtml(p.name)}
                   </span>

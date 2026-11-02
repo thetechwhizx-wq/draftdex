@@ -1,0 +1,70 @@
+{
+  "_comment": "Hand-curated list of iconic Pokémon IDs for the Famous Mix draft filter.",
+  "_categories": {
+    "starters": "All 3 final-stage starters per generation",
+    "mascots": "Version mascots and event/box art Pokémon",
+    "legendaries": "All legendary and mythical Pokémon",
+    "pseudoLegendaries": "600 BST pseudo-legendary lines (final forms only)",
+    "fanFavourites": "Widely beloved or competitively iconic non-legendary Pokémon"
+  },
+  "_reviewedBy": "USER REVIEW PENDING — see PLAN-v2.md Section 7, item 4",
+  "_idsByCategory": {
+    "gen1Starters":        [3, 6, 9],
+    "gen1Mascot":          [25],
+    "gen1PseudoLeg":       [149],
+    "gen1LegendMythical":  [144, 145, 146, 150, 151],
+    "gen1FanFavourites":   [38, 52, 59, 65, 68, 76, 94, 107, 113, 130, 131, 135, 136, 143, 147],
+
+    "gen2Starters":        [154, 157, 160],
+    "gen2PseudoLeg":       [248],
+    "gen2LegendMythical":  [243, 244, 245, 249, 250, 251],
+    "gen2FanFavourites":   [175, 196, 197, 212, 230, 242],
+
+    "gen3Starters":        [254, 257, 260],
+    "gen3PseudoLeg":       [373, 376],
+    "gen3LegendMythical":  [377, 378, 379, 380, 381, 382, 383, 384, 385, 386],
+    "gen3FanFavourites":   [282, 302, 330, 350, 359],
+
+    "gen4Starters":        [389, 392, 395],
+    "gen4PseudoLeg":       [445],
+    "gen4LegendMythical":  [480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493],
+    "gen4FanFavourites":   [448, 461, 468, 472, 479],
+
+    "gen5Starters":        [497, 500, 503],
+    "gen5PseudoLeg":       [635],
+    "gen5LegendMythical":  [638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649],
+    "gen5FanFavourites":   [530, 534, 571, 598, 609, 612, 637],
+
+    "gen6Starters":        [652, 655, 658],
+    "gen6PseudoLeg":       [706],
+    "gen6LegendMythical":  [716, 717, 718, 719, 720, 721],
+    "gen6FanFavourites":   [663, 681, 700, 701, 715],
+
+    "gen7Starters":        [724, 727, 730],
+    "gen7PseudoLeg":       [784],
+    "gen7LegendMythical":  [785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 807, 808, 809],
+    "gen7FanFavourites":   [745, 748, 778],
+
+    "gen8Starters":        [812, 815, 818],
+    "gen8PseudoLeg":       [887],
+    "gen8LegendMythical":  [888, 889, 890, 891, 892, 893, 894, 895, 896, 897, 898],
+    "gen8FanFavourites":   [823, 849, 858, 861, 884],
+
+    "gen9Starters":        [908, 911, 914],
+    "gen9PseudoLeg":       [998],
+    "gen9LegendMythical":  [1001, 1002, 1003, 1004, 1005, 1007, 1008, 1009, 1010, 1014, 1015, 1016, 1017, 1020, 1021, 1022, 1023, 1024, 1025],
+    "gen9ParadoxFaves":    [979, 983, 984, 985, 986, 987, 988, 989, 990, 991, 992, 993, 994, 995, 996, 999, 1000]
+  },
+  "ids": [
+    3, 6, 9, 25,
+    38, 52, 59, 65, 68, 76, 94, 107, 113, 130, 131, 135, 136, 143, 144, 145, 146, 147, 149, 150, 151,
+    154, 157, 160, 175, 196, 197, 212, 230, 242, 243, 244, 245, 248, 249, 250, 251,
+    254, 257, 260, 282, 302, 330, 350, 359, 373, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386,
+    389, 392, 395, 445, 448, 461, 468, 472, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493,
+    497, 500, 503, 530, 534, 571, 598, 609, 612, 635, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649,
+    652, 655, 658, 663, 681, 700, 701, 706, 715, 716, 717, 718, 719, 720, 721,
+    724, 727, 730, 745, 748, 778, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 807, 808, 809,
+    812, 815, 818, 823, 849, 858, 861, 884, 887, 888, 889, 890, 891, 892, 893, 894, 895, 896, 897, 898,
+    908, 911, 914, 979, 983, 984, 985, 986, 987, 988, 989, 990, 991, 992, 993, 994, 995, 996, 998, 999, 1000, 1001, 1002, 1003, 1004, 1005, 1007, 1008, 1009, 1010, 1014, 1015, 1016, 1017, 1020, 1021, 1022, 1023, 1024, 1025
+  ]
+}

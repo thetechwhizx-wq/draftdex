@@ -18,3 +18,78 @@
 }
 
 ::-webkit-scrollbar { display: none; }
+
+/* ============================================================
+   Pokemon Image Component (Phase 2)
+   ============================================================ */
+@layer components {
+  .pokemon-img-wrapper {
+    @apply relative overflow-hidden rounded-lg bg-surface-container;
+    flex-shrink: 0;
+  }
+  .pokemon-img-wrapper.pokemon-img-card {
+    @apply w-full aspect-square;
+  }
+  .pokemon-img-wrapper.pokemon-img-battle {
+    width: 96px;
+    height: 96px;
+  }
+  .pokemon-img-wrapper.pokemon-img-icon {
+    width: 40px;
+    height: 40px;
+    @apply rounded-full;
+  }
+  .pokemon-img-wrapper.pokemon-img-thumb {
+    width: 56px;
+    height: 56px;
+  }
+
+  /* Shimmer animation */
+  .pokemon-img-shimmer {
+    @apply absolute inset-0 z-10;
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.07) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+  }
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+  }
+
+  /* Actual image */
+  .pokemon-img-photo {
+    @apply w-full h-full object-contain opacity-0 transition-opacity duration-300;
+  }
+  .pokemon-img-photo.pokemon-img-loaded {
+    @apply opacity-100;
+  }
+
+  /* Fallback placeholder */
+  .pokemon-img-placeholder {
+    @apply absolute inset-0 flex flex-col items-center justify-center gap-1 p-2;
+  }
+  .pokemon-img-placeholder-name {
+    @apply text-white font-bold text-center text-xs leading-tight;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  }
+  .pokemon-img-placeholder-type {
+    @apply text-white text-xs px-1.5 py-0.5 rounded-full font-semibold uppercase tracking-wide;
+    background: rgba(0,0,0,0.35);
+  }
+
+  /* Trainer avatar */
+  .trainer-avatar {
+    @apply w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0;
+  }
+
+  /* Pokéball icon */
+  .pokeball-icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

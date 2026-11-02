@@ -15,7 +15,7 @@ export function renderLobbyScreen({ matchState, copied = false, isHost = true })
           <button aria-label="Back" id="btn-lobby-back" class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-surface hover:text-primary-container transition-colors">
             <span class="material-symbols-outlined text-[20px]">arrow_back</span>
           </button>
-          <img alt="Apex Draft Arena Logo" class="h-8 w-auto object-contain" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"/>
+          <img alt="Apex Draft Arena Logo" class="h-8 w-auto object-contain" src="./assets/icons/poke-ball.png"/>
           <h1 class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">Lobby</h1>
         </div>
         <div class="flex items-center gap-space-sm">
@@ -63,8 +63,8 @@ export function renderLobbyScreen({ matchState, copied = false, isHost = true })
         ${players.map((p, index) => {
           const isHost = index === 0 || p.isHost;
           const avatarUrl = isHost
-            ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/trainers/red.png'
-            : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/trainers/blue.png';
+            ? './assets/trainers/red.svg'
+            : './assets/trainers/blue.svg';
 
           return `
             <div class="relative bg-surface-container rounded-xl p-3 flex items-center gap-3 shadow-md">

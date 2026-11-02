@@ -21,7 +21,7 @@ export function renderHomeScreen({ savedMatch, errorNotice, onNewMatch, onResume
       <div class="flex flex-col items-center justify-center pt-space-md pb-space-xl">
         <div class="relative flex items-center justify-center w-24 h-24 rounded-full bg-surface-container-high/80 p-2 shadow-xl">
           <div class="absolute inset-0 rounded-full bg-primary-container/10 blur-xl"></div>
-          <img alt="Apex Draft Arena Logo" class="relative z-10 w-20 h-20 object-contain drop-shadow-md" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"/>
+          <img alt="Apex Draft Arena Logo" class="relative z-10 w-20 h-20 object-contain drop-shadow-md" src="./assets/icons/poke-ball.png"/>
         </div>
         <div class="mt-space-md flex flex-col items-center">
           <span class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-wider uppercase">Apex Draft</span>

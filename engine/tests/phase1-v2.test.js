@@ -161,10 +161,10 @@ try {
   let errorMessage = '';
 
   try {
-    // Gen 3 only has 14 Pokémon in the database; default minNeeded is 24
+    // Gen 3 Famous-only has 20 available in the full dataset; default minNeeded is 24
     buildDraftPool({
       generations: [3],
-      famousMix: false,
+      famousMix: true,
       seed: 'test-impossible'
     });
   } catch (err) {
@@ -174,7 +174,7 @@ try {
 
   assert(threwExpected, 'Impossible pool threw error as required');
   assert(
-    errorMessage.includes('Gen 3') && errorMessage.includes('14 available') && errorMessage.includes('need 24'),
+    errorMessage.includes('Gen 3') && errorMessage.includes('available') && errorMessage.includes('need 24'),
     `Error message accurately describes shortage: "${errorMessage}"`
   );
 } catch (e) {

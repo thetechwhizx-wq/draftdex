@@ -31,7 +31,7 @@ export function renderSetupScreen({
           <button aria-label="Back" id="btn-setup-back" class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-surface hover:text-primary-container transition-colors">
             <span class="material-symbols-outlined text-[20px]">arrow_back</span>
           </button>
-          <img alt="DraftDex Logo" class="h-8 w-auto object-contain" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"/>
+          <img alt="DraftDex Logo" class="h-8 w-auto object-contain" src="./assets/icons/poke-ball.png"/>
           <h1 class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">Draft Setup</h1>
         </div>
         <div class="flex items-center gap-space-sm">

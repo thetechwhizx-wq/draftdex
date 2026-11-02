@@ -133,7 +133,7 @@ export function renderSquadSelectScreen({
                 </div>
 
                 <div class="relative w-full h-24 my-1 flex items-center justify-center">
-                  <img class="w-full h-full object-contain ${isSelected ? 'drop-shadow-md' : 'grayscale-[30%]'} rounded-lg" src="${p.artworkUrl || p.spriteUrl}" alt="${escapeHtml(p.name)}"/>
+                  <img class="w-full h-full object-contain ${isSelected ? 'drop-shadow-md' : 'grayscale-[30%]'} rounded-lg" src="${p.artworkUrl || p.spriteUrl || (p.id ? `./assets/sprites/artwork/${p.id}.png` : '')}" alt="${escapeHtml(p.name)}" onerror="this.onerror=null; this.src='./assets/icons/poke-ball.png';"/>
                 </div>
 
                 <div class="z-10 flex flex-col gap-1 mt-1">
@@ -170,7 +170,7 @@ export function renderSquadSelectScreen({
             ${opponentTeam.slice(0, 6).map(op => `
               <div class="bg-surface-container-high rounded-lg p-1.5 flex flex-col items-center gap-1 shadow-sm">
                 <div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
-                  <img class="w-full h-full object-cover" src="${op.spriteUrl || op.artworkUrl}" alt="${escapeHtml(op.name)}"/>
+                  <img class="w-full h-full object-cover" src="${op.spriteUrl || op.artworkUrl || (op.id ? `./assets/sprites/icon/${op.id}.png` : '')}" alt="${escapeHtml(op.name)}" onerror="this.onerror=null; this.src='./assets/icons/poke-ball.png';"/>
                 </div>
                 <span class="font-label-caps text-label-caps text-on-surface-variant truncate w-full text-center">${escapeHtml(op.name.slice(0, 5))}</span>
               </div>

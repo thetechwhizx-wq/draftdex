@@ -74,7 +74,7 @@ export function renderAuctionScreen({ matchState, currentTimerSeconds = 10, tota
   const dashoffset = circumference * (1 - progressRatio);
 
   // Artwork image fallback
-  const artworkUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`;
+  const artworkUrl = `./assets/sprites/artwork/${p.id}.png`;
 
   return `
     <header class="fixed top-0 w-full max-w-[390px] md:max-w-[768px] z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.25)] pt-safe">
@@ -83,7 +83,7 @@ export function renderAuctionScreen({ matchState, currentTimerSeconds = 10, tota
           <button aria-label="Back" id="btn-auction-back" class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-surface hover:text-primary-container transition-colors">
             <span class="material-symbols-outlined text-[20px]">arrow_back</span>
           </button>
-          <img alt="Apex Draft Arena Logo" class="h-8 w-auto object-contain" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"/>
+          <img alt="Apex Draft Arena Logo" class="h-8 w-auto object-contain" src="./assets/icons/poke-ball.png"/>
           <h1 class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">Lot Inspector</h1>
         </div>
         <div class="flex items-center gap-space-sm">
@@ -118,7 +118,7 @@ export function renderAuctionScreen({ matchState, currentTimerSeconds = 10, tota
       <div class="flex flex-col bg-surface-container rounded-xl overflow-hidden shadow-xl">
         <!-- Creature Visual Banner -->
         <div class="relative w-full h-44 bg-surface-container-lowest overflow-hidden flex items-center justify-center">
-          <img class="w-40 h-40 object-contain z-10 transition-transform duration-300 hover:scale-105" src="${artworkUrl}" alt="${escapeHtml(p.name)}"/>
+          <img class="w-40 h-40 object-contain z-10 transition-transform duration-300 hover:scale-105" src="${artworkUrl}" alt="${escapeHtml(p.name)}" onerror="this.onerror=null; this.src='./assets/icons/poke-ball.png';"/>
           <div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/20 to-transparent"></div>
           
           <!-- Role Badge -->

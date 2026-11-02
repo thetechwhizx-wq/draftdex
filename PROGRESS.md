@@ -465,3 +465,43 @@
 
 - **Open Items:**
   - Phase 1 complete and verified. Ready for Phase 2.
+
+### Phase 2: Real Data and Images (Completed)
+- **What was done:**
+  - **Task 1: Static Data Fetching Script (`scripts/build-data.mjs`):**
+    - Sourced complete Pokémon datasets directly from PokéAPI with disk caching in `scripts/.cache/` and rate limiting.
+    - Sourced 1,025 main-series Pokémon across Generations 1–9 into [data/pokemon.json](file:///c:/Users/Waters/Desktop/draftdex/data/pokemon.json) with HP, Atk, Def, SpA, SpD, Spe, dual types, Gen (1-9), `isFullyEvolved`, `isLegendary`, `isMythical`, and `famousMix` flags.
+    - Sourced competitive move table into [data/moves.json](file:///c:/Users/Waters/Desktop/draftdex/data/moves.json) (508 competitive moves with power, accuracy, pp, priority, effects).
+    - Sourced legal per-species learnsets into [data/learnsets.json](file:///c:/Users/Waters/Desktop/draftdex/data/learnsets.json) across all 1,025 species.
+    - Sourced competitive abilities into [data/abilities.json](file:///c:/Users/Waters/Desktop/draftdex/data/abilities.json) (300 abilities).
+  - **Task 2: Hand-Curated Famous Mix Registry (`data/famous.json`):**
+    - Created [data/famous.json](file:///c:/Users/Waters/Desktop/draftdex/data/famous.json) categorizing iconic Pokémon by era (starters, version mascots, pseudo-legendaries, legendaries/mythicals, fan favourites).
+    - Synced directly into database generation via `scripts/build-engine-data.mjs`.
+  - **Task 3: Recompute Roles, Tiers & Engine Database (`scripts/build-engine-data.mjs`):**
+    - Automatically builds [engine/pokemonData.js](file:///c:/Users/Waters/Desktop/draftdex/engine/pokemonData.js) with all 1,025 species inlined (zero runtime file I/O, works identically in Node and browser).
+    - Calculated BST, role assignments (`Physical Sweeper`, `Special Sweeper`, `Speedster`, `Tank/Wall`, `Support`, `All-rounder`), and competitive tiers (`Marquee`, `Tier 1`, `Tier 2`, `Tier 3`) over the full dataset.
+  - **Task 4: Sprite Asset Downloader (`scripts/build-images.mjs`):**
+    - Downloaded local asset library into `assets/sprites/`:
+      - 1,025 official artwork images (~256px) in `assets/sprites/artwork/`
+      - 1,025 battle front sprites in `assets/sprites/front/`
+      - 1,025 battle back sprites in `assets/sprites/back/` (with fallback to front sprites where back sprites are missing)
+      - 1,025 icons in `assets/sprites/icon/` (with fallback to front sprites where icons are missing)
+    - Verified `data/image-report.json`: **0 missing images** across all 4 categories.
+  - **Task 5: Zero Bare `<img>` Tags & Local Asset Migration:**
+    - Created [ui/components/pokemonImage.js](file:///c:/Users/Waters/Desktop/draftdex/ui/components/pokemonImage.js) with shimmer animation, loading states, and type-colored fallback cards.
+    - Replaced all external hotlinks in [ui/screens/home.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/home.js), [ui/screens/setup.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/setup.js), [ui/screens/lobby.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/lobby.js), [ui/screens/auction.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/auction.js), [ui/screens/break.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/break.js), [ui/screens/scout.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/scout.js), [ui/screens/battle.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/battle.js), and [ui/screens/squadSelect.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/squadSelect.js).
+    - Added local Pokéball SVG/PNG in `assets/icons/` and local trainer avatar SVGs in `assets/trainers/red.svg` and `assets/trainers/blue.svg`.
+    - Added image fallback `onerror` handlers throughout the UI to guarantee offline operation.
+  - **Task 6: Automated Test Suite:**
+    - Created [engine/tests/phase2-v2.test.js](file:///c:/Users/Waters/Desktop/draftdex/engine/tests/phase2-v2.test.js) and wired `"test:phase2-v2"` into `package.json`.
+
+- **Test Results:**
+  - Test 1 (data/pokemon.json distribution & spot-checks): **PASS** (1025 Pokémon, all gen minimums exceeded, 10 known Pokémon verified)
+  - Test 2 (Local artwork and sprite verification): **PASS** (1025/1025 artwork files present, 1025/1025 front sprites present, 0 missing)
+  - Test 3 (Pool size for Gen 1+2 famous-only and impossible pool error): **PASS** (Gen 1+2 famous pool = 42, 36 fully evolved; impossible pool throws descriptive error)
+  - Test 4 (Role coverage with full dataset): **PASS** (Role coverage passes for 24+ Pokémon pools across all gens)
+  - `npm test`: **PASS** (12/12 test suites passed, 392 assertions passed, 0 failed)
+  - `npm run test:ui`: **PASS** (All 10 screens verified across 390px, 768px, and 1280px; 30 screenshots generated; 0 JS or page errors)
+
+- **Open Items:**
+  - Phase 2 complete and verified. Ready for Phase 3.
