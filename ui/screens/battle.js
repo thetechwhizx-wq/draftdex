@@ -47,8 +47,8 @@ function getStatusBadge(status) {
 export function renderBattleScreen({
   battle,
   userSide = 'A',
-  timerSeconds = 25,
-  totalTimerSeconds = 25,
+  timerSeconds = 30,
+  totalTimerSeconds = 30,
   currentSelection = null, // { type: 'move', moveName: string } | { type: 'switch', switchIndex: number } | null
   commitState = 'pending', // 'pending' | 'committed' | 'resolving'
   isBenchOpen = false,

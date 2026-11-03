@@ -1573,6 +1573,10 @@ export class DraftDexApp {
 
     const userSide = (this.userPlayerId === this.matchState.players[0].id) ? 'A' : 'B';
 
+    if (!this.battleTimerInterval && this.matchState.battle.status !== BATTLE_STATUS.COMPLETED) {
+      this.startBattleTurnTimer();
+    }
+
     this.root.innerHTML = renderBattleScreen({
       battle: this.matchState.battle,
       userSide,
@@ -1584,10 +1588,6 @@ export class DraftDexApp {
       isLogOpen: this.isLogOpen,
       errorNotice: this.errorNotice
     });
-
-    if (!this.battleTimerInterval && this.matchState.battle.status !== BATTLE_STATUS.COMPLETED) {
-      this.startBattleTurnTimer();
-    }
 
     this.attachBattleEventListeners(userSide);
   }
@@ -1766,6 +1766,10 @@ export class DraftDexApp {
     }
     if (this.matchState.battle.status === BATTLE_STATUS.COMPLETED) {
       sounds.playVictory();
+      if (this.battleTimerInterval) {
+        clearInterval(this.battleTimerInterval);
+        this.battleTimerInterval = null;
+      }
     }
 
     this.pendingCommitments = { A: null, B: null };
@@ -1779,7 +1783,9 @@ export class DraftDexApp {
       this.p2pSession.updateMatchState(this.matchState);
     }
 
-    this.startBattleTurnTimer();
+    if (this.matchState.battle.status !== BATTLE_STATUS.COMPLETED) {
+      this.startBattleTurnTimer();
+    }
 
     // If opponent is Bot and needs forced switch, Bot switches automatically
     if (this.matchState.battle.status === BATTLE_STATUS.NEEDS_SWITCH) {
@@ -1801,8 +1807,9 @@ export class DraftDexApp {
   }
 
   startBattleTurnTimer() {
-    this.battleTimerSeconds = 25;
-    this.battleTotalTimerSeconds = 25;
+    const configuredTimer = Number(this.matchState?.settings?.battleTurnTimer || 30);
+    this.battleTimerSeconds = configuredTimer;
+    this.battleTotalTimerSeconds = configuredTimer;
     if (this.battleTimerInterval) clearInterval(this.battleTimerInterval);
 
     this.battleTimerInterval = setInterval(() => {
