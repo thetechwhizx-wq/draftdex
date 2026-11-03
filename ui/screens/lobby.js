@@ -156,7 +156,7 @@ export function renderLobbyScreen({ matchState, copied = false, isHost = true })
                           <span class="font-display font-bold text-sm text-text-high tracking-tight truncate">${escapeHtml(p.name)}</span>
                           <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase ${
                             isHostPlayer
-                              ? 'bg-primary-yellow text-tactical-navy'
+                              ? 'bg-primary-yellow text-slate-950 font-bold'
                               : 'bg-tactical-base border border-tactical-navy-light text-accent-cyan'
                           }">
                             ${isHostPlayer ? 'HOST' : (p.isBot ? 'BOT' : 'CHALLENGER')}
@@ -184,10 +184,10 @@ export function renderLobbyScreen({ matchState, copied = false, isHost = true })
               <button
                 id="btn-start-auction"
                 type="button"
-                class="w-full h-14 bg-primary-yellow hover:bg-primary-yellow-hover text-tactical-navy rounded-xl font-display font-bold text-base uppercase tracking-wider flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(255,224,51,0.25)]"
+                class="w-full h-14 bg-primary-yellow hover:bg-primary-yellow-hover text-slate-950 rounded-xl font-display font-black text-base uppercase tracking-wider flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(245,186,20,0.25)]"
               >
-                <span class="material-symbols-outlined text-[24px]">gavel</span>
-                <span>START AUCTION DRAFT</span>
+                <span class="material-symbols-outlined text-[24px] text-slate-950 font-bold">gavel</span>
+                <span class="font-black text-slate-950">START AUCTION DRAFT</span>
               </button>
             ` : `
               <button

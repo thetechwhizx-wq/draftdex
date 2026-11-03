@@ -26,7 +26,7 @@ export function renderHomeScreen({ savedMatch, errorNotice, onNewMatch, onResume
       <!-- Top Tactical Header / PDA HUD -->
       <div class="flex items-center justify-between pb-6 mb-6 border-b border-tactical-navy-light/60">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-primary-yellow flex items-center justify-center text-tactical-navy shadow-[0_0_15px_rgba(255,224,51,0.3)]">
+          <div class="w-10 h-10 rounded-lg bg-primary-yellow flex items-center justify-center text-slate-950 shadow-[0_0_15px_rgba(245,186,20,0.3)]">
             <span class="material-symbols-outlined text-[24px] font-bold">sports_esports</span>
           </div>
           <div>
@@ -105,15 +105,15 @@ export function renderHomeScreen({ savedMatch, errorNotice, onNewMatch, onResume
             <button
               id="btn-new-match"
               type="button"
-              class="w-full h-16 rounded-xl bg-primary-yellow hover:bg-primary-yellow-hover text-tactical-navy font-display font-bold text-base uppercase tracking-wider transition-all flex items-center justify-between px-5 shadow-[0_0_20px_rgba(255,224,51,0.25)] active:scale-[0.98]"
+              class="w-full h-16 rounded-xl bg-primary-yellow hover:bg-primary-yellow-hover text-slate-950 font-display font-black text-base uppercase tracking-wider transition-all flex items-center justify-between px-5 shadow-[0_0_20px_rgba(245,186,20,0.25)] active:scale-[0.98]"
             >
               <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-lg bg-tactical-navy/15 flex items-center justify-center text-tactical-navy">
+                <div class="w-9 h-9 rounded-lg bg-black/15 flex items-center justify-center text-slate-950">
                   <span class="material-symbols-outlined text-[24px]">add_circle</span>
                 </div>
-                <span>NEW MATCH</span>
+                <span class="font-black text-slate-950">NEW MATCH</span>
               </div>
-              <span class="material-symbols-outlined text-[26px]">arrow_forward</span>
+              <span class="material-symbols-outlined text-[26px] text-slate-950">arrow_forward</span>
             </button>
           </div>
 

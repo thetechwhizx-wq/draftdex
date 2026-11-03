@@ -564,9 +564,9 @@ export class DraftDexApp {
         e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
         if (e.target.value.length === 6) {
           btnJoin.classList.remove('bg-tactical-navy', 'text-text-dim');
-          btnJoin.classList.add('bg-primary-yellow', 'text-tactical-navy', 'hover:bg-primary-yellow-hover');
+          btnJoin.classList.add('bg-primary-yellow', 'text-slate-950', 'font-black', 'hover:bg-primary-yellow-hover');
         } else {
-          btnJoin.classList.remove('bg-primary-yellow', 'text-tactical-navy', 'hover:bg-primary-yellow-hover');
+          btnJoin.classList.remove('bg-primary-yellow', 'text-slate-950', 'font-black', 'hover:bg-primary-yellow-hover');
           btnJoin.classList.add('bg-tactical-navy', 'text-text-dim');
         }
       });

@@ -375,9 +375,9 @@ export function renderAuctionScreen({ matchState, currentTimerSeconds = 10, tota
                 type="button"
                 data-amount="${minRequired}"
                 ${valMin.valid && !isUserLeading ? '' : 'disabled'}
-                class="h-14 rounded-xl flex flex-col items-center justify-center p-2 font-display font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 ${
+                class="h-14 rounded-xl flex flex-col items-center justify-center p-2 font-display font-black uppercase tracking-wider transition-all shadow-md active:scale-95 ${
                   valMin.valid && !isUserLeading
-                    ? 'bg-primary-yellow hover:bg-primary-yellow-hover text-tactical-navy shadow-[0_0_15px_rgba(255,224,51,0.3)]'
+                    ? 'bg-primary-yellow hover:bg-primary-yellow-hover text-slate-950 font-black shadow-[0_0_15px_rgba(245,186,20,0.3)]'
                     : 'bg-tactical-card border border-tactical-navy-light text-text-dim/40 cursor-not-allowed opacity-50'
                 }"
               >

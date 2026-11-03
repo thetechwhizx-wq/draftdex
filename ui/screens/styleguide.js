@@ -67,10 +67,10 @@ export function renderStyleGuideScreen() {
             </div>
           </div>
           <div class="swatch">
-            <div class="swatch-color" style="background: #ffe033;"></div>
+            <div class="swatch-color" style="background: #f5ba14;"></div>
             <div class="swatch-meta">
-              <div class="swatch-name text-primary-yellow font-bold">Brand Primary</div>
-              <div class="swatch-hex">#ffe033</div>
+              <div class="swatch-name text-primary-yellow font-bold">Tactical Gold</div>
+              <div class="swatch-hex">#f5ba14</div>
             </div>
           </div>
           <div class="swatch">

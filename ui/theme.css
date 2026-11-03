@@ -16,10 +16,10 @@
   --border-subtle: #243552;
   --border-strong: #33486e;
 
-  /* Theme Brand Accents */
-  --primary-yellow: #ffe033;
-  --primary-yellow-hover: #ffea66;
-  --primary-yellow-text: #0a0e17;
+  /* Theme Brand Accents - Calibrated Warm Tactical Gold */
+  --primary-yellow: #f5ba14;
+  --primary-yellow-hover: #dfa30a;
+  --primary-yellow-text: #050811;
   --accent-red: #ef4444;
   --accent-red-hover: #f87171;
   --accent-green: #22c55e;
@@ -104,7 +104,7 @@
   background: var(--primary-yellow);
   color: var(--primary-yellow-text);
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-radius: 10px;
@@ -118,7 +118,7 @@
 }
 .btn-tactical-primary:hover:not(:disabled) {
   background: var(--primary-yellow-hover);
-  box-shadow: 0 0 16px rgba(255, 224, 51, 0.35);
+  box-shadow: 0 0 16px rgba(245, 186, 20, 0.35);
   transform: translateY(-1px);
 }
 .btn-tactical-primary:active:not(:disabled) {
@@ -127,6 +127,11 @@
 .btn-tactical-primary:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+/* Explicit high-contrast text utility for buttons & badges */
+.text-tactical-navy {
+  color: #050811 !important;
 }
 
 .btn-tactical-secondary {

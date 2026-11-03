@@ -82,7 +82,7 @@ export function renderSetupScreen({
                 tabindex="0"
                 class="preset-card p-4 rounded-xl cursor-pointer transition-all active:scale-[0.98] ${
                   isQuick
-                    ? 'bg-tactical-card border-2 border-primary-yellow shadow-[0_0_15px_rgba(255,224,51,0.2)]'
+                    ? 'bg-tactical-card border-2 border-primary-yellow shadow-[0_0_15px_rgba(245,186,20,0.2)]'
                     : 'bg-tactical-navy border border-tactical-navy-light hover:bg-tactical-card hover:border-tactical-navy-light/80'
                 }"
               >
@@ -91,7 +91,7 @@ export function renderSetupScreen({
                     <span class="material-symbols-outlined text-[18px] ${isQuick ? 'text-primary-yellow' : 'text-text-dim'}">bolt</span>
                     <span class="font-display font-bold text-sm uppercase ${isQuick ? 'text-primary-yellow' : 'text-text-high'}">Quick</span>
                   </div>
-                  <div class="w-5 h-5 rounded-full flex items-center justify-center ${isQuick ? 'bg-primary-yellow text-tactical-navy' : 'bg-tactical-base text-text-dim/40'}">
+                  <div class="w-5 h-5 rounded-full flex items-center justify-center ${isQuick ? 'bg-primary-yellow text-slate-950' : 'bg-tactical-base text-text-dim/40'}">
                     <span class="material-symbols-outlined text-[14px] font-bold">check</span>
                   </div>
                 </div>
@@ -110,7 +110,7 @@ export function renderSetupScreen({
                 tabindex="0"
                 class="preset-card p-4 rounded-xl cursor-pointer transition-all active:scale-[0.98] ${
                   isStandard
-                    ? 'bg-tactical-card border-2 border-primary-yellow shadow-[0_0_15px_rgba(255,224,51,0.2)]'
+                    ? 'bg-tactical-card border-2 border-primary-yellow shadow-[0_0_15px_rgba(245,186,20,0.2)]'
                     : 'bg-tactical-navy border border-tactical-navy-light hover:bg-tactical-card hover:border-tactical-navy-light/80'
                 }"
               >
@@ -119,7 +119,7 @@ export function renderSetupScreen({
                     <span class="material-symbols-outlined text-[18px] ${isStandard ? 'text-primary-yellow' : 'text-text-dim'}">timer</span>
                     <span class="font-display font-bold text-sm uppercase ${isStandard ? 'text-primary-yellow' : 'text-text-high'}">Standard</span>
                   </div>
-                  <div class="w-5 h-5 rounded-full flex items-center justify-center ${isStandard ? 'bg-primary-yellow text-tactical-navy' : 'bg-tactical-base text-text-dim/40'}">
+                  <div class="w-5 h-5 rounded-full flex items-center justify-center ${isStandard ? 'bg-primary-yellow text-slate-950' : 'bg-tactical-base text-text-dim/40'}">
                     <span class="material-symbols-outlined text-[14px] font-bold">check</span>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export function renderSetupScreen({
                 tabindex="0"
                 class="preset-card p-4 rounded-xl cursor-pointer transition-all active:scale-[0.98] ${
                   isMarathon
-                    ? 'bg-tactical-card border-2 border-primary-yellow shadow-[0_0_15px_rgba(255,224,51,0.2)]'
+                    ? 'bg-tactical-card border-2 border-primary-yellow shadow-[0_0_15px_rgba(245,186,20,0.2)]'
                     : 'bg-tactical-navy border border-tactical-navy-light hover:bg-tactical-card hover:border-tactical-navy-light/80'
                 }"
               >
@@ -147,7 +147,7 @@ export function renderSetupScreen({
                     <span class="material-symbols-outlined text-[18px] ${isMarathon ? 'text-primary-yellow' : 'text-text-dim'}">military_tech</span>
                     <span class="font-display font-bold text-sm uppercase ${isMarathon ? 'text-primary-yellow' : 'text-text-high'}">Marathon</span>
                   </div>
-                  <div class="w-5 h-5 rounded-full flex items-center justify-center ${isMarathon ? 'bg-primary-yellow text-tactical-navy' : 'bg-tactical-base text-text-dim/40'}">
+                  <div class="w-5 h-5 rounded-full flex items-center justify-center ${isMarathon ? 'bg-primary-yellow text-slate-950' : 'bg-tactical-base text-text-dim/40'}">
                     <span class="material-symbols-outlined text-[14px] font-bold">check</span>
                   </div>
                 </div>
@@ -252,7 +252,7 @@ export function renderSetupScreen({
                   type="button"
                   class="h-9 px-4 rounded-full ${
                     famousMix
-                      ? 'bg-primary-yellow text-tactical-navy font-bold shadow-[0_0_10px_rgba(255,224,51,0.3)]'
+                      ? 'bg-primary-yellow text-slate-950 font-black shadow-[0_0_10px_rgba(245,186,20,0.3)]'
                       : 'bg-tactical-base border border-tactical-navy-light text-text-dim'
                   } font-mono text-xs uppercase flex items-center gap-1.5 active:scale-95 transition-all"
                 >
@@ -416,7 +416,7 @@ export function renderSetupScreen({
                         type="button"
                         class="chip-battle-timer h-9 rounded-lg ${
                           active
-                            ? 'bg-primary-yellow text-tactical-navy font-bold shadow-md'
+                            ? 'bg-primary-yellow text-slate-950 font-black shadow-md'
                             : 'bg-tactical-base border border-tactical-navy-light text-text-dim hover:text-text-high'
                         } font-mono text-xs flex items-center justify-center transition-all active:scale-95"
                         data-timer="${t}"
@@ -461,10 +461,10 @@ export function renderSetupScreen({
             <button
               id="btn-create-match"
               type="button"
-              class="w-full h-14 bg-primary-yellow hover:bg-primary-yellow-hover text-tactical-navy rounded-xl font-display font-bold text-base uppercase tracking-wider flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(255,224,51,0.25)]"
+              class="w-full h-14 bg-primary-yellow hover:bg-primary-yellow-hover text-slate-950 rounded-xl font-display font-black text-base uppercase tracking-wider flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-[0_0_20px_rgba(245,186,20,0.25)]"
             >
-              <span class="material-symbols-outlined text-[24px]">sports_esports</span>
-              <span>CREATE MATCH</span>
+              <span class="material-symbols-outlined text-[24px] text-slate-950 font-bold">sports_esports</span>
+              <span class="font-black text-slate-950">CREATE MATCH</span>
             </button>
           </div>
 
