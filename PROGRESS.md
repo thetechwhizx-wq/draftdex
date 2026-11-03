@@ -575,7 +575,32 @@
   - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
 
 - **Open Items:**
-  - Next screen in PLAN-v2 order: **Lobby** screen (`ui/screens/lobby.js`).
+  - Milestone 3 complete. Next screen in PLAN-v2 order: **Lobby** screen (`ui/screens/lobby.js`).
+
+### Phase 3: New Design System and Responsive Shell (Milestone 4: Lobby Screen Re-Skin)
+- **What was done:**
+  - **Task 1: Tactical Arena Lobby Screen ([ui/screens/lobby.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/lobby.js)):**
+    - Redesigned with responsive multi-panel layout matching [design-v2/host_lobby_phone/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/host_lobby_phone/code.html) and [design-v2/host_lobby_desktop_1280px/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/host_lobby_desktop_1280px/code.html).
+    - Mobile (<1024px):
+      - Sub-HUD header with back button, Host Command / Guest Participant title, and P2P synchronized status pill.
+      - High-voltage room broadcast card with large room code (`#roomCode`), quick copy button (`#copyBtn` / `#copyIcon`), and share link trigger.
+      - Arena rules quick-filter chips (Pace, Squad, Budget Cap, Bids timer, Generation scope).
+      - Live war-room squad roster cards with avatar graphics, host/challenger badges, sub-labels, and ready check indicators.
+      - Compact match settings summary box (`#lobby-settings-summary`) with 3-stat budget/squad/bid blocks and timers sub-strip.
+      - Primary Start Auction CTA button (`#btn-start-auction`) for host / waiting state for guest.
+    - Desktop (1280px):
+      - 12-column responsive layout with left broadcast terminal & participant roster (col-span-7) and right match protocol settings & auction rules briefing (col-span-5).
+  - **Task 2: Multi-Viewport Verification:**
+    - Captured fresh responsive screenshots: `lobby-390.png`, `lobby-768.png`, `lobby-1280.png`.
+    - Verified all element bindings (`#roomCode`, `#copyBtn`, `#btn-start-auction`, `#lobby-settings-summary`).
+
+- **Test Results:**
+  - `npm test`: **PASS** (12/12 test suites passed, 392 assertions passed, 0 failed)
+  - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
+
+- **Open Items:**
+  - Next screen in PLAN-v2 order: **Auction** room screen (`ui/screens/auction.js`).
+
 
 
 
