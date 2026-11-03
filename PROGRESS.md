@@ -534,3 +534,25 @@
   - Tokens and Style Guide available for visual review at `#/styleguide`.
   - Begin screen-by-screen re-skinning in PLAN-v2 order: Home -> Setup -> Lobby -> Auction -> Set Break -> Scout Report -> Squad Select -> Countdown -> Result.
 
+### Phase 3: New Design System and Responsive Shell (Milestone 2: Home Screen Re-Skin)
+- **What was done:**
+  - **Task 1: Tactical Arena Home Screen ([ui/screens/home.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/home.js)):**
+    - Redesigned with responsive 2-column layout matching [design-v2/home_phone/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/home_phone/code.html) and [design-v2/home_desktop_1280px/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/home_desktop_1280px/code.html).
+    - Mobile (<768px): clean stacked tactical terminal with PDA HUD header, War-Room link, high-contrast tactical yellow New Match button, Secure P2P room entry with clipboard paste button, Active Draft Session card with live set/lot/budget indicators, and quick links.
+    - Desktop (1280px): 12-column responsive grid layout with left access controls (col-span-5) and right Tactical Operations Cockpit (col-span-7) showing roster pool stats, 6v6 format specs, P2P network status, presets overview (Quick, Standard, Marathon), and terminal hotkey legend.
+  - **Task 2: App Controller Wiring ([ui/app.js](file:///c:/Users/Waters/Desktop/draftdex/ui/app.js)):**
+    - Wired clipboard paste button (`#paste-code-btn`), room code formatting, Enter key submission, tactical button styling transitions, and keyboard accessible resume card (Enter / Space keydown support).
+  - **Task 3: Smoke Test Resilience ([tests/ui-smoke.mjs](file:///c:/Users/Waters/Desktop/draftdex/tests/ui-smoke.mjs)):**
+    - Handled benign offline PeerJS WebSocket disconnect messages in console error filter.
+    - Made screenshot saving resilient to Windows file indexing locks via retry and buffer handling.
+  - **Task 4: Multi-Viewport Verification:**
+    - Captured fresh responsive screenshots: `home-390.png`, `home-768.png`, `home-1280.png`.
+
+- **Test Results:**
+  - `npm test`: **PASS** (12/12 test suites passed, 392 assertions passed, 0 failed)
+  - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
+
+- **Open Items:**
+  - Next screen in PLAN-v2 order: **Setup** screen (`ui/screens/setup.js`).
+
+

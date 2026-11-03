@@ -526,9 +526,16 @@ export class DraftDexApp {
 
     const btnResume = this.root.querySelector('#btn-resume-match');
     if (btnResume) {
-      btnResume.addEventListener('click', () => {
+      const resumeHandler = () => {
         const dest = this.getRouteForMatchState(this.matchState);
         this.router.navigate(dest);
+      };
+      btnResume.addEventListener('click', resumeHandler);
+      btnResume.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          resumeHandler();
+        }
       });
     }
 
@@ -537,15 +544,37 @@ export class DraftDexApp {
 
     const inputRoom = this.root.querySelector('#room-code-input');
     const btnJoin = this.root.querySelector('#btn-join-room');
+    const pasteBtn = this.root.querySelector('#paste-code-btn');
+
+    if (pasteBtn && inputRoom) {
+      pasteBtn.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          const clean = text.trim().toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+          if (clean) {
+            inputRoom.value = clean;
+            inputRoom.dispatchEvent(new Event('input'));
+          }
+        } catch (_) {}
+      });
+    }
+
     if (inputRoom && btnJoin) {
       inputRoom.addEventListener('input', e => {
         e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
         if (e.target.value.length === 6) {
-          btnJoin.classList.remove('text-outline', 'bg-surface-container-high');
-          btnJoin.classList.add('text-on-primary-container', 'bg-primary-container');
+          btnJoin.classList.remove('bg-tactical-navy', 'text-text-dim');
+          btnJoin.classList.add('bg-primary-yellow', 'text-tactical-navy', 'hover:bg-primary-yellow-hover');
         } else {
-          btnJoin.classList.remove('text-on-primary-container', 'bg-primary-container');
-          btnJoin.classList.add('text-outline', 'bg-surface-container-high');
+          btnJoin.classList.remove('bg-primary-yellow', 'text-tactical-navy', 'hover:bg-primary-yellow-hover');
+          btnJoin.classList.add('bg-tactical-navy', 'text-text-dim');
+        }
+      });
+
+      inputRoom.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          const code = inputRoom.value.trim();
+          if (code.length === 6) this.handleJoinRoom(code);
         }
       });
 
