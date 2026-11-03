@@ -661,7 +661,30 @@
   - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
 
 - **Open Items:**
-  - Next screen in PLAN-v2 order: **Squad Select** screen (`ui/screens/squadSelect.js`).
+  - Milestone 7 complete. Next screen in PLAN-v2 order: **Squad Select** screen (`ui/screens/squadSelect.js`).
+
+### Phase 3: New Design System and Responsive Shell (Milestone 8: Squad Select Screen Re-Skin)
+- **What was done:**
+  - **Task 1: Tactical Arena Squad Select Screen ([ui/screens/squadSelect.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/squadSelect.js)):**
+    - Redesigned with responsive multi-panel layout matching [design-v2/squad_select_phone/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/squad_select_phone/code.html) and [design-v2/squad_select_desktop_1280px/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/squad_select_desktop_1280px/code.html).
+    - Top HUD header with back button (`#btn-squad-back`), Tactical Arena status, room PIN badge, and trainer avatar.
+    - Top Matchup Telemetry Bar with preview stage, rule set, and 30s deliberation circular countdown dial micro-widget (`#squad-timer-ring`, `#squad-timer-val`).
+    - Tactical Threat Radar chips row (No Speedster, Ice 3x Vulnerability, Electric Immunity, Hazard Control).
+    - Responsive 12-column cockpit:
+      - Left panel (3 cols on xl): Squad Deployment Status card (`X of Y Picked` counter `#picked-count-display`, visual progress bar), Designated Lead opener card with artwork, types, role, and opener change button (`#btn-choose-lead`).
+      - Center deck (6 cols on xl): Draft combatants grid of `.squad-card` with `data-id="${p.id}"`, check indicator badge, lead tag, high-res artwork, types, role, and active selection glow.
+      - Right panel (3 cols on xl): Opponent Live Recon preview with rival name and 6-unit team roster, and primary `#btn-lock-team` CTA with active/disabled lock states.
+  - **Task 2: Multi-Viewport Verification:**
+    - Captured fresh responsive screenshots: `squad-390.png`, `squad-768.png`, `squad-1280.png`.
+    - Verified all element bindings (`#btn-squad-back`, `#squad-timer-ring`, `#squad-timer-val`, `#picked-count-display`, `.squad-card`, `#btn-choose-lead`, `#btn-lock-team`).
+
+- **Test Results:**
+  - `npm test`: **PASS** (12/12 test suites passed, 392 assertions passed, 0 failed)
+  - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
+
+- **Open Items:**
+  - Next screen in PLAN-v2 order: **Countdown** screen (`ui/screens/countdown.js` in `ui/app.js`).
+
 
 
 
