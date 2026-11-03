@@ -620,7 +620,29 @@
   - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
 
 - **Open Items:**
-  - Next screen in PLAN-v2 order: **Set Break** screen (`ui/screens/break.js`).
+  - Milestone 5 complete. Next screen in PLAN-v2 order: **Set Break** screen (`ui/screens/break.js`).
+
+### Phase 3: New Design System and Responsive Shell (Milestone 6: Set Break Screen Re-Skin)
+- **What was done:**
+  - **Task 1: Tactical Arena Set Break Screen ([ui/screens/break.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/break.js)):**
+    - Redesigned with responsive multi-panel layout matching [design-v2/set_break_phone/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/set_break_phone/code.html) and [design-v2/set_break_desktop_1280px/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/set_break_desktop_1280px/code.html).
+    - Top HUD header with back button (`#btn-break-back`), Live Arena intermission status, room PIN badge, and countdown timer (`#countdown`).
+    - Top intermission status ribbon displaying completed set name, break interval index, total match roster capacity, and clearance flow rate.
+    - Responsive 12-column cockpit:
+      - Left column (5 cols): 3-pillar production telemetry cards (Sold with clearance %, Passed / Unsold count, Total purse spent with avg per lot), Top Buy of Set Marquee Spotlight with artwork, BST, price, dual types, winning franchise tag, and 6-stat segmented combat matrix bar.
+      - Next Set CTA button (`#btn-continue-next-set`) with auto/manual advancement and upcoming set preview.
+      - Right column (7 cols): Franchise Budget Ledger table with trainer avatars, spent purse, cap left, avg per lot, squad progress (`X / Y`), and dynamic cap status badge (Stable, Aggressive, Reserve Alert, Complete) enforcing the budget reserve rule. Live squad roster cards deck with visual Pokémon slots and hover prices.
+  - **Task 2: Multi-Viewport Verification:**
+    - Captured fresh responsive screenshots: `break-390.png`, `break-768.png`, `break-1280.png`.
+    - Verified all element bindings (`#btn-break-back`, `#countdown`, `#btn-continue-next-set`).
+
+- **Test Results:**
+  - `npm test`: **PASS** (12/12 test suites passed, 392 assertions passed, 0 failed)
+  - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
+
+- **Open Items:**
+  - Next screen in PLAN-v2 order: **Scout Report** screen (`ui/screens/scout.js`).
+
 
 
 
