@@ -599,7 +599,29 @@
   - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
 
 - **Open Items:**
-  - Next screen in PLAN-v2 order: **Auction** room screen (`ui/screens/auction.js`).
+  - Milestone 4 complete. Next screen in PLAN-v2 order: **Auction** room screen (`ui/screens/auction.js`).
+
+### Phase 3: New Design System and Responsive Shell (Milestone 5: Auction Screen Re-Skin)
+- **What was done:**
+  - **Task 1: Tactical Arena Auction Screen ([ui/screens/auction.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/auction.js)):**
+    - Redesigned with responsive multi-panel layout matching [design-v2/auction_room_phone/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/auction_room_phone/code.html) and [design-v2/auction_room_desktop_1280px/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/auction_room_desktop_1280px/code.html).
+    - Compact Arena HUD header with Room ID, Set/Lot telemetry badge, P2P Live status, and compact settings summary block (`#auction-settings-summary`).
+    - Center Tactical Lot card with Pokémon artwork, type chips, tier pill, role telemetry, 6-stat combat telemetry bars (HP, ATK, DEF, SPA, SPD, SPE), and dynamic defensive profile table (weaknesses, resistances, immunities) computed in real-time from `engine/types.js`.
+    - Pulse countdown timer ring (`#timer-ring`, `#timer-val`), current bid status badge (`#current-bid-val`), and high bidder spotlight.
+    - Responsive bid action deck with quick bid buttons (`#btn-bid-1`, `#btn-bid-2` with `data-amount`), custom bid input, and pass trigger (`#btn-pass`).
+    - Added desktop 3-panel command layout: Left panel showing Franchise Managers dossier with budgets and active rosters; Right panel showing Up Next queue preview, live recent bids ledger, and squad reserve requirements.
+    - Global keyboard shortcuts in `ui/app.js`: Press `B` for Quick Bid +1, press `P` for Pass.
+  - **Task 2: Multi-Viewport Verification:**
+    - Captured fresh responsive screenshots: `auction-390.png`, `auction-768.png`, `auction-1280.png`.
+    - Verified all element bindings (`#btn-bid-1`, `#btn-bid-2`, `#btn-pass`, `#auction-settings-summary`, `#timer-val`, `#timer-ring`, `#current-bid-val`).
+
+- **Test Results:**
+  - `npm test`: **PASS** (12/12 test suites passed, 392 assertions passed, 0 failed)
+  - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
+
+- **Open Items:**
+  - Next screen in PLAN-v2 order: **Set Break** screen (`ui/screens/break.js`).
+
 
 
 

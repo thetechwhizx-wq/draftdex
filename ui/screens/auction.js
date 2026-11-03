@@ -1,41 +1,43 @@
 /**
  * Auction Room Screen
- * Visual source: design/stitch_pok_mon_draft_auction_webapp/auction_room/code.html
+ * Visual source: design-v2/auction_room_phone/code.html & design-v2/auction_room_desktop_1280px/code.html
+ * Tactical Arena & Draft Terminal theme
  */
 
 import { getNextMinimumBid, validateBid, getMinIncrement } from '../../engine/auction.js';
+import { POKEMON_TYPES, getTypeEffectiveness } from '../../engine/types.js';
 
-// Canonical Pokémon type color pills
-const TYPE_COLORS = {
-  normal: { bg: '#4B5563', text: '#E5E7EB' },
-  fire: { bg: '#991B1B', text: '#FCA5A5' },
-  water: { bg: '#1E40AF', text: '#93C5FD' },
-  grass: { bg: '#166534', text: '#86EFAC' },
-  electric: { bg: '#854D0E', text: '#FDE047' },
-  ice: { bg: '#155E75', text: '#A5F3FC' },
-  fighting: { bg: '#831843', text: '#FBCFE8' },
-  poison: { bg: '#581C87', text: '#D8B4FE' },
-  ground: { bg: '#78350F', text: '#FCD34D' },
-  flying: { bg: '#3730A3', text: '#C7D2FE' },
-  psychic: { bg: '#831843', text: '#F472B6' },
-  bug: { bg: '#3F6212', text: '#BEF264' },
-  rock: { bg: '#57534E', text: '#D6D3D1' },
-  ghost: { bg: '#3B0764', text: '#E9D5FF' },
-  dragon: { bg: '#312E81', text: '#A5B4FC' },
-  steel: { bg: '#334155', text: '#CBD5E1' },
-  dark: { bg: '#18181B', text: '#A1A1AA' },
-  fairy: { bg: '#701A75', text: '#F5D0FE' }
+// 18-Type styling map matching Tactical Arena design tokens
+const TYPE_STYLES = {
+  normal:   { bg: 'bg-[#9FA19F]/20', text: 'text-[#9FA19F]', border: 'border-[#9FA19F]/40' },
+  fire:     { bg: 'bg-type-fire/20', text: 'text-type-fire', border: 'border-type-fire/40' },
+  water:    { bg: 'bg-type-water/20', text: 'text-type-water', border: 'border-type-water/40' },
+  grass:    { bg: 'bg-type-grass/20', text: 'text-type-grass', border: 'border-type-grass/40' },
+  electric: { bg: 'bg-type-electric/20', text: 'text-type-electric', border: 'border-type-electric/40' },
+  ice:      { bg: 'bg-type-ice/20', text: 'text-type-ice', border: 'border-type-ice/40' },
+  fighting: { bg: 'bg-type-fighting/20', text: 'text-type-fighting', border: 'border-type-fighting/40' },
+  poison:   { bg: 'bg-type-poison/20', text: 'text-type-poison', border: 'border-type-poison/40' },
+  ground:   { bg: 'bg-type-ground/20', text: 'text-type-ground', border: 'border-type-ground/40' },
+  flying:   { bg: 'bg-type-flying/20', text: 'text-type-flying', border: 'border-type-flying/40' },
+  psychic:  { bg: 'bg-type-psychic/20', text: 'text-type-psychic', border: 'border-type-psychic/40' },
+  bug:      { bg: 'bg-type-bug/20', text: 'text-type-bug', border: 'border-type-bug/40' },
+  rock:     { bg: 'bg-type-rock/20', text: 'text-type-rock', border: 'border-type-rock/40' },
+  ghost:    { bg: 'bg-type-ghost/20', text: 'text-type-ghost', border: 'border-type-ghost/40' },
+  dragon:   { bg: 'bg-type-dragon/20', text: 'text-type-dragon', border: 'border-type-dragon/40' },
+  steel:    { bg: 'bg-type-steel/20', text: 'text-type-steel', border: 'border-type-steel/40' },
+  dark:     { bg: 'bg-type-dark/20', text: 'text-type-dark', border: 'border-type-dark/40' },
+  fairy:    { bg: 'bg-type-fairy/20', text: 'text-type-fairy', border: 'border-type-fairy/40' }
 };
 
 export function renderAuctionScreen({ matchState, currentTimerSeconds = 10, totalTimerSeconds = 18, userPlayerId = 'human' }) {
   const lot = matchState.currentLot;
   if (!lot || !lot.pokemon) {
     return `
-      <div class="flex flex-col items-center justify-center min-h-[60vh] text-center p-space-md">
-        <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-primary mb-4 animate-pulse">
+      <div class="flex flex-col items-center justify-center min-h-[60vh] text-center p-6">
+        <div class="w-16 h-16 rounded-xl bg-tactical-navy border border-tactical-navy-light flex items-center justify-center text-primary-yellow mb-4 animate-spin">
           <span class="material-symbols-outlined text-[32px]">sync</span>
         </div>
-        <h2 class="font-headline-md text-headline-md uppercase text-on-surface">Loading Next Lot...</h2>
+        <h2 class="font-display font-bold text-xl uppercase tracking-wider text-text-high">Loading Next Lot...</h2>
       </div>
     `;
   }
@@ -49,7 +51,10 @@ export function renderAuctionScreen({ matchState, currentTimerSeconds = 10, tota
   const user = matchState.players.find(x => x.id === userPlayerId) || matchState.players[0];
   const userTeamCount = user?.team?.length || 0;
   const userPurse = user?.budget ?? 0;
-  const teamCap = matchState.settings.teamSize;
+  const teamCap = matchState.settings.teamSize || 4;
+  const emptySlots = Math.max(0, teamCap - userTeamCount);
+  const minReservePerSlot = matchState.settings.startBid || 10;
+  const maxAllowedBid = Math.max(0, userPurse - Math.max(0, emptySlots - 1) * minReservePerSlot);
 
   // Minimum required bid for the active lot
   const minRequired = getNextMinimumBid(matchState);
@@ -68,200 +73,535 @@ export function renderAuctionScreen({ matchState, currentTimerSeconds = 10, tota
   // Timer calculations
   const clampedTimer = Math.max(0, currentTimerSeconds);
   const isUrgent = clampedTimer <= 5;
-  // Circumference = 2 * PI * 30 = ~188.5
-  const circumference = 188.5;
+  const circumference = 188.5; // 2 * PI * 30
   const progressRatio = totalTimerSeconds > 0 ? (clampedTimer / totalTimerSeconds) : 0;
   const dashoffset = circumference * (1 - progressRatio);
 
   // Artwork image fallback
   const artworkUrl = `./assets/sprites/artwork/${p.id}.png`;
 
+  // Compute Defensive Profile from Type Chart
+  const defensiveProfile = computeDefensiveProfile(p.types);
+
+  // Upcoming lots in current set
+  const upcomingLots = (currentSet.lots || []).slice(lotIndexInSet, lotIndexInSet + 3);
+
+  // Bid history (last 5 bids)
+  const bidHistory = lot.bidHistory || [];
+  const recentBids = bidHistory.slice(-5).reverse();
+
   return `
-    <header class="fixed top-0 w-full max-w-[390px] md:max-w-[768px] z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.25)] pt-safe">
-      <div class="h-14 px-gutter flex items-center justify-between">
-        <div class="flex items-center gap-space-sm">
-          <button aria-label="Back" id="btn-auction-back" class="min-w-[44px] min-h-[44px] flex items-center justify-center text-on-surface hover:text-primary-container transition-colors">
+    <div class="flex flex-col w-full py-4 sm:py-6 lg:py-8">
+      
+      <!-- Top Tactical Header / Sub-HUD -->
+      <div class="flex items-center justify-between pb-5 mb-5 border-b border-tactical-navy-light/60">
+        <div class="flex items-center gap-3">
+          <button
+            id="btn-auction-back"
+            type="button"
+            aria-label="Back to Terminal"
+            class="w-10 h-10 rounded-lg bg-tactical-navy hover:bg-tactical-navy-light border border-tactical-navy-light text-text-dim hover:text-text-high flex items-center justify-center transition-all active:scale-95"
+          >
             <span class="material-symbols-outlined text-[20px]">arrow_back</span>
           </button>
-          <img alt="Apex Draft Arena Logo" class="h-8 w-auto object-contain" src="./assets/icons/poke-ball.png"/>
-          <h1 class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">Lot Inspector</h1>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-status-danger animate-ping"></span>
+              <span class="font-mono text-[10px] text-status-danger font-bold uppercase tracking-widest leading-none">LIVE ARENA AUCTION</span>
+            </div>
+            <h1 class="font-display font-bold text-xl uppercase tracking-wider text-text-high mt-1">AUCTION ROOM</h1>
+          </div>
         </div>
-        <div class="flex items-center gap-space-sm">
-          <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-            <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+
+        <div class="flex items-center gap-3">
+          <div class="hidden sm:flex items-center gap-2 bg-tactical-navy px-3 py-1.5 rounded-lg border border-tactical-navy-light">
+            <span class="font-mono text-xs text-text-dim uppercase">ROOM:</span>
+            <span class="font-mono text-xs font-bold text-primary-yellow uppercase tracking-wider">${escapeHtml(matchState.room)}</span>
+          </div>
+          <div class="w-9 h-9 rounded-lg bg-tactical-navy border border-tactical-navy-light flex items-center justify-center text-primary-yellow">
+            <span class="material-symbols-outlined text-[20px]">gavel</span>
           </div>
         </div>
       </div>
-    </header>
 
-    <div class="flex flex-col w-full pb-6 space-y-space-md pt-14">
-      <!-- Set Meta Bar -->
-      <div class="flex items-center justify-between bg-surface-container px-gutter py-space-sm rounded-xl">
-        <div class="flex items-center space-x-space-sm min-w-0">
-          <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse flex-shrink-0"></span>
-          <span class="font-headline-sm text-headline-sm uppercase text-on-surface truncate">${escapeHtml(currentSet.name)}</span>
+      <!-- Top Telemetry & Scope Strip -->
+      <div class="bg-tactical-navy border border-tactical-navy-light p-3 rounded-xl mb-5 flex flex-wrap items-center justify-between gap-3 text-xs font-mono shadow-md" id="auction-settings-summary">
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-tactical-card border border-primary-yellow/40 text-primary-yellow font-bold uppercase">
+            ${escapeHtml(currentSet.name)}
+          </span>
+          <span class="text-text-dim">•</span>
+          <span class="text-text-high font-bold">LOT ${lotIndexInSet} / ${setLotsCount}</span>
         </div>
-        <div class="flex items-center space-x-space-xs bg-surface-container-high px-space-sm py-0.5 rounded-full flex-shrink-0">
-          <span class="material-symbols-outlined text-primary-container text-[14px]">token</span>
-          <span class="font-label-caps text-label-caps text-on-surface">${lotIndexInSet}/${setLotsCount} LOT</span>
+
+        <div class="flex items-center gap-4 text-text-dim">
+          <span>Clock: <strong class="text-text-high">${matchState.settings.bidTimer}s</strong></span>
+          <span>Starting Purse: <strong class="text-status-success">\$${matchState.settings.budget}</strong></span>
+          <span class="flex items-center gap-1.5 text-status-success">
+            <span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+            <span>SYNCED</span>
+          </span>
         </div>
       </div>
 
-      <!-- Compact Settings Summary Strip -->
-      <div class="flex items-center justify-between bg-surface-container px-3 py-1 rounded-lg text-[11px] font-headline-sm text-outline" id="auction-settings-summary">
-        <span class="text-primary-container font-semibold uppercase">${matchState.settings.preset || 'Standard'}</span>
-        <span>${matchState.settings.teamSize} PKMN · $${matchState.settings.budget}</span>
-        <span>Bid: ${matchState.settings.bidTimer}s · Turn: ${matchState.settings.battleTurnTimer || 30}s</span>
-      </div>
+      <!-- Main Responsive Grid: 1 Column on Mobile, 3 Panels on Desktop (1280px) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- LEFT PANEL (Desktop): Franchise Managers Dossier (col-span-3) -->
+        <div class="lg:col-span-3 hidden lg:flex flex-col gap-4">
+          <div class="bg-tactical-navy border border-tactical-navy-light rounded-xl p-4 shadow-xl flex flex-col gap-3">
+            <div class="flex items-center justify-between pb-2 border-b border-tactical-navy-light/60">
+              <span class="font-display font-bold text-xs uppercase tracking-wider text-text-high flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-primary-yellow text-[16px]">group</span>
+                <span>FRANCHISE MANAGERS</span>
+              </span>
+              <span class="font-mono text-[10px] text-accent-cyan font-bold">${matchState.players.length} Active</span>
+            </div>
 
-      <!-- Primary Active Lot Card -->
-      <div class="flex flex-col bg-surface-container rounded-xl overflow-hidden shadow-xl">
-        <!-- Creature Visual Banner -->
-        <div class="relative w-full h-44 bg-surface-container-lowest overflow-hidden flex items-center justify-center">
-          <img class="w-40 h-40 object-contain z-10 transition-transform duration-300 hover:scale-105" src="${artworkUrl}" alt="${escapeHtml(p.name)}" onerror="this.onerror=null; this.src='./assets/icons/poke-ball.png';"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/20 to-transparent"></div>
+            <div class="flex flex-col gap-2.5">
+              ${matchState.players.map(pl => {
+                const isLeader = lot.leaderId === pl.id;
+                const plPurse = pl.budget ?? 0;
+                const plTeamCount = pl.team?.length || 0;
+                const budgetPct = Math.round((plPurse / matchState.settings.budget) * 100);
+
+                return `
+                  <div class="p-2.5 rounded-lg ${isLeader ? 'bg-tactical-card border border-primary-yellow/60' : 'bg-tactical-base/80 border border-tactical-navy-light/60'} flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-1.5 min-w-0">
+                        <span class="w-2 h-2 rounded-full ${isLeader ? 'bg-primary-yellow animate-pulse' : 'bg-status-success'}"></span>
+                        <span class="font-display font-bold text-xs truncate ${isLeader ? 'text-primary-yellow' : 'text-text-high'}">
+                          ${escapeHtml(pl.name)}
+                        </span>
+                      </div>
+                      <span class="font-mono text-xs font-bold text-primary-yellow">\$${plPurse}</span>
+                    </div>
+
+                    <div class="w-full bg-tactical-navy h-1.5 rounded-full overflow-hidden">
+                      <div class="h-full rounded-full ${isLeader ? 'bg-primary-yellow' : 'bg-status-success'}" style="width: ${budgetPct}%;"></div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-[10px] font-mono text-text-dim">
+                      <span>Squad: ${plTeamCount}/${teamCap}</span>
+                      <span>${isLeader ? 'HIGH BIDDER' : (pl.isBot ? 'Bot' : 'Manager')}</span>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- Pre-Auction Tactical Velocity -->
+            <div class="pt-2 border-t border-tactical-navy-light/60 text-xs font-mono text-text-dim flex flex-col gap-1">
+              <span class="uppercase text-[10px] text-text-dim">Format Velocity</span>
+              <span class="text-text-high font-bold">${matchState.settings.preset?.toUpperCase() || 'STANDARD'} 6V6 DRAFT</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTER PANEL: Active Combat Lot Card & Bidding Action Deck (col-span-6 on Desktop) -->
+        <div class="lg:col-span-6 flex flex-col gap-5">
           
-          <!-- Role Badge -->
-          <div class="absolute top-space-sm left-space-sm bg-surface-container-highest/90 backdrop-blur-md px-space-sm py-1 rounded-full flex items-center space-x-1 z-20">
-            <span class="material-symbols-outlined text-primary-container text-[14px]">swords</span>
-            <span class="font-label-caps text-label-caps uppercase text-primary">${escapeHtml(p.role)}</span>
-          </div>
-          
-          <!-- Base Price Tag -->
-          <div class="absolute top-space-sm right-space-sm bg-surface-container-lowest/90 backdrop-blur-md px-space-sm py-1 rounded-full z-20">
-            <span class="font-body-sm text-body-sm text-outline">Base</span>
-            <span class="font-tabular-stats text-tabular-stats text-primary-container ml-0.5">$${matchState.settings.startBid}</span>
-          </div>
-        </div>
+          <!-- Primary Combat Lot Card -->
+          <div class="bg-tactical-card border border-tactical-navy-light rounded-xl p-5 shadow-xl flex flex-col gap-4 relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-48 h-48 bg-primary-yellow/5 rounded-full blur-3xl pointer-events-none"></div>
 
-        <!-- Details & Meta -->
-        <div class="px-space-md pt-space-sm pb-space-md flex flex-col space-y-space-md">
-          <div class="flex items-center justify-between">
-            <div class="flex flex-col">
-              <h2 class="font-headline-lg-mobile text-headline-lg-mobile uppercase text-on-surface tracking-wide">${escapeHtml(p.name)}</h2>
-              <!-- Type Chips -->
-              <div class="flex items-center space-x-space-xs mt-1">
-                ${p.types.map(t => {
-                  const c = TYPE_COLORS[t.toLowerCase()] || { bg: '#1E293B', text: '#F8FAFC' };
-                  return `
-                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-headline-sm uppercase tracking-wider" style="background-color: ${c.bg}; color: ${c.text};">${t}</span>
-                  `;
-                }).join('')}
+            <!-- Lot Header: Name, Dual Types, Tier & Base Price -->
+            <div class="flex items-start justify-between gap-4 relative z-10">
+              <div class="flex flex-col gap-1 min-w-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="px-2 py-0.5 rounded bg-primary-yellow/15 border border-primary-yellow/40 text-primary-yellow font-display font-bold text-[10px] uppercase tracking-wider">
+                    ${escapeHtml(p.tier || 'TIER 1')}
+                  </span>
+                  <span class="px-2 py-0.5 rounded bg-tactical-navy border border-tactical-navy-light text-accent-cyan font-mono text-[10px] font-bold uppercase">
+                    BST ${p.bst || 500}
+                  </span>
+                  <span class="font-mono text-[10px] text-text-dim uppercase">LOT #${lotIndexInSet}</span>
+                </div>
+
+                <h2 class="font-display font-bold text-2xl sm:text-3xl uppercase tracking-wider text-text-high mt-1 truncate">
+                  ${escapeHtml(p.name)}
+                </h2>
+
+                <!-- Dual Type Badges -->
+                <div class="flex items-center gap-1.5 mt-1">
+                  ${p.types.map(t => {
+                    const style = TYPE_STYLES[t.toLowerCase()] || { bg: 'bg-tactical-navy', text: 'text-text-high', border: 'border-tactical-navy-light' };
+                    return `
+                      <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider border ${style.bg} ${style.text} ${style.border}">
+                        ${t}
+                      </span>
+                    `;
+                  }).join('')}
+                </div>
+
+                <!-- Roles -->
+                <div class="flex items-center gap-1.5 mt-2 text-xs font-mono">
+                  <span class="px-2 py-0.5 rounded bg-tactical-base border border-tactical-navy-light/80 text-text-dim">
+                    ${escapeHtml(p.role)}
+                  </span>
+                  ${p.secondaryRole && p.secondaryRole !== 'None' ? `
+                    <span class="px-2 py-0.5 rounded bg-tactical-base border border-tactical-navy-light/80 text-text-dim">
+                      ${escapeHtml(p.secondaryRole)}
+                    </span>
+                  ` : ''}
+                </div>
+              </div>
+
+              <!-- Artwork Display Container -->
+              <div class="relative w-28 h-28 sm:w-32 sm:h-32 shrink-0 bg-tactical-base border border-tactical-navy-light rounded-xl p-2 flex items-center justify-center shadow-inner">
+                <img
+                  src="${artworkUrl}"
+                  alt="${escapeHtml(p.name)}"
+                  class="w-full h-full object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
+                  onerror="this.onerror=null; this.src='./assets/icons/poke-ball.png';"
+                />
+                <div class="absolute bottom-1 right-1 bg-tactical-navy/90 backdrop-blur-sm px-1.5 py-0.5 rounded border border-tactical-navy-light text-[10px] font-mono font-bold text-primary-yellow">
+                  BASE \$${matchState.settings.startBid}
+                </div>
+              </div>
+            </div>
+
+            <!-- 6-Stat Matrix Grid -->
+            <div class="bg-tactical-base border border-tactical-navy-light/80 p-3.5 rounded-xl shadow-inner flex flex-col gap-1.5">
+              <span class="font-mono text-[10px] text-text-dim uppercase tracking-wider mb-0.5">BASE STAT TELEMETRY</span>
+              <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs font-mono">
+                ${renderStatTelemetry('HP', p.baseStats.hp, 255, 'bg-status-success', 'text-status-success')}
+                ${renderStatTelemetry('SPA', p.baseStats.spAttack, 180, 'bg-type-psychic', 'text-type-psychic')}
+                ${renderStatTelemetry('ATK', p.baseStats.attack, 180, 'bg-primary-yellow', 'text-primary-yellow')}
+                ${renderStatTelemetry('SPD', p.baseStats.spDefense, 180, 'bg-accent-cyan', 'text-accent-cyan')}
+                ${renderStatTelemetry('DEF', p.baseStats.defense, 180, 'bg-secondary-container', 'text-secondary-container')}
+                ${renderStatTelemetry('SPE', p.baseStats.speed, 200, 'bg-status-danger', 'text-status-danger')}
+              </div>
+            </div>
+
+            <!-- Defensive Profile Telemetry (Weaknesses, Resistances, Immunities) -->
+            <div class="flex flex-col gap-1.5 pt-1 text-xs font-mono">
+              <span class="text-[10px] text-text-dim uppercase tracking-wider">DEFENSIVE PROFILE</span>
+              
+              <!-- Weaknesses -->
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="text-status-danger font-bold text-[11px] uppercase mr-1">Weak:</span>
+                ${defensiveProfile.weaknesses.length > 0 ? defensiveProfile.weaknesses.map(w => `
+                  <span class="px-1.5 py-0.5 rounded bg-status-danger/15 border border-status-danger/30 text-status-danger font-bold text-[11px]">
+                    ${w.type} ${w.mult}x
+                  </span>
+                `).join('') : '<span class="text-text-dim text-[11px]">None</span>'}
+              </div>
+
+              <!-- Resistances & Immunities -->
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="text-status-success font-bold text-[11px] uppercase mr-1">Resist:</span>
+                ${defensiveProfile.resistances.length > 0 ? defensiveProfile.resistances.map(r => `
+                  <span class="px-1.5 py-0.5 rounded bg-status-success/15 border border-status-success/30 text-status-success font-bold text-[11px]">
+                    ${r.type} ${r.mult}x
+                  </span>
+                `).join('') : '<span class="text-text-dim text-[11px]">None</span>'}
+
+                ${defensiveProfile.immunities.length > 0 ? `
+                  <span class="text-accent-cyan font-bold text-[11px] uppercase ml-2 mr-1">Immune:</span>
+                  ${defensiveProfile.immunities.map(im => `
+                    <span class="px-1.5 py-0.5 rounded bg-accent-cyan/15 border border-accent-cyan/30 text-accent-cyan font-bold text-[11px]">
+                      ${im} 0x
+                    </span>
+                  `).join('')}
+                ` : ''}
               </div>
             </div>
           </div>
 
-          <!-- 6-Stat Matrix Grid -->
-          <div class="grid grid-cols-2 gap-x-space-md gap-y-1.5 bg-surface-container-lowest p-space-sm rounded-lg">
-            ${renderStatBar('HP', p.baseStats.hp, 255, 'bg-primary-container')}
-            ${renderStatBar('SPA', p.baseStats.spAttack, 180, 'bg-primary-container')}
-            ${renderStatBar('ATK', p.baseStats.attack, 180, 'bg-[#EF4444]')}
-            ${renderStatBar('SPD', p.baseStats.spDefense, 180, 'bg-primary-container')}
-            ${renderStatBar('DEF', p.baseStats.defense, 180, 'bg-primary-container')}
-            ${renderStatBar('SPE', p.baseStats.speed, 200, 'bg-tertiary-fixed-dim')}
-          </div>
-        </div>
-      </div>
+          <!-- Bidding Action Deck & Clock Readout -->
+          <div class="bg-tactical-navy border border-tactical-navy-light rounded-xl p-5 shadow-2xl flex flex-col gap-4">
+            
+            <!-- High-Voltage Current Bid & Circular Pulse Timer -->
+            <div class="flex items-center justify-between">
+              
+              <!-- Bid Amount Display -->
+              <div class="flex flex-col">
+                <span class="font-mono text-[10px] text-text-dim uppercase tracking-widest font-bold">CURRENT LEADING BID</span>
+                <div class="flex items-baseline gap-1 mt-0.5">
+                  <span class="font-mono text-3xl sm:text-4xl text-primary-yellow font-bold tracking-tight leading-none" id="current-bid-val">
+                    \$${lot.currentBid > 0 ? lot.currentBid : matchState.settings.startBid}
+                  </span>
+                  <span class="font-mono text-xs text-text-dim uppercase font-bold">PURSE</span>
+                </div>
+                
+                <div class="flex items-center gap-1.5 mt-2">
+                  <span class="material-symbols-outlined text-[15px] ${leader ? 'text-status-danger' : 'text-text-dim'}">gavel</span>
+                  <span class="font-mono text-xs text-text-dim">
+                    Leading: <strong class="${leader ? 'text-text-high' : 'text-text-dim'} font-bold uppercase">${leader ? escapeHtml(leader.name) : 'No Bids'}</strong>
+                  </span>
+                </div>
+              </div>
 
-      <!-- Bid Readout & Urgent Clock Board -->
-      <div class="flex items-center justify-between bg-surface-container p-space-md rounded-xl">
-        <!-- Leading Bid Section -->
-        <div class="flex flex-col min-w-0">
-          <div class="flex items-center space-x-1.5">
-            <span class="w-2 h-2 rounded-full ${leader ? 'bg-[#EF4444]' : 'bg-outline'}"></span>
-            <span class="font-label-caps text-label-caps uppercase text-outline">High Bidder</span>
-            <span class="font-headline-sm text-headline-sm uppercase ${leader ? 'text-[#EF4444]' : 'text-outline'} font-bold truncate">
-              ${leader ? escapeHtml(leader.name) : 'No Bids'}
+              <!-- Synchronized Pulse Timer Ring -->
+              <div class="relative w-20 h-20 shrink-0 flex items-center justify-center">
+                <svg class="w-20 h-20 -rotate-90" viewBox="0 0 72 72">
+                  <circle class="text-tactical-base fill-none" cx="36" cy="36" r="30" stroke="currentColor" stroke-width="5"></circle>
+                  <circle
+                    id="timer-ring"
+                    cx="36"
+                    cy="36"
+                    r="30"
+                    stroke="${isUrgent ? '#ff2a5f' : '#ffe033'}"
+                    stroke-width="5"
+                    stroke-dasharray="188.5"
+                    stroke-dashoffset="${dashoffset.toFixed(1)}"
+                    stroke-linecap="round"
+                    fill="none"
+                    class="transition-all duration-300 ${isUrgent ? 'drop-shadow-[0_0_8px_rgba(255,42,95,0.8)]' : 'drop-shadow-[0_0_8px_rgba(255,224,51,0.5)]'}"
+                  ></circle>
+                </svg>
+
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                  <span
+                    id="timer-val"
+                    class="font-mono text-xl font-bold leading-none ${isUrgent ? 'text-status-danger' : 'text-text-high'}"
+                  >
+                    ${String(clampedTimer).padStart(2, '0')}s
+                  </span>
+                  <span class="text-[9px] font-mono tracking-widest text-text-dim uppercase mt-0.5">
+                    ${isUrgent ? 'HURRY' : 'CLOCK'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bidding Action Controls (Respects Budget Reserve Rule) -->
+            <div class="grid grid-cols-3 gap-3 pt-1">
+              
+              <!-- Quick Bid 1 -->
+              <button
+                id="btn-bid-1"
+                type="button"
+                data-amount="${minRequired}"
+                ${valMin.valid && !isUserLeading ? '' : 'disabled'}
+                class="h-14 rounded-xl flex flex-col items-center justify-center p-2 font-display font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 ${
+                  valMin.valid && !isUserLeading
+                    ? 'bg-primary-yellow hover:bg-primary-yellow-hover text-tactical-navy shadow-[0_0_15px_rgba(255,224,51,0.3)]'
+                    : 'bg-tactical-card border border-tactical-navy-light text-text-dim/40 cursor-not-allowed opacity-50'
+                }"
+              >
+                <span class="text-sm leading-none">+\$${inc}</span>
+                <span class="font-mono text-[11px] leading-none opacity-90 mt-1">(\$${minRequired})</span>
+              </button>
+
+              <!-- Quick Bid 2 (Jump) -->
+              <button
+                id="btn-bid-2"
+                type="button"
+                data-amount="${jumpBid}"
+                ${valJump.valid && !isUserLeading ? '' : 'disabled'}
+                class="h-14 rounded-xl flex flex-col items-center justify-center p-2 font-display font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 ${
+                  valJump.valid && !isUserLeading
+                    ? 'bg-tactical-card hover:bg-tactical-navy-light border-2 border-primary-yellow text-primary-yellow'
+                    : 'bg-tactical-card border border-tactical-navy-light text-text-dim/40 cursor-not-allowed opacity-50'
+                }"
+              >
+                <span class="text-sm leading-none">+JUMP</span>
+                <span class="font-mono text-[11px] leading-none opacity-90 mt-1">(\$${jumpBid})</span>
+              </button>
+
+              <!-- Pass Button -->
+              <button
+                id="btn-pass"
+                type="button"
+                ${!hasUserPassed && !isUserLeading ? '' : 'disabled'}
+                class="h-14 rounded-xl flex flex-col items-center justify-center p-2 font-display font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 ${
+                  !hasUserPassed && !isUserLeading
+                    ? 'bg-tactical-card hover:bg-status-danger/20 border border-status-danger/50 text-status-danger'
+                    : 'bg-tactical-card border border-tactical-navy-light text-text-dim/40 cursor-not-allowed opacity-50'
+                }"
+              >
+                <span class="material-symbols-outlined text-[18px] leading-none mb-0.5">close</span>
+                <span class="text-xs leading-none">${hasUserPassed ? 'PASSED' : 'PASS'}</span>
+              </button>
+            </div>
+
+            <!-- Reserve Rule Warning Banner if blocked -->
+            ${!valMin.valid && !isUserLeading && userTeamCount < teamCap ? `
+              <div class="p-2.5 rounded-lg bg-status-danger/15 border border-status-danger/40 text-center">
+                <span class="font-mono text-xs text-status-danger font-bold uppercase">
+                  ${escapeHtml(valMin.error || 'Cannot bid: Reserve rule active')}
+                </span>
+              </div>
+            ` : ''}
+
+            <!-- Tactical Purse & Allocation Readout Strip -->
+            <div class="bg-tactical-base border border-tactical-navy-light/80 p-3.5 rounded-xl flex items-center justify-between font-mono text-xs">
+              <div class="flex flex-col">
+                <span class="text-[10px] text-text-dim uppercase tracking-wider">YOUR PURSE</span>
+                <span class="text-sm font-bold text-status-success">\$${userPurse} Left</span>
+              </div>
+              <div class="h-6 w-px bg-tactical-navy-light"></div>
+              <div class="flex flex-col items-center">
+                <span class="text-[10px] text-text-dim uppercase tracking-wider">MAX BID CEILING</span>
+                <span class="text-sm font-bold text-primary-yellow">\$${maxAllowedBid} MAX</span>
+              </div>
+              <div class="h-6 w-px bg-tactical-navy-light"></div>
+              <div class="flex flex-col items-end">
+                <span class="text-[10px] text-text-dim uppercase tracking-wider">SLOTS LEFT</span>
+                <span class="text-sm font-bold text-text-high">${userTeamCount}/${teamCap} PKMN</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Mobile-only Activity Ledger Drawer -->
+          <div class="lg:hidden flex flex-col gap-3">
+            ${renderRecentBidsCard(recentBids)}
+            ${renderUpcomingLotsCard(upcomingLots)}
+          </div>
+
+        </div>
+
+        <!-- RIGHT PANEL (Desktop): Up Next Queue & Activity Ledger (col-span-3) -->
+        <div class="lg:col-span-3 hidden lg:flex flex-col gap-4">
+          
+          <!-- Recent Bids Ledger -->
+          ${renderRecentBidsCard(recentBids)}
+
+          <!-- Up Next Queue -->
+          ${renderUpcomingLotsCard(upcomingLots)}
+
+          <!-- Squad Requirements Intel -->
+          <div class="bg-tactical-navy border border-tactical-navy-light rounded-xl p-4 shadow-xl flex flex-col gap-2.5 text-xs font-mono">
+            <span class="font-display font-bold text-xs uppercase tracking-wider text-text-high flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary-yellow text-[16px]">checklist</span>
+              <span>SQUAD REQUIREMENTS</span>
             </span>
+            <div class="flex items-center justify-between text-text-dim">
+              <span>Required Squad Size:</span>
+              <span class="text-text-high font-bold">${teamCap} Pokémon</span>
+            </div>
+            <div class="flex items-center justify-between text-text-dim">
+              <span>Reserve Per Empty Slot:</span>
+              <span class="text-primary-yellow font-bold">\$${minReservePerSlot}</span>
+            </div>
+            <p class="text-[11px] text-text-dim leading-relaxed pt-1 border-t border-tactical-navy-light/60">
+              The referee strictly enforces the budget reserve rule so you never get stuck unable to fill a required slot.
+            </p>
           </div>
-          <div class="font-display-auction-mobile text-display-auction-mobile text-primary-container leading-none mt-1" id="current-bid-val">
-            $${lot.currentBid > 0 ? lot.currentBid : matchState.settings.startBid}
-          </div>
+
         </div>
 
-        <!-- Circular Timer -->
-        <div class="relative w-20 h-20 flex items-center justify-center flex-shrink-0">
-          <svg class="w-20 h-20 -rotate-90" viewBox="0 0 72 72">
-            <circle class="text-surface-container-high fill-none" cx="36" cy="36" r="30" stroke="currentColor" stroke-width="4.5"></circle>
-            <circle class="fill-none ${isUrgent ? 'drop-shadow-[0_0_8px_rgba(239,68,68,0.85)]' : ''} transition-all duration-300" cx="36" cy="36" id="timer-ring" r="30" stroke="${isUrgent ? '#EF4444' : '#c8c6c5'}" stroke-dasharray="188.5" stroke-dashoffset="${dashoffset.toFixed(1)}" stroke-linecap="round" stroke-width="5"></circle>
-          </svg>
-          <div class="absolute inset-0 flex flex-col items-center justify-center">
-            <span class="font-display-auction-mobile text-[22px] leading-tight ${isUrgent ? 'text-[#EF4444]' : 'text-on-surface'} font-bold tracking-tight" id="timer-val">
-              ${String(clampedTimer).padStart(2, '0')}s
-            </span>
-            <span class="font-label-caps text-[9px] uppercase tracking-widest ${isUrgent ? 'text-[#EF4444]' : 'text-outline'}">
-              ${isUrgent ? 'HURRY' : 'CLOCK'}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bidding Action Controls (Respects Budget Reserve Rule) -->
-      <div class="grid grid-cols-3 gap-space-xs pt-1">
-        <!-- Quick Bid 1 -->
-        <button class="min-h-[52px] ${valMin.valid && !isUserLeading ? 'bg-primary-container text-on-primary-container hover:brightness-110 active:scale-[0.98]' : 'bg-surface-container text-outline opacity-40 cursor-not-allowed'} transition-transform rounded-lg flex flex-col items-center justify-center p-space-xs" id="btn-bid-1" data-amount="${minRequired}" ${valMin.valid && !isUserLeading ? '' : 'disabled'} type="button">
-          <span class="font-headline-sm text-headline-sm leading-none uppercase">+$${inc}</span>
-          <span class="font-tabular-stats text-tabular-stats leading-none opacity-85 mt-0.5">($${minRequired})</span>
-        </button>
-
-        <!-- Quick Bid 2 (Jump) -->
-        <button class="min-h-[52px] ${valJump.valid && !isUserLeading ? 'bg-primary-container text-on-primary-container hover:brightness-110 active:scale-[0.98]' : 'bg-surface-container text-outline opacity-40 cursor-not-allowed'} transition-transform rounded-lg flex flex-col items-center justify-center p-space-xs" id="btn-bid-2" data-amount="${jumpBid}" ${valJump.valid && !isUserLeading ? '' : 'disabled'} type="button">
-          <span class="font-headline-sm text-headline-sm leading-none uppercase">+JUMP</span>
-          <span class="font-tabular-stats text-tabular-stats leading-none opacity-85 mt-0.5">($${jumpBid})</span>
-        </button>
-
-        <!-- Pass Button -->
-        <button class="min-h-[52px] ${!hasUserPassed && !isUserLeading ? 'bg-secondary-container/20 text-[#EF4444] hover:bg-secondary-container/30 active:scale-[0.98]' : 'bg-surface-container text-outline opacity-40 cursor-not-allowed'} transition-all rounded-lg flex flex-col items-center justify-center p-space-xs" id="btn-pass" ${!hasUserPassed && !isUserLeading ? '' : 'disabled'} type="button">
-          <span class="material-symbols-outlined text-[18px] leading-none mb-0.5">close</span>
-          <span class="font-headline-sm text-headline-sm leading-none uppercase">${hasUserPassed ? 'Passed' : 'Pass'}</span>
-        </button>
-      </div>
-
-      <!-- Reserve rule warning note if blocked -->
-      ${!valMin.valid && !isUserLeading && userTeamCount < teamCap ? `
-        <div class="px-space-sm text-center">
-          <span class="font-label-caps text-[11px] text-secondary tracking-wide uppercase">
-            ${escapeHtml(valMin.error || 'Cannot bid: Reserve rule active')}
-          </span>
-        </div>
-      ` : ''}
-
-      <!-- Squad Roster & Purse Strip -->
-      <div class="flex items-center justify-between bg-surface-container-high px-space-md py-space-sm rounded-xl">
-        <div class="flex items-center space-x-space-sm">
-          <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
-            <span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-label-caps text-label-caps uppercase text-outline">Purse Left</span>
-            <span class="font-tabular-stats text-tabular-stats text-primary font-bold tracking-tight">$${userPurse} Left</span>
-          </div>
-        </div>
-        <div class="flex items-center space-x-space-sm">
-          <div class="flex flex-col items-end">
-            <span class="font-label-caps text-label-caps uppercase text-outline">Squad Roster</span>
-            <span class="font-tabular-stats text-tabular-stats text-on-surface font-bold">${userTeamCount}/${teamCap} PKMN</span>
-          </div>
-          <div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-tertiary-fixed-dim">
-            <span class="material-symbols-outlined text-[18px]">group</span>
-          </div>
-        </div>
       </div>
     </div>
   `;
 }
 
-function renderStatBar(name, val, max, colorClass) {
-  const pct = Math.min(100, Math.max(10, Math.round((val / max) * 100)));
+/**
+ * Render Stat Telemetry Bar with min/max indicator
+ */
+function renderStatTelemetry(label, val, max, colorBar, colorText) {
+  const pct = Math.min(100, Math.max(12, Math.round((val / max) * 100)));
   return `
-    <div class="flex items-center space-x-space-xs">
-      <span class="w-7 font-label-caps text-label-caps text-outline">${name}</span>
-      <div class="flex-1 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
-        <div class="h-full ${colorClass} rounded-full" style="width: ${pct}%;"></div>
+    <div class="flex items-center gap-2">
+      <span class="w-7 text-[11px] font-bold text-text-dim">${label}</span>
+      <div class="flex-1 h-1.5 bg-tactical-navy rounded-full overflow-hidden">
+        <div class="h-full rounded-full ${colorBar}" style="width: ${pct}%;"></div>
       </div>
-      <span class="w-6 text-right font-tabular-stats text-tabular-stats text-on-surface">${val}</span>
+      <span class="w-7 text-right font-bold ${colorText}">${val}</span>
     </div>
   `;
+}
+
+/**
+ * Render Recent Bids Card
+ */
+function renderRecentBidsCard(recentBids) {
+  return `
+    <div class="bg-tactical-navy border border-tactical-navy-light rounded-xl p-4 shadow-xl flex flex-col gap-2.5">
+      <div class="flex items-center justify-between pb-2 border-b border-tactical-navy-light/60">
+        <span class="font-display font-bold text-xs uppercase tracking-wider text-text-high flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-primary-yellow text-[16px]">history</span>
+          <span>RECENT BIDS (${recentBids.length})</span>
+        </span>
+        <span class="font-mono text-[10px] text-text-dim uppercase">LIVE FEED</span>
+      </div>
+
+      <div class="flex flex-col gap-1.5 font-mono text-xs">
+        ${recentBids.length > 0 ? recentBids.map((b, i) => `
+          <div class="flex items-center justify-between p-2 rounded ${i === 0 ? 'bg-tactical-card border border-primary-yellow/40' : 'bg-tactical-base/60'}">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-primary-yellow' : 'bg-text-dim/60'}"></span>
+              <span class="font-bold truncate ${i === 0 ? 'text-primary-yellow' : 'text-text-high'}">${escapeHtml(b.playerName || b.playerId)}</span>
+            </div>
+            <span class="font-bold ${i === 0 ? 'text-primary-yellow' : 'text-text-dim'}">\$${b.amount}</span>
+          </div>
+        `).join('') : `
+          <div class="p-3 text-center text-text-dim text-xs font-mono">
+            No bids placed on this lot yet.
+          </div>
+        `}
+      </div>
+    </div>
+  `;
+}
+
+/**
+ * Render Up Next Preview Card
+ */
+function renderUpcomingLotsCard(upcomingLots) {
+  return `
+    <div class="bg-tactical-navy border border-tactical-navy-light rounded-xl p-4 shadow-xl flex flex-col gap-2.5">
+      <div class="flex items-center justify-between pb-2 border-b border-tactical-navy-light/60">
+        <span class="font-display font-bold text-xs uppercase tracking-wider text-text-high flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-accent-cyan text-[16px]">queue</span>
+          <span>UP NEXT IN SET</span>
+        </span>
+        <span class="font-mono text-[10px] text-text-dim uppercase">${upcomingLots.length} Queued</span>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2">
+        ${upcomingLots.length > 0 ? upcomingLots.map((l, idx) => `
+          <div class="p-2 rounded-lg bg-tactical-card border border-tactical-navy-light/80 flex flex-col items-center text-center gap-1">
+            <span class="font-mono text-[9px] text-text-dim uppercase">LOT +${idx + 1}</span>
+            <img
+              src="./assets/sprites/artwork/${l.pokemon.id}.png"
+              alt="${escapeHtml(l.pokemon.name)}"
+              class="w-10 h-10 object-contain drop-shadow"
+              onerror="this.onerror=null; this.src='./assets/icons/poke-ball.png';"
+            />
+            <span class="font-display font-bold text-[11px] text-text-high truncate w-full">${escapeHtml(l.pokemon.name)}</span>
+            <span class="font-mono text-[10px] font-bold text-primary-yellow">\$${l.startBid || 10}</span>
+          </div>
+        `).join('') : `
+          <div class="col-span-3 p-3 text-center text-text-dim text-xs font-mono">
+            Final lot in this set.
+          </div>
+        `}
+      </div>
+    </div>
+  `;
+}
+
+/**
+ * Compute Defensive Profile: Weaknesses, Resistances, Immunities
+ */
+function computeDefensiveProfile(defenderTypes) {
+  const weaknesses = [];
+  const resistances = [];
+  const immunities = [];
+
+  for (const atkType of POKEMON_TYPES) {
+    try {
+      const mult = getTypeEffectiveness(atkType, defenderTypes);
+      const capName = atkType.charAt(0).toUpperCase() + atkType.slice(1);
+      if (mult === 0) {
+        immunities.push(capName);
+      } else if (mult > 1) {
+        weaknesses.push({ type: capName, mult });
+      } else if (mult < 1) {
+        resistances.push({ type: capName, mult });
+      }
+    } catch (_) {}
+  }
+
+  // Sort descending by multiplier
+  weaknesses.sort((a, b) => b.mult - a.mult);
+  resistances.sort((a, b) => a.mult - b.mult);
+
+  return { weaknesses, resistances, immunities };
 }
 
 function escapeHtml(str) {

@@ -979,6 +979,23 @@ export class DraftDexApp {
       });
     }
 
+        // Keyboard shortcuts: B = Bid, P = Pass
+    if (!this._auctionKeyHandler && typeof window !== 'undefined') {
+      this._auctionKeyHandler = (e) => {
+        if (!window.location.hash.includes('auction')) return;
+        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+        const key = e.key?.toLowerCase();
+        if (key === 'b') {
+          const btn = document.querySelector('#btn-bid-1:not([disabled])');
+          if (btn) btn.click();
+        } else if (key === 'p') {
+          const btn = document.querySelector('#btn-pass:not([disabled])');
+          if (btn) btn.click();
+        }
+      };
+      window.addEventListener('keydown', this._auctionKeyHandler);
+    }
+
     // Start clock if host & not already running
     if (!this.timerInterval && this.isHost) {
       this.startAuctionClock();
