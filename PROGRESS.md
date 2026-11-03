@@ -683,7 +683,48 @@
   - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
 
 - **Open Items:**
-  - Next screen in PLAN-v2 order: **Countdown** screen (`ui/screens/countdown.js` in `ui/app.js`).
+  - Milestone 8 complete. Next screen in PLAN-v2 order: **Countdown** screen (`ui/screens/countdown.js`).
+
+### Phase 3: New Design System and Responsive Shell (Milestone 9: Countdown & Match Result Screens Re-Skin)
+- **What was done:**
+  - **Task 1: Tactical Arena Countdown Screen ([ui/screens/countdown.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/countdown.js)):**
+    - Redesigned with responsive layout matching Tactical Arena dark theme and design language.
+    - Top tactical status bar with back action (`#btn-countdown-back`), Arena synchronization badge, and room PIN indicator.
+    - Central telemetry card featuring volumetric glow aura, pulsing circular step tracker, high-visibility counter `<span id="countdown-display">${seconds}</span>`, and system diagnostic phase status ("SYNCHRONIZING P2P COMBAT BUS...").
+    - Versus combatant cards showcasing Trainer 1 (User) and Trainer 2 (Opponent) with avatars, status indicator tags ("Ready ✓"), and designated battle leads with artwork.
+  - **Task 2: Tactical Arena Match Result Screen ([ui/screens/result.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/result.js)):**
+    - Redesigned with responsive multi-panel layout matching [design-v2/match_result_phone/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/match_result_phone/code.html) and [design-v2/match_result_desktop_1280px/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/match_result_desktop_1280px/code.html).
+    - Top combat debrief header with back button (`#btn-result-back`), combat conclusion status badge, and room PIN indicator.
+    - Victory / Defeat / Stalemate volumetric aura banner with dynamic glow and subtitle.
+    - Tactical Scoreboard card with survivor count spans `<span ... id="score-p1">` and `<span ... id="score-p2">`, trainer avatars, and winner badge.
+    - Responsive 12-column telemetry cockpit:
+      - Left column (5 cols): Match MVP telemetry showcase with high-res artwork, BST metric, primary role, dual types, and performance efficiency rating.
+      - Right column (7 cols): Combat Efficiency Metrics card with dual SVG circular progress dials (Draft Value Efficiency `#draft-ring`, Combat Win Rate `#win-ring`), telemetry data tiles (Total Turns Elapsed, Damage Dealt, Super-Effective Hit Rate, Ace Pokémon), and interactive Action Dock (`#btn-rematch`, `#btn-result-home`).
+  - **Task 3: Multi-Viewport Verification:**
+    - Captured fresh responsive screenshots: `countdown-390.png`, `countdown-768.png`, `countdown-1280.png`, `result-390.png`, `result-768.png`, `result-1280.png`.
+    - Verified all element bindings (`#countdown-display`, `#btn-countdown-back`, `#score-p1`, `#score-p2`, `#draft-ring`, `#win-ring`, `#btn-rematch`, `#btn-result-home`, `#btn-result-back`).
+  - **Phase 3 Completion:**
+    - All 9 screens specified in `PLAN-v2.md` Section 4 have been re-skinned with responsive 390px / 768px / 1280px layouts:
+      1. Home (`ui/screens/home.js`)
+      2. Setup (`ui/screens/setup.js`)
+      3. Lobby (`ui/screens/lobby.js`)
+      4. Auction (`ui/screens/auction.js`)
+      5. Set Break (`ui/screens/break.js`)
+      6. Scout Report (`ui/screens/scout.js`)
+      7. Squad Select (`ui/screens/squadSelect.js`)
+      8. Countdown (`ui/screens/countdown.js`)
+      9. Match Result (`ui/screens/result.js`)
+    - Style guide page operational at `#/styleguide`.
+    - Battle Arena screen deferred to `BATTLE-PLAN.md` per PLAN-v2 specification.
+    - Phase 3 is **100% COMPLETE**.
+
+- **Test Results:**
+  - `npm test`: **PASS** (12/12 test suites passed, 392 assertions passed, 0 failed)
+  - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
+
+- **Open Items:**
+  - Phase 3 complete. Next phase per `PLAN-v2.md`: **Phase 4: Entry flow and lobby** (P2P Host / Guest / Join Room flow, room codes, live player list, bot picker split).
+
 
 
 

@@ -1,6 +1,6 @@
 /**
- * Battle Countdown Screen
- * Visual source: design/stitch_pok_mon_draft_auction_webapp/battle_countdown/code.html
+ * Tactical Arena Battle Countdown Screen
+ * Responsive across 390px (mobile), 768px (tablet), and 1280px+ (desktop).
  */
 
 export function renderCountdownScreen({
@@ -11,71 +11,114 @@ export function renderCountdownScreen({
   const players = matchState?.players || [];
   const p1 = players[0] || { name: 'Player 1', isReady: true };
   const p2 = players[1] || { name: 'Challenger', isReady: true };
+  const roomPin = matchState?.room || 'PK-940';
 
   const displayNum = String(countdownNumber || '1');
 
   return `
-    <header class="fixed top-0 w-full max-w-[390px] md:max-w-[768px] z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-      <div class="h-14 px-gutter flex items-center justify-between">
-        <div class="flex items-center gap-space-sm">
-          <button aria-label="Go back" id="btn-countdown-back" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors" type="button">
-            <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+    <!-- Top HUD Header -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-[#080d18]/90 backdrop-blur-xl border-b border-[#162238] shadow-[0_1px_12px_rgba(0,0,0,0.5)]">
+      <div class="max-w-[1600px] mx-auto h-16 px-4 md:px-8 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3 min-w-0">
+          <button aria-label="Go back" id="btn-countdown-back" class="w-10 h-10 flex items-center justify-center rounded-lg bg-[#111a2e] text-[#dde2f5] hover:text-[#ffe033] hover:bg-[#162238] transition-colors border border-[#1e2d4a]" type="button">
+            <span class="material-symbols-outlined text-[20px]">arrow_back</span>
           </button>
-          <h1 class="font-headline-sm text-headline-sm uppercase tracking-wider text-on-surface truncate">Apex Battle</h1>
+          <div class="flex flex-col min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10b981] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#10b981]"></span>
+              </span>
+              <span class="text-[10px] font-bold text-[#10b981] uppercase tracking-widest">ARENA DEPLOYMENT</span>
+            </div>
+            <h1 class="text-base md:text-lg font-bold text-white uppercase tracking-tight font-display truncate">Apex Battle</h1>
+          </div>
         </div>
-        <div class="flex items-center gap-space-sm">
-          <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-            <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+
+        <div class="flex items-center gap-3 shrink-0">
+          <div class="flex items-center gap-1.5 bg-[#111a2e] px-3 py-1 rounded-lg border border-[#1e2d4a]">
+            <span class="material-symbols-outlined text-[#ffe033] text-[15px]">vpn_key</span>
+            <span class="text-xs font-mono text-[#ffe033] font-bold tracking-widest">${escapeHtml(roomPin)}</span>
+          </div>
+          <div class="w-8 h-8 rounded-full bg-[#162238] border border-[#1e2d4a] flex items-center justify-center text-[#ffe033]">
+            <span class="material-symbols-outlined text-[18px]">sports_martial_arts</span>
           </div>
         </div>
       </div>
     </header>
 
-    <main class="flex flex-col relative w-full pt-14 pb-safe bg-surface min-h-screen">
-      <div class="flex flex-col w-full relative overflow-hidden select-none bg-[#0B111E] py-8 px-gutter items-center justify-between min-h-[calc(100vh-3.5rem)]">
+    <main class="flex flex-col relative w-full pt-16 bg-[#080d18] min-h-screen">
+      <div class="flex-1 w-full max-w-[1280px] mx-auto relative overflow-hidden select-none py-8 px-4 md:px-8 flex flex-col items-center justify-between min-h-[calc(100vh-4rem)]">
         
-        <!-- Ambient Background Glow -->
+        <!-- Ambient Volumetric Glow Auras -->
         <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
-          <div class="w-[320px] h-[320px] rounded-full bg-primary-container/20 blur-3xl animate-ping opacity-40"></div>
-          <div class="w-[220px] h-[220px] rounded-full bg-secondary-container/30 blur-2xl animate-pulse opacity-60"></div>
+          <div class="w-[420px] h-[420px] rounded-full bg-[#ffe033]/10 blur-3xl animate-pulse"></div>
+          <div class="w-[280px] h-[280px] rounded-full bg-[#00f5ff]/15 blur-2xl animate-ping opacity-60"></div>
         </div>
 
-        <!-- Top Trainer Banner -->
-        <div class="relative z-10 w-full flex flex-col items-center gap-space-sm pt-space-md">
-          <span class="font-label-caps text-label-caps uppercase tracking-widest text-primary-fixed/80">
-            Battle starts
+        <!-- Top Trainer Card -->
+        <div class="relative z-10 w-full max-w-[500px] flex flex-col items-center gap-2 pt-4">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-[#9aa4bc]">
+            Battle Protocol Initiated
           </span>
-          <div class="flex items-center gap-space-sm bg-surface-container-lowest/80 px-space-md py-space-xs rounded-full shadow-md">
-            <span class="font-headline-md text-headline-md tracking-wider text-on-surface uppercase font-bold">
-              ${escapeHtml(p1.name)}
-            </span>
-            <span class="inline-flex items-center gap-1 bg-[#123620] text-[#75f991] font-label-caps text-label-caps uppercase px-space-sm py-0.5 rounded-full shadow-sm">
+          <div class="w-full flex items-center justify-between bg-[#111a2e] border border-[#1e2d4a] px-5 py-3 rounded-xl shadow-xl">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-lg bg-[#ffe033] text-[#080d18] font-bold text-sm flex items-center justify-center shrink-0">
+                ${escapeHtml(p1.name.charAt(0).toUpperCase())}
+              </div>
+              <div class="flex flex-col min-w-0">
+                <span class="text-sm md:text-base font-bold text-white uppercase truncate font-display">
+                  ${escapeHtml(p1.name)}
+                </span>
+                <span class="text-[10px] text-[#9aa4bc] uppercase tracking-wider">Trainer 1</span>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-1.5 bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/30 text-xs font-bold uppercase px-3 py-1 rounded-full shadow-sm">
+              <span class="material-symbols-outlined text-[14px]">check</span>
               Ready ✓
             </span>
           </div>
         </div>
 
-        <!-- Huge Center Countdown Number -->
+        <!-- Huge Center Countdown Display -->
         <div class="relative z-10 my-auto flex flex-col items-center justify-center">
-          <div id="countdown-display" class="font-headline-lg text-[88px] leading-[88px] tracking-tight uppercase text-primary-container font-extrabold drop-shadow-[0_0_24px_rgba(255,85,64,0.7)] text-center transition-all duration-300 transform scale-100">
-            ${displayNum}
+          <div class="relative flex items-center justify-center">
+            <!-- Pulsing Outer Ring -->
+            <div class="w-56 h-56 md:w-64 md:h-64 rounded-full border border-[#ffe033]/30 flex items-center justify-center animate-pulse shadow-[0_0_50px_rgba(255,224,51,0.2)]">
+              <div class="w-44 h-44 md:w-52 md:h-52 rounded-full border border-[#00f5ff]/30 flex items-center justify-center">
+                <div id="countdown-display" class="font-display text-[96px] md:text-[120px] leading-none font-bold text-[#ffe033] drop-shadow-[0_0_30px_rgba(255,224,51,0.8)] text-center transition-all duration-300 transform scale-100">
+                  ${displayNum}
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="flex items-center justify-center gap-space-md mt-space-sm opacity-60 font-headline-sm text-headline-sm text-primary-fixed tracking-widest uppercase">
-            <span class="${displayNum === '3' ? 'text-primary-container font-bold scale-110' : ''}">3</span>
-            <span class="text-primary-container">·</span>
-            <span class="${displayNum === '2' ? 'text-primary-container font-bold scale-110' : ''}">2</span>
-            <span class="text-primary-container">·</span>
-            <span class="${displayNum === '1' ? 'text-primary-container font-bold scale-110' : ''}">1</span>
+
+          <!-- Step Progression Tracker -->
+          <div class="flex items-center justify-center gap-4 mt-6 text-sm font-mono tracking-widest uppercase">
+            <span class="px-2 py-0.5 rounded ${displayNum === '3' ? 'bg-[#ffe033] text-[#080d18] font-bold scale-110 shadow-[0_0_12px_rgba(255,224,51,0.6)]' : 'text-[#9aa4bc]'}">3</span>
+            <span class="text-[#1e2d4a]">·</span>
+            <span class="px-2 py-0.5 rounded ${displayNum === '2' ? 'bg-[#ffe033] text-[#080d18] font-bold scale-110 shadow-[0_0_12px_rgba(255,224,51,0.6)]' : 'text-[#9aa4bc]'}">2</span>
+            <span class="text-[#1e2d4a]">·</span>
+            <span class="px-2 py-0.5 rounded ${displayNum === '1' ? 'bg-[#ffe033] text-[#080d18] font-bold scale-110 shadow-[0_0_12px_rgba(255,224,51,0.6)]' : 'text-[#9aa4bc]'}">1</span>
           </div>
         </div>
 
-        <!-- Bottom Trainer Banner -->
-        <div class="relative z-10 w-full flex flex-col items-center gap-space-sm pb-space-lg">
-          <div class="flex items-center gap-space-sm bg-surface-container-lowest/80 px-space-md py-space-xs rounded-full shadow-md">
-            <span class="font-headline-md text-headline-md tracking-wider text-on-surface uppercase font-bold">
-              ${escapeHtml(p2.name)}
-            </span>
-            <span class="inline-flex items-center gap-1 bg-[#123620] text-[#75f991] font-label-caps text-label-caps uppercase px-space-sm py-0.5 rounded-full shadow-sm">
+        <!-- Bottom Trainer Card -->
+        <div class="relative z-10 w-full max-w-[500px] flex flex-col items-center gap-2 pb-6">
+          <div class="w-full flex items-center justify-between bg-[#111a2e] border border-[#1e2d4a] px-5 py-3 rounded-xl shadow-xl">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-lg bg-[#162238] border border-[#1e2d4a] text-white font-bold text-sm flex items-center justify-center shrink-0">
+                ${escapeHtml(p2.name.charAt(0).toUpperCase())}
+              </div>
+              <div class="flex flex-col min-w-0">
+                <span class="text-sm md:text-base font-bold text-white uppercase truncate font-display">
+                  ${escapeHtml(p2.name)}
+                </span>
+                <span class="text-[10px] text-[#9aa4bc] uppercase tracking-wider">Trainer 2</span>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-1.5 bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/30 text-xs font-bold uppercase px-3 py-1 rounded-full shadow-sm">
+              <span class="material-symbols-outlined text-[14px]">check</span>
               Ready ✓
             </span>
           </div>
