@@ -553,6 +553,29 @@
   - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
 
 - **Open Items:**
-  - Next screen in PLAN-v2 order: **Setup** screen (`ui/screens/setup.js`).
+  - Milestone 2 complete. Next screen in PLAN-v2 order: **Setup** screen (`ui/screens/setup.js`).
+
+### Phase 3: New Design System and Responsive Shell (Milestone 3: Setup Screen Re-Skin)
+- **What was done:**
+  - **Task 1: Tactical Arena Setup Screen ([ui/screens/setup.js](file:///c:/Users/Waters/Desktop/draftdex/ui/screens/setup.js)):**
+    - Redesigned with responsive multi-panel layout matching [design-v2/setup_phone/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/setup_phone/code.html) and [design-v2/setup_desktop_1280px/code.html](file:///c:/Users/Waters/Desktop/draftdex/design-v2/setup_desktop_1280px/code.html).
+    - Mobile (<1024px): 
+      - Sub-HUD header with back button, Pre-Draft Cockpit title, and config status pill.
+      - 3 pace protocol preset cards (Quick 15m/4 PKMN, Standard 35m/6 PKMN with active ring glow, Marathon 60m/10 PKMN).
+      - Advanced Parameters collapsible drawer with active pool scope summary, live pool counter (567 available) with pulsing LED, generation chips 1-9 with Select All toggle, Famous Only switch, numeric parameter cards with lock/unlock overrides (Team size, Budget, Starting bid, Bid deliberation timer, Lot opening timer), and Battle Turn Timer selector chips (15s, 30s, 45s, 60s, 90s).
+      - Autonomous Role Balancer telemetry pill and primary Create Match CTA button.
+    - Desktop (1280px):
+      - 12-column responsive layout with left configuration terminal (col-span-7) and right Tactical Roster Radar (col-span-5) showing active pool stats, team slots, purse, base reserve, mandatory 5-archetype combat coverage matrix, and budget reserve rule formula explainer.
+  - **Task 2: Multi-Viewport Verification:**
+    - Captured fresh responsive screenshots: `setup-390.png`, `setup-768.png`, `setup-1280.png`.
+    - Verified all element bindings (`#card-quick`, `#card-standard`, `#card-marathon`, `#btn-toggle-advanced`, `#pool-counter`, `#btn-create-match`, etc.).
+
+- **Test Results:**
+  - `npm test`: **PASS** (12/12 test suites passed, 392 assertions passed, 0 failed)
+  - `npm run test:ui`: **PASS** (All 11 screens verified across 390px, 768px, and 1280px; 33 viewports evaluated; 0 scroll failures; 0 JS or page errors)
+
+- **Open Items:**
+  - Next screen in PLAN-v2 order: **Lobby** screen (`ui/screens/lobby.js`).
+
 
 
